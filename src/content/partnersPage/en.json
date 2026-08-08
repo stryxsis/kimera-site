@@ -7,6 +7,12 @@
     "heading": "How the collaboration works",
     "body": "You handle marketing and recruitment in your market and manage the relationship with the family. Once a student's Universitaly pre-registration is underway, we take over everything on Italian soil — admissions support, visa file, arrival, and housing — and report back to you throughout."
   },
+  "handoverDiagram": {
+    "theirLabel": "You, in your market",
+    "theirItems": ["Marketing and recruitment", "The relationship with the family"],
+    "handoverLabel": "Handover once Universitaly pre-registration starts",
+    "ourLabel": "Us, in Italy"
+  },
   "whatWeDoOnGround": {
     "heading": "What we handle in Italy",
     "items": [

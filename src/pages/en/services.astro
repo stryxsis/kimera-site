@@ -2,49 +2,105 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection, getEntry } from 'astro:content';
 import { getPath } from '../../i18n/routes';
-import { renderEmphasis } from '../../i18n/utils';
+import { useTranslations, renderEmphasis } from '../../i18n/utils';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
 
 const locale = 'en';
+const t = useTranslations(locale);
 const { data: content } = await getEntry('servicesPage', locale)!;
 
 const allPackages = await getCollection('packages', (entry) => entry.id.startsWith(`${locale}/`));
-const sortedPackages = allPackages.sort((a, b) => a.data.order - b.data.order);
+const packages = allPackages.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <PageLayout locale={locale} routeKey="services" title={content.intro.heading}>
-  <p>{content.intro.body}</p>
-  <p>{content.comparisonNote}</p>
+  <Section surface="light">
+    <p class="block-lead">{content.intro.body}</p>
+    <p class="block-lead">{content.comparisonNote}</p>
+  </Section>
 
-  {
-    sortedPackages.map((pkg) => (
-      <article>
-        <h2>{pkg.data.name}</h2>
-        <p>{pkg.data.tagline}</p>
-        <ul>
-          {pkg.data.includes.map((item) => (
-            <li set:html={renderEmphasis(item)} />
-          ))}
-        </ul>
-        <p>
-          <a href={`${getPath('book', locale)}?level=${pkg.data.key}`}>{content.ctaLabel}</a>
-        </p>
-      </article>
-    ))
-  }
+  <Section>
+    <ul class="levels">
+      {
+        packages.map((pkg) => (
+          <Card as="li" class="level">
+            <h3 class="level__name">{pkg.data.name}</h3>
+            <p class="level__tagline">{pkg.data.tagline}</p>
 
-  <section>
-    <h2>{content.whyNoPrices.heading}</h2>
-    <p>{content.whyNoPrices.body}</p>
-  </section>
+            <p class="level__coverage label label-muted">
+              {t.packages.included} — {pkg.data.coverage}
+            </p>
+            <ul class="checklist level__list">
+              {pkg.data.includes.map((item) => (
+                <li set:html={renderEmphasis(item)} />
+              ))}
+            </ul>
 
-  <section>
-    <h2>{content.notIncluded.heading}</h2>
-    <ul>
+            <p class="level__cta">
+              <Button href={`${getPath('book', locale)}?level=${pkg.data.key}`} size="sm">
+                {content.ctaLabel}
+              </Button>
+            </p>
+          </Card>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section surface="light" labelledby="why-no-prices-heading">
+    <h2 class="block-heading" id="why-no-prices-heading">{content.whyNoPrices.heading}</h2>
+    <p class="block-lead">{content.whyNoPrices.body}</p>
+  </Section>
+
+  <Section labelledby="not-included-heading">
+    <h2 class="block-heading" id="not-included-heading">{content.notIncluded.heading}</h2>
+    <ul class="checklist checklist--negative not-included">
       {content.notIncluded.items.map((item) => <li>{item}</li>)}
     </ul>
-  </section>
+  </Section>
 
-  <p>
-    <a href={getPath('book', locale)}>{content.ctaLabel}</a>
-  </p>
+  <Section size="lg">
+    <div class="closing-cta">
+      <Button href={getPath('book', locale)}>{content.ctaLabel}</Button>
+    </div>
+  </Section>
 </PageLayout>
+
+<style>
+  .levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+  }
+  .level__name {
+    font-size: var(--text-2xl);
+    line-height: 1;
+  }
+  .level__tagline {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.65rem;
+  }
+  .level__coverage {
+    margin-top: 1.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--surface-rule);
+  }
+  .level__list {
+    flex: 1;
+  }
+  .level__cta {
+    margin-top: 1.4rem;
+  }
+
+  .not-included {
+    max-width: var(--container-prose);
+    margin-top: 1.75rem;
+  }
+</style>

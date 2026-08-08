@@ -7,6 +7,12 @@
     "heading": "Come funziona la collaborazione",
     "body": "Voi gestite marketing e recruiting nel vostro mercato e mantenete la relazione con la famiglia. Appena la pre-iscrizione dello studente su Universitaly è avviata, prendiamo in carico tutto sul suolo italiano — supporto all'ammissione, fascicolo per il visto, arrivo e alloggio — e vi riportiamo aggiornamenti lungo tutto il percorso."
   },
+  "handoverDiagram": {
+    "theirLabel": "Voi, nel vostro mercato",
+    "theirItems": ["Marketing e recruiting", "La relazione con la famiglia"],
+    "handoverLabel": "Il passaggio inizia con la pre-iscrizione su Universitaly",
+    "ourLabel": "Noi, in Italia"
+  },
   "whatWeDoOnGround": {
     "heading": "Cosa gestiamo in Italia",
     "items": [

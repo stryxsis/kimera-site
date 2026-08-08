@@ -2,6 +2,9 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
 import { useTranslations, renderEmphasis } from '../../i18n/utils';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import Accordion from '../../components/ui/Accordion.astro';
 
 const locale = 'it';
 const t = useTranslations(locale);
@@ -15,8 +18,11 @@ const groups = [
   { group: 'after-arrival' as const, label: t.faqGroups.afterArrival },
   { group: 'work-and-stay' as const, label: t.faqGroups.workAndStay },
   { group: 'about-kimere' as const, label: t.faqGroups.aboutKimere },
-].map((g) => ({
+].map((g, index) => ({
   ...g,
+  // Alterna la superficie: sei gruppi di FAQ in fila sulla stessa superficie
+  // sarebbero indistinguibili quanto sono lunghi.
+  surface: (index % 2 === 0 ? 'light' : 'dark') as 'light' | 'dark',
   items: allFaq.filter((f) => f.data.group === g.group).sort((a, b) => a.data.order - b.data.order),
 }));
 ---
@@ -24,22 +30,35 @@ const groups = [
 <PageLayout locale={locale} routeKey="faq" title={t.nav.faq}>
   {
     groups.map((g) => (
-      <section aria-labelledby={`faq-${g.group}`}>
-        <h2 id={`faq-${g.group}`}>{g.label}</h2>
-        {g.items.map((item) => (
-          <details>
-            <summary>{item.data.question}</summary>
-            <p set:html={renderEmphasis(item.data.answer)} />
-            {item.data.officialSource && (
-              <p>
-                <a href={item.data.officialSource} rel="noopener">
-                  {t.process.officialSource}
-                </a>
-              </p>
-            )}
-          </details>
-        ))}
-      </section>
+      <Section surface={g.surface} labelledby={`faq-${g.group}`}>
+        <h2 class="block-heading" id={`faq-${g.group}`}>
+          {g.label}
+        </h2>
+        <div class="faq-list">
+          {g.items.map((item) => (
+            <Accordion>
+              <span slot="summary">{item.data.question}</span>
+              <p set:html={renderEmphasis(item.data.answer)} />
+              {item.data.officialSource && (
+                <Button href={item.data.officialSource} variant="quiet" size="sm" rel="noopener">
+                  {t.process.officialSource} ↗
+                </Button>
+              )}
+            </Accordion>
+          ))}
+        </div>
+      </Section>
     ))
   }
 </PageLayout>
+
+<style>
+  .faq-list {
+    margin-top: 2rem;
+    max-width: var(--container-prose);
+    border-top: 1px solid var(--surface-rule);
+  }
+  .faq-list :global(.btn--quiet) {
+    margin-top: 0.75rem;
+  }
+</style>

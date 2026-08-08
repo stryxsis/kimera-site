@@ -67,8 +67,8 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
 
   {/* ── H2 · La misura del labirinto. Superficie chiara: qui si legge davvero. ── */}
   <Section surface="light" labelledby="scale-heading">
-    <h2 class="section-title" id="scale-heading">{content.problemScale.heading}</h2>
-    <p class="section-lead">{content.problemScale.body}</p>
+    <h2 class="block-heading" id="scale-heading">{content.problemScale.heading}</h2>
+    <p class="block-lead">{content.problemScale.body}</p>
 
     <ul class="stats">
       {
@@ -84,7 +84,7 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
 
   {/* ── H3 · Il perimetro, in tre blocchi ─────────────────────────────────── */}
   <Section labelledby="whatwedo-heading">
-    <h2 class="section-title" id="whatwedo-heading">{content.whatWeDo.heading}</h2>
+    <h2 class="block-heading" id="whatwedo-heading">{content.whatWeDo.heading}</h2>
 
     <ul class="pillars">
       {
@@ -101,8 +101,8 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
 
   {/* ── H5 · I tre livelli. Anticipa Services, non la duplica. ─────────────── */}
   <Section surface="panel" labelledby="levels-heading">
-    <h2 class="section-title" id="levels-heading">{content.packagesPreview.heading}</h2>
-    <p class="section-lead">{content.packagesPreview.body}</p>
+    <h2 class="block-heading" id="levels-heading">{content.packagesPreview.heading}</h2>
+    <p class="block-lead">{content.packagesPreview.body}</p>
 
     <ul class="levels">
       {
@@ -140,7 +140,7 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
   {/* ── H6 · L'obiezione, disinnescata prima che si formi ──────────────────── */}
   <Section surface="light" labelledby="trust-heading">
     <div class="trust">
-      <h2 class="section-title" id="trust-heading">{content.trustBuilding.heading}</h2>
+      <h2 class="block-heading" id="trust-heading">{content.trustBuilding.heading}</h2>
       <p class="trust__body">{content.trustBuilding.body}</p>
       <p>
         <Button href={getPath('about', locale)} variant="quiet">{t.nav.about}</Button>
@@ -202,17 +202,6 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
     .hero__grid {
       grid-template-columns: minmax(0, 1fr) minmax(0, 25rem);
     }
-  }
-
-  /* ── Intestazioni di sezione ────────────────────────────────────────────── */
-  .section-title {
-    font-size: var(--text-3xl);
-    max-width: 20ch;
-  }
-  .section-lead {
-    color: var(--surface-fg-muted);
-    max-width: var(--container-prose);
-    margin-top: 1.05rem;
   }
 
   /* ── Dati ───────────────────────────────────────────────────────────────── */

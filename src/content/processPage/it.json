@@ -5,6 +5,10 @@
   },
   "beforeDeparturePhaseLabel": "Prima di partire",
   "afterArrivalPhaseLabel": "Dopo l'atterraggio",
+  "routeMap": {
+    "caption": "Tutti gli 11 passi, nell'ordine in cui accadono davvero",
+    "pivot": "Atterri in Italia"
+  },
   "disclaimer": "Le procedure cambiano con le circolari ministeriali annuali. Questa pagina riflette la nostra comprensione attuale del processo — verifica sempre i dettagli sensibili al tempo con le fonti ufficiali collegate a ogni passo.",
   "ctaLabel": "Prenota la tua call di 15 minuti"
 }

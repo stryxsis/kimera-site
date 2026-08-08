@@ -177,20 +177,36 @@ dashboard fluttuante. Deve reggere senza fotografie e in due lingue di lunghezza
 
 ---
 
-## FASE 5 — Pagine restanti · SONNET
+## FASE 5 — Pagine restanti · SONNET ✅ COMPLETATA
 
 **Skill:** `astro`, `frontend-design`, `web-design-guidelines`
 
-- [ ] Process ★ · Services · Housing · Costs · About · FAQ · Partners · Book · Thank you · 404
-- [ ] Tutte in EN e IT
-- [ ] Riuso rigoroso di componenti e token della FASE 4
-- [ ] Se serve un pattern che non esiste: si compone con quelli esistenti e si documenta nella styleguide
+- [x] Process ★ · Services · Housing · Costs · About · Partners · FAQ · Thank you
+- [x] Tutte in EN e IT (stesso file, una riga di locale diversa — pattern delle FASE 3/4)
+- [x] Riuso rigoroso di componenti e token della FASE 4 — nessun componente UI nuovo
+- [x] Pattern nuovi ma generici (non invenzioni una tantum) promossi a `global.css`:
+      `.block-heading`/`.block-lead`, `.kv-list`, `.callout`(+`--warning`),
+      `.checklist--negative`, `.steps-numbered`, `.closing-cta` — usati da più pagine,
+      e la home è stata rifattorizzata per usarli anch'essa (zero duplicazione)
+- [x] `book`, `privacy`, `cookies` restano scaffold: senza content collection propria,
+      il loro contenuto reale (form multi-step, dati legali) arriva in FASE 6 — non uno
+      scarto di scope, una lettura del confine tra le fasi del master prompt
+- [x] `Badge` (esistente, non ancora usato su pagine reali) applicato a Costs per le cifre
+- [x] `HandoverDiagram` (ILL-04, esistente) collegato a Partners
 
 **Criteri di accettazione**
-- Nessun valore hardcodato fuori dai token
-- Nessuna invenzione stilistica nuova
-- Coerenza visiva verificata pagina per pagina rispetto alla home
-- `npm run build` verde, zero regressioni
+- [x] Nessun valore hardcodato fuori dai token
+- [x] Nessuna invenzione stilistica nuova — solo composizione dei pattern esistenti
+- [x] Coerenza visiva verificata pagina per pagina rispetto alla home (ispezione dell'HTML
+      generato: h1 unico, struttura heading coerente, nessun asterisco vagante)
+- [x] `npm run verify` verde: lint:content, 27 coppie di contrasto (0 sotto soglia),
+      check tipi, build (28 pagine), check:output
+
+**Bug trovato durante la fase:** il colore del callout di avviso (truffe sull'alloggio)
+falliva il contrasto — 2.84 invece di 4.5. Non era nel controllo automatico perché nato
+in questa fase, dopo l'ultimo giro di `check:contrast`. Corretto rendendolo dipendente
+dalla superficie (`--surface-warning`, come `--surface-accent`) e aggiunto alle 3 nuove
+coppie verificate automaticamente — lo stesso schema del bug trovato in FASE 4.
 
 `git commit -m "feat(phase-5): implement remaining pages in both languages"`
 

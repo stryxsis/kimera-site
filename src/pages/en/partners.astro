@@ -1,6 +1,10 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getEntry } from 'astro:content';
+import { getPath } from '../../i18n/routes';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import HandoverDiagram from '../../components/illustrations/HandoverDiagram.astro';
 
 const locale = 'en';
 const { data: content } = await getEntry('partnersPage', locale)!;
@@ -9,31 +13,51 @@ const { data: content } = await getEntry('partnersPage', locale)!;
 ---
 
 <PageLayout locale={locale} routeKey="partners" title={content.proposition.heading}>
-  <p>{content.proposition.body}</p>
+  <Section surface="light">
+    <p class="block-lead">{content.proposition.body}</p>
+  </Section>
 
-  <section>
-    <h2>{content.collaborationModel.heading}</h2>
-    <p>{content.collaborationModel.body}</p>
-  </section>
+  <Section labelledby="model-heading">
+    <h2 class="block-heading" id="model-heading">{content.collaborationModel.heading}</h2>
+    <p class="block-lead">{content.collaborationModel.body}</p>
 
-  <section>
-    <h2>{content.whatWeDoOnGround.heading}</h2>
-    <ul>
-      {content.whatWeDoOnGround.items.map((item) => <li>{item}</li>)}
-    </ul>
-  </section>
+    {/* ILL-04 — la stessa struttura del testo sopra, rappresentata visivamente. */}
+    <div class="handover-wrap">
+      <HandoverDiagram
+        theirTitle={content.handoverDiagram.theirLabel}
+        theirItems={content.handoverDiagram.theirItems}
+        handover={content.handoverDiagram.handoverLabel}
+        ourTitle={content.handoverDiagram.ourLabel}
+        ourItems={content.whatWeDoOnGround.items}
+      />
+    </div>
+  </Section>
 
-  <section>
-    <h2>{content.howToStart.heading}</h2>
-    <ol>
+  <Section surface="light" labelledby="start-heading">
+    <h2 class="block-heading" id="start-heading">{content.howToStart.heading}</h2>
+    <ol class="steps-numbered start-steps">
       {content.howToStart.steps.map((step) => <li>{step}</li>)}
     </ol>
-  </section>
+  </Section>
 
-  <section>
-    <h2>{content.forUniversities.heading}</h2>
-    <p>{content.forUniversities.body}</p>
-  </section>
+  <Section labelledby="universities-heading">
+    <h2 class="block-heading" id="universities-heading">{content.forUniversities.heading}</h2>
+    <p class="block-lead">{content.forUniversities.body}</p>
+  </Section>
 
-  <p>{content.ctaLabel}</p>
+  <Section surface="light" size="lg">
+    <div class="closing-cta">
+      <Button href={getPath('book', locale)}>{content.ctaLabel}</Button>
+    </div>
+  </Section>
 </PageLayout>
+
+<style>
+  .handover-wrap {
+    margin-top: 2.25rem;
+  }
+  .start-steps {
+    max-width: 34rem;
+    margin-top: 1.75rem;
+  }
+</style>

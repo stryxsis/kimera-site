@@ -141,6 +141,7 @@
     --surface-marker-bg: var(--color-gold-bright);
     --surface-marker-fg: var(--color-ground);
     --surface-control-line: #6f7d8b; /* 3.65 sul pannello — WCAG 1.4.11 */
+    --surface-warning: #e8896e; /* 6.47 su ground — non è un colore di brand, è di sicurezza */
   }
 
   .surface-panel {
@@ -157,6 +158,7 @@
     --surface-marker-bg: var(--color-gold-bright);
     --surface-marker-fg: var(--color-ground);
     --surface-control-line: #6f7d8b;
+    --surface-warning: #e8896e; /* 6.03 sul pannello */
   }
 
   .surface-light {
@@ -175,6 +177,7 @@
     --surface-marker-bg: var(--color-ink);
     --surface-marker-fg: var(--color-cream);
     --surface-control-line: #7c8590; /* 3.49 sul cream — WCAG 1.4.11 */
+    --surface-warning: #9c3c26; /* 6.35 sul cream */
   }
 
   .surface-dark,
@@ -376,6 +379,136 @@
     font-size: var(--text-2xs);
     line-height: 1;
     color: var(--surface-accent);
+  }
+
+  /* ── Intestazione + occhiello di sezione ───────────────────────────────
+     Pattern ripetuto su ogni pagina di contenuto (FASE 5): un'etichetta
+     opzionale, un titolo, un lead. Nato nella home (FASE 4), promosso qui
+     perché lo usano tutte le pagine — vale la regola "riuso rigoroso,
+     nessuna invenzione stilistica nuova" del criterio di accettazione. */
+  .block-heading {
+    font-size: var(--text-3xl);
+    max-width: 22ch;
+  }
+  .block-lead {
+    color: var(--surface-fg-muted);
+    max-width: var(--container-prose);
+    margin-top: 1.05rem;
+  }
+  .block-lead + .block-lead {
+    margin-top: 0.75rem;
+  }
+
+  /* ── Coppie chiave/valore ───────────────────────────────────────────────
+     Chi decide / quanto tempo (Process), città / fascia di prezzo (Housing),
+     pubblica / privata (Costs) — la stessa forma tabellare a due colonne
+     ricorre in più pagine con dati diversi. */
+  .kv-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid var(--surface-rule);
+  }
+  .kv-row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 13rem) minmax(0, 1fr);
+    gap: 0.5rem 1.5rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--surface-rule);
+    font-size: var(--text-sm);
+  }
+  .kv-row dt {
+    font-weight: 600;
+    color: var(--surface-fg-muted);
+  }
+  .kv-row dd {
+    margin: 0;
+    color: var(--surface-fg-soft);
+  }
+  @media (max-width: 34rem) {
+    .kv-row {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+
+  /* ── Richiamo ──────────────────────────────────────────────────────────
+     Blocco a bordo pieno per informazioni che devono staccarsi dal testo
+     corrente: un paradosso da capire prima di procedere, un avviso di
+     sicurezza. `--callout` colora il bordo e il titolo con l'accento della
+     superficie corrente; `--warning` lo forza a un rosso discreto perché un
+     avviso su una truffa non deve dipendere dalla palette del brand. */
+  .callout {
+    border-left: 3px solid var(--surface-accent);
+    padding: 0.3rem 0 0.3rem 1.25rem;
+  }
+  .callout__title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+  }
+  .callout__body {
+    color: var(--surface-fg-soft);
+    margin-top: 0.6rem;
+    max-width: var(--container-prose);
+  }
+  .callout--warning {
+    border-left-color: var(--surface-warning);
+  }
+  .callout--warning .callout__title {
+    color: var(--surface-warning);
+  }
+
+  /* ── Spunte negative ──────────────────────────────────────────────────
+     "Cosa non facciamo" — l'onestà sui limiti è una leva di fiducia
+     dichiarata nel brand brief, non un ripiego: merita un segno diverso
+     dalla spunta positiva, non lo stesso trattamento capovolto. */
+  .checklist--negative > li::before {
+    content: '—';
+    color: var(--surface-fg-muted);
+    border-color: var(--surface-rule-strong);
+  }
+
+  /* ── Elenco numerato ─────────────────────────────────────────────────
+     Per sequenze reali (howToStart di Partners): l'ordine porta
+     informazione, a differenza di un elenco puntato qualsiasi. */
+  .steps-numbered {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: steps;
+  }
+  .steps-numbered > li {
+    counter-increment: steps;
+    position: relative;
+    padding: 0.75rem 0 0.75rem 2.5rem;
+    border-bottom: 1px solid var(--surface-rule);
+    font-size: var(--text-sm);
+    color: var(--surface-fg-soft);
+  }
+  .steps-numbered > li::before {
+    content: counter(steps, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    color: var(--surface-accent);
+  }
+
+  /* ── Chiusura con CTA ────────────────────────────────────────────────
+     La maggior parte delle pagine non ha un titolo dedicato per la CTA finale
+     (solo il testo del bottone, dalle content collection): a differenza della
+     home, che ha un blocco più ricco con titolo e corpo proprio. */
+  .closing-cta {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  .closing-cta__note {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin: 0;
   }
 
   /* ── Prosa lunga ──────────────────────────────────────────────────────

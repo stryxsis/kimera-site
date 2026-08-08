@@ -59,6 +59,8 @@ const c = {
   tealInk: '#1B7087',
   controlLineDark: '#6F7D8B',
   controlLineLight: '#7C8590',
+  warningDark: '#E8896E',
+  warningLight: '#9C3C26',
 };
 
 /** [contesto, uso, primo piano, fondo, soglia | null se informativo] */
@@ -71,6 +73,7 @@ const pairs = [
   ['dark', 'anello di focus', c.goldBright, c.ground, 3.0],
   ['dark', 'linea di rotta e nodi', c.teal, c.ground, 3.0],
   ['dark', 'bordo dei campi di modulo', c.controlLineDark, c.panel, 3.0],
+  ['dark', 'titolo del callout di avviso (FASE 5)', c.warningDark, c.ground, 4.5],
 
   // ── surface-panel ─────────────────────────────────────────────────────
   ['panel', 'testo corrente', c.onDark, c.panel, 4.5],
@@ -78,6 +81,7 @@ const pairs = [
   ['panel', 'testo secondario', c.onDarkMuted, c.panel, 4.5],
   ['panel', 'accento ed etichette', c.goldBright, c.panel, 4.5],
   ['panel', 'linea di rotta e nodi', c.teal, c.panel, 3.0],
+  ['panel', 'titolo del callout di avviso (FASE 5)', c.warningDark, c.panel, 4.5],
 
   // ── surface-light ─────────────────────────────────────────────────────
   ['light', 'testo corrente', c.ink, c.cream, 4.5],
@@ -86,6 +90,7 @@ const pairs = [
   ['light', 'accento ed etichette', c.tealInk, c.cream, 4.5],
   ['light', 'anello di focus', c.tealInk, c.cream, 3.0],
   ['light', 'bordo dei campi di modulo', c.controlLineLight, c.cream, 3.0],
+  ['light', 'titolo del callout di avviso (FASE 5)', c.warningLight, c.cream, 4.5],
 
   // ── Componenti indipendenti dalla superficie ──────────────────────────
   ['btn', 'testo del bottone primario su oro', c.ground, c.gold, 4.5],

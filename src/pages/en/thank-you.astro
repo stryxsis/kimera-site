@@ -3,6 +3,8 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import { getEntry } from 'astro:content';
 import { getPath } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
 
 const locale = 'en';
 const t = useTranslations(locale);
@@ -10,17 +12,39 @@ const { data: content } = await getEntry('thankYouPage', locale)!;
 ---
 
 <PageLayout locale={locale} routeKey="thankYou" title={content.confirmation.heading} noindex>
-  <p>{content.confirmation.body}</p>
-  <p>{content.responseTime}</p>
+  <Section surface="light">
+    <p class="block-lead">{content.confirmation.body}</p>
+    <p class="response-time label">{content.responseTime}</p>
+  </Section>
 
-  <section>
-    <h2>{content.howToPrepare.heading}</h2>
-    <ul>
+  <Section labelledby="prepare-heading">
+    <h2 class="block-heading" id="prepare-heading">{content.howToPrepare.heading}</h2>
+    <ul class="checklist prepare-list">
       {content.howToPrepare.items.map((item) => <li>{item}</li>)}
     </ul>
-  </section>
+  </Section>
 
-  <p>
-    <a href={getPath('process', locale)}>{t.nav.process}</a>
-  </p>
+  <Section surface="light" size="lg">
+    <div class="closing-cta">
+      <Button href={getPath('process', locale)} variant="secondary">{t.nav.process}</Button>
+      <Button href={getPath('faq', locale)} variant="secondary">{t.nav.faq}</Button>
+    </div>
+  </Section>
 </PageLayout>
+
+<style>
+  .response-time {
+    margin-top: 1.1rem;
+  }
+  .prepare-list {
+    max-width: var(--container-prose);
+    margin-top: 1.5rem;
+  }
+  /* Due bottoni fianco a fianco, non uno sopra l'altro: qui non c'è un'unica
+     azione (come nelle altre pagine) ma due link di prosecuzione equivalenti. */
+  .closing-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

@@ -5,6 +5,10 @@
   },
   "beforeDeparturePhaseLabel": "Before you leave",
   "afterArrivalPhaseLabel": "After you land",
+  "routeMap": {
+    "caption": "All 11 steps, in the order they actually happen",
+    "pivot": "You land in Italy"
+  },
   "disclaimer": "Procedures change with annual ministerial circulars. This page reflects our current understanding of the process — always confirm time-sensitive details with the official sources linked in each step.",
   "ctaLabel": "Book your 15-minute call"
 }

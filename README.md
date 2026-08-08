@@ -20,18 +20,18 @@ npm run dev        # server di sviluppo — http://localhost:4321
 
 ## Script disponibili
 
-| Comando                | Cosa fa                                                                    |
-| :--------------------- | :------------------------------------------------------------------------- |
-| `npm run dev`          | Server di sviluppo con hot reload                                          |
-| `npm run build`        | Build di produzione in `dist/`                                             |
-| `npm run preview`      | Serve il build di produzione in locale                                     |
-| `npm run check`        | Type-check (`astro check`)                                                 |
-| `npm run format`       | Formatta con Prettier (astro + tailwind plugin)                            |
-| `npm run format:check` | Verifica la formattazione senza scrivere                                   |
-| `npm run lint:content` | Verifica la parità di chiavi tra i dizionari e le content collection EN/IT |
-| `npm run check:contrast` | Calcola il contrasto WCAG di ogni coppia di colori usata dal design system |
-| `npm run check:output` | Controlla l'HTML generato: asterischi non renderizzati, `<h1>` duplicati, risorse da domini terzi, `lang` mancante |
-| **`npm run verify`**   | **La catena completa: contenuti → contrasti → tipi → build → output.** È il comando da lanciare prima di ogni commit |
+| Comando                  | Cosa fa                                                                                                              |
+| :----------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`            | Server di sviluppo con hot reload                                                                                    |
+| `npm run build`          | Build di produzione in `dist/`                                                                                       |
+| `npm run preview`        | Serve il build di produzione in locale                                                                               |
+| `npm run check`          | Type-check (`astro check`)                                                                                           |
+| `npm run format`         | Formatta con Prettier (astro + tailwind plugin)                                                                      |
+| `npm run format:check`   | Verifica la formattazione senza scrivere                                                                             |
+| `npm run lint:content`   | Verifica la parità di chiavi tra i dizionari e le content collection EN/IT                                           |
+| `npm run check:contrast` | Calcola il contrasto WCAG di ogni coppia di colori usata dal design system                                           |
+| `npm run check:output`   | Controlla l'HTML generato: asterischi non renderizzati, `<h1>` duplicati, risorse da domini terzi, `lang` mancante   |
+| **`npm run verify`**     | **La catena completa: contenuti → contrasti → tipi → build → output.** È il comando da lanciare prima di ogni commit |
 
 ## Struttura del progetto
 
@@ -82,10 +82,9 @@ Il routing usa l'i18n nativo di Astro: `defaultLocale: 'en'`, `prefixDefaultLoca
 
 ## Stato del progetto
 
-**FASE 4 completata** — design system, marchio ridisegnato in SVG, illustrazioni e home implementata
-end-to-end in entrambe le lingue. Le pagine restanti (Percorso, Servizi, Alloggio, Costi, Chi siamo,
-FAQ, Partner) hanno già il contenuto reale ma non ancora il trattamento visivo: arriva in FASE 5.
-`book`, `privacy` e `cookies` restano scaffold fino alla FASE 6 (form e legal).
+**FASE 5 completata** — tutte le pagine con contenuto reale (Home, Percorso, Servizi, Alloggio, Costi,
+Chi siamo, Partner, FAQ, Grazie) sono implementate end-to-end in entrambe le lingue, sul design
+system della FASE 4. `book`, `privacy` e `cookies` restano scaffold fino alla FASE 6 (form e legal).
 
 Vedi `PROGRESS.md` per lo stato dettagliato, le decisioni prese e le questioni ancora aperte con il
 cliente.

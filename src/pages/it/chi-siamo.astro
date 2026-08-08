@@ -2,39 +2,81 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getEntry } from 'astro:content';
 import { getPath } from '../../i18n/routes';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
 
 const locale = 'it';
 const { data: content } = await getEntry('aboutPage', locale)!;
 ---
 
 <PageLayout locale={locale} routeKey="about" title={content.intro.heading}>
-  <p>{content.intro.body}</p>
+  <Section surface="light">
+    <p class="block-lead">{content.intro.body}</p>
+  </Section>
 
-  <section>
-    <h2>{content.whyWeExist.heading}</h2>
-    <p>{content.whyWeExist.body}</p>
-  </section>
+  <Section labelledby="why-heading">
+    <h2 class="block-heading" id="why-heading">{content.whyWeExist.heading}</h2>
+    <p class="block-lead">{content.whyWeExist.body}</p>
+  </Section>
 
-  <section>
-    <h2>{content.howWeWork.heading}</h2>
-    {
-      content.howWeWork.principles.map((principle) => (
-        <article>
-          <h3>{principle.title}</h3>
-          <p>{principle.body}</p>
-        </article>
-      ))
-    }
-  </section>
+  <Section surface="light" labelledby="how-heading">
+    <h2 class="block-heading" id="how-heading">{content.howWeWork.heading}</h2>
 
-  <section>
-    <h2>{content.whatWeDontDo.heading}</h2>
-    <ul>
+    <ol class="principles">
+      {
+        content.howWeWork.principles.map((principle, index) => (
+          <Card as="li" class="principle">
+            <span class="principle__index">{String(index + 1).padStart(2, '0')}</span>
+            <h3 class="principle__title">{principle.title}</h3>
+            <p class="principle__body">{principle.body}</p>
+          </Card>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section labelledby="whatwedont-heading">
+    <h2 class="block-heading" id="whatwedont-heading">{content.whatWeDontDo.heading}</h2>
+    <ul class="checklist checklist--negative not-included">
       {content.whatWeDontDo.items.map((item) => <li>{item}</li>)}
     </ul>
-  </section>
+  </Section>
 
-  <p>
-    <a href={getPath('book', locale)}>{content.ctaLabel}</a>
-  </p>
+  <Section surface="light" size="lg">
+    <div class="closing-cta">
+      <Button href={getPath('book', locale)}>{content.ctaLabel}</Button>
+    </div>
+  </Section>
 </PageLayout>
+
+<style>
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1.25rem;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .principle__index {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--surface-accent);
+    line-height: 1;
+  }
+  .principle__title {
+    font-size: var(--text-lg);
+    margin-top: 0.75rem;
+  }
+  .principle__body {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.6rem;
+  }
+
+  .not-included {
+    max-width: var(--container-prose);
+    margin-top: 1.5rem;
+  }
+</style>

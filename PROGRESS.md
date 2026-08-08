@@ -7,9 +7,50 @@
 
 ## Stato corrente
 
-**Fase corrente:** FASE 4 — Direzione visiva, design system e UI → **COMPLETATA**
-**In attesa di:** via libera per la FASE 5 (implementazione delle pagine restanti)
-**Modello richiesto per FASE 5:** SONNET
+**Fase corrente:** FASE 5 — Implementazione pagine restanti → **COMPLETATA**
+**In attesa di:** via libera per la FASE 6 (form di qualificazione, integrazioni, legal)
+**Modello richiesto per FASE 6:** SONNET
+
+**Deliverable FASE 5:**
+- 9 pagine con contenuto reale ristilizzate sul design system della FASE 4, EN + IT:
+  Home (rifattorizzata sulle classi condivise), **Process** (pagina cardine — mappa del
+  percorso completa a 11 tappe con `RouteMap`, ogni passo con lo schema
+  cosa-succede/chi-decide/quanto-tempo/cosa-fa-Kimere, le due tappe più convincenti
+  marcate con `keyMoment`), Services (livelli completi con `checklist`), Housing
+  (paradosso e truffe come `callout`, confronto fare/non-fare a due colonne), Costs
+  (cifre come `Badge`, prima applicazione reale del componente su una pagina di
+  contenuto), About (i 4 principi come `Card`), Partners (collaborazione visualizzata
+  con `HandoverDiagram`, ILL-04 collegato per la prima volta), FAQ (un `Accordion` per
+  domanda, superficie alternata per gruppo), Thank-you.
+- 6 nuovi pattern CSS **generici**, promossi in `global.css` invece di duplicati per
+  pagina: `.block-heading`/`.block-lead`, `.kv-list`, `.callout` (+ `--warning`),
+  `.checklist--negative`, `.steps-numbered`, `.closing-cta`. La home è stata
+  rifattorizzata per usarli anche lei — zero duplicazione tra home e pagine interne.
+- 2 aggiunte allo schema contenuti, entrambe riflettono l'analisi esistente, non
+  inventano dati: `processSteps.keyMoment` (le due tappe — visto, permesso entro 8
+  giorni — che il brand-brief cita come le più convincenti) e `processPage.routeMap`
+  (etichette per la mappa completa). Più `partnersPage.handoverDiagram`: la stessa
+  frase di `collaborationModel.body` riformulata come dati per il diagramma, non un
+  fatto nuovo — necessario perché quelle etichette non possono restare stringhe
+  inglesi hardcoded nel template (avrebbero violato la separazione contenuto/UI).
+- `book`, `privacy`, `cookies` restano scaffold: nessuna content collection propria,
+  il contenuto reale (form multi-step, dati legali) è lavoro della FASE 6 per il master
+  prompt — non uno scarto di questa fase.
+
+**Bug trovato e corretto — stesso schema del bug della FASE 4:** il colore del callout
+di avviso sulle truffe d'alloggio falliva il contrasto (2.84 invece di 4.5). Non poteva
+comparire nel controllo automatico perché il colore è nato in questa fase, dopo l'ultimo
+giro di `check:contrast`. Risolto rendendolo dipendente dalla superficie
+(`--surface-warning`, sullo stesso modello di `--surface-accent`) e aggiunte le 3 nuove
+coppie al controllo automatico (27 coppie totali, 0 sotto soglia). La lezione: ogni volta
+che introduco un colore nuovo, va aggiunto subito al controllo — non alla fine.
+
+**Verifica eseguita:** `npm run verify` verde (lint:content, contrasti, tipi, build a 28
+pagine, check:output) + ispezione dell'HTML generato per tutte le pagine nuove (un solo
+`<h1>` ciascuna, struttura di heading coerente, conteggi di componenti come previsto,
+zero asterischi vaganti) + verifica che nessuna griglia `auto-fit` sfondi a 320px.
+**Non verificato:** resa in un browser reale (Playwright non installato, invarianza
+dallo stesso limite della FASE 4).
 
 **Deliverable FASE 4.3 — design system**
 - `src/styles/global.css` — token in `@theme` (colore, scala tipografica fluida senza breakpoint,
@@ -318,8 +359,8 @@ Bloccanti solo alla fase indicata — non fermano l'avvio della FASE 1.
 | 2 | Scaffolding tecnico | SONNET | ✅ Completata |
 | 3 | Copywriting e contenuti | SONNET | ✅ Completata |
 | 4 | Direzione visiva, design system e UI | OPUS | ✅ Completata |
-| 5 | Implementazione pagine restanti | SONNET | ⏳ Prossima |
-| 6 | Form di qualificazione, integrazioni, legal | SONNET | Non iniziata |
+| 5 | Implementazione pagine restanti | SONNET | ✅ Completata |
+| 6 | Form di qualificazione, integrazioni, legal | SONNET | ⏳ Prossima |
 | 7 | Accessibilità, SEO, performance | SONNET | Non iniziata |
 | 8 | Testing | SONNET | Non iniziata |
 | 9 | Deploy e handoff | SONNET | Non iniziata |

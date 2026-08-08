@@ -25,6 +25,10 @@ const processSteps = defineCollection({
     // Bloccante di prodotto: ogni affermazione procedurale rimanda a una fonte ufficiale
     // (Kimere_Analisi_Strategica.md, vincolo "Niente invenzioni" del master prompt).
     officialSource: z.url().optional(),
+    // I due passi che l'analisi strategica e il brand-brief citano esplicitamente come i più
+    // convincenti (visto, permesso entro 8 giorni) — marcati per enfasi visiva in FASE 5,
+    // non un giudizio nuovo: riflette ciò che i documenti di strategia dicono già.
+    keyMoment: z.boolean().optional(),
   }),
 });
 
@@ -134,6 +138,8 @@ const processPage = defineCollection({
     intro: heading,
     beforeDeparturePhaseLabel: z.string(),
     afterArrivalPhaseLabel: z.string(),
+    // Etichette per la mappa del percorso completa (ILL-01, content-map.md P3).
+    routeMap: z.object({ caption: z.string(), pivot: z.string() }),
     disclaimer: z.string(),
     ctaLabel: z.string(),
   }),
@@ -216,6 +222,14 @@ const partnersPage = defineCollection({
   schema: z.object({
     proposition: heading,
     collaborationModel: heading,
+    // Etichette per ILL-04: la stessa frase di collaborationModel.body, riformulata
+    // come diagramma. Nessun fatto nuovo — solo la sua controparte visiva.
+    handoverDiagram: z.object({
+      theirLabel: z.string(),
+      theirItems: z.array(z.string()),
+      handoverLabel: z.string(),
+      ourLabel: z.string(),
+    }),
     whatWeDoOnGround: z.object({ heading: z.string(), items: z.array(z.string()) }),
     howToStart: z.object({ heading: z.string(), steps: z.array(z.string()) }),
     forUniversities: heading,
