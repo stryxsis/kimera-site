@@ -5,6 +5,7 @@ export const ui: UiDictionary = {
   skipToContent: 'Vai al contenuto',
   nav: {
     primaryLabel: 'Navigazione principale',
+    menu: 'Menu',
     home: 'Home',
     process: 'Come funziona',
     services: 'Servizi',
@@ -16,6 +17,7 @@ export const ui: UiDictionary = {
   },
   cta: {
     bookCall: 'Prenota la tua call di 15 minuti',
+    freeNoObligation: '15 minuti · senza costi · senza impegno',
   },
   process: {
     whoDecides: 'Chi decide',
@@ -23,6 +25,11 @@ export const ui: UiDictionary = {
     whatCanGoWrong: 'Cosa può andare storto',
     whatKimereDoes: 'Cosa fa Kimere',
     officialSource: 'Fonte ufficiale',
+    phaseBefore: 'Prima di partire',
+    phaseAfter: "Dopo l'atterraggio",
+  },
+  packages: {
+    included: 'Incluso',
   },
   faqGroups: {
     beforeDeparture: 'Prima di partire',

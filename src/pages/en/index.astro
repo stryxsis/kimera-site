@@ -1,69 +1,333 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import { getPath } from '../../i18n/routes';
-import { useTranslations } from '../../i18n/utils';
+import { useTranslations, renderEmphasis } from '../../i18n/utils';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+import RouteMap from '../../components/illustrations/RouteMap.astro';
+import StepIcon from '../../components/illustrations/StepIcon.astro';
 
 const locale = 'en';
 const t = useTranslations(locale);
 const { data: content } = await getEntry('homePage', locale)!;
+
+const allPackages = await getCollection('packages', (entry) => entry.id.startsWith(`${locale}/`));
+const packages = allPackages.sort((a, b) => a.data.order - b.data.order);
+
+// I tre pilastri seguono le tre fasi reali del percorso, quindi le icone sono
+// quelle: fascicolo → scadenza → alloggio. Non icone decorative intercambiabili.
+const pillarIcons = ['document', 'calendar', 'house'] as const;
 ---
 
-<PageLayout locale={locale} routeKey="home" title={content.hero.headline}>
-  <p>{content.hero.subhead}</p>
-  <p>
-    <a href={getPath('book', locale)}>{content.hero.ctaPrimary}</a>
-    <a href={getPath('process', locale)}>{content.hero.ctaSecondary}</a>
-  </p>
+<PageLayout
+  locale={locale}
+  routeKey="home"
+  title={content.hero.headline}
+  description={content.hero.subhead}
+  bare
+>
+  {/* ── H1 · Hero. Metà è il percorso: il visitatore lo VEDE, non lo legge. ── */}
+  <section class="hero surface-dark">
+    <div class="wrap hero__grid">
+      <div class="hero__intro">
+        <p class="label animate-rise">{content.hero.eyebrow}</p>
+        <h1 class="hero__title animate-rise" style="animation-delay:60ms">
+          {content.hero.headline}
+        </h1>
+        <p class="hero__lead animate-rise" style="animation-delay:120ms">{content.hero.subhead}</p>
+        <div class="hero__actions animate-rise" style="animation-delay:180ms">
+          <Button href={getPath('book', locale)}>{content.hero.ctaPrimary}</Button>
+          <Button href={getPath('process', locale)} variant="secondary">
+            {content.hero.ctaSecondary}
+          </Button>
+        </div>
+        <p class="hero__note animate-rise" style="animation-delay:240ms">
+          {t.cta.freeNoObligation}
+        </p>
+      </div>
 
-  <section>
-    <h2>{content.problemScale.heading}</h2>
-    <p>{content.problemScale.body}</p>
-    <dl>
+      <div class="hero__aside animate-rise" style="animation-delay:300ms">
+        <RouteMap
+          locale={locale}
+          title={content.processPreview.heading}
+          pivot={content.processPreview.pivot}
+          stopsBefore={content.processPreview.stopsBefore}
+          stopsAfter={content.processPreview.stopsAfter}
+        />
+        <p class="hero__routelink">
+          <Button href={getPath('process', locale)} variant="quiet" size="sm">
+            {content.processPreview.ctaLabel}
+          </Button>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ── H2 · La misura del labirinto. Superficie chiara: qui si legge davvero. ── */}
+  <Section surface="light" labelledby="scale-heading">
+    <h2 class="section-title" id="scale-heading">{content.problemScale.heading}</h2>
+    <p class="section-lead">{content.problemScale.body}</p>
+
+    <ul class="stats">
       {
         content.problemScale.stats.map((stat) => (
-          <div>
-            <dt>{stat.value}</dt>
-            <dd>{stat.label}</dd>
-          </div>
+          <li class="stat">
+            <span class="stat__value">{stat.value}</span>
+            <span class="stat__label">{stat.label}</span>
+          </li>
         ))
       }
-    </dl>
-  </section>
+    </ul>
+  </Section>
 
-  <section>
-    <h2>{content.whatWeDo.heading}</h2>
-    {
-      content.whatWeDo.pillars.map((pillar) => (
-        <article>
-          <h3>{pillar.title}</h3>
-          <p>{pillar.body}</p>
-        </article>
-      ))
-    }
-  </section>
+  {/* ── H3 · Il perimetro, in tre blocchi ─────────────────────────────────── */}
+  <Section labelledby="whatwedo-heading">
+    <h2 class="section-title" id="whatwedo-heading">{content.whatWeDo.heading}</h2>
 
-  <section>
-    <h2>{content.processPreview.heading}</h2>
-    <p>{content.processPreview.body}</p>
-    <p><a href={getPath('process', locale)}>{content.processPreview.ctaLabel}</a></p>
-  </section>
+    <ul class="pillars">
+      {
+        content.whatWeDo.pillars.map((pillar, index) => (
+          <li class="pillar">
+            <StepIcon name={pillarIcons[index] ?? 'compass'} size={40} />
+            <h3 class="pillar__title">{pillar.title}</h3>
+            <p class="pillar__body">{pillar.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
 
-  <section>
-    <h2>{content.packagesPreview.heading}</h2>
-    <p>{content.packagesPreview.body}</p>
-    <p><a href={getPath('services', locale)}>{t.nav.services}</a></p>
-  </section>
+  {/* ── H5 · I tre livelli. Anticipa Services, non la duplica. ─────────────── */}
+  <Section surface="panel" labelledby="levels-heading">
+    <h2 class="section-title" id="levels-heading">{content.packagesPreview.heading}</h2>
+    <p class="section-lead">{content.packagesPreview.body}</p>
 
-  <section>
-    <h2>{content.trustBuilding.heading}</h2>
-    <p>{content.trustBuilding.body}</p>
-    <p><a href={getPath('about', locale)}>{t.nav.about}</a></p>
-  </section>
+    <ul class="levels">
+      {
+        packages.map((pkg) => (
+          <Card as="li" class="level">
+            <h3 class="level__name">{pkg.data.name}</h3>
+            <p class="level__tagline">{pkg.data.tagline}</p>
 
-  <section>
-    <h2>{content.finalCta.heading}</h2>
-    <p>{content.finalCta.body}</p>
-    <p><a href={getPath('book', locale)}>{content.finalCta.ctaLabel}</a></p>
-  </section>
+            <p class="level__coverage label label-muted">
+              {t.packages.included} — {pkg.data.coverage}
+            </p>
+            {/* Il copy EN marca i termini burocratici italiani con *asterischi*
+                (docs/glossary.md): senza renderEmphasis finirebbero a video così. */}
+            <ul class="checklist level__list">
+              {pkg.data.includes.map((item) => (
+                <li set:html={renderEmphasis(item)} />
+              ))}
+            </ul>
+
+            <p class="level__cta">
+              <Button
+                href={`${getPath('book', locale)}?level=${pkg.data.key}`}
+                variant="secondary"
+                size="sm"
+              >
+                {t.cta.bookCall}
+              </Button>
+            </p>
+          </Card>
+        ))
+      }
+    </ul>
+  </Section>
+
+  {/* ── H6 · L'obiezione, disinnescata prima che si formi ──────────────────── */}
+  <Section surface="light" labelledby="trust-heading">
+    <div class="trust">
+      <h2 class="section-title" id="trust-heading">{content.trustBuilding.heading}</h2>
+      <p class="trust__body">{content.trustBuilding.body}</p>
+      <p>
+        <Button href={getPath('about', locale)} variant="quiet">{t.nav.about}</Button>
+      </p>
+    </div>
+  </Section>
+
+  {/* ── H7 · Conversione ───────────────────────────────────────────────────── */}
+  <Section size="lg" labelledby="cta-heading">
+    <div class="finalcta">
+      <h2 class="finalcta__title" id="cta-heading">{content.finalCta.heading}</h2>
+      <p class="finalcta__body">{content.finalCta.body}</p>
+      <p class="finalcta__actions">
+        <Button href={getPath('book', locale)}>{content.finalCta.ctaLabel}</Button>
+      </p>
+      <p class="finalcta__note">{t.cta.freeNoObligation}</p>
+    </div>
+  </Section>
 </PageLayout>
+
+<style>
+  /* ── Hero ───────────────────────────────────────────────────────────────── */
+  .hero {
+    padding-block: var(--spacing-section) var(--spacing-section-lg);
+  }
+  .hero__grid {
+    display: grid;
+    gap: clamp(2.25rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  .hero__title {
+    font-size: var(--text-5xl);
+    margin-top: 1.1rem;
+    max-width: 15ch;
+  }
+  .hero__lead {
+    font-size: var(--text-lg);
+    color: var(--surface-fg-muted);
+    max-width: 46ch;
+    margin-top: 1.4rem;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 2rem;
+  }
+  .hero__note {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 1.1rem;
+  }
+  .hero__routelink {
+    margin-top: 1rem;
+    text-align: right;
+  }
+
+  @media (min-width: 64rem) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 25rem);
+    }
+  }
+
+  /* ── Intestazioni di sezione ────────────────────────────────────────────── */
+  .section-title {
+    font-size: var(--text-3xl);
+    max-width: 20ch;
+  }
+  .section-lead {
+    color: var(--surface-fg-muted);
+    max-width: var(--container-prose);
+    margin-top: 1.05rem;
+  }
+
+  /* ── Dati ───────────────────────────────────────────────────────────────── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 0;
+    margin: 2.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .stat {
+    padding: 1.4rem 1.5rem 0 0;
+    border-top: 1px solid var(--surface-rule);
+  }
+  .stat:first-child {
+    border-top-width: 2px;
+    border-top-color: var(--surface-fg);
+  }
+  .stat__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    line-height: 1;
+  }
+  .stat__label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.7rem;
+    max-width: 24ch;
+  }
+
+  /* ── Pilastri ───────────────────────────────────────────────────────────── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+    gap: 2rem;
+    margin: 2.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pillar__title {
+    font-size: var(--text-xl);
+    margin-top: 1rem;
+  }
+  .pillar__body {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.6rem;
+    max-width: 36ch;
+  }
+
+  /* ── Livelli ────────────────────────────────────────────────────────────── */
+  .levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+    gap: 1.25rem;
+    margin: 2.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+  }
+  .level__name {
+    font-size: var(--text-2xl);
+    line-height: 1;
+  }
+  .level__tagline {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.65rem;
+  }
+  .level__coverage {
+    margin-top: 1.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--surface-rule);
+  }
+  .level__list {
+    flex: 1;
+  }
+  .level__cta {
+    margin-top: 1.4rem;
+  }
+
+  /* ── Fiducia ────────────────────────────────────────────────────────────── */
+  .trust {
+    display: grid;
+    gap: 1.05rem;
+    max-width: var(--container-prose);
+  }
+  .trust__body {
+    color: var(--surface-fg-soft);
+  }
+
+  /* ── CTA finale ─────────────────────────────────────────────────────────── */
+  .finalcta {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 1.05rem;
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+  .finalcta__title {
+    font-size: var(--text-4xl);
+  }
+  .finalcta__body {
+    color: var(--surface-fg-muted);
+    max-width: 48ch;
+  }
+  .finalcta__actions {
+    margin-top: 0.75rem;
+  }
+  .finalcta__note {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+  }
+</style>

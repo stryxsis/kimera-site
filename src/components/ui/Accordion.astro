@@ -1,0 +1,83 @@
+---
+/**
+ * Voce a scomparsa, su <details>/<summary> nativi.
+ *
+ * Niente JavaScript: l'apertura funziona anche se lo script fallisce o è
+ * bloccato, la tastiera funziona da sola e il browser sa già trovare il testo
+ * chiuso con Ctrl+F. Su una pagina di FAQ che risponde a domande su visti e
+ * rifiuti, il contenuto deve essere raggiungibile in ogni condizione.
+ *
+ * Il segno +/− è disegnato con due pseudo-elementi: nessun asset, nessun font di icone.
+ */
+interface Props {
+  open?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { open = false, class: className, ...rest } = Astro.props;
+---
+
+<details class:list={['accordion', className]} open={open} {...rest}>
+  <summary class="accordion__summary">
+    <span class="accordion__title"><slot name="summary" /></span>
+    <span class="accordion__sign" aria-hidden="true"></span>
+  </summary>
+  <div class="accordion__body"><slot /></div>
+</details>
+
+<style>
+  .accordion {
+    border-bottom: 1px solid var(--surface-rule);
+  }
+  .accordion__summary {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.05rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .accordion__summary::-webkit-details-marker {
+    display: none;
+  }
+  .accordion__title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--surface-fg);
+  }
+  .accordion__summary:hover .accordion__title {
+    color: var(--surface-accent);
+  }
+
+  /* segno +/− */
+  .accordion__sign {
+    position: relative;
+    flex: none;
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-top: 0.35rem;
+  }
+  .accordion__sign::before,
+  .accordion__sign::after {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto 0;
+    height: 1px;
+    background-color: var(--surface-accent);
+    transition: transform var(--duration-base) var(--ease-out-quart);
+  }
+  .accordion__sign::after {
+    transform: rotate(90deg);
+  }
+  .accordion[open] .accordion__sign::after {
+    transform: rotate(0deg);
+  }
+
+  .accordion__body {
+    padding-bottom: 1.15rem;
+    max-width: var(--container-prose);
+    color: var(--surface-fg-soft);
+  }
+</style>

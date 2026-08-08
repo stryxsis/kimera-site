@@ -1,0 +1,93 @@
+---
+import type { Locale } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+
+/**
+ * ILL-01 — LA MAPPA DEL PERCORSO. L'asset visivo portante del sito.
+ *
+ * È costruita in HTML+CSS e non in SVG per una ragione precisa: contiene testo
+ * vero. Un SVG con <text> non manda a capo, non si traduce senza rifare il
+ * disegno, non si seleziona e i lettori di schermo lo attraversano male. Qui la
+ * linea e i nodi sono decorazione CSS attorno a una lista ordinata semantica —
+ * che è esattamente ciò che il percorso è.
+ *
+ * Stesso componente a due livelli di zoom: `compact` nell'hero della home
+ * (8 tappe), `full` nella pagina Percorso (11 passi, FASE 5).
+ *
+ * Il perno è l'atterraggio: il punto in cui il percorso cambia natura e in cui
+ * comincia il lavoro che i concorrenti non fanno.
+ */
+export interface Stop {
+  label: string;
+  key?: boolean;
+  note?: string;
+}
+
+interface Props {
+  locale: Locale;
+  title: string;
+  pivot: string;
+  stopsBefore: Stop[];
+  stopsAfter: Stop[];
+  class?: string;
+}
+
+const { locale, title, pivot, stopsBefore, stopsAfter, class: className } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<figure class:list={['routemap', className]}>
+  <figcaption class="routemap__title label label-muted">{title}</figcaption>
+
+  <ol class="route">
+    <li class="route__phase">{t.process.phaseBefore}</li>
+    {
+      stopsBefore.map((stop) => (
+        <li class:list={['route__stop', stop.key && 'route__stop--key']}>
+          {stop.label}
+          {stop.note && <span class="routemap__note">{stop.note}</span>}
+        </li>
+      ))
+    }
+
+    <li class="route__stop route__stop--pivot">{pivot}</li>
+
+    <li class="route__phase">{t.process.phaseAfter}</li>
+    {
+      stopsAfter.map((stop) => (
+        <li class:list={['route__stop', stop.key && 'route__stop--key']}>
+          {stop.label}
+          {stop.note && <span class="routemap__note">{stop.note}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  .routemap {
+    margin: 0;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--surface-line);
+    border-radius: var(--radius-xs);
+    padding: 1.6rem 1.5rem 1.5rem;
+    /* i nodi vuoti si bucano sul fondo del pannello, non su quello della sezione */
+    --route-node-bg: var(--surface-raised);
+  }
+  .routemap__title {
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--surface-rule);
+    margin-bottom: 0.4rem;
+  }
+  /* La scadenza va a capo sotto la tappa e prende l'accento: è il dato più
+     convincente del sito e non deve dipendere dalla lunghezza della riga. */
+  .routemap__note {
+    display: block;
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--surface-accent);
+    margin-top: 0.2rem;
+  }
+</style>

@@ -11,9 +11,16 @@ interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  /**
+   * `bare` toglie l'intestazione di pagina standard: la pagina disegna da sé il
+   * proprio <h1>. Serve alla home, il cui hero è un blocco composito.
+   * Resta comunque UN SOLO <h1> per pagina: chi passa `bare` deve fornirlo.
+   */
+  bare?: boolean;
+  eyebrow?: string;
 }
 
-const { locale, routeKey, title, description, noindex } = Astro.props;
+const { locale, routeKey, title, description, noindex, bare = false, eyebrow } = Astro.props;
 ---
 
 <BaseLayout
@@ -25,9 +32,34 @@ const { locale, routeKey, title, description, noindex } = Astro.props;
 >
   <SkipLink locale={locale} />
   <Header locale={locale} routeKey={routeKey} />
+
   <main id="main-content">
-    <h1>{title}</h1>
+    {
+      !bare && (
+        <div class="page-head surface-dark">
+          <div class="wrap page-head__inner">
+            {eyebrow && <p class="label">{eyebrow}</p>}
+            <h1 class="page-head__title">{title}</h1>
+          </div>
+        </div>
+      )
+    }
     <slot />
   </main>
+
   <Footer locale={locale} />
 </BaseLayout>
+
+<style>
+  .page-head {
+    padding-block: var(--spacing-section) var(--spacing-section);
+  }
+  .page-head__inner {
+    display: grid;
+    gap: 1rem;
+  }
+  .page-head__title {
+    font-size: var(--text-4xl);
+    max-width: 20ch;
+  }
+</style>

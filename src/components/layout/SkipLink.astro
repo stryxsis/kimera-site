@@ -2,6 +2,11 @@
 import type { Locale } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
 
+/**
+ * Primo elemento focalizzabile della pagina: salta header e navigazione.
+ * Nascosto finché non riceve il focus da tastiera — non `display:none`, che
+ * lo toglierebbe anche dall'ordine di tabulazione e lo renderebbe inutile.
+ */
 interface Props {
   locale: Locale;
 }
@@ -10,9 +15,25 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<a
-  href="#main-content"
-  class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-black"
->
-  {t.skipToContent}
-</a>
+<a class="skip-link" href="#main-content">{t.skipToContent}</a>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-gold);
+    color: var(--color-ground);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    padding: 0.75rem 1.15rem;
+    border-radius: var(--radius-xs);
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    left: 0.75rem;
+    top: 0.75rem;
+    position: fixed;
+  }
+</style>

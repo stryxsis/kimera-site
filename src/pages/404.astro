@@ -2,13 +2,53 @@
 // Pagina 404 globale — Astro la serve per qualunque path non risolto, incluse le route
 // senza prefisso di lingua. Nessun modo di sapere la lingua preferita: EN come da defaultLocale.
 import PageLayout from '../layouts/PageLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Button from '../components/ui/Button.astro';
+import BrokenRoute from '../components/illustrations/BrokenRoute.astro';
+import { getPath } from '../i18n/routes';
 import { useTranslations } from '../i18n/utils';
 
 const locale = 'en';
 const t = useTranslations(locale);
 ---
 
-<PageLayout locale={locale} routeKey="home" title={t.notFound.title} noindex>
-  <p>{t.notFound.body}</p>
-  <a href="/en/">{t.notFound.backHome}</a>
+<PageLayout locale={locale} routeKey="home" title={t.notFound.title} bare noindex>
+  <Section size="lg">
+    <div class="notfound">
+      <BrokenRoute class="notfound__art" />
+      <h1 class="notfound__title">{t.notFound.title}</h1>
+      <p class="notfound__body">{t.notFound.body}</p>
+      <div class="notfound__actions">
+        <Button href={getPath('home', locale)}>{t.notFound.backHome}</Button>
+        <Button href={getPath('process', locale)} variant="secondary">{t.nav.process}</Button>
+        <Button href={getPath('faq', locale)} variant="secondary">{t.nav.faq}</Button>
+      </div>
+    </div>
+  </Section>
 </PageLayout>
+
+<style>
+  .notfound {
+    display: grid;
+    gap: 1.15rem;
+    max-width: 42rem;
+  }
+  .notfound__art {
+    width: min(100%, 20rem);
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+  .notfound__title {
+    font-size: var(--text-4xl);
+  }
+  .notfound__body {
+    color: var(--surface-fg-muted);
+    max-width: 46ch;
+  }
+  .notfound__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 0.75rem;
+  }
+</style>

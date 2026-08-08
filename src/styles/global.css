@@ -1,7 +1,433 @@
 @import 'tailwindcss';
 
-/*
- * FASE 2 — nessun token di design qui (colore, tipografia, spaziature).
- * Il design system (@theme, contrasti verificati, coppia tipografica) è deliverable
- * della FASE 4, costruito sulla direzione visiva scelta dal cliente. Vedi PLAN.md.
- */
+/* Font self-hosted: nessuna richiesta a domini terzi.
+   Su un sito che raccoglie nazionalità e dati sul percorso migratorio, un @font-face
+   verso Google esporrebbe l'IP di ogni visitatore a un terzo senza base giuridica
+   (vedi docs/tech-decisions.md e la decisione D-12 sull'assenza di banner cookie). */
+@import '@fontsource-variable/eb-garamond/wght.css';
+@import '@fontsource-variable/eb-garamond/wght-italic.css';
+@import '@fontsource-variable/archivo/wght.css';
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — Kimere
+   Direzione «Rotta» (D-13). Documentazione completa in docs/design-system.md.
+
+   Il principio portante è il SISTEMA A DUE SUPERFICI, e non è una scelta
+   estetica: è aritmetica di contrasto. L'oro del brand ha 2.33 sul cream —
+   illeggibile — e 8.59 sul navy — AAA. Il teal fa l'opposto. Quindi il colore
+   d'accento NON è una costante: dipende dalla superficie su cui si sta.
+
+   Le classi .surface-* ridefiniscono un piccolo set di variabili, e ogni
+   componente legge quelle invece dei colori diretti. Risultato: un bottone,
+   un link o una spunta messi su fondo chiaro o scuro prendono da soli
+   l'accento conforme. È impossibile sbagliare per distrazione.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Colore ──────────────────────────────────────────────────────────
+     Tutti i valori derivano dal logo (PROGRESS.md, palette estratta).
+     Ogni coppia in uso è verificata: npm run check:contrast */
+
+  /* Superfici scure — dominanti */
+  --color-ground: #071f3d; /* campo mappa, fondo del sito */
+  --color-panel: #0a2546; /* rilievo, pannelli, card */
+  --color-panel-line: #164668; /* bordi strutturali su scuro */
+
+  /* Superficie chiara — per i blocchi da leggere davvero */
+  --color-cream: #fbf7eb;
+
+  /* Inchiostro su chiaro */
+  --color-ink: #0a2546; /* 14.35 su cream — AAA */
+  --color-ink-strong: #071f3d;
+  --color-ink-soft: #103e5d; /* 10.49 — AAA */
+  --color-ink-muted: #4a5a6b; /* 6.61 — AA */
+
+  /* Inchiostro su scuro */
+  --color-on-dark: #fbf7eb; /* 15.41 su ground — AAA */
+  --color-on-dark-soft: #d5dee7; /* 12.13 — AAA */
+  --color-on-dark-muted: #b6c4d4; /* 9.30 — AAA */
+
+  /* Oro — accento delle superfici scure, fondo della CTA */
+  --color-gold: #bda15d; /* fondo bottone, testo navy sopra: 6.62 — AA */
+  --color-gold-bright: #d6b86c; /* 8.59 su ground — AAA */
+  --color-gold-deep: #9e8247;
+
+  /* Teal — la linea di rotta su scuro, l'accento su chiaro */
+  --color-teal: #2b9eb0; /* 4.85 su panel — grafica su scuro */
+  --color-teal-ink: #1b7087; /* 5.28 su cream — AA, unico accento ammesso su chiaro */
+
+  /* ── Tipografia ──────────────────────────────────────────────────────
+     EB Garamond: il serif delle carte antiche. Contrasto moderato — requisito
+     tecnico, non gusto: i didoni sbavano nelle aste sottili quando sono chiari
+     su scuro, e questo sito è a dominante scura.
+     Archivo: grottesca solida, tiene su fondo scuro e a corpi piccoli, copre da
+     sola testo, etichetta e dato. Due famiglie, nessuna terza. */
+  --font-display: 'EB Garamond Variable', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Archivo Variable', -apple-system, 'Segoe UI', system-ui, sans-serif;
+
+  /* Scala fluida: nessun breakpoint, interpolazione continua 320 → 1920 px.
+     Serve anche a reggere l'italiano, più lungo dell'inglese del 15–20%. */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1.35;
+  --text-xs: clamp(0.72rem, 0.695rem + 0.1vw, 0.78rem);
+  --text-xs--line-height: 1.4;
+  --text-sm: clamp(0.875rem, 0.85rem + 0.12vw, 0.94rem);
+  --text-sm--line-height: 1.5;
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  --text-base--line-height: 1.6;
+  --text-lg: clamp(1.08rem, 1rem + 0.4vw, 1.25rem);
+  --text-lg--line-height: 1.55;
+  --text-xl: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --text-xl--line-height: 1.45;
+  --text-2xl: clamp(1.35rem, 1.15rem + 0.9vw, 1.85rem);
+  --text-2xl--line-height: 1.25;
+  --text-3xl: clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem);
+  --text-3xl--line-height: 1.12;
+  --text-4xl: clamp(2.1rem, 1.5rem + 2.4vw, 3.2rem);
+  --text-4xl--line-height: 1.06;
+  --text-5xl: clamp(2.5rem, 1.7rem + 3.4vw, 4.1rem);
+  --text-5xl--line-height: 1.02;
+
+  /* ── Ritmo verticale ────────────────────────────────────────────────── */
+  --spacing-section: clamp(3rem, 6vw, 5.25rem);
+  --spacing-section-lg: clamp(4rem, 8vw, 7rem);
+  --spacing-gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* ── Raggi ───────────────────────────────────────────────────────────
+     Piccoli e quasi impercettibili: un raggio generoso legge come app, e questo
+     sito deve leggere come studio professionale (brand-brief.md §9). */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+
+  /* ── Elevazione ──────────────────────────────────────────────────────
+     Il sistema usa BORDI, non ombre: su fondo navy un'ombra non si vede e
+     produce solo alone sporco. L'unica ombra definita serve agli elementi
+     che galleggiano davvero (menu mobile aperto). */
+  --shadow-overlay: 0 18px 40px -12px rgb(0 0 0 / 0.55);
+
+  /* ── Movimento ──────────────────────────────────────────────────────── */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-fast: 130ms;
+  --duration-base: 220ms;
+  --duration-slow: 520ms;
+
+  /* ── Larghezze ──────────────────────────────────────────────────────── */
+  --container-content: 78rem;
+  --container-prose: 68ch;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SUPERFICI
+   Ogni componente legge --surface-*, mai i colori diretti. Cambiare superficie
+   a una sezione ricolora correttamente tutto ciò che contiene, accento incluso.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  :root,
+  .surface-dark {
+    --surface-bg: var(--color-ground);
+    --surface-raised: var(--color-panel);
+    --surface-fg: var(--color-on-dark);
+    --surface-fg-soft: var(--color-on-dark-soft);
+    --surface-fg-muted: var(--color-on-dark-muted);
+    --surface-accent: var(--color-gold-bright); /* 8.59 — AAA */
+    --surface-line: var(--color-panel-line);
+    --surface-rule: rgb(251 247 235 / 0.15);
+    --surface-rule-strong: rgb(214 184 108 / 0.35);
+    --surface-focus: var(--color-gold-bright);
+    /* Pastiglia "selezionato" (lingua attiva, chip di stato). Non può essere
+       l'accento su entrambe le superfici: navy su teal è 2.92 e non passa. */
+    --surface-marker-bg: var(--color-gold-bright);
+    --surface-marker-fg: var(--color-ground);
+    --surface-control-line: #6f7d8b; /* 3.65 sul pannello — WCAG 1.4.11 */
+  }
+
+  .surface-panel {
+    --surface-bg: var(--color-panel);
+    --surface-raised: var(--color-ground);
+    --surface-fg: var(--color-on-dark);
+    --surface-fg-soft: var(--color-on-dark-soft);
+    --surface-fg-muted: var(--color-on-dark-muted);
+    --surface-accent: var(--color-gold-bright);
+    --surface-line: var(--color-panel-line);
+    --surface-rule: rgb(251 247 235 / 0.15);
+    --surface-rule-strong: rgb(214 184 108 / 0.35);
+    --surface-focus: var(--color-gold-bright);
+    --surface-marker-bg: var(--color-gold-bright);
+    --surface-marker-fg: var(--color-ground);
+    --surface-control-line: #6f7d8b;
+  }
+
+  .surface-light {
+    --surface-bg: var(--color-cream);
+    --surface-raised: var(--color-cream);
+    --surface-fg: var(--color-ink);
+    --surface-fg-soft: var(--color-ink-soft);
+    --surface-fg-muted: var(--color-ink-muted);
+    --surface-accent: var(--color-teal-ink); /* l'oro qui è 2.33: vietato */
+    --surface-line: rgb(10 37 70 / 0.28);
+    --surface-rule: rgb(10 37 70 / 0.16);
+    --surface-rule-strong: rgb(10 37 70 / 0.4);
+    --surface-focus: var(--color-teal-ink);
+    /* Qui la pastiglia è navy con testo cream — 14.35 — perché il teal di fondo
+       con testo navy sopra scenderebbe a 2.92. */
+    --surface-marker-bg: var(--color-ink);
+    --surface-marker-fg: var(--color-cream);
+    --surface-control-line: #7c8590; /* 3.49 sul cream — WCAG 1.4.11 */
+  }
+
+  .surface-dark,
+  .surface-panel,
+  .surface-light {
+    background-color: var(--surface-bg);
+    color: var(--surface-fg);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ground);
+    color: var(--color-on-dark);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Il focus è visibile ovunque e prende il colore conforme alla superficie. */
+  :focus-visible {
+    outline: 2px solid var(--surface-focus, var(--color-gold-bright));
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  ::selection {
+    background-color: var(--color-gold-bright);
+    color: var(--color-ground);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   COMPONENTI
+   Qui stanno solo i pattern che le utility esprimono male: la linea di rotta,
+   il blocco di prosa, la griglia di contenimento. Tutto il resto sono
+   componenti Astro in src/components/ui/.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* Contenitore unico di tutto il sito. */
+  .wrap {
+    width: min(100% - var(--spacing-gutter) * 2, var(--container-content));
+    margin-inline: auto;
+  }
+  .wrap-prose {
+    max-width: var(--container-prose);
+  }
+
+  /* Etichetta strutturale: eyebrow, titolo di pannello, intestazione di elenco. */
+  .label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--surface-accent);
+  }
+  .label-muted {
+    color: var(--surface-fg-muted);
+  }
+
+  /* ── ILL-01 · LA LINEA DI ROTTA ────────────────────────────────────────
+     Il dispositivo firma della direzione. Stesso oggetto a tre livelli di
+     zoom: compresso nella home, completo nella pagina Percorso, interrotto
+     nella 404. Costruito in CSS e non in SVG perché deve contenere testo
+     reale — selezionabile, traducibile, leggibile dagli screen reader. */
+  .route {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .route__stop {
+    position: relative;
+    padding: 0.55rem 0 0.55rem 2.1rem;
+    font-size: var(--text-sm);
+    color: var(--surface-fg-soft);
+  }
+  .route__stop::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--color-teal);
+  }
+  .route__stop::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72rem;
+    width: 11px;
+    height: 11px;
+    border: 1px solid var(--color-teal);
+    /* Il nodo vuoto si "buca" sul fondo su cui poggia. Dentro un pannello il fondo
+       non è quello della sezione: chi lo contiene ridichiara --route-node-bg
+       invece di riscrivere la regola e romperne la cascata coi modificatori. */
+    background-color: var(--route-node-bg, var(--surface-bg));
+    border-radius: 50%;
+  }
+  /* primo e ultimo: la linea parte dal nodo e finisce nel nodo */
+  .route__stop:first-of-type::before {
+    top: 0.95rem;
+  }
+  .route__stop:last-of-type::before {
+    bottom: calc(100% - 0.95rem);
+  }
+  /* tappa critica: nodo pieno in oro */
+  .route__stop--key::after {
+    background-color: var(--color-gold-bright);
+    border-color: var(--color-gold-bright);
+  }
+  .route__stop--key {
+    font-weight: 600;
+    color: var(--surface-fg);
+  }
+  /* il perno: l'atterraggio, il punto in cui il percorso cambia natura */
+  .route__stop--pivot::after {
+    width: 13px;
+    height: 13px;
+    left: -1px;
+    top: 0.66rem;
+    background-color: var(--surface-fg);
+    border-color: var(--surface-fg);
+  }
+  .route__stop--pivot {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: var(--surface-fg);
+  }
+  /* intestazione di fase dentro la rotta */
+  .route__phase {
+    padding: 1.15rem 0 0.6rem 2.1rem;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--surface-accent);
+  }
+
+  /* ── Elenco di voci incluse, con spunta ───────────────────────────────
+     Scelta del cliente al gate 4.2 al posto della barra di copertura.
+     La spunta prende l'accento della superficie: oro su scuro, teal su chiaro. */
+  .checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .checklist > li {
+    display: grid;
+    grid-template-columns: 1.2rem 1fr;
+    gap: 0.6rem;
+    align-items: start;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--surface-rule);
+    font-size: var(--text-sm);
+    color: var(--surface-fg-soft);
+  }
+  .checklist > li::before {
+    content: '✓';
+    display: inline-grid;
+    place-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.1rem;
+    border: 1px solid color-mix(in srgb, var(--surface-accent) 70%, transparent);
+    font-size: var(--text-2xs);
+    line-height: 1;
+    color: var(--surface-accent);
+  }
+
+  /* ── Prosa lunga ──────────────────────────────────────────────────────
+     Per i blocchi discorsivi delle pagine di contenuto (FASE 5). */
+  .prose-kimere {
+    max-width: var(--container-prose);
+  }
+  .prose-kimere p + p {
+    margin-top: 1em;
+  }
+  .prose-kimere em {
+    font-style: italic;
+    color: var(--surface-accent);
+  }
+  .prose-kimere a {
+    color: var(--surface-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .prose-kimere a:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVIMENTO
+   Una sola animazione in tutto il sito: la comparsa in ingresso. Sobria,
+   corta, e disattivata da prefers-reduced-motion (regola nel layer base).
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  @keyframes kimere-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .animate-rise {
+    animation: kimere-rise var(--duration-slow) var(--ease-out-quart) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-rise {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

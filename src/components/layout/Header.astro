@@ -1,8 +1,10 @@
 ---
 import { getPath, type Locale, type RouteKey } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
+import Logo from '../brand/Logo.astro';
 import Nav from './Nav.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import Button from '../ui/Button.astro';
 
 interface Props {
   locale: Locale;
@@ -13,15 +15,185 @@ const { locale, routeKey } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<header>
-  <a href={getPath('home', locale)} translate="no">Kimere</a>
+<header class="site-header surface-dark">
+  <div class="wrap site-header__inner">
+    <a class="site-header__brand" href={getPath('home', locale)}>
+      <Logo locale={locale} />
+    </a>
 
-  <Nav locale={locale} currentRouteKey={routeKey} />
+    <!-- Il bottone nasce hidden e viene mostrato dallo script: senza JavaScript
+         il pannello resta aperto in colonna invece di diventare irraggiungibile. -->
+    <button
+      class="site-header__toggle"
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="site-menu"
+      hidden
+    >
+      <span class="site-header__bars" aria-hidden="true"></span>
+      <span>{t.nav.menu}</span>
+    </button>
 
-  <div>
-    <!-- Link di utility B2B, deliberatamente fuori dal menu principale (sitemap-ia.md §3) -->
-    <a href={getPath('partners', locale)}>{t.nav.partners}</a>
-    <LanguageSwitcher currentLocale={locale} currentRouteKey={routeKey} />
-    <a href={getPath('book', locale)}>{t.cta.bookCall}</a>
+    <div class="site-header__menu" id="site-menu">
+      <Nav locale={locale} currentRouteKey={routeKey} />
+
+      <div class="site-header__actions">
+        <!-- Link di utility B2B, deliberatamente fuori dal menu principale (sitemap-ia.md §3) -->
+        <a class="site-header__partners" href={getPath('partners', locale)}>{t.nav.partners}</a>
+        <LanguageSwitcher currentLocale={locale} currentRouteKey={routeKey} />
+        <Button href={getPath('book', locale)} size="sm">{t.cta.bookCall}</Button>
+      </div>
+    </div>
   </div>
 </header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--surface-rule-strong);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-block: 1rem;
+  }
+  .site-header__brand {
+    text-decoration: none;
+    margin-right: auto;
+  }
+
+  .site-header__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: none;
+    border: 1px solid var(--surface-line);
+    border-radius: var(--radius-xs);
+    color: var(--surface-fg);
+    font: 600 var(--text-xs) / 1 var(--font-sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+  }
+  .site-header__bars,
+  .site-header__bars::before,
+  .site-header__bars::after {
+    display: block;
+    width: 0.95rem;
+    height: 1px;
+    background-color: currentColor;
+    transition: transform var(--duration-base) var(--ease-out-quart);
+  }
+  .site-header__bars {
+    position: relative;
+  }
+  .site-header__bars::before,
+  .site-header__bars::after {
+    content: '';
+    position: absolute;
+  }
+  .site-header__bars::before {
+    top: -5px;
+  }
+  .site-header__bars::after {
+    top: 5px;
+  }
+  [aria-expanded='true'] .site-header__bars {
+    background-color: transparent;
+  }
+  [aria-expanded='true'] .site-header__bars::before {
+    transform: translateY(5px) rotate(45deg);
+  }
+  [aria-expanded='true'] .site-header__bars::after {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+
+  .site-header__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    padding-block: 0.5rem 1rem;
+  }
+  /* data-collapsed lo mette lo script: senza JS questa regola non si attiva mai. */
+  .site-header__menu[data-collapsed]:not([data-open]) {
+    display: none;
+  }
+
+  .site-header__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--surface-rule);
+  }
+  .site-header__partners {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--surface-fg-muted);
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .site-header__partners:hover {
+    color: var(--surface-accent);
+  }
+
+  @media (min-width: 64rem) {
+    .site-header__inner {
+      flex-wrap: nowrap;
+      gap: 2rem;
+    }
+    .site-header__toggle {
+      display: none !important;
+    }
+    .site-header__menu,
+    .site-header__menu[data-collapsed] {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2rem;
+      width: auto;
+      padding-block: 0;
+    }
+    .site-header__actions {
+      padding-top: 0;
+      border-top: 0;
+      gap: 1rem;
+    }
+    .site-header__partners {
+      margin-right: 0;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.getElementById('site-menu');
+
+  if (toggle && menu) {
+    // Da qui in poi il pannello è pilotato: prima di questa riga era sempre visibile.
+    menu.setAttribute('data-collapsed', '');
+    toggle.hidden = false;
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.toggleAttribute('data-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

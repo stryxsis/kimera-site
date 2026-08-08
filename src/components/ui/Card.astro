@@ -1,0 +1,33 @@
+---
+/**
+ * Contenitore delimitato da un bordo, non da un'ombra.
+ *
+ * Su fondo navy un'ombra non si vede e lascia solo un alone sporco: il sistema
+ * separa i piani con bordi e con un lieve cambio di superficie.
+ */
+interface Props {
+  as?: 'article' | 'div' | 'aside' | 'li';
+  raised?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { as: Tag = 'article', raised = false, class: className, ...rest }: Props = Astro.props;
+const classes = ['card', raised && 'card--raised', className].filter(Boolean).join(' ');
+---
+
+<Tag class={classes} {...rest}><slot /></Tag>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--surface-line);
+    border-radius: var(--radius-xs);
+    padding: clamp(1.4rem, 2.5vw, 1.85rem);
+    background-color: var(--surface-bg);
+  }
+  .card--raised {
+    background-color: var(--surface-raised);
+  }
+</style>

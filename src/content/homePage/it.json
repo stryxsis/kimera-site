@@ -1,5 +1,6 @@
 {
   "hero": {
+    "eyebrow": "Per studenti in arrivo in Italia",
     "headline": "Entrare in un'università italiana è la parte facile.",
     "subhead": "Visto, permesso di soggiorno, codice fiscale, residenza, copertura sanitaria, alloggio — è la parte di cui quasi nessuno ti avvisa. La affrontiamo insieme a te, passo dopo passo.",
     "ctaPrimary": "Prenota la tua call di 15 minuti",
@@ -40,7 +41,24 @@
   "processPreview": {
     "heading": "Il percorso completo, mappato",
     "body": "Dalla prima candidatura al permesso di soggiorno, ecco esattamente cosa succede e quando — inclusa la scadenza degli 8 giorni che quasi nessuno menziona.",
-    "ctaLabel": "Scopri come funziona"
+    "ctaLabel": "Guarda tutti gli 11 passi",
+    "pivot": "Atterri in Italia",
+    "stopsBefore": [
+      { "label": "Scelta di corso e ateneo" },
+      { "label": "Pre-iscrizione su Universitaly" },
+      { "label": "Riconoscimento del titolo di studio" },
+      { "label": "Fascicolo consolare e visto tipo D", "key": true }
+    ],
+    "stopsAfter": [
+      {
+        "label": "Permesso di soggiorno depositato",
+        "key": true,
+        "note": "entro 8 giorni lavorativi"
+      },
+      { "label": "Appuntamento in Questura e codice fiscale" },
+      { "label": "Residenza anagrafica e copertura sanitaria" },
+      { "label": "Un contratto d'affitto che regge davvero" }
+    ]
   },
   "packagesPreview": {
     "heading": "Tre livelli di supporto",

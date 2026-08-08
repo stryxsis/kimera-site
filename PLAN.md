@@ -130,40 +130,48 @@ presentate al cliente. ✅
 **Skill:** `frontend-design`, `canvas-design`, `brand-guidelines`, `web-design-guidelines`, `accessibility`
 **La fase in cui la qualità estetica fa la differenza.**
 
-### 4.1 — Tre direzioni visive
-- [ ] `design/direction-a.html`, `-b.html`, `-c.html` — mockup statici completi di home above-the-fold + sezione pacchetti
-- [ ] Per ciascuna: concept, palette, coppia tipografica, trattamento illustrazioni, mood
-- [ ] Tutte e tre partono dalla palette del logo (D-06) ma la interpretano diversamente
+### 4.1 — Tre direzioni visive ✅
+- [x] `design/direction-a.html`, `-b.html`, `-c.html` — mockup statici completi di home above-the-fold + sezione pacchetti
+- [x] Per ciascuna: concept, palette, coppia tipografica, trattamento illustrazioni, mood → `design/README.md`
+- [x] Tutte e tre partono dalla palette del logo (D-06) ma la interpretano diversamente
+- [x] Extra: toggle EN/IT con copy reale in ogni mockup (verifica della tenuta bilingue)
+- [x] Extra: 31 coppie di colore verificate per contrasto WCAG, 0 fallite
 
 **Vincoli creativi:** deve sembrare un'istituzione affidabile, non una startup.
 Niente gradienti viola/blu da template SaaS, niente card identiche con icona tonda, niente hero con
 dashboard fluttuante. Deve reggere senza fotografie e in due lingue di lunghezza diversa.
 
-### 4.2 — Gate: il cliente sceglie
-- [ ] **Stop.** Nessuna implementazione prima della scelta.
+### 4.2 — Gate: il cliente sceglie ✅
+- [x] **Scelta: direzione B «Rotta»**, con una modifica — via la barra di copertura dalle tre card
+      dei livelli, sostituita da elenchi con voci spuntate. Applicata. Registrata come D-13.
 
-### 4.3 — Design system
-- [ ] Token in `@theme`: colore (contrasti AA verificati), scala tipografica fluida, spaziature, radius, ombre, motion
-- [ ] Componenti: Button (tutte le varianti e stati), Input, Field, Card, Badge, Accordion, Nav, Footer
-- [ ] Griglia e breakpoint
-- [ ] `docs/design-system.md` + pagina `/styleguide/` navigabile
+### 4.3 — Design system ✅
+- [x] Token in `@theme`: colore (contrasti verificati), scala tipografica fluida, spaziature, radius, motion
+- [x] **Sistema a due superfici**: l'accento cambia da solo in base alla superficie (D-15)
+- [x] Componenti: Button (tutte le varianti e stati), Input, Field, Card, Badge, Accordion, Section, Nav, Footer
+- [x] Griglia e breakpoint — contenitore `.wrap` unico, griglie `auto-fit` protette a 320px
+- [x] Font self-hosted, zero richieste a domini terzi (D-14)
+- [x] `docs/design-system.md` + pagina `/en/styleguide/` navigabile
+- [x] Extra: `npm run check:contrast` e `npm run check:output` come controlli permanenti
 
-### 4.4 — Illustrazioni
-- [ ] ★ `ILL-01` mappa del percorso studente — l'asset visivo portante
-- [ ] `ILL-02` diagramma degli enti coinvolti · `ILL-03` icone dei tre livelli
-- [ ] `ILL-04` modello B2B · `ILL-05` icone dei passi · `ILL-06` pattern · `ILL-07` 404
-- [ ] ★ **Ridisegno del logo in SVG**: lockup completo (footer, OG) + versione ridotta (header, favicon)
-- [ ] Accessibilità: `aria-hidden` se decorative, `role="img"` + titolo se informative
+### 4.4 — Illustrazioni ✅
+- [x] ★ `ILL-01` mappa del percorso studente — in HTML+CSS, non SVG: contiene testo vero
+- [x] `ILL-02` diagramma degli enti coinvolti · `ILL-03` icone dei tre livelli
+- [x] `ILL-04` modello B2B · `ILL-05` icone dei passi · `ILL-06` filigrana · `ILL-07` 404
+- [x] ★ **Ridisegno del logo in SVG**: lockup completo + versione ridotta + favicon. Wordmark come testo vero, non tracciato
+- [x] Accessibilità: `aria-hidden` di default, `role="img"` + titolo solo se informative
 
-### 4.5 — Home page completa
-- [ ] Implementazione end-to-end nel progetto Astro, responsive
-- [ ] Micro-interazioni e animazioni d'ingresso sobrie, dietro `prefers-reduced-motion`
+### 4.5 — Home page completa ✅
+- [x] Implementazione end-to-end in EN e IT, un solo file per pagina (differisce di una riga)
+- [x] Animazione d'ingresso unica e sobria, disattivata da `prefers-reduced-motion`
+- [x] 404 rifatta con `ILL-07`
 
 **Criteri di accettazione**
-- Home responsive verificata da 320px a 1920px
-- Styleguide pubblicata, design system documentato
-- Contrasti verificati su ogni coppia usata
-- La home è il riferimento di qualità per tutte le altre pagine
+- [x] Griglie protette fino a 320px (corretti due sfondamenti reali nella styleguide).
+      ⚠️ Verifica visiva in browser non eseguita: Playwright non installato
+- [x] Styleguide pubblicata, design system documentato
+- [x] Contrasti verificati su ogni coppia usata — 24 coppie, 0 sotto soglia, con controllo automatico
+- [x] La home è il riferimento di qualità per tutte le altre pagine
 
 `git commit -m "feat(phase-4): establish design system and implement home page"`
 

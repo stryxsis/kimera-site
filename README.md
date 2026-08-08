@@ -29,24 +29,43 @@ npm run dev        # server di sviluppo — http://localhost:4321
 | `npm run format`       | Formatta con Prettier (astro + tailwind plugin)                            |
 | `npm run format:check` | Verifica la formattazione senza scrivere                                   |
 | `npm run lint:content` | Verifica la parità di chiavi tra i dizionari e le content collection EN/IT |
+| `npm run check:contrast` | Calcola il contrasto WCAG di ogni coppia di colori usata dal design system |
+| `npm run check:output` | Controlla l'HTML generato: asterischi non renderizzati, `<h1>` duplicati, risorse da domini terzi, `lang` mancante |
+| **`npm run verify`**   | **La catena completa: contenuti → contrasti → tipi → build → output.** È il comando da lanciare prima di ogni commit |
 
 ## Struttura del progetto
 
 ```
 src/
 ├── i18n/            routes.ts (mappa slug EN/IT) · ui/en.ts, ui/it.ts (micro-copy) · utils.ts
-├── content.config.ts   schema delle content collection (processSteps, packages, faq, legal)
-├── content/         contenuti JSON/Markdown per lingua — popolati in FASE 3
+├── lib/             field.ts (convenzione degli id per aria-describedby)
+├── content.config.ts   schema Zod delle 12 content collection
+├── content/         contenuti JSON per lingua (en/, it/) — 96 file
 ├── layouts/          BaseLayout (shell HTML, meta, hreflang) · PageLayout (header/main/footer)
 ├── components/
 │   ├── layout/        Header, Footer, Nav, LanguageSwitcher, SkipLink
-│   ├── sections/       sezioni di pagina — popolate in FASE 4/5
-│   ├── ui/             componenti base (Button, Card, …) — FASE 4
-│   └── illustrations/  SVG — FASE 4.4
-├── styles/global.css   import Tailwind — token di design system arrivano in FASE 4
-├── assets/brand/        asset del logo (sorgente JPG ricevuto dal cliente)
+│   ├── ui/            Section, Button, Card, Badge, Accordion, Field, Input
+│   ├── brand/         Logo, LogoMark — il marchio ridisegnato in SVG
+│   └── illustrations/ RouteMap (ILL-01) · OfficesGrid · StepIcon · HandoverDiagram · BrokenRoute
+├── styles/global.css   token del design system (@theme), superfici, componenti CSS
+├── assets/brand/       il JPG ricevuto dal cliente — riferimento, non asset di produzione
 └── pages/en/, pages/it/  una route per lingua, generata secondo src/i18n/routes.ts
 ```
+
+Le due lingue di ogni pagina sono **lo stesso file con una riga diversa** (`const locale`):
+ogni testo visibile viene dalle content collection o dal dizionario UI, nessuno è scritto nel
+template. `npm run lint:content` verifica che le due lingue non divergano.
+
+## Design system
+
+Direzione **«Rotta»**, documentata in [`docs/design-system.md`](docs/design-system.md) e navigabile
+su **`/en/styleguide/`** (pagina interna, `noindex`).
+
+Il principio in una riga: il colore d'accento **non è una costante, dipende dalla superficie** —
+l'oro del brand è illeggibile su chiaro (2.33) e AAA su scuro (8.59), il teal fa l'opposto. Le classi
+`.surface-dark` / `.surface-panel` / `.surface-light` ridefiniscono un set di variabili e ogni
+componente legge quelle, così prende da solo la variante conforme. `npm run check:contrast` verifica
+tutte le coppie in uso.
 
 Il routing usa l'i18n nativo di Astro: `defaultLocale: 'en'`, `prefixDefaultLocale: true`.
 `/` reindirizza a `/en/`. Gli slug italiani sono localizzati (es. `/it/percorso/`, non
@@ -63,9 +82,13 @@ Il routing usa l'i18n nativo di Astro: `defaultLocale: 'en'`, `prefixDefaultLoca
 
 ## Stato del progetto
 
-FASE 2 (scaffolding tecnico) — routing, layout scheletrici, content collection e tooling.
-**Nessun lavoro estetico**: il design system arriva in FASE 4. Nessun testo di marketing definitivo:
-il copy arriva in FASE 3. Vedi `PROGRESS.md` per lo stato dettagliato e le questioni aperte.
+**FASE 4 completata** — design system, marchio ridisegnato in SVG, illustrazioni e home implementata
+end-to-end in entrambe le lingue. Le pagine restanti (Percorso, Servizi, Alloggio, Costi, Chi siamo,
+FAQ, Partner) hanno già il contenuto reale ma non ancora il trattamento visivo: arriva in FASE 5.
+`book`, `privacy` e `cookies` restano scaffold fino alla FASE 6 (form e legal).
+
+Vedi `PROGRESS.md` per lo stato dettagliato, le decisioni prese e le questioni ancora aperte con il
+cliente.
 
 ## Deploy
 

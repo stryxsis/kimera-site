@@ -3,6 +3,7 @@
   "key": "settled",
   "name": "Settled",
   "tagline": "Everything in Arrival, plus a verified place to live and a contract that actually holds up.",
+  "coverage": "The whole route",
   "includes": [
     "Everything in Arrival",
     "Accommodation search support, weighted toward verified listings",

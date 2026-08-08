@@ -1,0 +1,100 @@
+---
+/**
+ * Controllo di inserimento: input, textarea o select.
+ *
+ * Un solo componente per i tre, così il bordo, il focus e l'altezza restano
+ * identici in tutto il form e non si sfasano campo per campo.
+ * font-size mai sotto 16px sui controlli: sotto quella soglia iOS applica
+ * lo zoom automatico al focus e il modulo salta sotto le dita dell'utente.
+ */
+interface Props {
+  as?: 'input' | 'textarea' | 'select';
+  id: string;
+  name: string;
+  // Unione chiusa, non `string`: i tipi esotici (`file`, `range`, `color`) non hanno
+  // stile in questo sistema e comparirebbero senza che nessuno se ne accorga.
+  type?: 'text' | 'email' | 'tel' | 'url' | 'number' | 'date' | 'search' | 'hidden';
+  placeholder?: string;
+  rows?: number;
+  required?: boolean;
+  describedBy?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = 'input',
+  id,
+  name,
+  type = 'text',
+  placeholder,
+  rows = 4,
+  required = false,
+  describedBy,
+  class: className,
+  ...rest
+}: Props = Astro.props;
+
+const shared = {
+  id,
+  name,
+  required: required || undefined,
+  'aria-describedby': describedBy,
+  class: ['control', className].filter(Boolean).join(' '),
+};
+---
+
+{
+  Tag === 'textarea' ? (
+    <textarea {...shared} rows={rows} placeholder={placeholder} {...rest} />
+  ) : Tag === 'select' ? (
+    <select {...shared} {...rest}>
+      <slot />
+    </select>
+  ) : (
+    <input {...shared} type={type} placeholder={placeholder} {...rest} />
+  )
+}
+
+<style>
+  .control {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 1rem; /* 16px: sotto questa soglia iOS zooma al focus */
+    line-height: 1.4;
+    color: var(--surface-fg);
+    background-color: var(--surface-raised);
+    /* Bordo dedicato e più marcato di quello delle card: il contorno di un campo
+       è ciò che lo rende riconoscibile come campo, quindi WCAG 1.4.11 chiede 3:1. */
+    border: 1px solid var(--surface-control-line);
+    border-radius: var(--radius-xs);
+    padding: 0.7rem 0.85rem;
+    transition: border-color var(--duration-fast) var(--ease-out-quart);
+  }
+  .control:hover {
+    border-color: var(--surface-rule-strong);
+  }
+  .control::placeholder {
+    color: var(--surface-fg-muted);
+    opacity: 1;
+  }
+  textarea.control {
+    resize: vertical;
+    min-height: 6rem;
+  }
+  select.control {
+    appearance: none;
+    padding-right: 2.4rem;
+    /* freccia disegnata con un gradiente conico: nessun asset, nessun font di icone */
+    background-image:
+      linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+      right 1.15rem center,
+      right 0.8rem center;
+    background-size:
+      6px 6px,
+      6px 6px;
+    background-repeat: no-repeat;
+  }
+</style>

@@ -14,12 +14,13 @@ const t = useTranslations(currentLocale);
 const alternates = getAlternatePaths(currentRouteKey);
 ---
 
-<nav aria-label={t.languageSwitcher.label}>
-  <ul>
+<nav class="lang" aria-label={t.languageSwitcher.label}>
+  <ul class="lang__list">
     {
       locales.map((loc) => (
         <li>
           <a
+            class="lang__link"
             href={alternates[loc]}
             lang={loc}
             hreflang={loc}
@@ -32,3 +33,35 @@ const alternates = getAlternatePaths(currentRouteKey);
     }
   </ul>
 </nav>
+
+<style>
+  .lang__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid var(--surface-line);
+    border-radius: var(--radius-xs);
+    overflow: hidden;
+  }
+  .lang__link {
+    display: block;
+    padding: 0.42rem 0.6rem;
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--surface-fg-muted);
+    text-decoration: none;
+    transition:
+      background-color var(--duration-fast) var(--ease-out-quart),
+      color var(--duration-fast) var(--ease-out-quart);
+  }
+  .lang__link:hover {
+    color: var(--surface-fg);
+  }
+  /* Pastiglia di superficie, non accento: su fondo chiaro navy-su-teal sarebbe 2.92. */
+  .lang__link[aria-current='true'] {
+    background-color: var(--surface-marker-bg);
+    color: var(--surface-marker-fg);
+  }
+</style>

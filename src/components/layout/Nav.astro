@@ -16,12 +16,13 @@ type MenuRouteKey = 'process' | 'services' | 'housing' | 'costs' | 'about';
 const items: MenuRouteKey[] = ['process', 'services', 'housing', 'costs', 'about'];
 ---
 
-<nav aria-label={t.nav.primaryLabel}>
-  <ul>
+<nav class="nav" aria-label={t.nav.primaryLabel}>
+  <ul class="nav__list">
     {
       items.map((key) => (
         <li>
           <a
+            class="nav__link"
             href={getPath(key, locale)}
             aria-current={key === currentRouteKey ? 'page' : undefined}
           >
@@ -32,3 +33,43 @@ const items: MenuRouteKey[] = ['process', 'services', 'housing', 'costs', 'about
     }
   </ul>
 </nav>
+
+<style>
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .nav__link {
+    display: block;
+    padding: 0.55rem 0;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--surface-fg);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color var(--duration-fast) var(--ease-out-quart);
+  }
+  .nav__link:hover {
+    color: var(--surface-accent);
+  }
+  /* La pagina corrente è marcata dal colore E da un filetto: il colore da solo
+     non basta come unico veicolo d'informazione (WCAG 1.4.1). */
+  .nav__link[aria-current='page'] {
+    color: var(--surface-accent);
+    border-bottom-color: var(--surface-accent);
+  }
+
+  @media (min-width: 64rem) {
+    .nav__list {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+    .nav__link {
+      padding: 0.15rem 0;
+    }
+  }
+</style>

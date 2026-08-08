@@ -1,0 +1,100 @@
+---
+import LogoMark from './LogoMark.astro';
+import type { Locale } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+
+/**
+ * Lockup del marchio. (FASE 4.4)
+ *
+ * Il wordmark NON è un tracciato: è testo vero, impaginato in EB Garamond
+ * accanto al segno. Tre conseguenze pratiche, tutte volute:
+ *   — resta nitido a qualsiasi dimensione e su qualsiasi densità di schermo;
+ *   — gli screen reader e i motori di ricerca leggono "Kimere", non un'immagine;
+ *   — il lockup si RICOMPONE: orizzontale nell'header, in colonna nel footer.
+ * Era esattamente il limite del JPG originale, dove descrittore e payoff sono
+ * cotti nell'immagine e non si possono separare.
+ *
+ * `translate="no"` ovunque: il nome e il payoff sono asset di brand, non copy.
+ */
+interface Props {
+  locale: Locale;
+  variant?: 'compact' | 'full';
+  class?: string;
+}
+
+const { locale, variant = 'compact', class: className } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<span class:list={['logo', `logo--${variant}`, className]} translate="no">
+  <LogoMark detail={variant === 'full' ? 'full' : 'compact'} class="logo__mark" />
+  <span class="logo__text">
+    <span class="logo__word">Kimere</span>
+    <span class="logo__desc">International Academy &amp; Consulting</span>
+    {variant === 'full' && <span class="logo__payoff">{t.footer.payoff}</span>}
+  </span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--surface-fg);
+  }
+  .logo__mark {
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+  }
+  .logo__text {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo__word {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    /* la spaziatura di lettere aggiunge spazio anche dopo l'ultima: lo tolgo */
+    margin-right: -0.17em;
+  }
+  .logo__desc {
+    font-size: 0.55rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    color: var(--surface-fg-muted);
+    margin-top: 0.34rem;
+  }
+
+  /* Lockup completo: segno più grande, payoff in corsivo sotto. */
+  .logo--full {
+    align-items: flex-start;
+    gap: 0.95rem;
+  }
+  .logo--full .logo__mark {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+  .logo--full .logo__word {
+    font-size: 1.85rem;
+  }
+  .logo__payoff {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--surface-accent);
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 26rem) {
+    .logo__desc {
+      display: none;
+    }
+  }
+</style>

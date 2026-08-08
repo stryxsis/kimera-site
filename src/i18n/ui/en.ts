@@ -13,6 +13,7 @@ export interface UiDictionary {
   skipToContent: string;
   nav: {
     primaryLabel: string;
+    menu: string;
     home: string;
     process: string;
     services: string;
@@ -24,6 +25,7 @@ export interface UiDictionary {
   };
   cta: {
     bookCall: string;
+    freeNoObligation: string;
   };
   process: {
     whoDecides: string;
@@ -31,6 +33,11 @@ export interface UiDictionary {
     whatCanGoWrong: string;
     whatKimereDoes: string;
     officialSource: string;
+    phaseBefore: string;
+    phaseAfter: string;
+  };
+  packages: {
+    included: string;
   };
   faqGroups: {
     beforeDeparture: string;
@@ -70,6 +77,7 @@ export const ui: UiDictionary = {
   skipToContent: 'Skip to content',
   nav: {
     primaryLabel: 'Main navigation',
+    menu: 'Menu',
     home: 'Home',
     process: 'How it works',
     services: 'Services',
@@ -81,6 +89,7 @@ export const ui: UiDictionary = {
   },
   cta: {
     bookCall: 'Book your 15-minute call',
+    freeNoObligation: '15 minutes · no cost · no obligation',
   },
   process: {
     whoDecides: 'Who decides',
@@ -88,6 +97,11 @@ export const ui: UiDictionary = {
     whatCanGoWrong: 'What can go wrong',
     whatKimereDoes: 'What Kimere does',
     officialSource: 'Official source',
+    phaseBefore: 'Before you leave',
+    phaseAfter: 'After you land',
+  },
+  packages: {
+    included: 'Included',
   },
   faqGroups: {
     beforeDeparture: 'Before you leave',

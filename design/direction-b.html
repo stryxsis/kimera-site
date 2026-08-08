@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kimere — Direzione B · Rotta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ─────────────────────────────────────────────────────────────
+         DIREZIONE B — "ROTTA"
+         La fiducia si dimostra mostrando la mappa. La rosa dei venti
+         del logo presa sul serio: il sito è un atlante del percorso
+         dalla lettera di ammissione al permesso di soggiorno.
+         L'hero non è uno slogan sopra uno sfondo: l'hero È la rotta.
+         Superficie scura dominante — l'unica su cui l'oro del brand
+         è davvero vivo (8.00 di contrasto contro 2.33 sul cream).
+         ───────────────────────────────────────────────────────────── */
+
+      :root {
+        --ground: #071f3d; /* campo mappa */
+        --panel: #0a2546; /* rilievo */
+        --panel-line: #164668;
+        --cream: #fbf7eb;
+        --muted: #b6c4d4;
+        --gold: #bda15d;
+        --gold-hi: #d6b86c; /* 8.00+ su navy — AAA */
+        --teal: #2b9eb0; /* solo su scuro */
+        --teal-ink: #1b7087; /* la versione che regge sul cream */
+        --ink: #0a2546;
+        --rule-dark: rgba(251, 247, 235, 0.15);
+        --rule-gold: rgba(214, 184, 108, 0.35);
+        --rule-light: rgba(10, 37, 70, 0.18);
+
+        --display: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+        --sans: 'Archivo', -apple-system, 'Segoe UI', system-ui, sans-serif;
+
+        --step-label: clamp(0.66rem, 0.6rem + 0.2vw, 0.73rem);
+        --step-body: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+        --step-lead: clamp(1.08rem, 1rem + 0.5vw, 1.3rem);
+        --step-h2: clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem);
+        --step-h1: clamp(2.5rem, 1.7rem + 3.4vw, 4.1rem);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--cream);
+        font-family: var(--sans);
+        font-size: var(--step-body);
+        line-height: 1.6;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      ol,
+      ul {
+        margin: 0;
+      }
+      ol,
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid var(--gold-hi);
+        outline-offset: 3px;
+      }
+
+      .wrap {
+        width: min(100% - 2.5rem, 78rem);
+        margin-inline: auto;
+      }
+
+      .eyebrow {
+        font-size: var(--step-label);
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold-hi);
+      }
+
+      /* ── Intestazione ─────────────────────────────────────────── */
+      .site-header {
+        border-bottom: 1px solid var(--rule-gold);
+      }
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        padding-block: 1.15rem;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        margin-right: auto;
+      }
+      .brand__mark {
+        width: 30px;
+        height: 30px;
+        flex: none;
+        color: var(--gold-hi);
+      }
+      .brand__word {
+        font-family: var(--display);
+        font-size: 1.5rem;
+        letter-spacing: 0.19em;
+        line-height: 1;
+      }
+      .brand__desc {
+        display: block;
+        font-size: 0.55rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 0.34rem;
+      }
+      .nav {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.87rem;
+        font-weight: 500;
+      }
+      .nav a {
+        text-decoration: none;
+        padding-bottom: 3px;
+        border-bottom: 1px solid transparent;
+      }
+      .nav a:hover {
+        border-bottom-color: var(--gold-hi);
+      }
+
+      .btn {
+        display: inline-block;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        padding: 0.85rem 1.45rem;
+        text-decoration: none;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+      }
+      .btn--gold {
+        background: var(--gold);
+        color: #071f3d;
+      }
+      .btn--gold:hover {
+        background: var(--gold-hi);
+      }
+      .btn--outline {
+        border-color: var(--rule-dark);
+        color: var(--cream);
+      }
+      .btn--outline:hover {
+        border-color: var(--gold-hi);
+      }
+      .btn--sm {
+        padding: 0.58rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .lang {
+        display: flex;
+        border: 1px solid var(--rule-dark);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .lang button {
+        font: 600 0.7rem/1 var(--sans);
+        letter-spacing: 0.08em;
+        background: none;
+        border: 0;
+        padding: 0.44rem 0.6rem;
+        cursor: pointer;
+        color: var(--muted);
+      }
+      .lang button[aria-pressed='true'] {
+        background: var(--gold-hi);
+        color: #071f3d;
+      }
+
+      /* ── Hero: due colonne, la rotta è metà dell'hero ──────────── */
+      .hero {
+        padding-block: clamp(3rem, 6vw, 5.5rem);
+      }
+      .hero__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: start;
+      }
+      .hero h1 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: var(--step-h1);
+        line-height: 1.04;
+        letter-spacing: -0.005em;
+        margin-top: 1.1rem;
+        max-width: 15ch;
+        text-wrap: balance;
+      }
+      .hero__lead {
+        font-size: var(--step-lead);
+        line-height: 1.55;
+        color: var(--muted);
+        max-width: 46ch;
+        margin-top: 1.5rem;
+      }
+      .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 2.1rem;
+      }
+      .hero__note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 1.1rem;
+      }
+
+      /* ── Il dispositivo firma: la linea di rotta ───────────────── */
+      .route {
+        background: var(--panel);
+        border: 1px solid var(--panel-line);
+        border-radius: 2px;
+        padding: 1.6rem 1.5rem 1.4rem;
+      }
+      .route__title {
+        font-size: var(--step-label);
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid var(--rule-dark);
+      }
+      .route__list {
+        margin-top: 0.4rem;
+      }
+      .route__phase {
+        font-size: var(--step-label);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold-hi);
+        padding: 1.15rem 0 0.6rem 2.1rem;
+      }
+      .route__stop {
+        position: relative;
+        padding: 0.55rem 0 0.55rem 2.1rem;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+      /* la linea continua */
+      .route__stop::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--teal);
+      }
+      .route__stop:first-of-type::before {
+        top: 0.95rem;
+      }
+      .route__stop:last-of-type::before {
+        bottom: calc(100% - 0.95rem);
+      }
+      /* il nodo */
+      .route__stop::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.72rem;
+        width: 11px;
+        height: 11px;
+        border: 1px solid var(--teal);
+        background: var(--panel);
+        border-radius: 50%;
+      }
+      .route__stop--key::after {
+        background: var(--gold-hi);
+        border-color: var(--gold-hi);
+      }
+      .route__stop--key {
+        color: var(--cream);
+        font-weight: 600;
+      }
+      .route__stop--pivot::after {
+        background: var(--cream);
+        border-color: var(--cream);
+        width: 13px;
+        height: 13px;
+        left: -1px;
+        top: 0.66rem;
+      }
+      .route__stop--pivot {
+        font-family: var(--display);
+        font-style: italic;
+        font-size: 1.15rem;
+        color: var(--cream);
+      }
+      .route__deadline {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold-hi);
+        margin-top: 0.2rem;
+      }
+      .route__foot {
+        margin-top: 1.2rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--rule-dark);
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .route__foot a {
+        color: var(--gold-hi);
+        text-underline-offset: 3px;
+      }
+
+      /* ── Fascia chiara: la legenda dell'atlante ────────────────── */
+      .scale {
+        background: var(--cream);
+        color: var(--ink);
+        padding-block: clamp(3rem, 6vw, 4.75rem);
+      }
+      .scale .eyebrow {
+        color: var(--teal-ink);
+      }
+      .scale h2 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: var(--step-h2);
+        line-height: 1.1;
+        margin-top: 0.9rem;
+        max-width: 18ch;
+      }
+      .scale__body {
+        color: #103e5d;
+        max-width: 60ch;
+        margin-top: 1.1rem;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        gap: 0;
+        margin-top: 2.5rem;
+      }
+      .stat {
+        padding: 1.4rem 1.5rem 0 0;
+        border-top: 2px solid var(--ink);
+      }
+      .stat + .stat {
+        border-top-color: var(--rule-light);
+      }
+      .stat__value {
+        display: block;
+        font-family: var(--display);
+        font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
+        line-height: 1;
+      }
+      .stat__label {
+        display: block;
+        font-size: 0.93rem;
+        line-height: 1.45;
+        color: #4a5a6b;
+        margin-top: 0.7rem;
+        max-width: 24ch;
+      }
+
+      /* ── Livelli: ognuno è un tratto di rotta ──────────────────── */
+      .levels {
+        padding-block: clamp(3rem, 6vw, 5rem);
+      }
+      .levels h2 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: var(--step-h2);
+        line-height: 1.1;
+        margin-top: 0.9rem;
+      }
+      .levels__body {
+        color: var(--muted);
+        max-width: 58ch;
+        margin-top: 1rem;
+      }
+      .levels__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+        gap: 1px;
+        background: var(--panel-line);
+        border: 1px solid var(--panel-line);
+        margin-top: 2.75rem;
+      }
+      .level {
+        background: var(--ground);
+        padding: 1.75rem 1.5rem 1.6rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .level__name {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 1.75rem;
+        line-height: 1;
+      }
+      .level__tagline {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-top: 0.7rem;
+      }
+
+      .level__label {
+        font-size: var(--step-label);
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 1.5rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--rule-dark);
+      }
+      .level__includes {
+        flex: 1;
+      }
+      .level__includes li {
+        display: grid;
+        grid-template-columns: 1.2rem 1fr;
+        gap: 0.6rem;
+        align-items: start;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--rule-dark);
+        font-size: 0.9rem;
+        line-height: 1.45;
+        color: #d5dee7;
+      }
+      .level__includes li::before {
+        content: '✓';
+        display: inline-grid;
+        place-items: center;
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.1rem;
+        border: 1px solid rgba(214, 184, 108, 0.55);
+        font-size: 0.74rem;
+        line-height: 1;
+        color: var(--gold-hi); /* 8.59 su navy — AAA */
+      }
+      .level__cta {
+        margin-top: 1.4rem;
+      }
+
+      .closing {
+        margin-top: 2.5rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      .mockup-badge {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 50;
+        background: #111;
+        color: #fff;
+        font: 600 0.7rem/1 var(--sans);
+        letter-spacing: 0.07em;
+        padding: 0.55rem 0.8rem;
+      }
+
+      @media (max-width: 64rem) {
+        .hero__grid {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          display: none;
+        }
+      }
+      @media (max-width: 46rem) {
+        .site-header__inner {
+          flex-wrap: wrap;
+        }
+        .stat {
+          padding-right: 0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="#">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <path
+              d="M20 2 L23 17 L38 20 L23 23 L20 38 L17 23 L2 20 L17 17 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M20 9.5 L21.4 18.6 L30.5 20 L21.4 21.4 L20 30.5 L18.6 21.4 L9.5 20 L18.6 18.6 Z"
+              fill="#071f3d"
+            />
+          </svg>
+          <span>
+            <span class="brand__word">KIMERE</span>
+            <span class="brand__desc">International Academy &amp; Consulting</span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#" data-en="How it works" data-it="Come funziona">How it works</a>
+          <a href="#" data-en="Services" data-it="Servizi">Services</a>
+          <a href="#" data-en="Housing" data-it="Alloggio">Housing</a>
+          <a href="#" data-en="Costs" data-it="Costi">Costs</a>
+          <a href="#" data-en="About" data-it="Chi siamo">About</a>
+        </nav>
+
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang-btn="it" aria-pressed="false">IT</button>
+        </div>
+
+        <a
+          class="btn btn--gold btn--sm"
+          href="#"
+          data-en="Book your 15-minute call"
+          data-it="Prenota la call di 15 minuti"
+          >Book your 15-minute call</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero__grid">
+          <div>
+            <p
+              class="eyebrow"
+              data-en="Students coming to Italy"
+              data-it="Studenti in arrivo in Italia"
+            >
+              Students coming to Italy
+            </p>
+            <h1
+              data-en="Getting into an Italian university is the easy part."
+              data-it="Entrare in un'università italiana è la parte facile."
+            >
+              Getting into an Italian university is the easy part.
+            </h1>
+            <p
+              class="hero__lead"
+              data-en="Visa, residence permit, fiscal code, municipal registration, health cover, housing — that's the part almost no one warns you about. We handle it with you, step by step."
+              data-it="Visto, permesso di soggiorno, codice fiscale, residenza, copertura sanitaria, alloggio — è la parte di cui quasi nessuno ti avvisa. La affrontiamo insieme a te, passo dopo passo."
+            >
+              Visa, residence permit, fiscal code, municipal registration, health cover, housing —
+              that's the part almost no one warns you about. We handle it with you, step by step.
+            </p>
+            <div class="hero__actions">
+              <a
+                class="btn btn--gold"
+                href="#"
+                data-en="Book your 15-minute call"
+                data-it="Prenota la tua call di 15 minuti"
+                >Book your 15-minute call</a
+              >
+              <a
+                class="btn btn--outline"
+                href="#"
+                data-en="See the full process"
+                data-it="Guarda il percorso completo"
+                >See the full process</a
+              >
+            </div>
+            <p
+              class="hero__note"
+              data-en="15 minutes · no cost · no obligation"
+              data-it="15 minuti · senza costi · senza impegno"
+            >
+              15 minutes · no cost · no obligation
+            </p>
+          </div>
+
+          <!-- LA ROTTA — versione compressa della mappa del percorso (ILL-01) -->
+          <aside class="route" aria-label="The route, in short">
+            <p class="route__title" data-en="The route, in short" data-it="La rotta, in breve">
+              The route, in short
+            </p>
+
+            <ol class="route__list">
+              <li class="route__phase" data-en="Before you leave" data-it="Prima di partire">
+                Before you leave
+              </li>
+              <li
+                class="route__stop"
+                data-en="Course and university choice"
+                data-it="Scelta di corso e ateneo"
+              >
+                Course and university choice
+              </li>
+              <li
+                class="route__stop"
+                data-en="Universitaly pre-registration"
+                data-it="Pre-iscrizione su Universitaly"
+              >
+                Universitaly pre-registration
+              </li>
+              <li
+                class="route__stop route__stop--key"
+                data-en="Consular file and type D visa"
+                data-it="Fascicolo consolare e visto tipo D"
+              >
+                Consular file and type D visa
+              </li>
+
+              <li class="route__stop route__stop--pivot" data-en="You land" data-it="Atterri">
+                You land
+              </li>
+
+              <li class="route__phase" data-en="After you land" data-it="Dopo l'atterraggio">
+                After you land
+              </li>
+              <li class="route__stop route__stop--key">
+                <span data-en="Residence permit filed" data-it="Permesso di soggiorno depositato"
+                  >Residence permit filed</span
+                >
+                <span
+                  class="route__deadline"
+                  data-en="within 8 working days"
+                  data-it="entro 8 giorni lavorativi"
+                  >within 8 working days</span
+                >
+              </li>
+              <li
+                class="route__stop"
+                data-en="Fiscal code, residency, health cover"
+                data-it="Codice fiscale, residenza, copertura sanitaria"
+              >
+                Fiscal code, residency, health cover
+              </li>
+              <li
+                class="route__stop"
+                data-en="A contract that actually holds up"
+                data-it="Un contratto che regge davvero"
+              >
+                A contract that actually holds up
+              </li>
+            </ol>
+
+            <p class="route__foot">
+              <a href="#" data-en="See all 11 steps" data-it="Guarda tutti gli 11 passi"
+                >See all 11 steps</a
+              >
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="scale">
+        <div class="wrap">
+          <p class="eyebrow" data-en="The scale of it" data-it="Le dimensioni">The scale of it</p>
+          <h2
+            data-en="The part after admission is a maze"
+            data-it="Dopo l'ammissione inizia il labirinto"
+          >
+            The part after admission is a maze
+          </h2>
+          <p
+            class="scale__body"
+            data-en="Between your acceptance letter and your first day of class, you'll deal with a consulate, a university, a post office, an immigration office, a tax agency, and your local municipality — each with its own deadlines and its own paperwork."
+            data-it="Tra la lettera di ammissione e il primo giorno di lezione dovrai avere a che fare con un consolato, un ateneo, un ufficio postale, la Questura, l'Agenzia delle Entrate e il tuo Comune — ognuno con scadenze e pratiche proprie."
+          >
+            Between your acceptance letter and your first day of class, you'll deal with a
+            consulate, a university, a post office, an immigration office, a tax agency, and your
+            local municipality — each with its own deadlines and its own paperwork.
+          </p>
+
+          <ul class="stats">
+            <li class="stat">
+              <span class="stat__value" data-en="8 working days" data-it="8 giorni lavorativi"
+                >8 working days</span
+              >
+              <span
+                class="stat__label"
+                data-en="to file your residence permit after landing"
+                data-it="per depositare il permesso di soggiorno dopo l'atterraggio"
+                >to file your residence permit after landing</span
+              >
+            </li>
+            <li class="stat">
+              <span class="stat__value">6+</span>
+              <span
+                class="stat__label"
+                data-en="different offices involved before you're fully settled"
+                data-it="enti diversi coinvolti prima di essere davvero sistemato"
+                >different offices involved before you're fully settled</span
+              >
+            </li>
+            <li class="stat">
+              <span class="stat__value">90+</span>
+              <span
+                class="stat__label"
+                data-en="Italian universities, each with its own admission calendar"
+                data-it="università italiane, ognuna con il proprio calendario di ammissione"
+                >Italian universities, each with its own admission calendar</span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="levels">
+        <div class="wrap">
+          <p class="eyebrow" data-en="Levels of support" data-it="Livelli di supporto">
+            Levels of support
+          </p>
+          <h2 data-en="How far we come with you" data-it="Quanto lontano veniamo con te">
+            How far we come with you
+          </h2>
+          <p
+            class="levels__body"
+            data-en="Choose how far you want us to go with you — from getting your application right, to being there when you land, to having a verified place to live."
+            data-it="Scegli quanto lontano vuoi che veniamo con te — dal curare bene la candidatura, all'essere presenti quando atterri, ad avere un alloggio verificato."
+          >
+            Choose how far you want us to go with you — from getting your application right, to
+            being there when you land, to having a verified place to live.
+          </p>
+
+          <div class="levels__grid">
+            <article class="level">
+              <h3 class="level__name">Admission</h3>
+              <p
+                class="level__tagline"
+                data-en="Get the academic side right, from course choice to your visa file."
+                data-it="La parte accademica fatta bene, dalla scelta del corso al fascicolo per il visto."
+              >
+                Get the academic side right, from course choice to your visa file.
+              </p>
+
+              <p
+                class="level__label"
+                data-en="Included — up to your visa"
+                data-it="Incluso — fino al visto"
+              >
+                Included — up to your visa
+              </p>
+
+              <ul class="level__includes">
+                <li
+                  data-en="Course and university guidance matched to your background and budget"
+                  data-it="Orientamento su corso e ateneo, calibrato sul tuo profilo e sul budget"
+                >
+                  Course and university guidance matched to your background and budget
+                </li>
+                <li
+                  data-en="Universitaly pre-registration, tracked against each university's deadline"
+                  data-it="Pre-iscrizione su Universitaly, monitorata secondo la scadenza di ogni ateneo"
+                >
+                  Universitaly pre-registration, tracked against each university's deadline
+                </li>
+                <li
+                  data-en="Qualification recognition — Declaration of Value or CIMEA, whichever applies to you"
+                  data-it="Riconoscimento del titolo di studio — Dichiarazione di Valore o CIMEA, secondo il tuo caso"
+                >
+                  Qualification recognition — Declaration of Value or CIMEA, whichever applies to
+                  you
+                </li>
+                <li
+                  data-en="Your consular visa file, prepared to the standard your consulate expects"
+                  data-it="Fascicolo consolare per il visto, preparato secondo lo standard che il tuo consolato si aspetta"
+                >
+                  Your consular visa file, prepared to the standard your consulate expects
+                </li>
+              </ul>
+
+              <p class="level__cta">
+                <a
+                  class="btn btn--outline btn--sm"
+                  href="#"
+                  data-en="Talk about this level"
+                  data-it="Parliamo di questo livello"
+                  >Talk about this level</a
+                >
+              </p>
+            </article>
+
+            <article class="level">
+              <h3 class="level__name">Arrival</h3>
+              <p
+                class="level__tagline"
+                data-en="Everything in Admission, plus the first weeks on the ground — the part with the strict deadlines."
+                data-it="Tutto Admission, più le prime settimane sul territorio — la parte con le scadenze rigide."
+              >
+                Everything in Admission, plus the first weeks on the ground — the part with the
+                strict deadlines.
+              </p>
+
+              <p
+                class="level__label"
+                data-en="Included — through your first weeks"
+                data-it="Incluso — fino alle prime settimane"
+              >
+                Included — through your first weeks
+              </p>
+
+              <ul class="level__includes">
+                <li data-en="Everything in Admission" data-it="Tutto ciò che è incluso in Admission">
+                  Everything in Admission
+                </li>
+                <li
+                  data-en="Your residence permit filed within the 8-working-day deadline"
+                  data-it="Permesso di soggiorno depositato entro la scadenza degli 8 giorni lavorativi"
+                >
+                  Your residence permit filed within the 8-working-day deadline
+                </li>
+                <li
+                  data-en="Support at your Questura appointment for fingerprinting"
+                  data-it="Supporto all'appuntamento in Questura per il fotosegnalamento"
+                >
+                  Support at your Questura appointment for fingerprinting
+                </li>
+                <li data-en="Fiscal code, done on day one" data-it="Codice fiscale, ottenuto il primo giorno">
+                  Fiscal code, done on day one
+                </li>
+                <li
+                  data-en="Residency registration with your specific municipality"
+                  data-it="Registrazione della residenza al tuo Comune specifico"
+                >
+                  Residency registration with your specific municipality
+                </li>
+                <li
+                  data-en="SSN enrolment guidance, if you choose public health cover"
+                  data-it="Orientamento per l'iscrizione al SSN, se scegli la copertura sanitaria pubblica"
+                >
+                  SSN enrolment guidance, if you choose public health cover
+                </li>
+              </ul>
+
+              <p class="level__cta">
+                <a
+                  class="btn btn--outline btn--sm"
+                  href="#"
+                  data-en="Talk about this level"
+                  data-it="Parliamo di questo livello"
+                  >Talk about this level</a
+                >
+              </p>
+            </article>
+
+            <article class="level">
+              <h3 class="level__name">Settled</h3>
+              <p
+                class="level__tagline"
+                data-en="Everything in Arrival, plus a verified place to live and a contract that actually holds up."
+                data-it="Tutto Arrival, più un alloggio verificato e un contratto che regge davvero."
+              >
+                Everything in Arrival, plus a verified place to live and a contract that actually
+                holds up.
+              </p>
+
+              <p
+                class="level__label"
+                data-en="Included — the whole route"
+                data-it="Incluso — l'intera rotta"
+              >
+                Included — the whole route
+              </p>
+
+              <ul class="level__includes">
+                <li data-en="Everything in Arrival" data-it="Tutto ciò che è incluso in Arrival">
+                  Everything in Arrival
+                </li>
+                <li
+                  data-en="Accommodation search support, weighted toward verified listings"
+                  data-it="Supporto nella ricerca dell'alloggio, orientato verso annunci verificati"
+                >
+                  Accommodation search support, weighted toward verified listings
+                </li>
+                <li
+                  data-en="Contract review before you sign anything"
+                  data-it="Revisione del contratto prima di firmare qualsiasi cosa"
+                >
+                  Contract review before you sign anything
+                </li>
+                <li
+                  data-en="Lease registration and the paperwork it requires"
+                  data-it="Registrazione del contratto di locazione e la pratica che richiede"
+                >
+                  Lease registration and the paperwork it requires
+                </li>
+                <li
+                  data-en="A dichiarazione di ospitalità if you need proof of address before your final lease is ready"
+                  data-it="Una dichiarazione di ospitalità se serve una prova di domicilio prima che il contratto definitivo sia pronto"
+                >
+                  A dichiarazione di ospitalità if you need proof of address before your final lease
+                  is ready
+                </li>
+                <li
+                  data-en="Support through your first weeks in your new city"
+                  data-it="Supporto durante le prime settimane nella nuova città"
+                >
+                  Support through your first weeks in your new city
+                </li>
+              </ul>
+
+              <p class="level__cta">
+                <a
+                  class="btn btn--outline btn--sm"
+                  href="#"
+                  data-en="Talk about this level"
+                  data-it="Parliamo di questo livello"
+                  >Talk about this level</a
+                >
+              </p>
+            </article>
+          </div>
+
+          <p
+            class="closing"
+            data-en="No public price list. What it costs depends on your country, your university and how far you want us to go — you leave the call with a figure."
+            data-it="Nessun listino pubblico. Il costo dipende dal tuo paese, dal tuo ateneo e da quanto lontano vuoi che veniamo — dalla call esci con una cifra."
+          >
+            No public price list. What it costs depends on your country, your university and how far
+            you want us to go — you leave the call with a figure.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div class="mockup-badge">DIREZIONE B · ROTTA — mockup FASE 4.1</div>
+
+    <script>
+      const setLang = (lang) => {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-en]').forEach((el) => {
+          el.textContent = el.dataset[lang];
+        });
+        document.querySelectorAll('[data-lang-btn]').forEach((b) => {
+          b.setAttribute('aria-pressed', String(b.dataset.langBtn === lang));
+        });
+      };
+      document.querySelectorAll('[data-lang-btn]').forEach((b) => {
+        b.addEventListener('click', () => setLang(b.dataset.langBtn));
+      });
+    </script>
+  </body>
+</html>

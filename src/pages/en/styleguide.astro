@@ -1,11 +1,488 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import Section from '../../components/ui/Section.astro';
+import Button from '../../components/ui/Button.astro';
+import Badge from '../../components/ui/Badge.astro';
+import Card from '../../components/ui/Card.astro';
+import Accordion from '../../components/ui/Accordion.astro';
+import Field from '../../components/ui/Field.astro';
+import Input from '../../components/ui/Input.astro';
+import Logo from '../../components/brand/Logo.astro';
+import RouteMap from '../../components/illustrations/RouteMap.astro';
+import StepIcon from '../../components/illustrations/StepIcon.astro';
+import OfficesGrid from '../../components/illustrations/OfficesGrid.astro';
+import HandoverDiagram from '../../components/illustrations/HandoverDiagram.astro';
+import BrokenRoute from '../../components/illustrations/BrokenRoute.astro';
+import { describedBy } from '../../lib/field';
 
+/**
+ * Pagina di riferimento interna, non parte del sito pubblico: noindex, ed è
+ * l'unico posto in tutto il progetto con testo scritto direttamente nel template.
+ * Serve a chi sviluppa, non allo studente, quindi non passa dalle content
+ * collection e non esiste in due lingue: la versione /it/ è identica.
+ */
 const locale = 'en';
-const t = useTranslations(locale);
+
+const colours = [
+  { name: '--color-ground', hex: '#071F3D', use: 'Fondo dominante del sito', on: 'dark' },
+  { name: '--color-panel', hex: '#0A2546', use: 'Rilievo, pannelli, card', on: 'dark' },
+  { name: '--color-panel-line', hex: '#164668', use: 'Bordi strutturali su scuro', on: 'dark' },
+  { name: '--color-cream', hex: '#FBF7EB', use: 'Superficie chiara, testo su scuro', on: 'light' },
+  { name: '--color-ink', hex: '#0A2546', use: 'Testo su chiaro — 14.35 AAA', on: 'light' },
+  { name: '--color-ink-soft', hex: '#103E5D', use: 'Lead su chiaro — 10.49 AAA', on: 'light' },
+  { name: '--color-ink-muted', hex: '#4A5A6B', use: 'Secondario su chiaro — 6.61 AA', on: 'light' },
+  { name: '--color-on-dark-soft', hex: '#D5DEE7', use: 'Elenchi su scuro — 12.13 AAA', on: 'dark' },
+  {
+    name: '--color-on-dark-muted',
+    hex: '#B6C4D4',
+    use: 'Secondario su scuro — 9.30 AAA',
+    on: 'dark',
+  },
+  { name: '--color-gold', hex: '#BDA15D', use: 'Fondo CTA, testo navy — 6.62 AA', on: 'light' },
+  { name: '--color-gold-bright', hex: '#D6B86C', use: 'Accento su scuro — 8.59 AAA', on: 'dark' },
+  { name: '--color-teal', hex: '#2B9EB0', use: 'Linea di rotta su scuro', on: 'dark' },
+  { name: '--color-teal-ink', hex: '#1B7087', use: 'Accento su chiaro — 5.28 AA', on: 'light' },
+];
+
+const typeScale = [
+  { token: '--text-5xl', label: 'Hero della home', sample: 'Getting into an Italian university' },
+  { token: '--text-4xl', label: 'Titolo di pagina', sample: 'What we actually do' },
+  { token: '--text-3xl', label: 'Titolo di sezione', sample: 'The part after admission' },
+  { token: '--text-2xl', label: 'Nome del livello', sample: 'Settled' },
+  { token: '--text-xl', label: 'Titolo di pilastro', sample: 'Before you leave' },
+  { token: '--text-lg', label: 'Lead', sample: 'Visa, residence permit, fiscal code.' },
+  { token: '--text-base', label: 'Testo corrente', sample: 'Eight working days after you land.' },
+  { token: '--text-sm', label: 'Elenchi, didascalie', sample: 'Contract review before you sign.' },
+  { token: '--text-xs', label: 'Etichette', sample: 'Before you leave' },
+];
+
+const icons = [
+  'compass',
+  'document',
+  'calendar',
+  'permit',
+  'building',
+  'contract',
+  'health',
+  'house',
+] as const;
+
+const demoStopsBefore = [
+  { label: 'Course and university choice' },
+  { label: 'Consular file and type D visa', key: true },
+];
+const demoStopsAfter = [
+  { label: 'Residence permit filed', key: true, note: 'within 8 working days' },
+  { label: 'Residency registration and health cover' },
+];
 ---
 
-<PageLayout locale={locale} routeKey="styleguide" title="Styleguide" noindex>
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout
+  locale={locale}
+  routeKey="styleguide"
+  title="Design system"
+  eyebrow="Internal reference — Phase 4"
+  noindex
+>
+  <Section surface="light" labelledby="sg-principle">
+    <h2 class="sg-h2" id="sg-principle">Il principio: due superfici</h2>
+    <div class="sg-prose">
+      <p>
+        L'oro del brand ha <strong>2.33</strong> di contrasto sul cream — illeggibile — e
+        <strong>8.59</strong> sul navy — AAA. Il teal fa l'opposto. Quindi il colore d'accento non è una
+        costante del sistema: <strong>dipende dalla superficie</strong>.
+      </p>
+      <p>
+        Le classi <code>.surface-dark</code>, <code>.surface-panel</code> e
+        <code>.surface-light</code> ridefiniscono un piccolo set di variabili (<code
+          >--surface-fg</code
+        >, <code>--surface-accent</code>, <code>--surface-rule</code>…), e ogni componente legge
+        quelle invece dei colori diretti. Un bottone o una spunta messi su fondo chiaro o scuro
+        prendono da soli l'accento conforme: non si può sbagliare per distrazione.
+      </p>
+      <p>
+        <strong>Regola di composizione:</strong> i blocchi da <em>leggere</em> — testo lungo, tabelle,
+        FAQ — vanno su <code>light</code>. Lo scuro resta per hero, navigazione, transizioni e
+        chiusure.
+      </p>
+    </div>
+  </Section>
+
+  <Section labelledby="sg-colour">
+    <h2 class="sg-h2" id="sg-colour">Colore</h2>
+    <p class="sg-note">
+      Ogni valore deriva dal logo. I rapporti indicati sono calcolati, non stimati:
+      <code>npm run check:contrast</code> verifica tutte le coppie in uso e fallisce se una scende sotto
+      la soglia.
+    </p>
+    <ul class="sg-swatches">
+      {
+        colours.map((colour) => (
+          <li class="sg-swatch">
+            <span class="sg-swatch__chip" style={`background:${colour.hex}`} />
+            <code>{colour.name}</code>
+            <span class="sg-swatch__hex">{colour.hex}</span>
+            <span class="sg-swatch__use">{colour.use}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section surface="light" labelledby="sg-type">
+    <h2 class="sg-h2" id="sg-type">Tipografia</h2>
+    <p class="sg-note">
+      <strong>EB Garamond</strong> per i titoli, <strong>Archivo</strong> per tutto il resto. Due famiglie,
+      nessuna terza. Entrambe self-hosted: nessuna richiesta a domini terzi. La scala è fluida, senza
+      breakpoint — interpola con continuità da 320 a 1920 px, e regge l'italiano che è più lungo dell'inglese
+      del 15–20%.
+    </p>
+    <ul class="sg-type">
+      {
+        typeScale.map((step) => (
+          <li class="sg-type__row">
+            <code>{step.token}</code>
+            <span class="sg-type__label">{step.label}</span>
+            <span class="sg-type__sample" style={`font-size:var(${step.token})`}>
+              {step.sample}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section labelledby="sg-brand">
+    <h2 class="sg-h2" id="sg-brand">Marchio</h2>
+    <p class="sg-note">
+      Il wordmark è testo vero, non un tracciato: il lockup si ricompone, resta nitido a ogni
+      dimensione e gli screen reader leggono «Kimere». La punta nord della rosa dei venti è oro.
+    </p>
+    <div class="sg-row">
+      <div class="sg-demo">
+        <p class="label label-muted">compact — header, favicon</p>
+        <Logo locale={locale} />
+      </div>
+      <div class="sg-demo">
+        <p class="label label-muted">full — footer, pagine legali, immagine social</p>
+        <Logo locale={locale} variant="full" />
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="panel" labelledby="sg-buttons">
+    <h2 class="sg-h2" id="sg-buttons">Bottoni</h2>
+    <p class="sg-note">
+      <code>primary</code> è oro con testo navy: non dipende dal fondo, quindi è identico su ogni superficie.
+      <code>secondary</code> e <code>quiet</code> si ricolorano da soli. Il testo è sempre verbo + risultato,
+      mai un'etichetta di sistema.
+    </p>
+    <div class="sg-row">
+      <Button href="#">Book your 15-minute call</Button>
+      <Button href="#" variant="secondary">See the full process</Button>
+      <Button href="#" variant="quiet">See all 11 steps</Button>
+    </div>
+    <div class="sg-row">
+      <Button href="#" size="sm">Small primary</Button>
+      <Button href="#" variant="secondary" size="sm">Small secondary</Button>
+      <Button disabled>Disabled</Button>
+    </div>
+    <p class="sg-note">Gli stessi bottoni su superficie chiara:</p>
+    <div class="sg-row surface-light sg-inset">
+      <Button href="#">Book your 15-minute call</Button>
+      <Button href="#" variant="secondary">See the full process</Button>
+      <Button href="#" variant="quiet">See all 11 steps</Button>
+    </div>
+  </Section>
+
+  <Section labelledby="sg-badges">
+    <h2 class="sg-h2" id="sg-badges">Etichette</h2>
+    <div class="sg-row">
+      <Badge>Before you leave</Badge>
+      <Badge variant="solid">8 working days</Badge>
+      <Badge variant="quiet">Optional</Badge>
+      <span class="label">Etichetta strutturale (.label)</span>
+    </div>
+  </Section>
+
+  <Section surface="light" labelledby="sg-blocks">
+    <h2 class="sg-h2" id="sg-blocks">Card, spunte, rotta</h2>
+    <div class="sg-grid">
+      <Card>
+        <h3 class="sg-h3">Settled</h3>
+        <p class="sg-note">Everything in Arrival, plus a verified place to live.</p>
+        <p class="label label-muted sg-mt">Included — the whole route</p>
+        <ul class="checklist">
+          <li>Everything in Arrival</li>
+          <li>Contract review before you sign anything</li>
+          <li>Lease registration and the paperwork it requires</li>
+        </ul>
+      </Card>
+
+      <RouteMap
+        locale={locale}
+        title="The route, in short"
+        pivot="You land in Italy"
+        stopsBefore={demoStopsBefore}
+        stopsAfter={demoStopsAfter}
+      />
+    </div>
+  </Section>
+
+  <Section labelledby="sg-accordion">
+    <h2 class="sg-h2" id="sg-accordion">Accordion</h2>
+    <p class="sg-note">
+      Su <code>&lt;details&gt;</code> nativi: nessun JavaScript, la tastiera funziona da sola e il browser
+      trova il testo chiuso con Ctrl+F.
+    </p>
+    <div class="sg-prose">
+      <Accordion open>
+        <span slot="summary">Do I have to pay before I see the room?</span>
+        <p>Never send money for a room you have not seen through a verified contract.</p>
+      </Accordion>
+      <Accordion>
+        <span slot="summary">How long do I actually have after I land?</span>
+        <p>Eight working days to file your residence permit.</p>
+      </Accordion>
+    </div>
+  </Section>
+
+  <Section surface="light" labelledby="sg-form">
+    <h2 class="sg-h2" id="sg-form">Campi di modulo</h2>
+    <p class="sg-note">
+      L'etichetta è sempre visibile e non viene sostituita dal placeholder. Il suggerimento spiega
+      <em>perché</em> il campo esiste. L'errore dice come rimediare ed è collegato con
+      <code>aria-describedby</code>.
+    </p>
+    <div class="sg-form">
+      <Field id="sg-name" label="Your name" required>
+        <Input id="sg-name" name="sg-name" placeholder="e.g. Aarav Sharma…" required />
+      </Field>
+
+      <Field
+        id="sg-nat"
+        label="Your nationality"
+        hint="It decides everything that follows: visa, deadlines, paperwork."
+        required
+      >
+        <Input
+          as="select"
+          id="sg-nat"
+          name="sg-nat"
+          required
+          describedBy={describedBy('sg-nat', { hint: true })}
+        >
+          <option value="">Select…</option>
+          <option>India</option>
+          <option>Egypt</option>
+        </Input>
+      </Field>
+
+      <Field id="sg-email" label="Email" error="Add an @ so we can write back to you.">
+        <Input
+          id="sg-email"
+          name="sg-email"
+          type="email"
+          value="aarav.example"
+          describedBy={describedBy('sg-email', { error: true })}
+        />
+      </Field>
+
+      <Field id="sg-notes" label="Anything else" optionalLabel="(optional)">
+        <Input as="textarea" id="sg-notes" name="sg-notes" placeholder="Tell us where you are…" />
+      </Field>
+    </div>
+  </Section>
+
+  <Section labelledby="sg-icons">
+    <h2 class="sg-h2" id="sg-icons">Icone — ILL-03 e ILL-05</h2>
+    <p class="sg-note">
+      Solo linea, spessore costante. L'oro marca <strong>un solo elemento per icona</strong>, sempre
+      quello che conta: il sigillo approvato, il giorno della scadenza, la porta di casa tua.
+    </p>
+    <ul class="sg-icons">
+      {
+        icons.map((name) => (
+          <li>
+            <StepIcon name={name} />
+            <code>{name}</code>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section surface="light" labelledby="sg-ill">
+    <h2 class="sg-h2" id="sg-ill">Illustrazioni</h2>
+
+    <h3 class="sg-h3 sg-mt">ILL-02 — gli enti che non si parlano</h3>
+    <p class="sg-note">
+      Il diagramma dice la sua cosa per sottrazione: nessuna linea collega le caselle.
+    </p>
+    <OfficesGrid
+      offices={['Consulate', 'University', 'Post office', 'Questura', 'Tax agency', 'Municipality']}
+      caption="Each one has its own deadlines, its own forms, and no idea what the others asked you."
+    />
+
+    <h3 class="sg-h3 sg-mt">ILL-04 — il modello di collaborazione B2B</h3>
+    <HandoverDiagram
+      theirTitle="You, in your country"
+      theirItems={['Recruitment', 'First contact', 'Academic pre-screening']}
+      handover="Handover at Universitaly"
+      ourTitle="Us, in Italy"
+      ourItems={[
+        'Universitaly and the consular file',
+        'Residence permit and fiscal code',
+        'Housing and lease',
+      ]}
+    />
+
+    <h3 class="sg-h3 sg-mt">ILL-07 — stato vuoto / 404</h3>
+    <BrokenRoute class="sg-brokenroute" />
+  </Section>
 </PageLayout>
+
+<style>
+  .sg-h2 {
+    font-size: var(--text-3xl);
+  }
+  .sg-h3 {
+    font-size: var(--text-xl);
+  }
+  .sg-mt {
+    margin-top: 2rem;
+  }
+  .sg-note {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    max-width: var(--container-prose);
+    margin-top: 0.9rem;
+  }
+  .sg-prose {
+    max-width: var(--container-prose);
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.9rem;
+    color: var(--surface-fg-soft);
+  }
+  code {
+    font-family: ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+    font-size: 0.85em;
+    color: var(--surface-accent);
+  }
+
+  .sg-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .sg-inset {
+    padding: 1.5rem;
+    border-radius: var(--radius-xs);
+  }
+  .sg-demo {
+    display: grid;
+    gap: 0.85rem;
+  }
+  .sg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+    align-items: start;
+  }
+  .sg-form {
+    display: grid;
+    gap: 1.35rem;
+    max-width: 30rem;
+    margin-top: 1.75rem;
+  }
+
+  .sg-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: 0.75rem 2rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-swatch {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    grid-template-areas: 'chip name' 'chip hex' 'chip use';
+    gap: 0 0.85rem;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--surface-rule);
+    font-size: var(--text-xs);
+  }
+  .sg-swatch__chip {
+    grid-area: chip;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--surface-rule);
+  }
+  .sg-swatch code {
+    grid-area: name;
+  }
+  .sg-swatch__hex {
+    grid-area: hex;
+    color: var(--surface-fg-muted);
+  }
+  .sg-swatch__use {
+    grid-area: use;
+    color: var(--surface-fg-muted);
+  }
+
+  .sg-type {
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-type__row {
+    display: grid;
+    gap: 0.15rem 1.5rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--surface-rule);
+  }
+  .sg-type__label {
+    font-size: var(--text-xs);
+    color: var(--surface-fg-muted);
+  }
+  .sg-type__sample {
+    font-family: var(--font-display);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+
+  .sg-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+    gap: 1.5rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-icons li {
+    display: grid;
+    justify-items: center;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .sg-brokenroute {
+    width: min(100%, 22rem);
+    height: auto;
+    margin-top: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .sg-type__row {
+      grid-template-columns: 9rem 10rem minmax(0, 1fr);
+      align-items: baseline;
+    }
+  }
+</style>

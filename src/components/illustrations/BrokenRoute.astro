@@ -1,0 +1,40 @@
+---
+/**
+ * ILL-07 — stato vuoto / 404.
+ *
+ * La stessa linea di rotta del resto del sito, interrotta. Il nodo che dovrebbe
+ * chiuderla è fuori tracciato, in oro. Nessun omino smarrito, nessun punto
+ * interrogativo gigante: il segno del sito dice da solo cosa è successo.
+ * Decorativa — il messaggio vero è nel testo accanto.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg viewBox="0 0 240 96" fill="none" class={className} aria-hidden="true" focusable="false">
+  <!-- tratto percorso -->
+  <path d="M8 62h96" stroke="var(--color-teal)" stroke-width="1.5"></path>
+  <circle cx="8" cy="62" r="5" fill="none" stroke="var(--color-teal)" stroke-width="1.5"></circle>
+  <circle cx="56" cy="62" r="5" fill="none" stroke="var(--color-teal)" stroke-width="1.5"></circle>
+  <circle cx="104" cy="62" r="5" fill="none" stroke="var(--color-teal)" stroke-width="1.5"></circle>
+
+  <!-- il tratto mancante -->
+  <path
+    d="M112 62h64"
+    stroke="var(--color-teal)"
+    stroke-width="1.5"
+    stroke-dasharray="3 7"
+    opacity="0.5"></path>
+
+  <!-- il nodo fuori rotta -->
+  <circle cx="204" cy="30" r="6" fill="var(--surface-accent, #D6B86C)"></circle>
+  <path
+    d="M186 44 200 34"
+    stroke="var(--surface-accent, #D6B86C)"
+    stroke-width="1.5"
+    stroke-dasharray="3 6"
+    opacity="0.7"></path>
+</svg>

@@ -3,6 +3,7 @@
   "key": "admission",
   "name": "Admission",
   "tagline": "La parte accademica fatta bene, dalla scelta del corso al fascicolo per il visto.",
+  "coverage": "Fino al visto",
   "includes": [
     "Orientamento su corso e ateneo, calibrato sul tuo profilo e sul budget",
     "Pre-iscrizione su Universitaly, monitorata secondo la scadenza di ogni ateneo",

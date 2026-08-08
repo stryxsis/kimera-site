@@ -39,6 +39,9 @@ const packages = defineCollection({
     key: z.enum(['admission', 'arrival', 'settled']),
     name: z.string(),
     tagline: z.string(),
+    // Fin dove arriva il livello sul percorso. Sostituisce la barra di copertura
+    // scartata al gate 4.2 (D-13): stessa informazione, detta a parole.
+    coverage: z.string(),
     includes: z.array(z.string()),
     // Niente campo "price": vincolo di prodotto non negoziabile (nessun prezzo pubblico).
   }),
@@ -84,6 +87,9 @@ const homePage = defineCollection({
   loader: glob({ base: './src/content/homePage', pattern: '*.json' }),
   schema: z.object({
     hero: z.object({
+      // Dichiara il destinatario nella prima riga: la home ha 8 secondi per
+      // smistare studenti e agenzie su due percorsi diversi (content-map.md).
+      eyebrow: z.string(),
       headline: z.string(),
       subhead: z.string(),
       ctaPrimary: z.string(),
@@ -98,7 +104,24 @@ const homePage = defineCollection({
       heading: z.string(),
       pillars: z.array(z.object({ title: z.string(), body: z.string() })),
     }),
-    processPreview: z.object({ heading: z.string(), body: z.string(), ctaLabel: z.string() }),
+    /**
+     * L'anteprima del percorso — nella direzione «Rotta» (D-13) non è una sezione
+     * più in basso: è metà dell'hero. Il visitatore VEDE il percorso nei primi tre
+     * secondi invece di leggere che esiste.
+     * `key` marca le tappe critiche (nodo pieno in oro), `note` la scadenza.
+     */
+    processPreview: z.object({
+      heading: z.string(),
+      body: z.string(),
+      ctaLabel: z.string(),
+      pivot: z.string(),
+      stopsBefore: z.array(
+        z.object({ label: z.string(), key: z.boolean().optional(), note: z.string().optional() }),
+      ),
+      stopsAfter: z.array(
+        z.object({ label: z.string(), key: z.boolean().optional(), note: z.string().optional() }),
+      ),
+    }),
     packagesPreview: z.object({ heading: z.string(), body: z.string() }),
     trustBuilding: heading,
     finalCta: z.object({ heading: z.string(), body: z.string(), ctaLabel: z.string() }),

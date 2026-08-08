@@ -1,5 +1,6 @@
 {
   "hero": {
+    "eyebrow": "For students coming to Italy",
     "headline": "Getting into an Italian university is the easy part.",
     "subhead": "Visa, residence permit, fiscal code, municipal registration, health cover, housing — that's the part almost no one warns you about. We handle it with you, step by step.",
     "ctaPrimary": "Book your 15-minute call",
@@ -34,7 +35,20 @@
   "processPreview": {
     "heading": "The full path, mapped out",
     "body": "From your first application to your residence permit, here's exactly what happens and when — including the 8-day deadline almost no one mentions.",
-    "ctaLabel": "See how it works"
+    "ctaLabel": "See all 11 steps",
+    "pivot": "You land in Italy",
+    "stopsBefore": [
+      { "label": "Course and university choice" },
+      { "label": "Universitaly pre-registration" },
+      { "label": "Qualification recognition" },
+      { "label": "Consular file and type D visa", "key": true }
+    ],
+    "stopsAfter": [
+      { "label": "Residence permit filed", "key": true, "note": "within 8 working days" },
+      { "label": "Questura appointment and fiscal code" },
+      { "label": "Residency registration and health cover" },
+      { "label": "A lease that actually holds up" }
+    ]
   },
   "packagesPreview": {
     "heading": "Three levels of support",

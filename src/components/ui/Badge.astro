@@ -1,0 +1,45 @@
+---
+/**
+ * Etichetta breve: fase, categoria, scadenza.
+ *
+ * `accent` usa il colore d'accento della superficie (oro su scuro, teal su
+ * chiaro). `solid` è oro pieno con testo navy — 6.62, AA — e serve al dato
+ * che deve fermare l'occhio: nel sito è quasi sempre la scadenza degli 8 giorni.
+ */
+interface Props {
+  variant?: 'accent' | 'solid' | 'quiet';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { variant = 'accent', class: className, ...rest } = Astro.props;
+const classes = ['badge', `badge--${variant}`, className].filter(Boolean).join(' ');
+---
+
+<span class={classes} {...rest}><slot /></span>
+
+<style>
+  .badge {
+    display: inline-block;
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    line-height: 1.25;
+    padding: 0.3rem 0.55rem;
+    border-radius: var(--radius-xs);
+    border: 1px solid transparent;
+  }
+  .badge--accent {
+    color: var(--surface-accent);
+    border-color: color-mix(in srgb, var(--surface-accent) 45%, transparent);
+  }
+  .badge--solid {
+    background-color: var(--color-gold);
+    color: var(--color-ground);
+  }
+  .badge--quiet {
+    color: var(--surface-fg-muted);
+    border-color: var(--surface-rule);
+  }
+</style>

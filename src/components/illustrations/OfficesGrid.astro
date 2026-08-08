@@ -1,0 +1,73 @@
+---
+/**
+ * ILL-02 — «gli enti coinvolti, e il fatto che non si parlano».
+ *
+ * Il diagramma dice la sua cosa per SOTTRAZIONE: le caselle non sono collegate
+ * da nessuna linea. Ognuna ha un tratto tratteggiato che parte e non arriva da
+ * nessuna parte. È letteralmente il problema — sette amministrazioni che non
+ * comunicano tra loro e che lo studente deve tenere insieme da solo.
+ *
+ * HTML e non SVG: i nomi degli enti sono contenuto tradotto e devono andare a capo.
+ */
+interface Props {
+  offices: string[];
+  caption?: string;
+  class?: string;
+}
+
+const { offices, caption, class: className } = Astro.props;
+---
+
+<figure class:list={['offices', className]}>
+  <ul class="offices__grid">
+    {
+      offices.map((office) => (
+        <li class="offices__cell">
+          <span class="offices__stub" aria-hidden="true" />
+          {office}
+        </li>
+      ))
+    }
+  </ul>
+  {caption && <figcaption class="offices__caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  .offices {
+    margin: 0;
+  }
+  .offices__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr));
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .offices__cell {
+    position: relative;
+    padding: 1rem 1rem 1.05rem;
+    border: 1px dashed var(--surface-line);
+    border-radius: var(--radius-xs);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--surface-fg);
+    background-color: var(--surface-raised);
+  }
+  /* il tratto che parte e non arriva */
+  .offices__stub {
+    position: absolute;
+    right: 0.85rem;
+    bottom: 0.5rem;
+    width: 1.6rem;
+    height: 1px;
+    background: repeating-linear-gradient(to right, var(--color-teal) 0 3px, transparent 3px 6px);
+    opacity: 0.7;
+  }
+  .offices__caption {
+    margin-top: 1.15rem;
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    max-width: 56ch;
+  }
+</style>

@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kimere — Direzione A · Sportello</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ─────────────────────────────────────────────────────────────
+         DIREZIONE A — "SPORTELLO"
+         La fiducia si dimostra con l'ordine. Tutto ha un'etichetta,
+         tutto ha il suo posto. La pagina si legge come un modulo
+         amministrativo progettato bene: è esattamente la promessa
+         del servizio — sappiamo a quale sportello si va.
+         ───────────────────────────────────────────────────────────── */
+
+      :root {
+        /* Superficie chiara — l'unica di questa direzione */
+        --cream: #fbf7eb;
+        --cream-deep: #f3eddb;
+        --ink: #0a2546; /* navy wordmark — 14.35 su cream */
+        --ink-deep: #071f3d;
+        --blue: #103e5d; /* 10.49 su cream */
+        --teal: #1b7087; /* 5.28 su cream — soglia minima per testo */
+        --gray: #5b5c5a; /* 6.28 su cream */
+        --gold: #bda15d; /* MAI testo su cream (2.33). Solo fondo bottone. */
+        --gold-hi: #d6b86c; /* 8.00 su navy */
+        --rule: rgba(10, 37, 70, 0.18);
+        --rule-strong: rgba(10, 37, 70, 0.42);
+
+        --rail: 9.5rem;
+        --gutter: 2rem;
+        --measure: 62ch;
+
+        --serif: 'Bodoni Moda', 'Didot', 'Times New Roman', serif;
+        --sans: 'Public Sans', -apple-system, 'Segoe UI', system-ui, sans-serif;
+        --mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+
+        --step-label: clamp(0.68rem, 0.62rem + 0.2vw, 0.75rem);
+        --step-body: clamp(1rem, 0.96rem + 0.22vw, 1.125rem);
+        --step-lead: clamp(1.1rem, 1rem + 0.55vw, 1.375rem);
+        --step-h2: clamp(1.6rem, 1.25rem + 1.5vw, 2.35rem);
+        --step-h1: clamp(2.35rem, 1.5rem + 3.8vw, 4.25rem);
+        --step-stat: clamp(2rem, 1.3rem + 2.9vw, 3.4rem);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: var(--step-body);
+        line-height: 1.6;
+        font-synthesis-weight: none;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      figure {
+        margin: 0;
+      }
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid var(--teal);
+        outline-offset: 3px;
+      }
+
+      .wrap {
+        width: min(100% - 2.5rem, 76rem);
+        margin-inline: auto;
+      }
+
+      /* ── Il dispositivo firma: la corsia delle etichette ───────── */
+      .row {
+        display: grid;
+        grid-template-columns: var(--rail) minmax(0, 1fr);
+        column-gap: var(--gutter);
+      }
+      .row__label {
+        font-family: var(--mono);
+        font-size: var(--step-label);
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--gray);
+        padding-top: 0.55rem;
+        border-top: 1px solid var(--rule-strong);
+        align-self: start;
+      }
+      .row__body {
+        padding-top: 0.4rem;
+      }
+
+      /* ── Intestazione ─────────────────────────────────────────── */
+      .site-header {
+        border-bottom: 1px solid var(--rule);
+        background: var(--cream);
+      }
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding-block: 1.1rem;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        margin-right: auto;
+      }
+      .brand__mark {
+        width: 34px;
+        height: 34px;
+        flex: none;
+        color: var(--ink);
+      }
+      .brand__word {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 1.4rem;
+        letter-spacing: 0.16em;
+        line-height: 1;
+      }
+      .brand__desc {
+        display: block;
+        font-family: var(--mono);
+        font-size: 0.56rem;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        color: var(--gray);
+        margin-top: 0.32rem;
+      }
+      .nav {
+        display: flex;
+        gap: 1.45rem;
+        font-family: var(--mono);
+        font-size: var(--step-label);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav a {
+        text-decoration: none;
+        padding-bottom: 2px;
+        border-bottom: 1px solid transparent;
+      }
+      .nav a:hover {
+        border-bottom-color: var(--ink);
+      }
+
+      .btn {
+        display: inline-block;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        padding: 0.85rem 1.4rem;
+        text-decoration: none;
+        border: 1px solid transparent;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+      }
+      .btn--gold {
+        background: var(--gold);
+        color: var(--ink-deep); /* 6.16 — AA */
+        border-color: var(--gold);
+      }
+      .btn--gold:hover {
+        background: #ad924f;
+        border-color: #ad924f;
+      }
+      .btn--ghost {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--rule-strong);
+      }
+      .btn--ghost:hover {
+        border-color: var(--ink);
+      }
+      .btn--sm {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+      }
+      .btn--onDark {
+        background: var(--gold);
+        color: var(--ink-deep);
+      }
+
+      .lang {
+        display: flex;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        border: 1px solid var(--rule-strong);
+      }
+      .lang button {
+        font: inherit;
+        background: none;
+        border: 0;
+        padding: 0.4rem 0.55rem;
+        cursor: pointer;
+        color: var(--gray);
+      }
+      .lang button[aria-pressed='true'] {
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      /* ── Hero ─────────────────────────────────────────────────── */
+      .hero {
+        padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 6vw, 5rem);
+      }
+      .hero h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: var(--step-h1);
+        line-height: 1.02;
+        letter-spacing: -0.012em;
+        max-width: 18ch;
+        text-wrap: balance;
+      }
+      .hero__lead {
+        font-size: var(--step-lead);
+        line-height: 1.5;
+        color: var(--blue);
+        max-width: var(--measure);
+        margin-top: 1.6rem;
+      }
+      .hero__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2.2rem;
+      }
+      .hero__note {
+        font-family: var(--mono);
+        font-size: var(--step-label);
+        letter-spacing: 0.06em;
+        color: var(--gray);
+        margin-top: 1.15rem;
+      }
+
+      /* ── Fascia dati (unica superficie scura) ─────────────────── */
+      .scale {
+        background: var(--ink-deep);
+        color: var(--cream);
+        padding-block: clamp(2.75rem, 6vw, 4.5rem);
+      }
+      .scale .row__label {
+        color: var(--gold-hi);
+        border-top-color: rgba(214, 184, 108, 0.5);
+      }
+      .scale h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: var(--step-h2);
+        line-height: 1.12;
+        max-width: 20ch;
+      }
+      .scale p {
+        color: #cfd8e2;
+        max-width: var(--measure);
+        margin-top: 1.1rem;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        margin-top: 2.6rem;
+        border-top: 1px solid rgba(214, 184, 108, 0.35);
+      }
+      .stat {
+        padding: 1.5rem 1.4rem 1.5rem 0;
+        border-right: 1px solid rgba(251, 247, 235, 0.14);
+      }
+      .stat:last-child {
+        border-right: 0;
+      }
+      .stat__value {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: var(--step-stat);
+        line-height: 1;
+        color: var(--gold-hi); /* 8.00 su navy — AAA */
+        display: block;
+      }
+      .stat__label {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        color: #cfd8e2;
+        margin-top: 0.85rem;
+        display: block;
+        max-width: 24ch;
+      }
+
+      /* ── Livelli di servizio: righe di registro, non card ──────── */
+      .levels {
+        padding-block: clamp(3rem, 7vw, 5.5rem);
+      }
+      .levels__intro h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: var(--step-h2);
+        line-height: 1.12;
+      }
+      .levels__intro p {
+        color: var(--blue);
+        max-width: var(--measure);
+        margin-top: 1rem;
+      }
+      .level {
+        margin-top: 2.75rem;
+      }
+      .level__name {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem);
+        line-height: 1.1;
+        letter-spacing: 0.01em;
+      }
+      .level__tagline {
+        color: var(--blue);
+        max-width: 52ch;
+        margin-top: 0.55rem;
+      }
+      .level__includes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+        column-gap: var(--gutter);
+        margin-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+      }
+      .level__includes li {
+        display: grid;
+        grid-template-columns: 1.7rem 1fr;
+        gap: 0.4rem;
+        padding: 0.7rem 1rem 0.7rem 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.97rem;
+        line-height: 1.45;
+      }
+      .level__includes li::before {
+        content: attr(data-n);
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--teal);
+        padding-top: 0.28rem;
+        letter-spacing: 0.04em;
+      }
+      .level__cta {
+        margin-top: 1.35rem;
+      }
+      .level__cta a {
+        font-family: var(--mono);
+        font-size: var(--step-label);
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--teal);
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+        padding-bottom: 2px;
+      }
+      .level__cta a:hover {
+        color: var(--ink);
+      }
+
+      .closing {
+        border-top: 1px solid var(--rule-strong);
+        margin-top: 3.5rem;
+        padding-top: 1.5rem;
+        font-family: var(--mono);
+        font-size: var(--step-label);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+
+      /* ── Badge di servizio del mockup (non fa parte del design) ── */
+      .mockup-badge {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 50;
+        background: #111;
+        color: #fff;
+        font: 500 0.7rem/1 var(--mono);
+        letter-spacing: 0.07em;
+        padding: 0.55rem 0.8rem;
+        border-top-right-radius: 3px;
+      }
+
+      @media (max-width: 60rem) {
+        .nav {
+          display: none;
+        }
+      }
+      @media (max-width: 46rem) {
+        :root {
+          --rail: 0;
+        }
+        .row {
+          grid-template-columns: 1fr;
+          row-gap: 0.7rem;
+        }
+        .row__label {
+          border-top: 0;
+          padding-top: 0;
+        }
+        .stat {
+          border-right: 0;
+          border-bottom: 1px solid rgba(251, 247, 235, 0.14);
+          padding-right: 0;
+        }
+        .stat:last-child {
+          border-bottom: 0;
+        }
+        .site-header__inner {
+          flex-wrap: wrap;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="#">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="39" height="39" fill="none" stroke="currentColor" />
+            <path
+              d="M20 4.5 L22.1 17.9 L35.5 20 L22.1 22.1 L20 35.5 L17.9 22.1 L4.5 20 L17.9 17.9 Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.15"
+            />
+            <path
+              d="M11.5 11.5 L18.6 18.6 M28.5 11.5 L21.4 18.6 M28.5 28.5 L21.4 21.4 M11.5 28.5 L18.6 21.4"
+              stroke="currentColor"
+              stroke-width="0.8"
+              opacity="0.45"
+            />
+          </svg>
+          <span>
+            <span class="brand__word">KIMERE</span>
+            <span class="brand__desc">International Academy &amp; Consulting</span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#" data-en="How it works" data-it="Come funziona">How it works</a>
+          <a href="#" data-en="Services" data-it="Servizi">Services</a>
+          <a href="#" data-en="Housing" data-it="Alloggio">Housing</a>
+          <a href="#" data-en="Costs" data-it="Costi">Costs</a>
+          <a href="#" data-en="About" data-it="Chi siamo">About</a>
+        </nav>
+
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang-btn="it" aria-pressed="false">IT</button>
+        </div>
+
+        <a
+          class="btn btn--gold btn--sm"
+          href="#"
+          data-en="Book your 15-minute call"
+          data-it="Prenota la call di 15 minuti"
+          >Book your 15-minute call</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap row">
+          <p
+            class="row__label"
+            data-en="01 — What you're facing"
+            data-it="01 — Cosa ti aspetta"
+          >
+            01 — What you're facing
+          </p>
+          <div class="row__body">
+            <h1
+              data-en="Getting into an Italian university is the easy part."
+              data-it="Entrare in un'università italiana è la parte facile."
+            >
+              Getting into an Italian university is the easy part.
+            </h1>
+            <p
+              class="hero__lead"
+              data-en="Visa, residence permit, fiscal code, municipal registration, health cover, housing — that's the part almost no one warns you about. We handle it with you, step by step."
+              data-it="Visto, permesso di soggiorno, codice fiscale, residenza, copertura sanitaria, alloggio — è la parte di cui quasi nessuno ti avvisa. La affrontiamo insieme a te, passo dopo passo."
+            >
+              Visa, residence permit, fiscal code, municipal registration, health cover, housing —
+              that's the part almost no one warns you about. We handle it with you, step by step.
+            </p>
+            <div class="hero__actions">
+              <a
+                class="btn btn--gold"
+                href="#"
+                data-en="Book your 15-minute call"
+                data-it="Prenota la tua call di 15 minuti"
+                >Book your 15-minute call</a
+              >
+              <a
+                class="btn btn--ghost"
+                href="#"
+                data-en="See the full process"
+                data-it="Guarda il percorso completo"
+                >See the full process</a
+              >
+            </div>
+            <p
+              class="hero__note"
+              data-en="15 minutes · no cost · no obligation"
+              data-it="15 minuti · senza costi · senza impegno"
+            >
+              15 minutes · no cost · no obligation
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="scale">
+        <div class="wrap row">
+          <p class="row__label" data-en="02 — The scale" data-it="02 — Le dimensioni">
+            02 — The scale
+          </p>
+          <div class="row__body">
+            <h2
+              data-en="The part after admission is a maze"
+              data-it="Dopo l'ammissione inizia il labirinto"
+            >
+              The part after admission is a maze
+            </h2>
+            <p
+              data-en="Between your acceptance letter and your first day of class, you'll deal with a consulate, a university, a post office, an immigration office, a tax agency, and your local municipality — each with its own deadlines and its own paperwork."
+              data-it="Tra la lettera di ammissione e il primo giorno di lezione dovrai avere a che fare con un consolato, un ateneo, un ufficio postale, la Questura, l'Agenzia delle Entrate e il tuo Comune — ognuno con scadenze e pratiche proprie."
+            >
+              Between your acceptance letter and your first day of class, you'll deal with a
+              consulate, a university, a post office, an immigration office, a tax agency, and your
+              local municipality — each with its own deadlines and its own paperwork.
+            </p>
+
+            <ul class="stats">
+              <li class="stat">
+                <span class="stat__value" data-en="8 working days" data-it="8 giorni lavorativi"
+                  >8 working days</span
+                >
+                <span
+                  class="stat__label"
+                  data-en="to file your residence permit after landing"
+                  data-it="per depositare il permesso di soggiorno dopo l'atterraggio"
+                  >to file your residence permit after landing</span
+                >
+              </li>
+              <li class="stat">
+                <span class="stat__value">6+</span>
+                <span
+                  class="stat__label"
+                  data-en="different offices involved before you're fully settled"
+                  data-it="enti diversi coinvolti prima di essere davvero sistemato"
+                  >different offices involved before you're fully settled</span
+                >
+              </li>
+              <li class="stat">
+                <span class="stat__value">90+</span>
+                <span
+                  class="stat__label"
+                  data-en="Italian universities, each with its own admission calendar"
+                  data-it="università italiane, ognuna con il proprio calendario di ammissione"
+                  >Italian universities, each with its own admission calendar</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="levels">
+        <div class="wrap">
+          <div class="row levels__intro">
+            <p
+              class="row__label"
+              data-en="03 — How far we come with you"
+              data-it="03 — Quanto lontano veniamo con te"
+            >
+              03 — How far we come with you
+            </p>
+            <div class="row__body">
+              <h2 data-en="Three levels of support" data-it="Tre livelli di supporto">
+                Three levels of support
+              </h2>
+              <p
+                data-en="Choose how far you want us to go with you — from getting your application right, to being there when you land, to having a verified place to live."
+                data-it="Scegli quanto lontano vuoi che veniamo con te — dal curare bene la candidatura, all'essere presenti quando atterri, ad avere un alloggio verificato."
+              >
+                Choose how far you want us to go with you — from getting your application right, to
+                being there when you land, to having a verified place to live.
+              </p>
+            </div>
+          </div>
+
+          <article class="row level">
+            <p class="row__label" data-en="Level 01" data-it="Livello 01">Level 01</p>
+            <div class="row__body">
+              <h3 class="level__name">Admission</h3>
+              <p
+                class="level__tagline"
+                data-en="Get the academic side right, from course choice to your visa file."
+                data-it="La parte accademica fatta bene, dalla scelta del corso al fascicolo per il visto."
+              >
+                Get the academic side right, from course choice to your visa file.
+              </p>
+              <ul class="level__includes">
+                <li
+                  data-n="01"
+                  data-en="Course and university guidance matched to your background and budget"
+                  data-it="Orientamento su corso e ateneo, calibrato sul tuo profilo e sul budget"
+                >
+                  Course and university guidance matched to your background and budget
+                </li>
+                <li
+                  data-n="02"
+                  data-en="Universitaly pre-registration, tracked against each university's deadline"
+                  data-it="Pre-iscrizione su Universitaly, monitorata secondo la scadenza di ogni ateneo"
+                >
+                  Universitaly pre-registration, tracked against each university's deadline
+                </li>
+                <li
+                  data-n="03"
+                  data-en="Qualification recognition — Declaration of Value or CIMEA, whichever applies to you"
+                  data-it="Riconoscimento del titolo di studio — Dichiarazione di Valore o CIMEA, secondo il tuo caso"
+                >
+                  Qualification recognition — Declaration of Value or CIMEA, whichever applies to
+                  you
+                </li>
+                <li
+                  data-n="04"
+                  data-en="Your consular visa file, prepared to the standard your consulate expects"
+                  data-it="Fascicolo consolare per il visto, preparato secondo lo standard che il tuo consolato si aspetta"
+                >
+                  Your consular visa file, prepared to the standard your consulate expects
+                </li>
+              </ul>
+              <p class="level__cta">
+                <a href="#" data-en="Talk about this level" data-it="Parliamo di questo livello"
+                  >Talk about this level</a
+                >
+              </p>
+            </div>
+          </article>
+
+          <article class="row level">
+            <p class="row__label" data-en="Level 02" data-it="Livello 02">Level 02</p>
+            <div class="row__body">
+              <h3 class="level__name">Arrival</h3>
+              <p
+                class="level__tagline"
+                data-en="Everything in Admission, plus the first weeks on the ground — the part with the strict deadlines."
+                data-it="Tutto Admission, più le prime settimane sul territorio — la parte con le scadenze rigide."
+              >
+                Everything in Admission, plus the first weeks on the ground — the part with the
+                strict deadlines.
+              </p>
+              <ul class="level__includes">
+                <li
+                  data-n="01"
+                  data-en="Everything in Admission"
+                  data-it="Tutto ciò che è incluso in Admission"
+                >
+                  Everything in Admission
+                </li>
+                <li
+                  data-n="02"
+                  data-en="Your residence permit filed within the 8-working-day deadline"
+                  data-it="Permesso di soggiorno depositato entro la scadenza degli 8 giorni lavorativi"
+                >
+                  Your residence permit filed within the 8-working-day deadline
+                </li>
+                <li
+                  data-n="03"
+                  data-en="Support at your Questura appointment for fingerprinting"
+                  data-it="Supporto all'appuntamento in Questura per il fotosegnalamento"
+                >
+                  Support at your Questura appointment for fingerprinting
+                </li>
+                <li
+                  data-n="04"
+                  data-en="Fiscal code, done on day one"
+                  data-it="Codice fiscale, ottenuto il primo giorno"
+                >
+                  Fiscal code, done on day one
+                </li>
+                <li
+                  data-n="05"
+                  data-en="Residency registration with your specific municipality"
+                  data-it="Registrazione della residenza al tuo Comune specifico"
+                >
+                  Residency registration with your specific municipality
+                </li>
+                <li
+                  data-n="06"
+                  data-en="SSN enrolment guidance, if you choose public health cover"
+                  data-it="Orientamento per l'iscrizione al SSN, se scegli la copertura sanitaria pubblica"
+                >
+                  SSN enrolment guidance, if you choose public health cover
+                </li>
+              </ul>
+              <p class="level__cta">
+                <a href="#" data-en="Talk about this level" data-it="Parliamo di questo livello"
+                  >Talk about this level</a
+                >
+              </p>
+            </div>
+          </article>
+
+          <article class="row level">
+            <p class="row__label" data-en="Level 03" data-it="Livello 03">Level 03</p>
+            <div class="row__body">
+              <h3 class="level__name">Settled</h3>
+              <p
+                class="level__tagline"
+                data-en="Everything in Arrival, plus a verified place to live and a contract that actually holds up."
+                data-it="Tutto Arrival, più un alloggio verificato e un contratto che regge davvero."
+              >
+                Everything in Arrival, plus a verified place to live and a contract that actually
+                holds up.
+              </p>
+              <ul class="level__includes">
+                <li
+                  data-n="01"
+                  data-en="Everything in Arrival"
+                  data-it="Tutto ciò che è incluso in Arrival"
+                >
+                  Everything in Arrival
+                </li>
+                <li
+                  data-n="02"
+                  data-en="Accommodation search support, weighted toward verified listings"
+                  data-it="Supporto nella ricerca dell'alloggio, orientato verso annunci verificati"
+                >
+                  Accommodation search support, weighted toward verified listings
+                </li>
+                <li
+                  data-n="03"
+                  data-en="Contract review before you sign anything"
+                  data-it="Revisione del contratto prima di firmare qualsiasi cosa"
+                >
+                  Contract review before you sign anything
+                </li>
+                <li
+                  data-n="04"
+                  data-en="Lease registration and the paperwork it requires"
+                  data-it="Registrazione del contratto di locazione e la pratica che richiede"
+                >
+                  Lease registration and the paperwork it requires
+                </li>
+                <li
+                  data-n="05"
+                  data-en="A dichiarazione di ospitalità if you need proof of address before your final lease is ready"
+                  data-it="Una dichiarazione di ospitalità se serve una prova di domicilio prima che il contratto definitivo sia pronto"
+                >
+                  A dichiarazione di ospitalità if you need proof of address before your final lease
+                  is ready
+                </li>
+                <li
+                  data-n="06"
+                  data-en="Support through your first weeks in your new city"
+                  data-it="Supporto durante le prime settimane nella nuova città"
+                >
+                  Support through your first weeks in your new city
+                </li>
+              </ul>
+              <p class="level__cta">
+                <a href="#" data-en="Talk about this level" data-it="Parliamo di questo livello"
+                  >Talk about this level</a
+                >
+              </p>
+            </div>
+          </article>
+
+          <p
+            class="closing wrap"
+            data-en="No public price list. What it costs depends on your country, your university and how far you want us to go — you leave the call with a figure."
+            data-it="Nessun listino pubblico. Il costo dipende dal tuo paese, dal tuo ateneo e da quanto lontano vuoi che veniamo — dalla call esci con una cifra."
+          >
+            No public price list. What it costs depends on your country, your university and how far
+            you want us to go — you leave the call with a figure.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div class="mockup-badge">DIREZIONE A · SPORTELLO — mockup FASE 4.1</div>
+
+    <script>
+      const setLang = (lang) => {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-en]').forEach((el) => {
+          el.textContent = el.dataset[lang];
+        });
+        document.querySelectorAll('[data-lang-btn]').forEach((b) => {
+          b.setAttribute('aria-pressed', String(b.dataset.langBtn === lang));
+        });
+      };
+      document.querySelectorAll('[data-lang-btn]').forEach((b) => {
+        b.addEventListener('click', () => setLang(b.dataset.langBtn));
+      });
+    </script>
+  </body>
+</html>

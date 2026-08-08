@@ -1,0 +1,92 @@
+---
+/**
+ * Etichetta + controllo + suggerimento + errore, cablati insieme.
+ *
+ * Il form della FASE 6 raccoglie nazionalità, tempistiche e disponibilità
+ * economica: campi delicati, dove un'etichetta ambigua fa abbandonare il modulo.
+ * Regole applicate qui:
+ *  — l'etichetta è sempre visibile, mai sostituita dal placeholder;
+ *  — il suggerimento spiega PERCHÉ il campo esiste, non cosa scrivere;
+ *  — l'errore dice come rimediare ed è collegato con aria-describedby;
+ *  — l'obbligatorietà è dichiarata a parole, non solo con un asterisco.
+ *
+ * Gli slot di Astro non passano proprietà (a differenza dei framework a componenti),
+ * quindi il collegamento con aria-describedby è per CONVENZIONE sugli id:
+ * il suggerimento è `${id}-hint`, l'errore è `${id}-error`. Il controllo dentro lo
+ * slot li dichiara con l'helper `describedBy()` di src/lib/field.ts, che tiene la
+ * convenzione in un posto solo invece di lasciarla a mano in ogni campo.
+ */
+interface Props {
+  id: string;
+  label: string;
+  hint?: string;
+  error?: string;
+  required?: boolean;
+  optionalLabel?: string;
+  class?: string;
+}
+
+const { id, label, hint, error, required = false, optionalLabel, class: className } = Astro.props;
+
+const hintId = hint ? `${id}-hint` : undefined;
+const errorId = error ? `${id}-error` : undefined;
+---
+
+<div class:list={['field', className]} data-invalid={error ? 'true' : undefined}>
+  <label class="field__label" for={id}>
+    {label}
+    {optionalLabel && !required && <span class="field__optional">{optionalLabel}</span>}
+  </label>
+
+  {
+    hint && (
+      <p class="field__hint" id={hintId}>
+        {hint}
+      </p>
+    )
+  }
+
+  <slot />
+
+  {
+    error && (
+      <p class="field__error" id={errorId}>
+        {error}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .field__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--surface-fg);
+  }
+  .field__optional {
+    font-weight: 400;
+    color: var(--surface-fg-muted);
+    margin-left: 0.4rem;
+  }
+  .field__hint {
+    font-size: var(--text-xs);
+    color: var(--surface-fg-muted);
+    margin: 0;
+  }
+  .field__error {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--surface-accent);
+    margin: 0;
+  }
+  .field[data-invalid] :global(input),
+  .field[data-invalid] :global(select),
+  .field[data-invalid] :global(textarea) {
+    border-color: var(--surface-accent);
+  }
+</style>

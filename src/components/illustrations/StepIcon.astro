@@ -1,0 +1,179 @@
+---
+/**
+ * ILL-03 + ILL-05 — set di icone dei passi e dei livelli di servizio.
+ *
+ * Regole del set, tutte derivate dalla direzione «Rotta»:
+ *  — solo linea, spessore costante 1.6, nessun riempimento pieno tranne l'accento;
+ *  — L'ORO MARCA UN SOLO ELEMENTO PER ICONA, e sempre quello che conta davvero:
+ *    il sigillo approvato, il giorno della scadenza, la porta di casa tua;
+ *  — il corpo dell'icona è `currentColor`, quindi l'icona si ricolora da sola
+ *    a seconda della superficie su cui viene messa;
+ *  — soggetti presi dal mondo reale della pratica (documenti, moduli, sportelli),
+ *    mai omini stilizzati che festeggiano (brand-brief.md §9).
+ *
+ * Decorative per default. Passa `title` solo se l'icona porta informazione che
+ * il testo accanto non dà già — altrimenti è rumore per chi usa uno screen reader.
+ */
+type IconName =
+  'document' | 'calendar' | 'house' | 'permit' | 'building' | 'contract' | 'health' | 'compass';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  title?: string;
+  class?: string;
+}
+
+const { name, size = 48, title, class: className } = Astro.props;
+
+const gold = 'var(--surface-accent, #D6B86C)';
+const a11y = title
+  ? ({ role: 'img', 'aria-label': title } as const)
+  : ({ 'aria-hidden': 'true', focusable: 'false' } as const);
+---
+
+<svg
+  viewBox="0 0 48 48"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  {...a11y}
+>
+  {
+    name === 'document' && (
+      <>
+        {/* fascicolo con sigillo approvato — livello Admission */}
+        <path d="M13 6h15l7 7v20a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" />
+        <path d="M28 6v7h7" />
+        <path d="M17 20h11M17 26h7" />
+        <circle cx="34" cy="34" r="7.5" stroke={gold} />
+        <path d="m30.6 34 2.4 2.4 4.4-4.8" stroke={gold} />
+      </>
+    )
+  }
+
+  {
+    name === 'calendar' && (
+      <>
+        {/* la scadenza: un solo giorno marcato — livello Arrival */}
+        <rect x="7" y="11" width="34" height="30" rx="2" />
+        <path d="M7 20h34M16 7v7M32 7v7" />
+        <rect
+          x="13"
+          y="25"
+          width="6.5"
+          height="5"
+          rx="1"
+          opacity="0.35"
+          fill="currentColor"
+          stroke="none"
+        />
+        <rect x="21" y="25" width="6.5" height="5" rx="1" fill={gold} stroke="none" />
+        <rect
+          x="29"
+          y="25"
+          width="6.5"
+          height="5"
+          rx="1"
+          opacity="0.35"
+          fill="currentColor"
+          stroke="none"
+        />
+        <rect
+          x="13"
+          y="33"
+          width="6.5"
+          height="5"
+          rx="1"
+          opacity="0.35"
+          fill="currentColor"
+          stroke="none"
+        />
+        <rect
+          x="21"
+          y="33"
+          width="6.5"
+          height="5"
+          rx="1"
+          opacity="0.35"
+          fill="currentColor"
+          stroke="none"
+        />
+      </>
+    )
+  }
+
+  {
+    name === 'house' && (
+      <>
+        {/* la porta è oro: non "una casa", la TUA — livello Settled */}
+        <path d="M7 23 24 9l17 14" />
+        <path d="M11 21v19h26V21" />
+        <path d="M20 40V29h8v11" fill={gold} stroke={gold} />
+      </>
+    )
+  }
+
+  {
+    name === 'permit' && (
+      <>
+        {/* permesso di soggiorno */}
+        <rect x="6" y="11" width="36" height="26" rx="2" />
+        <circle cx="17" cy="21" r="4" />
+        <path d="M11 32c1.5-3 9.5-3 11 0" />
+        <path d="M27 19h10M27 25h10" />
+        <path d="M27 31h6" stroke={gold} />
+      </>
+    )
+  }
+
+  {
+    name === 'building' && (
+      <>
+        {/* sportello pubblico: Questura, Comune, Agenzia delle Entrate */}
+        <path d="M6 19 24 8l18 11" />
+        <path d="M9 19v20M39 19v20M6 41h36" />
+        <path d="M16 24v12M24 24v12M32 24v12" />
+        <path d="M19 41v-6h10v6" fill={gold} stroke={gold} />
+      </>
+    )
+  }
+
+  {
+    name === 'contract' && (
+      <>
+        {/* contratto di locazione, verificato prima della firma */}
+        <path d="M12 5h24a2 2 0 0 1 2 2v34a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
+        <path d="M16 13h16M16 19h16M16 25h9" />
+        <path d="M16 34c3-4 6 2 9-1s5 1 7-1" stroke={gold} />
+      </>
+    )
+  }
+
+  {
+    name === 'health' && (
+      <>
+        {/* iscrizione al SSN */}
+        <path d="M24 42s14-8.4 14-19a8.6 8.6 0 0 0-14-6.6A8.6 8.6 0 0 0 10 23c0 10.6 14 19 14 19Z" />
+        <path d="M24 18v10M19 23h10" stroke={gold} />
+      </>
+    )
+  }
+
+  {
+    name === 'compass' && (
+      <>
+        {/* orientamento: la scelta del corso e dell'ateneo */}
+        <circle cx="24" cy="24" r="17" />
+        <path d="m17 31 4.5-9.5L31 17l-4.5 9.5Z" />
+        <path d="m31 17-4.5 9.5" stroke={gold} />
+        <circle cx="24" cy="24" r="1.6" fill={gold} stroke={gold} />
+      </>
+    )
+  }
+</svg>

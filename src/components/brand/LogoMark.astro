@@ -1,0 +1,68 @@
+---
+/**
+ * Marchio Kimere, ridisegnato in SVG. (FASE 4.4)
+ *
+ * Il file originale — src/assets/brand/logo-kimere-source.jpg — sovrappone cinque
+ * elementi (libro, rosa dei venti, freccia, fiamma, onde) con gradienti e senza
+ * trasparenza. A 36 px d'altezza in un header collassano in una macchia, e su
+ * fondo navy il JPG porta con sé il suo rettangolo cream. Inutilizzabile.
+ *
+ * La riduzione tiene i due elementi che sopravvivono alla scala e che significano
+ * qualcosa per questo progetto:
+ *   — la ROSA DEI VENTI, che è anche il concetto della direzione visiva scelta;
+ *   — il LIBRO APERTO, che porta la parte "Academy" del nome.
+ * La punta nord è oro: è la convenzione delle bussole (il nord si marca) ed è
+ * l'unico modo di far comparire l'oro del brand in un segno di 20 px senza
+ * problemi di contrasto, perché è una forma, non del testo.
+ *
+ * `compact` (sola rosa) va in header e favicon — regge a 16 px.
+ * `full` (rosa + libro) va nel footer, nelle pagine legali e nell'immagine social.
+ */
+interface Props {
+  detail?: 'compact' | 'full';
+  mono?: boolean;
+  size?: number | string;
+  class?: string;
+  title?: string;
+}
+
+const { detail = 'compact', mono = false, size, class: className, title } = Astro.props;
+
+const gold = mono ? 'currentColor' : 'var(--color-gold-bright, #D6B86C)';
+const dims = size ? { width: size, height: size } : {};
+const a11y = title
+  ? ({ role: 'img', 'aria-label': title } as const)
+  : ({ 'aria-hidden': 'true', focusable: 'false' } as const);
+---
+
+{
+  detail === 'compact' ? (
+    <svg viewBox="0 0 32 32" class={className} {...dims} {...a11y}>
+      <path
+        fill="currentColor"
+        d="M16 2 L17.61 12.12 L22.36 9.64 L19.88 14.39 L30 16 L19.88 17.61 L22.36 22.36 L17.61 19.88 L16 30 L14.39 19.88 L9.64 22.36 L12.12 17.61 L2 16 L12.12 14.39 L9.64 9.64 L14.39 12.12 Z"
+      />
+      <path fill={gold} d="M14.39 12.12 L16 2 L17.61 12.12 L16 16 Z" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 64 64" class={className} {...dims} {...a11y}>
+      {/* libro aperto — la parte "Academy" del nome */}
+      <path
+        fill="currentColor"
+        opacity="0.55"
+        d="M8 46 C16 43.5, 25 43.5, 31 46.5 L31 58.5 C25 55.5, 16 55.5, 8 58 Z"
+      />
+      <path
+        fill="currentColor"
+        opacity="0.55"
+        d="M56 46 C48 43.5, 39 43.5, 33 46.5 L33 58.5 C39 55.5, 48 55.5, 56 58 Z"
+      />
+      {/* rosa dei venti */}
+      <path
+        fill="currentColor"
+        d="M32 6 L33.76 20.75 L40.2 16.8 L36.25 23.24 L51 25 L36.25 26.76 L40.2 33.2 L33.76 29.25 L32 44 L30.24 29.25 L23.8 33.2 L27.75 26.76 L13 25 L27.75 23.24 L23.8 16.8 L30.24 20.75 Z"
+      />
+      <path fill={gold} d="M30.24 20.75 L32 6 L33.76 20.75 L32 25 Z" />
+    </svg>
+  )
+}

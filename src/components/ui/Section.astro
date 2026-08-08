@@ -1,0 +1,26 @@
+---
+/**
+ * Sezione di pagina con superficie dichiarata.
+ *
+ * Cambiare `surface` ricolora da solo tutto ciò che sta dentro — accento
+ * compreso — perché i componenti leggono --surface-*, non i colori diretti.
+ * Regola di direzione: i blocchi da LEGGERE (testo lungo, tabelle, FAQ)
+ * vanno su `light`; hero, navigazione e transizioni restano su `dark`.
+ */
+interface Props {
+  surface?: 'dark' | 'panel' | 'light';
+  size?: 'md' | 'lg' | 'none';
+  labelledby?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { surface = 'dark', size = 'md', labelledby, class: className, ...rest } = Astro.props;
+
+const padding = size === 'lg' ? 'py-section-lg' : size === 'none' ? '' : 'py-section';
+const classes = [`surface-${surface}`, padding, className].filter(Boolean).join(' ');
+---
+
+<section class={classes} aria-labelledby={labelledby} {...rest}>
+  <div class="wrap"><slot /></div>
+</section>

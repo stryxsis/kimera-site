@@ -7,9 +7,79 @@
 
 ## Stato corrente
 
-**Fase corrente:** FASE 3 — Copywriting e contenuti → **COMPLETATA**
-**In attesa di:** via libera per la FASE 4 (Direzione visiva, design system e UI)
-**Modello richiesto per FASE 4:** OPUS
+**Fase corrente:** FASE 4 — Direzione visiva, design system e UI → **COMPLETATA**
+**In attesa di:** via libera per la FASE 5 (implementazione delle pagine restanti)
+**Modello richiesto per FASE 5:** SONNET
+
+**Deliverable FASE 4.3 — design system**
+- `src/styles/global.css` — token in `@theme` (colore, scala tipografica fluida senza breakpoint,
+  ritmo verticale, raggi, movimento) e il **sistema a due superfici**
+- **Font self-hosted** (`@fontsource-variable/eb-garamond` + `archivo`): zero richieste a domini
+  terzi. Su un sito che raccoglie nazionalità e dati sul percorso migratorio, un `@font-face` verso
+  Google esporrebbe l'IP di ogni visitatore senza base giuridica. Verificato nel build.
+- Componenti: `Section`, `Button`, `Card`, `Badge`, `Accordion`, `Field`, `Input` + i cinque di
+  layout riscritti (Header con menu mobile, Nav, Footer, LanguageSwitcher, SkipLink)
+- `docs/design-system.md` + pagina navigabile **`/en/styleguide/`** (`noindex`)
+
+**Deliverable FASE 4.4 — marchio e illustrazioni**
+- **Logo ridisegnato in SVG** (`brand/LogoMark.astro`, `brand/Logo.astro`, `public/favicon.svg`).
+  Il wordmark **non è un tracciato: è testo vero** — resta nitido a ogni dimensione, gli screen
+  reader leggono «Kimere» e il lockup si ricompone (orizzontale in header, in colonna nel footer).
+  Era esattamente il limite del JPG, dove descrittore e payoff sono cotti nell'immagine.
+- `ILL-01` mappa del percorso · `ILL-02` enti che non si parlano · `ILL-03`+`ILL-05` set di icone ·
+  `ILL-04` modello B2B · `ILL-06` filigrana nel footer · `ILL-07` 404
+
+**Deliverable FASE 4.5 — home**
+- `src/pages/{en,it}/index.astro` implementata end-to-end, 404 rifatta con `ILL-07`
+- Le due lingue sono **lo stesso file con una riga diversa** (`const locale`)
+
+**Due strumenti di verifica nuovi, entrambi nati da bug reali di questo progetto:**
+- `npm run check:contrast` — calcola il contrasto WCAG di ogni coppia in uso (24 coppie, 0 sotto
+  soglia) e fallisce se una scende. **Ha già trovato un bug latente in questa fase:** la pastiglia
+  della lingua attiva usava l'accento come fondo, e su superficie chiara sarebbe stata navy su teal
+  — 2.92, sotto soglia. Da lì è nato `--surface-marker-*`.
+- `npm run check:output` — controlla l'HTML generato: asterischi non renderizzati, `<h1>` duplicati,
+  sottorisorse da domini terzi, `lang` mancante. Nasce perché il bug degli asterischi (FASE 3) è
+  **ricomparso** nella home: la checklist dei pacchetti non passava da `renderEmphasis()`.
+  Verificato che il controllo non passi a vuoto, iniettando i tre difetti in una pagina del build.
+- `npm run verify` esegue l'intera catena: contenuti → contrasti → tipi → build → output.
+
+**Altro bug trovato e corretto:** due griglie della styleguide avevano tracce minime da 19 e 20 rem
+contro i 280 px utili a 320 px di viewport — sfondavano in orizzontale. Tutte le griglie `auto-fit`
+ora usano `minmax(min(100%, …), 1fr)`.
+
+**⚠️ Non verificato:** la resa a schermo è stata controllata sul CSS e sull'HTML generato, non in un
+browser reale — Playwright non è installato e i suoi binari sono ~150 MB, che non installo senza
+chiedere. Vale la pena aprire `/en/` e `/en/styleguide/` con `npm run dev`.
+
+**Deliverable FASE 4.1:**
+- `design/direction-a.html` — **«Sportello»**, la fiducia si dimostra con l'ordine. Dominante
+  cream, corsia di etichette in monospaziato, livelli come righe di registro.
+  Bodoni Moda · Public Sans · IBM Plex Mono.
+- `design/direction-b.html` — **«Rotta»**, la fiducia si dimostra mostrando la mappa. Dominante
+  navy, l'hero *è* il percorso, barre di copertura sui tre livelli.
+  EB Garamond · Archivo. ← **direzione raccomandata**
+- `design/direction-c.html` — **«Fascicolo»**, la fiducia si dimostra mostrando l'artefatto.
+  Fogli con linguetta d'indice oro, righe di protocollo, doppio target B2C/B2B risolto nell'hero.
+  Source Serif 4 · Barlow.
+- `design/README.md` — le tre schede complete (concetto, dispositivo firma, palette con contrasti,
+  coppia tipografica, trattamento illustrazioni, mood, **rischio dichiarato**), tabella di
+  confronto e raccomandazione argomentata.
+
+**Verifiche eseguite sui mockup:**
+- **31 coppie di colore** verificate con calcolo del contrasto WCAG (script dedicato): **0 fallite**,
+  la maggior parte AAA. Include le combinazioni nuove non presenti nella tabella del logo
+  (testo secondario su navy, linea teal su navy, navy su cream profondo, testo su oro in hover).
+- Ogni mockup ha un **toggle EN/IT funzionante** con il copy reale della FASE 3 — serve a verificare
+  la tenuta del layout con l'italiano, più lungo del 15–20%. Verificato con script che nessuno dei
+  173 elementi traducibili contenga figli che il toggle cancellerebbe.
+- Contenuto reale in tutti e tre (copy FASE 3), nessun testo finto, nessuna foto, nessun logo di
+  ateneo, nessun numero su Kimere.
+
+**Vincolo cromatico che ha guidato le tre direzioni:** l'oro `#BDA15D` ha 2.33 sul cream e non può
+mai essere inchiostro su fondo chiaro. Ogni direzione lo risolve diversamente — A lo confina alla
+fascia scura, B adotta la dominante scura dove l'oro è AAA (8.59), C lo usa come **riempimento**
+delle linguette con testo navy sopra (6.62, conforme). È la differenza più visibile tra le tre.
 
 **Deliverable FASE 3:**
 - 8 nuove content collection di testo di pagina in `content.config.ts` (homePage, processPage,
@@ -186,6 +256,9 @@ cromatico e concettuale, non l'asset di produzione.
 | D-10 | **Architettura URL / i18n** | `prefixDefaultLocale: true` → `/en/` e `/it/`, root che redirige a `/en/`. **Slug localizzati** (`/it/percorso/`) via mappa centrale `src/i18n/routes.ts`. | Simmetria tra lingue: aggiungere una terza lingua non richiede modifiche strutturali. Gli slug italiani servono il canale B2B verso atenei e agenzie italiane. | FASE 2, 5, 7 |
 | D-11 | **Stack** | Astro **7.2.0** (output `static`) + Tailwind **4.3.3** + Netlify. Contenuti in **JSON** validati Zod 4, non markdown. Nessun framework UI, nessuna animation library. | Sito di contenuto: ogni KB di runtime è costo puro. Il JSON dà errori di build sui contenuti mancanti e un percorso pulito verso un CMS. | FASE 2 in poi |
 | D-12 | **Nessun banner cookie in v1** | Senza analytics e senza embed di booking restano solo cookie tecnici: nessun consenso preventivo richiesto. | Postura privacy più pulita possibile, zero attrito al primo contatto, CLS zero. ⚠️ Aggiungere un solo script di terze parti lo rende obbligatorio. | FASE 6, 9 (handoff) |
+| D-14 | **Font self-hosted** | `@fontsource-variable/eb-garamond` + `@fontsource-variable/archivo`, serviti dal dominio del sito. Nessun CDN. | Un `@font-face` verso Google espone l'IP di ogni visitatore a un terzo senza base giuridica — su un sito che raccoglie nazionalità e dati sul percorso migratorio è un rischio reale, non teorico. Coerente con D-12 (nessuno script di terze parti, quindi nessun banner cookie). | FASE 6 legal, FASE 7 performance |
+| D-15 | **Superfici invece di colori diretti** | Ogni componente legge `--surface-*`; le classi `.surface-dark/panel/light` ridefiniscono accento, filetti e focus. Nessun colore scritto a mano nei componenti. | L'accento non può essere una costante: l'oro è 2.33 su cream e 8.59 su navy, il teal fa l'opposto. Rendere la regola strutturale impedisce di sbagliare per distrazione in una pagina qualsiasi tra sei mesi. | Tutte le fasi successive |
+| D-13 | **Direzione visiva** | **B — «Rotta»** (`design/direction-b.html`). Dominante navy, l'hero è il percorso, linea di rotta come dispositivo firma, EB Garamond + Archivo. ✏️ **Modifica richiesta dal cliente al gate 4.2 e già applicata:** via la barra di copertura dalle tre card dei livelli, sostituita da elenchi con voci spuntate (come nella direzione C). | Scelta del cliente al gate 4.2. La linea di rotta resta solo dove porta informazione vera: hero, mappa del Percorso (`ILL-01`), 404. | Design system 4.3, illustrazioni 4.4, home 4.5, tutte le pagine della FASE 5 |
 | D-03 | Lingue al lancio | **EN + IT complete.** EN primario/default, i18n predisposto per lingue future. | Target primario extra-UE (EN), ma canale B2B con atenei/agenzie italiane richiede IT. | Routing FASE 2, doppio copy FASE 3, `hreflang` FASE 7 |
 | D-04 | Booking della call | **Nessun tool di booking in v1.** La CTA porta al form di qualificazione; il thank-you spiega che Kimere risponde via email per fissare l'orario. Slot architetturale predisposto per innestare un tool (es. Cal.com) senza rifattorizzare. | Nessun tool ancora scelto/attivo dal cliente. | IA in FASE 1, form in FASE 6 |
 
@@ -244,8 +317,8 @@ Bloccanti solo alla fase indicata — non fermano l'avvio della FASE 1.
 | 1 | Piano d'azione e fondamenta strategiche | OPUS | ✅ Completata |
 | 2 | Scaffolding tecnico | SONNET | ✅ Completata |
 | 3 | Copywriting e contenuti | SONNET | ✅ Completata |
-| 4 | Direzione visiva, design system e UI | OPUS | ⏳ Prossima |
-| 5 | Implementazione pagine restanti | SONNET | Non iniziata |
+| 4 | Direzione visiva, design system e UI | OPUS | ✅ Completata |
+| 5 | Implementazione pagine restanti | SONNET | ⏳ Prossima |
 | 6 | Form di qualificazione, integrazioni, legal | SONNET | Non iniziata |
 | 7 | Accessibilità, SEO, performance | SONNET | Non iniziata |
 | 8 | Testing | SONNET | Non iniziata |
