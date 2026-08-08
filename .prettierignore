@@ -1,0 +1,15 @@
+dist/
+.astro/
+node_modules/
+
+# documenti del cliente e file di stato del progetto — mai riformattare
+docs/
+design/
+PLAN.md
+PROGRESS.md
+Kimere_Analisi_Strategica.md
+
+# skill installate (dipendenze di terze parti, non codice del progetto)
+.agents/
+.claude/
+skills-lock.json

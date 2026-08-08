@@ -1,0 +1,11 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const locale = 'it';
+const t = useTranslations(locale);
+---
+
+<PageLayout locale={locale} routeKey="styleguide" title="Styleguide" noindex>
+  <p>{t.scaffold.placeholder}</p>
+</PageLayout>

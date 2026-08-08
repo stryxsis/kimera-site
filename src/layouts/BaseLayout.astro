@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import { getAlternatePaths, getPath, locales, type Locale, type RouteKey } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  routeKey: RouteKey;
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { locale, routeKey, title, description, noindex = false } = Astro.props;
+
+const alternates = getAlternatePaths(routeKey);
+const canonicalPath = getPath(routeKey, locale);
+---
+
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title translate="no">{title} — Kimere</title>
+    {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <link rel="canonical" href={new URL(canonicalPath, Astro.site)} />
+    {
+      locales.map((loc) => (
+        <link rel="alternate" hreflang={loc} href={new URL(alternates[loc], Astro.site)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(alternates.en, Astro.site)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

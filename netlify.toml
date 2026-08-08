@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  # Astro genera anche un proprio dist/index.html con meta-refresh (fallback per host senza
+  # redirect edge). force = true fa vincere questa regola: redirect istantaneo invece di un
+  # meta-refresh di 2 secondi.
+  from = "/"
+  to = "/en/"
+  status = 302
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
+
+# CSP e HSTS definitivi in FASE 7/9, quando saranno noti gli host esterni reali
+# (form handler, eventuale booking tool) da elencare in connect-src/frame-src.

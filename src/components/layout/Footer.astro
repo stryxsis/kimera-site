@@ -1,0 +1,61 @@
+---
+import { getPath, type Locale } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <p translate="no">{t.footer.payoff}</p>
+
+  <nav aria-label={t.footer.navLabel}>
+    <div>
+      <h2>{t.footer.columnKimere}</h2>
+      <ul>
+        <li><a href={getPath('about', locale)}>{t.nav.about}</a></li>
+        <li><a href={getPath('book', locale)}>{t.footer.contact}</a></li>
+        <!-- URL social non ancora confermati dal cliente (PROGRESS.md, questione #7) -->
+        <li><a href="#" translate="no">Instagram</a></li>
+        <li><a href="#" translate="no">LinkedIn</a></li>
+        <li><a href="#" translate="no">Facebook</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>{t.footer.columnStudents}</h2>
+      <ul>
+        <li><a href={getPath('process', locale)}>{t.nav.process}</a></li>
+        <li><a href={getPath('services', locale)}>{t.nav.services}</a></li>
+        <li><a href={getPath('housing', locale)}>{t.nav.housing}</a></li>
+        <li><a href={getPath('costs', locale)}>{t.nav.costs}</a></li>
+        <li><a href={getPath('faq', locale)}>{t.nav.faq}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>{t.footer.columnPartners}</h2>
+      <ul>
+        <li><a href={getPath('partners', locale)}>{t.nav.partners}</a></li>
+        <li><a href="#" translate="no">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>{t.footer.columnLegal}</h2>
+      <ul>
+        <li><a href={getPath('privacy', locale)}>{t.footer.privacy}</a></li>
+        <li><a href={getPath('cookies', locale)}>{t.footer.cookies}</a></li>
+      </ul>
+      <p>{t.footer.disclaimer}</p>
+    </div>
+  </nav>
+
+  <p translate="no">&copy; {year} Kimere International Academy &amp; Consulting.</p>
+  <p>{t.footer.rightsReserved}</p>
+</footer>

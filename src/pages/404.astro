@@ -1,0 +1,14 @@
+---
+// Pagina 404 globale — Astro la serve per qualunque path non risolto, incluse le route
+// senza prefisso di lingua. Nessun modo di sapere la lingua preferita: EN come da defaultLocale.
+import PageLayout from '../layouts/PageLayout.astro';
+import { useTranslations } from '../i18n/utils';
+
+const locale = 'en';
+const t = useTranslations(locale);
+---
+
+<PageLayout locale={locale} routeKey="home" title={t.notFound.title} noindex>
+  <p>{t.notFound.body}</p>
+  <a href="/en/">{t.notFound.backHome}</a>
+</PageLayout>

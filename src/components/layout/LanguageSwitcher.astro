@@ -1,0 +1,34 @@
+---
+import { getAlternatePaths, locales, type Locale, type RouteKey } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  currentLocale: Locale;
+  currentRouteKey: RouteKey;
+}
+
+const { currentLocale, currentRouteKey } = Astro.props;
+const t = useTranslations(currentLocale);
+
+// Porta sempre alla pagina equivalente, mai alla home (sitemap-ia.md §7).
+const alternates = getAlternatePaths(currentRouteKey);
+---
+
+<nav aria-label={t.languageSwitcher.label}>
+  <ul>
+    {
+      locales.map((loc) => (
+        <li>
+          <a
+            href={alternates[loc]}
+            lang={loc}
+            hreflang={loc}
+            aria-current={loc === currentLocale ? 'true' : undefined}
+          >
+            {loc.toUpperCase()}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

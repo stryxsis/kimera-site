@@ -1,0 +1,27 @@
+---
+import { getPath, type Locale, type RouteKey } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+import Nav from './Nav.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  locale: Locale;
+  routeKey: RouteKey;
+}
+
+const { locale, routeKey } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<header>
+  <a href={getPath('home', locale)} translate="no">Kimere</a>
+
+  <Nav locale={locale} currentRouteKey={routeKey} />
+
+  <div>
+    <!-- Link di utility B2B, deliberatamente fuori dal menu principale (sitemap-ia.md §3) -->
+    <a href={getPath('partners', locale)}>{t.nav.partners}</a>
+    <LanguageSwitcher currentLocale={locale} currentRouteKey={routeKey} />
+    <a href={getPath('book', locale)}>{t.cta.bookCall}</a>
+  </div>
+</header>

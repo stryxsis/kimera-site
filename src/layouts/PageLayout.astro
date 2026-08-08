@@ -1,0 +1,33 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SkipLink from '../components/layout/SkipLink.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import type { Locale, RouteKey } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  routeKey: RouteKey;
+  title: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { locale, routeKey, title, description, noindex } = Astro.props;
+---
+
+<BaseLayout
+  locale={locale}
+  routeKey={routeKey}
+  title={title}
+  description={description}
+  noindex={noindex}
+>
+  <SkipLink locale={locale} />
+  <Header locale={locale} routeKey={routeKey} />
+  <main id="main-content">
+    <h1>{title}</h1>
+    <slot />
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

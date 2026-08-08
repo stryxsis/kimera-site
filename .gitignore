@@ -1,0 +1,27 @@
+# build
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# netlify
+.netlify/
+
+# skill dell'agente — ricostruibili da skills-lock.json (npx skills experimental_install),
+# non fanno parte del codice del sito. settings.local.json è locale alla macchina.
+.agents/
+.claude/skills/
+.claude/settings.local.json
+
+# editor / os
+.DS_Store
+Thumbs.db
+
+# logs
+npm-debug.log*

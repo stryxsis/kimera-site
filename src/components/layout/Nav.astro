@@ -1,0 +1,34 @@
+---
+import { getPath, type Locale, type RouteKey } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  currentRouteKey: RouteKey;
+}
+
+const { locale, currentRouteKey } = Astro.props;
+const t = useTranslations(locale);
+
+// 5 voci in menu (sitemap-ia.md §3) — FAQ e Partners restano fuori: si raggiungono dal contesto.
+// Tipo dedicato (sottoinsieme di RouteKey) perché solo queste chiavi esistono in t.nav.
+type MenuRouteKey = 'process' | 'services' | 'housing' | 'costs' | 'about';
+const items: MenuRouteKey[] = ['process', 'services', 'housing', 'costs', 'about'];
+---
+
+<nav aria-label={t.nav.primaryLabel}>
+  <ul>
+    {
+      items.map((key) => (
+        <li>
+          <a
+            href={getPath(key, locale)}
+            aria-current={key === currentRouteKey ? 'page' : undefined}
+          >
+            {t.nav[key]}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
