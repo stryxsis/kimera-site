@@ -1,11 +1,9 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { getEntry } from 'astro:content';
 
 const locale = 'en';
-const t = useTranslations(locale);
+const entry = await getEntry('legal', `${locale}/cookies`)!;
 ---
 
-<PageLayout locale={locale} routeKey="cookies" title="Cookie Policy">
-  <p>{t.scaffold.placeholder}</p>
-</PageLayout>
+<LegalLayout locale={locale} routeKey="cookies" entry={entry} />

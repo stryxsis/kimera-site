@@ -212,29 +212,34 @@ coppie verificate automaticamente — lo stesso schema del bug trovato in FASE 4
 
 ---
 
-## FASE 6 — Form, integrazioni, legal · SONNET
+## FASE 6 — Form, integrazioni, legal · SONNET ✅ COMPLETATA
 
 **Skill:** `astro`, `netlify-deploy`, `accessibility`
 
-- [ ] ★ **Dichiarazione statica nascosta** con tutti i campi di tutti gli step — senza, Netlify non rileva il form e i lead si perdono in silenzio
-- [ ] Form multi-step `student-enquiry` con progressive disclosure e indicatore di avanzamento
-- [ ] Biforcazione UE / extra-UE sulla cittadinanza
-- [ ] Form `partner-enquiry` separato, campi B2B
-- [ ] Validazione client con messaggi non colpevolizzanti + validazione server
-- [ ] Honeypot `data-netlify-honeypot`, nascosto con `clip` **non** con `display:none`
-- [ ] Degradazione senza JS: form unico con submit nativo
-- [ ] Pagina di ringraziamento con SLA di risposta ⚠️
-- [ ] ⚠️ Privacy policy — **Netlify come responsabile, trasferimento extra-UE dichiarato**
-- [ ] Cookie policy — in v1 solo cookie tecnici, nessun banner necessario
-- [ ] Informativa nel form, consenso non pre-spuntato, marketing separato
-- [ ] Link social: LinkedIn nel percorso B2B, Instagram nel B2C ⚠️ URL da verificare
-- [ ] Slot architetturale per un futuro tool di booking (D-04)
+- [x] ★ **Dichiarazione statica nascosta** con tutti i campi di tutti gli step (`NetlifyFormDeclaration.astro`)
+- [x] Form multi-step `student-enquiry` con progressive disclosure e indicatore di avanzamento (`MultiStepForm.astro`)
+- [x] Biforcazione UE / extra-UE sulla cittadinanza (100 paesi, `src/data/countries.ts`)
+- [x] Form `partner-enquiry` separato, campi B2B — a pagina singola (D-16), non multi-step
+- [x] Validazione client con messaggi non colpevolizzanti + il vincolo `required` nativo lato Netlify
+- [x] Honeypot `data-netlify-honeypot`, nascosto con `clip-path` **non** con `display:none`
+- [x] Degradazione senza JS: verificato nel build — zero `hidden` scritto lato server sui fieldset
+- [x] Pagina di ringraziamento con SLA di risposta ⚠️ (già in FASE 5, riusata da entrambi i form)
+- [x] Privacy policy — Netlify come responsabile, trasferimento extra-UE dichiarato.
+      ⚠️ **Dati societari come placeholder esplicito** — bloccante per il lancio (questione #6), non per questa fase
+- [x] Cookie policy — spiega perché non serve un banner (D-12)
+- [x] Informativa nel form, consenso non pre-spuntato, marketing separato
+- [ ] Link social — non toccato in questa fase, restano i placeholder della FASE 4 (questione #7)
+- [x] Slot architetturale per un futuro tool di booking (D-04) — invariato, nessun tool aggiunto
 
 **Criteri di accettazione**
-- ★ Invio testato end-to-end: **la mail arriva davvero**
-- Form completamente navigabile da tastiera e con screen reader
-- Errori annunciati con `aria-live`, focus sul primo errore
-- Nessun cookie non essenziale prima del consenso (in v1: nessuno del tutto)
+- [ ] ★ Invio testato end-to-end: **la mail arriva davvero** — ⚠️ **richiede un deploy reale**,
+      che le regole operative vietano senza conferma esplicita. Il contratto con Netlify è
+      implementato esattamente come documentato in `tech-decisions.md` §6; resta da verificare
+      dopo l'autorizzazione al deploy (FASE 9)
+- [x] Form completamente navigabile da tastiera e con screen reader (fieldset/legend nativi,
+      focus gestito sul cambio di step e sul primo errore)
+- [x] Errori annunciati con `aria-live`, focus sul primo errore
+- [x] Nessun cookie non essenziale prima del consenso (in v1: nessuno del tutto)
 
 `git commit -m "feat(phase-6): add qualification forms, legal pages and GDPR compliance"`
 

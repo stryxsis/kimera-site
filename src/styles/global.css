@@ -495,6 +495,166 @@
     color: var(--surface-accent);
   }
 
+  /* ── Campo di modulo ──────────────────────────────────────────────────
+     Promosso da Field.astro a globale in FASE 6: la validazione dei form è la
+     prima cosa nel progetto generata a runtime da JavaScript, non da Astro in
+     fase di build. Un elemento creato da `document.createElement` non porta
+     l'attributo di scope che Astro assegna al markup scritto nel componente,
+     quindi uno stile scoped semplicemente non lo vedrebbe. Qui invece si applica
+     a qualunque `.field__error`, scritto a build time o inserito a runtime. */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .field__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--surface-fg);
+  }
+  .field__optional {
+    font-weight: 400;
+    color: var(--surface-fg-muted);
+    margin-left: 0.4rem;
+  }
+  .field__hint {
+    font-size: var(--text-xs);
+    color: var(--surface-fg-muted);
+    margin: 0;
+  }
+  .field__error {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--surface-warning);
+    margin: 0;
+  }
+  .field__error[hidden] {
+    display: none;
+  }
+  .field[data-invalid] input,
+  .field[data-invalid] select,
+  .field[data-invalid] textarea {
+    border-color: var(--surface-warning);
+  }
+
+  /* ── Gruppo di scelta (radio) ──────────────────────────────────────────
+     Domande brevi a 2–4 opzioni (content-map.md: "sì/no/voglio parlarne").
+     Un vero <fieldset><legend> nativo — non serve nessun ruolo ARIA aggiunto,
+     lo dà già la semantica HTML di radio con lo stesso `name`. */
+  .choice-group {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .choice-group legend {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--surface-fg);
+    padding: 0;
+  }
+  .choice-group__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
+  }
+  .choice-group__option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--surface-fg-soft);
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--surface-control-line);
+    border-radius: var(--radius-xs);
+    cursor: pointer;
+  }
+  .choice-group__option:has(input:checked) {
+    border-color: var(--surface-accent);
+    color: var(--surface-fg);
+  }
+  .choice-group__option:has(input:focus-visible) {
+    outline: 2px solid var(--surface-focus);
+    outline-offset: 2px;
+  }
+  .choice-group[data-invalid] .choice-group__option {
+    border-color: var(--surface-warning);
+  }
+
+  /* ── Casella di consenso ───────────────────────────────────────────────
+     Consenso privacy e marketing: mai pre-spuntate, sempre separate
+     (tech-decisions.md §6 — vincolo GDPR, non preferenza estetica). */
+  .consent-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: var(--text-sm);
+    color: var(--surface-fg-soft);
+  }
+  .consent-field input {
+    margin-top: 0.2rem;
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--color-gold);
+  }
+  .consent-field a {
+    color: var(--surface-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Meccanica del form (MultiStepForm.astro) ─────────────────────────── */
+  .form-status {
+    margin: 0;
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+  .form-status:empty {
+    display: none;
+  }
+  .form-status[data-tone='error'] {
+    color: var(--surface-warning);
+  }
+  .step[hidden] {
+    display: none;
+  }
+  /* Ogni step del form è un <fieldset>: azzera i default del browser (bordo,
+     padding) prima di applicare il proprio ritmo verticale. */
+  fieldset.step {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.4rem;
+  }
+  .step > legend {
+    padding: 0;
+    margin: 0 0 0.4rem;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--surface-fg);
+  }
+  .step > legend:focus-visible {
+    outline: 2px solid var(--surface-focus);
+    outline-offset: 3px;
+  }
+  .step-progress {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--surface-fg-muted);
+  }
+  .step-nav {
+    display: flex;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
   /* ── Chiusura con CTA ────────────────────────────────────────────────
      La maggior parte delle pagine non ha un titolo dedicato per la CTA finale
      (solo il testo del bottone, dalle content collection): a differenza della
@@ -516,8 +676,32 @@
   .prose-kimere {
     max-width: var(--container-prose);
   }
+  .prose-kimere > :first-child {
+    margin-top: 0;
+  }
   .prose-kimere p + p {
     margin-top: 1em;
+  }
+  /* Usato dalle pagine legali (FASE 6): il primo markdown scritto dal cliente
+     nel progetto, quindi il primo posto che ha bisogno di titoli ed elenchi. */
+  .prose-kimere h2 {
+    font-size: var(--text-2xl);
+    margin-top: 2.25rem;
+  }
+  .prose-kimere h3 {
+    font-size: var(--text-lg);
+    margin-top: 1.5rem;
+  }
+  .prose-kimere ul,
+  .prose-kimere ol {
+    margin: 1em 0 0;
+    padding-left: 1.3rem;
+  }
+  .prose-kimere li + li {
+    margin-top: 0.5em;
+  }
+  .prose-kimere strong {
+    color: var(--surface-fg);
   }
   .prose-kimere em {
     font-style: italic;

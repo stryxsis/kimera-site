@@ -1,0 +1,286 @@
+---
+import HoneypotField from './HoneypotField.astro';
+import NetlifyFormDeclaration from './NetlifyFormDeclaration.astro';
+
+/**
+ * Involucro dei due form del sito (student-enquiry, partner-enquiry).
+ *
+ * Gestisce tutta la meccanica — invio a Netlify, honeypot, progressive
+ * disclosure a step, biforcazione UE/extra-UE, validazione accessibile — così
+ * book.astro e partners.astro devono occuparsi solo dei campi veri.
+ *
+ * Contenuto atteso nello slot: uno o più `<fieldset class="step" data-step>`,
+ * ognuno con un `<legend>` come titolo. Un solo `[data-step]` disattiva
+ * automaticamente stepper e progressione (è il caso del form B2B, a pagina
+ * singola): questo componente serve entrambi i form senza saperlo.
+ *
+ * Biforcazione: un controllo con `data-branch-source` (es. il select della
+ * cittadinanza) decide quale `[data-step][data-branch="…"]` è visibile,
+ * tramite `isEuCountry()` — l'unica cosa che questo componente sa dei due
+ * rami è che la funzione restituisce `true`/`false`, non cosa significhi.
+ *
+ * Senza JavaScript: tutti gli step restano visibili (nessun `hidden` è
+ * scritto lato server), i bottoni di navigazione restano `hidden` come
+ * scritti qui, e resta solo il bottone di invio nativo — un form lungo,
+ * un unico submit, funziona lo stesso.
+ */
+interface Props {
+  name: string;
+  action: string;
+  submitLabel: string;
+  fields: string[];
+  labels: {
+    continue: string;
+    back: string;
+    sending: string;
+    stepOf: string;
+    errorRequired: string;
+    errorEmail: string;
+    errorChoice: string;
+    errorBanner: string;
+    submitError: string;
+    honeypotLabel: string;
+  };
+  class?: string;
+}
+
+const { name, action, submitLabel, fields, labels, class: className } = Astro.props;
+---
+
+<NetlifyFormDeclaration formName={name} fields={fields} />
+
+<form
+  class:list={['qualform', className]}
+  name={name}
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  action={action}
+  data-multistep
+  data-thank-you={action}
+  data-labels={JSON.stringify(labels)}
+>
+  <input type="hidden" name="form-name" value={name} />
+  <HoneypotField label={labels.honeypotLabel} />
+
+  <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+  <p class="step-progress" data-step-progress hidden></p>
+
+  <slot />
+
+  <div class="step-nav">
+    <button type="button" class="btn btn--secondary" data-step-prev hidden>{labels.back}</button>
+    <button type="button" class="btn btn--primary" data-step-next hidden>{labels.continue}</button>
+    <button type="submit" class="btn btn--primary" data-step-submit>{submitLabel}</button>
+  </div>
+</form>
+
+<script>
+  import { isEuCountry } from '../../data/countries';
+
+  function fieldContainer(control: Element): HTMLElement | null {
+    return control.closest<HTMLElement>('.field, [data-choice-group]');
+  }
+
+  function setControlError(control: HTMLElement, container: HTMLElement, message: string) {
+    const errorEl = container.querySelector<HTMLElement>('.field__error');
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.hidden = !message;
+    }
+    if (message) container.setAttribute('data-invalid', 'true');
+    else container.removeAttribute('data-invalid');
+    control.setAttribute('aria-invalid', message ? 'true' : 'false');
+  }
+
+  function validateStep(
+    step: Element,
+    labels: Record<string, string>,
+  ): { hasError: boolean; firstInvalid: HTMLElement | null } {
+    let hasError = false;
+    let firstInvalid: HTMLElement | null = null;
+
+    const controls = step.querySelectorAll<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >('.field input, .field select, .field textarea');
+    controls.forEach((control) => {
+      const container = fieldContainer(control);
+      if (!container) return;
+      if (!control.required) {
+        setControlError(control, container, '');
+        return;
+      }
+      let message = '';
+      if (control.validity.valueMissing) message = labels.errorRequired;
+      else if (
+        control.validity.typeMismatch &&
+        control instanceof HTMLInputElement &&
+        control.type === 'email'
+      ) {
+        message = labels.errorEmail;
+      }
+      setControlError(control, container, message);
+      if (message) {
+        hasError = true;
+        if (!firstInvalid) firstInvalid = control;
+      }
+    });
+
+    step.querySelectorAll<HTMLElement>('[data-choice-group]').forEach((group) => {
+      const radios = Array.from(group.querySelectorAll<HTMLInputElement>('input[type="radio"]'));
+      const firstRadio = radios[0];
+      if (!firstRadio || !radios.some((r) => r.required)) return;
+      const checked = radios.some((r) => r.checked);
+      setControlError(firstRadio, group, checked ? '' : labels.errorChoice);
+      if (!checked) {
+        hasError = true;
+        if (!firstInvalid) firstInvalid = firstRadio;
+      }
+    });
+
+    step
+      .querySelectorAll<HTMLInputElement>('.consent-field input[type="checkbox"][required]')
+      .forEach((cb) => {
+        if (!cb.checked) {
+          cb.setAttribute('aria-invalid', 'true');
+          hasError = true;
+          if (!firstInvalid) firstInvalid = cb;
+        } else {
+          cb.setAttribute('aria-invalid', 'false');
+        }
+      });
+
+    return { hasError, firstInvalid };
+  }
+
+  function initMultiStepForm(form: HTMLFormElement) {
+    let labels: Record<string, string> = {};
+    try {
+      labels = JSON.parse(form.dataset.labels || '{}');
+    } catch {
+      labels = {};
+    }
+
+    const statusEl = form.querySelector<HTMLElement>('[data-form-status]');
+    const progressEl = form.querySelector<HTMLElement>('[data-step-progress]');
+    const prevBtn = form.querySelector<HTMLButtonElement>('[data-step-prev]');
+    const nextBtn = form.querySelector<HTMLButtonElement>('[data-step-next]');
+    const submitBtnEl = form.querySelector<HTMLButtonElement>('[data-step-submit]');
+    const allSteps = Array.from(form.querySelectorAll<HTMLElement>('[data-step]'));
+    if (allSteps.length === 0 || !submitBtnEl) return;
+    // Binding non-nullable separata: le closure sotto sono definite qui ma
+    // eseguite più avanti, in risposta a eventi — TypeScript non riporta la
+    // verifica appena fatta dentro funzioni che girano più tardi.
+    const submitBtn: HTMLButtonElement = submitBtnEl;
+
+    form.dataset.activeBranch = form.dataset.activeBranch || 'non-eu';
+
+    const visibleSteps = () =>
+      allSteps.filter(
+        (step) => !step.dataset.branch || step.dataset.branch === form.dataset.activeBranch,
+      );
+
+    let index = 0;
+
+    function announce(message: string, isError: boolean) {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      if (isError) statusEl.setAttribute('data-tone', 'error');
+      else statusEl.removeAttribute('data-tone');
+    }
+
+    function showStep(next: number) {
+      const steps = visibleSteps();
+      index = Math.max(0, Math.min(next, steps.length - 1));
+      const isMulti = steps.length > 1;
+
+      allSteps.forEach((step) => {
+        step.hidden = true;
+      });
+      steps.forEach((step, i) => {
+        step.hidden = i !== index;
+      });
+
+      if (progressEl) {
+        progressEl.hidden = !isMulti;
+        if (isMulti) {
+          progressEl.textContent = (labels.stepOf || '')
+            .replace('{current}', String(index + 1))
+            .replace('{total}', String(steps.length));
+        }
+      }
+      if (prevBtn) prevBtn.hidden = !isMulti || index === 0;
+      if (nextBtn) nextBtn.hidden = !isMulti || index === steps.length - 1;
+      submitBtn.hidden = isMulti && index !== steps.length - 1;
+
+      const heading = steps[index]?.querySelector<HTMLElement>('legend');
+      if (heading) {
+        heading.setAttribute('tabindex', '-1');
+        heading.focus();
+      }
+    }
+
+    nextBtn?.addEventListener('click', () => {
+      const steps = visibleSteps();
+      const { hasError, firstInvalid } = validateStep(steps[index], labels);
+      if (hasError) {
+        announce(labels.errorBanner || '', true);
+        firstInvalid?.focus();
+        return;
+      }
+      announce('', false);
+      showStep(index + 1);
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      announce('', false);
+      showStep(index - 1);
+    });
+
+    form
+      .querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-branch-source]')
+      .forEach((source) => {
+        const updateBranch = () => {
+          form.dataset.activeBranch = isEuCountry(source.value) ? 'eu' : 'non-eu';
+        };
+        source.addEventListener('change', updateBranch);
+        updateBranch();
+      });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const steps = visibleSteps();
+      const { hasError, firstInvalid } = validateStep(steps[index], labels);
+      if (hasError) {
+        announce(labels.errorBanner || '', true);
+        firstInvalid?.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = labels.sending || submitBtn.textContent;
+      announce('', false);
+
+      try {
+        const body = new URLSearchParams();
+        new FormData(form).forEach((value, key) => body.append(key, String(value)));
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        window.location.href = form.dataset.thankYou || '/';
+      } catch {
+        announce(labels.submitError || '', true);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    });
+
+    showStep(0);
+  }
+
+  document.querySelectorAll<HTMLFormElement>('form[data-multistep]').forEach(initMultiStepForm);
+</script>

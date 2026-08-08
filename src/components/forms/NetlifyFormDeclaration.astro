@@ -1,0 +1,38 @@
+---
+/**
+ * Il contratto con Netlify (tech-decisions.md §6). Netlify rileva i form
+ * analizzando l'HTML statico generato al deploy, non eseguendo JavaScript: se un
+ * campo esiste solo dentro la logica del form reale — anche solo perché in futuro
+ * qualcuno lo renderizzasse via script — Netlify non lo vede e quel dato si perde
+ * in silenzio, senza errore visibile a nessuno.
+ *
+ * Questa è una copia statica e MAI inviata di tutti i campi del form reale, con lo
+ * stesso `name`. Va tenuta sincronizzata con la lista campi passata al form vero
+ * (entrambi leggono lo stesso array in fase di scrittura della pagina — vedi
+ * book.astro e partners.astro): non è duplicazione per pigrizia, è la garanzia
+ * che Netlify veda esattamente gli stessi nomi che il form invia davvero.
+ *
+ * `hidden` (→ display:none) va benissimo qui, a differenza dell'honeypot: questo
+ * blocco non va mai visto né compilato da nessuno, umano o bot. Il caso in cui la
+ * visibilità CSS conta è l'honeypot dentro il form reale (HoneypotField.astro),
+ * non questa dichiarazione.
+ */
+interface Props {
+  formName: string;
+  fields: string[];
+}
+
+const { formName, fields } = Astro.props;
+---
+
+<form
+  name={formName}
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  hidden
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <input type="hidden" name="form-name" value={formName} />
+  {fields.map((field) => <input type="text" name={field} />)}
+</form>

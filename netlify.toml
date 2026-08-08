@@ -21,3 +21,8 @@
 
 # CSP e HSTS definitivi in FASE 7/9, quando saranno noti gli host esterni reali
 # (form handler, eventuale booking tool) da elencare in connect-src/frame-src.
+
+# I due form (student-enquiry, partner-enquiry — FASE 6) non richiedono configurazione
+# qui: Netlify li rileva analizzando l'HTML statico generato al deploy (data-netlify="true"
+# nel markup, vedi src/components/forms/). Dopo il primo deploy va impostata solo la mail
+# di notifica in Site settings → Forms → Form notifications: non è configurabile da codice.

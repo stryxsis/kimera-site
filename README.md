@@ -38,15 +38,17 @@ npm run dev        # server di sviluppo — http://localhost:4321
 ```
 src/
 ├── i18n/            routes.ts (mappa slug EN/IT) · ui/en.ts, ui/it.ts (micro-copy) · utils.ts
-├── lib/             field.ts (convenzione degli id per aria-describedby)
-├── content.config.ts   schema Zod delle 12 content collection
-├── content/         contenuti JSON per lingua (en/, it/) — 96 file
-├── layouts/          BaseLayout (shell HTML, meta, hreflang) · PageLayout (header/main/footer)
+├── lib/             field.ts (id per aria-describedby) · countries.ts (ordinamento paesi)
+├── data/            countries.ts — codici paese + flag UE (struttura, non testo)
+├── content.config.ts   schema Zod delle 13 content collection
+├── content/         contenuti JSON/Markdown per lingua (en/, it/) — legal/ e countries/ incluse
+├── layouts/          BaseLayout · PageLayout (header/main/footer) · LegalLayout (privacy/cookie)
 ├── components/
 │   ├── layout/        Header, Footer, Nav, LanguageSwitcher, SkipLink
-│   ├── ui/            Section, Button, Card, Badge, Accordion, Field, Input
+│   ├── ui/            Section, Button, Card, Badge, Accordion, Field, Input, ChoiceGroup
 │   ├── brand/         Logo, LogoMark — il marchio ridisegnato in SVG
-│   └── illustrations/ RouteMap (ILL-01) · OfficesGrid · StepIcon · HandoverDiagram · BrokenRoute
+│   ├── illustrations/ RouteMap (ILL-01) · OfficesGrid · StepIcon · HandoverDiagram · BrokenRoute
+│   └── forms/         MultiStepForm, HoneypotField, NetlifyFormDeclaration (FASE 6)
 ├── styles/global.css   token del design system (@theme), superfici, componenti CSS
 ├── assets/brand/       il JPG ricevuto dal cliente — riferimento, non asset di produzione
 └── pages/en/, pages/it/  una route per lingua, generata secondo src/i18n/routes.ts
@@ -82,9 +84,12 @@ Il routing usa l'i18n nativo di Astro: `defaultLocale: 'en'`, `prefixDefaultLoca
 
 ## Stato del progetto
 
-**FASE 5 completata** — tutte le pagine con contenuto reale (Home, Percorso, Servizi, Alloggio, Costi,
-Chi siamo, Partner, FAQ, Grazie) sono implementate end-to-end in entrambe le lingue, sul design
-system della FASE 4. `book`, `privacy` e `cookies` restano scaffold fino alla FASE 6 (form e legal).
+**FASE 6 completata** — form di qualificazione studente (`/book/`, multi-step con biforcazione
+UE/extra-UE) e form B2B (in coda a `/partners/`), entrambi collegati a Netlify Forms con
+dichiarazione statica e honeypot; privacy policy e cookie policy reali. ⚠️ La privacy policy ha
+**dati societari come placeholder esplicito** — non pubblicabile finché la società non è
+costituita (questione #6 in `PROGRESS.md`). L'invio effettivo dei form non è verificabile senza un
+deploy reale, che richiede conferma esplicita del cliente (FASE 9).
 
 Vedi `PROGRESS.md` per lo stato dettagliato, le decisioni prese e le questioni ancora aperte con il
 cliente.

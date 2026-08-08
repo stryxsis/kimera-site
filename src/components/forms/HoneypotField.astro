@@ -1,0 +1,37 @@
+---
+/**
+ * Trappola anti-bot per il form reale (tech-decisions.md §6, PLAN.md FASE 6).
+ *
+ * Va dentro un `<form data-netlify-honeypot="bot-field">`. Nascosto con
+ * `clip-path`, **non** con `display:none` o l'attributo `hidden`: i bot più
+ * ingenui che compilano ciecamente ogni campo presente nel DOM ignorano le
+ * regole CSS ma spesso saltano `display:none` perché lo riconoscono come il
+ * trucco più comune — `clip-path` no. Per gli utenti reali resta doppiamente
+ * invisibile: fuori dal riquadro visibile e fuori dall'albero di
+ * accessibilità (`aria-hidden`), con `tabindex="-1"` a scanso di equivoci
+ * nella navigazione da tastiera.
+ */
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<p class="honeypot" aria-hidden="true">
+  <label>
+    {label}
+    <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+  </label>
+</p>
+
+<style>
+  .honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>

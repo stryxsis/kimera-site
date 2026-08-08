@@ -246,11 +246,23 @@ const thankYouPage = defineCollection({
   }),
 });
 
+/**
+ * Nomi localizzati dei paesi per il campo "cittadinanza" del form (src/data/countries.ts
+ * ne fornisce i codici e il flag UE — dati strutturali, non testo). Un file per lingua,
+ * come le altre collection "di pagina": `lint:content` verifica che i due elenchi di
+ * codici coincidano esattamente.
+ */
+const countries = defineCollection({
+  loader: glob({ base: './src/content/countries', pattern: '*.json' }),
+  schema: z.record(z.string(), z.string()),
+});
+
 export const collections = {
   processSteps,
   packages,
   faq,
   legal,
+  countries,
   homePage,
   processPage,
   servicesPage,

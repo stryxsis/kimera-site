@@ -7,9 +7,63 @@
 
 ## Stato corrente
 
-**Fase corrente:** FASE 5 — Implementazione pagine restanti → **COMPLETATA**
-**In attesa di:** via libera per la FASE 6 (form di qualificazione, integrazioni, legal)
-**Modello richiesto per FASE 6:** SONNET
+**Fase corrente:** FASE 6 — Form di qualificazione, integrazioni, legal → **COMPLETATA**
+**In attesa di:** via libera per la FASE 7 (accessibilità, SEO, performance)
+**Modello richiesto per FASE 7:** SONNET
+
+**Deliverable FASE 6:**
+- **Form studente** (`/book/`, `/prenota/`) — 6 step per il modello mentale dell'utente (7
+  fieldset nel DOM: lo Step 4 è biforcato UE/extra-UE, un solo fieldset visibile alla volta
+  in base alla cittadinanza scelta allo Step 1). Campi esattamente come da
+  `content-map.md` "Struttura del form studente": chi sei, cosa vuoi studiare, quando, la
+  situazione (biforcata), il livello di supporto (preselezionabile da Services via
+  `?level=`), i consensi.
+- **Form B2B** (in coda a `/partners/`) — a pagina singola, non multi-step: il content-map
+  non prevede step per questo form. Stesso motore (`MultiStepForm`) usato con un solo
+  fieldset: si comporta da solo come form semplice.
+- **`MultiStepForm.astro`** — il componente che porta entrambi i form. Invio via `fetch()`
+  con redirect JS alla pagina di ringraziamento; degradazione senza JavaScript verificata
+  nel build: zero fieldset con `hidden` scritto lato server, bottoni di step nascosti di
+  default, resta un unico form lungo con un solo submit nativo (l'`action` punta già alla
+  pagina di ringraziamento — è così che Netlify gestisce il fallback nativo).
+- **Contratto con Netlify** (tech-decisions.md §6): dichiarazione statica nascosta con tutti
+  i campi di entrambi i form (`NetlifyFormDeclaration.astro`), honeypot nascosto con
+  `clip-path` e non `display:none` (`HoneypotField.astro`) — sono due tecniche diverse per
+  due scopi diversi, documentato nei commenti perché non sembri un'incoerenza.
+- **Validazione accessibile**: messaggi non colpevolizzanti che dicono come rimediare,
+  `aria-live` sullo stato del form, focus sul primo campo non valido, focus sul titolo di
+  ogni step al cambio — tutto client-side, perché la spedizione reale dei dati serve solo
+  al submit finale.
+- **100 paesi** (`src/data/countries.ts` + `src/content/countries/{en,it}.json`) per il
+  campo cittadinanza — i 27 Stati UE (determinano la biforcazione) più le nazionalità più
+  comuni per uno studente diretto in Italia, più "Altro / non in elenco". Non è l'intero
+  ISO 3166-1: estendibile aggiungendo una riga in tre file, senza toccare la logica.
+- **Pagine legali reali** (`LegalLayout.astro` + `src/content/legal/{en,it}/{privacy,cookies}.md`):
+  privacy policy GDPR con Netlify nominato come responsabile del trattamento e trasferimento
+  extra-UE dichiarato, retention 24 mesi (default, questione #23), diritti dell'interessato;
+  cookie policy che spiega perché non serve un banner (D-12). **I dati societari sono un
+  placeholder esplicito** — la società non è ancora costituita (questione #6): la pagina
+  è corretta nella struttura ma **non pubblicabile così com'è**, ed è marcata come tale sia
+  nel testo pubblico stesso sia qui.
+- Refactor: gli stili di `Field.astro` sono stati promossi a `global.css` — è il primo posto
+  nel progetto dove la UI reagisce a JavaScript a runtime (validazione), e un elemento creato
+  da `document.createElement` non porta l'attributo di scope che Astro assegna al markup
+  scritto a build time: uno stile scoped semplicemente non lo vedrebbe.
+
+**Bug trovato e non ancora corretto — cosmetico, non funzionale:** gli elementi `<input>`
+e `<select>` generati da `Input.astro` hanno un attributo `class` duplicato nell'HTML
+(l'iniezione automatica dello scope di Astro su una classe passata via spread produce due
+attributi `class=` sullo stesso tag). Per la regola HTML "il primo attributo duplicato vince",
+il browser applica comunque la classe `.control` corretta — **nessuna perdita di stile
+verificata** — ma resta HTML non valido. Esiste da FASE 4, non introdotto ora. Segnalato per
+la FASE 7 (l'audit di accessibilità/validità è esattamente quella fase).
+
+**⚠️ Non verificabile in questa fase:** il criterio di accettazione del master prompt dice
+"la mail arriva davvero" — verificarlo richiede un deploy reale su Netlify, che le regole
+operative permanenti vietano senza tua conferma esplicita. Il contratto con Netlify (campi
+statici, `data-netlify`, honeypot, `action` verso la pagina di ringraziamento) è implementato
+esattamente come documentato in `tech-decisions.md`; l'unico modo per chiudere questo punto
+è autorizzare un deploy di prova.
 
 **Deliverable FASE 5:**
 - 9 pagine con contenuto reale ristilizzate sul design system della FASE 4, EN + IT:
@@ -297,6 +351,7 @@ cromatico e concettuale, non l'asset di produzione.
 | D-10 | **Architettura URL / i18n** | `prefixDefaultLocale: true` → `/en/` e `/it/`, root che redirige a `/en/`. **Slug localizzati** (`/it/percorso/`) via mappa centrale `src/i18n/routes.ts`. | Simmetria tra lingue: aggiungere una terza lingua non richiede modifiche strutturali. Gli slug italiani servono il canale B2B verso atenei e agenzie italiane. | FASE 2, 5, 7 |
 | D-11 | **Stack** | Astro **7.2.0** (output `static`) + Tailwind **4.3.3** + Netlify. Contenuti in **JSON** validati Zod 4, non markdown. Nessun framework UI, nessuna animation library. | Sito di contenuto: ogni KB di runtime è costo puro. Il JSON dà errori di build sui contenuti mancanti e un percorso pulito verso un CMS. | FASE 2 in poi |
 | D-12 | **Nessun banner cookie in v1** | Senza analytics e senza embed di booking restano solo cookie tecnici: nessun consenso preventivo richiesto. | Postura privacy più pulita possibile, zero attrito al primo contatto, CLS zero. ⚠️ Aggiungere un solo script di terze parti lo rende obbligatorio. | FASE 6, 9 (handoff) |
+| D-16 | **Un solo componente per i due form** | `MultiStepForm.astro` gestisce sia il form studente (6 step, biforcato UE/extra-UE) sia il form B2B (1 solo step): con un solo fieldset disattiva da sé la progressione. | Il content-map non prevede step per il form B2B (nessuna colonna "Step" nella sua tabella campi) — costruire un secondo motore sarebbe stato duplicare logica di validazione/invio/honeypot identica per una differenza che si riduce a "quanti fieldset ci sono". | FASE 7 (se emergessero altri form) |
 | D-14 | **Font self-hosted** | `@fontsource-variable/eb-garamond` + `@fontsource-variable/archivo`, serviti dal dominio del sito. Nessun CDN. | Un `@font-face` verso Google espone l'IP di ogni visitatore a un terzo senza base giuridica — su un sito che raccoglie nazionalità e dati sul percorso migratorio è un rischio reale, non teorico. Coerente con D-12 (nessuno script di terze parti, quindi nessun banner cookie). | FASE 6 legal, FASE 7 performance |
 | D-15 | **Superfici invece di colori diretti** | Ogni componente legge `--surface-*`; le classi `.surface-dark/panel/light` ridefiniscono accento, filetti e focus. Nessun colore scritto a mano nei componenti. | L'accento non può essere una costante: l'oro è 2.33 su cream e 8.59 su navy, il teal fa l'opposto. Rendere la regola strutturale impedisce di sbagliare per distrazione in una pagina qualsiasi tra sei mesi. | Tutte le fasi successive |
 | D-13 | **Direzione visiva** | **B — «Rotta»** (`design/direction-b.html`). Dominante navy, l'hero è il percorso, linea di rotta come dispositivo firma, EB Garamond + Archivo. ✏️ **Modifica richiesta dal cliente al gate 4.2 e già applicata:** via la barra di copertura dalle tre card dei livelli, sostituita da elenchi con voci spuntate (come nella direzione C). | Scelta del cliente al gate 4.2. La linea di rotta resta solo dove porta informazione vera: hero, mappa del Percorso (`ILL-01`), 404. | Design system 4.3, illustrazioni 4.4, home 4.5, tutte le pagine della FASE 5 |
@@ -324,10 +379,10 @@ Bloccanti solo alla fase indicata — non fermano l'avvio della FASE 1.
 | 20 | **Esistono già accordi con provider di alloggio** (residenze, piattaforme, agenzie)? | Nessun nome e nessun logo di provider compare nel sito. | FASE 3 (Housing) |
 | 21 | **Data di fondazione esatta** | "giugno 2026", come da analisi strategica. | FASE 3 (About) |
 | 22 | **SLA di risposta** dopo l'invio del form | "entro 2 giorni lavorativi". | FASE 3 (Thank you) |
-| 23 | **Retention delle submission** su Netlify (ogni quanto si cancellano) | 24 mesi, dichiarati nella privacy policy. | FASE 6 |
+| 23 | **Retention delle submission** su Netlify (ogni quanto si cancellano) | 24 mesi, dichiarati nella privacy policy. ✅ **Applicato in FASE 6.** | — |
 | 4 | Budget foto licenziate | Zero foto in v1, sistema visivo 100% tipografia + illustrazione (vincolo di prodotto). Se emerge budget, si aggiungono 4–6 scatti di architettura universitaria italiana in v2. | FASE 4 |
-| 5 | Email di destinazione dei lead | `info@<dominio>` come da analisi — serve l'indirizzo reale dal cliente. | FASE 6 |
-| 6 | Ragione sociale per la privacy policy (società non ancora costituita) | Titolare del trattamento = professionista con P.IVA, da aggiornare alla costituzione societaria. Servono nome, indirizzo, P.IVA, PEC. | FASE 6 |
+| 5 | Email di destinazione dei lead | Non serve nel codice: Netlify smista le submission ai collaboratori del sito via dashboard (Site settings → Forms), non via un indirizzo scritto nell'HTML. Da configurare al primo deploy (FASE 9), non prima. | FASE 9 |
+| 6 | Ragione sociale per la privacy policy (società non ancora costituita) | Titolare del trattamento = professionista con P.IVA, da aggiornare alla costituzione societaria. Servono nome, indirizzo, P.IVA, PEC. ⚠️ **Struttura scritta in FASE 6** (`src/content/legal/{en,it}/privacy.md`) con placeholder espliciti — bloccante per la pubblicazione, non per lo sviluppo. | **FASE 9 — bloccante per il lancio** |
 | 7 | URL social esatti | Le ricerche pubbliche non trovano i profili. Si linka `@kimereconsulting` su Instagram; LinkedIn e Facebook restano da verificare con il cliente prima del lancio. | FASE 6 |
 | 8 | Analytics | Nessun analytics in v1, oppure Plausible/Umami (cookieless, nessun banner necessario). GA4 escluso per il profilo di rischio privacy del sito. | FASE 6 |
 | 9 | Dominio | Se non registrato, in FASE 9 si usa il sottodominio Netlify; il dominio custom si collega dopo. | FASE 9 |
@@ -360,7 +415,7 @@ Bloccanti solo alla fase indicata — non fermano l'avvio della FASE 1.
 | 3 | Copywriting e contenuti | SONNET | ✅ Completata |
 | 4 | Direzione visiva, design system e UI | OPUS | ✅ Completata |
 | 5 | Implementazione pagine restanti | SONNET | ✅ Completata |
-| 6 | Form di qualificazione, integrazioni, legal | SONNET | ⏳ Prossima |
-| 7 | Accessibilità, SEO, performance | SONNET | Non iniziata |
+| 6 | Form di qualificazione, integrazioni, legal | SONNET | ✅ Completata |
+| 7 | Accessibilità, SEO, performance | SONNET | ⏳ Prossima |
 | 8 | Testing | SONNET | Non iniziata |
 | 9 | Deploy e handoff | SONNET | Non iniziata |

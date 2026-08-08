@@ -1,0 +1,56 @@
+---
+/**
+ * Domanda a scelta unica su 2–4 opzioni brevi (content-map.md: "sì/no/voglio
+ * parlarne"), su radio nativi dentro un `<fieldset>`. Niente `role="radiogroup"`:
+ * la semantica la dà già l'HTML — quel ruolo ARIA serve solo a chi ricostruisce
+ * dei radio da zero con dei `<div>`, non è il nostro caso.
+ *
+ * Segue la stessa convenzione di id di Field.astro (`${id}-hint`, `${id}-error`)
+ * così la validazione client di MultiStepForm.astro tratta i due componenti
+ * in modo identico, senza bisogno di sapere quale dei due sta guardando.
+ */
+interface Props {
+  id: string;
+  legend: string;
+  name: string;
+  required?: boolean;
+  hint?: string;
+  options: { value: string; label: string }[];
+  class?: string;
+}
+
+const { id, legend, name, required = false, hint, options, class: className } = Astro.props;
+
+const hintId = hint ? `${id}-hint` : undefined;
+const errorId = `${id}-error`;
+---
+
+<fieldset id={id} class:list={['choice-group', className]} data-choice-group>
+  <legend>{legend}</legend>
+  {
+    hint && (
+      <p class="field__hint" id={hintId}>
+        {hint}
+      </p>
+    )
+  }
+
+  <div class="choice-group__options">
+    {
+      options.map((option) => (
+        <label class="choice-group__option">
+          <input
+            type="radio"
+            name={name}
+            value={option.value}
+            required={required}
+            aria-describedby={[hintId, errorId].filter(Boolean).join(' ')}
+          />
+          {option.label}
+        </label>
+      ))
+    }
+  </div>
+
+  <p class="field__error" id={errorId} hidden></p>
+</fieldset>

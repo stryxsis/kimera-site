@@ -1,11 +1,306 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { getEntry } from 'astro:content';
+import { getPath } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
+import { sortedCountryOptions } from '../../lib/countries';
+import { describedBy } from '../../lib/field';
+import Section from '../../components/ui/Section.astro';
+import Field from '../../components/ui/Field.astro';
+import Input from '../../components/ui/Input.astro';
+import ChoiceGroup from '../../components/ui/ChoiceGroup.astro';
+import MultiStepForm from '../../components/forms/MultiStepForm.astro';
 
+/**
+ * Il form di qualificazione studente (content-map.md "Struttura del form
+ * studente"). Sei step per il modello mentale dell'utente; sette fieldset nel
+ * DOM, perché lo Step 4 sono due fieldset alternativi (UE / extra-UE) che
+ * MultiStepForm mostra uno alla volta in base alla cittadinanza — vedi il suo
+ * commento per il meccanismo di biforcazione.
+ *
+ * L'elenco `FIELDS` è il contratto con Netlify (tech-decisions.md §6): deve
+ * combinare esattamente i `name` usati più in basso nei controlli reali.
+ */
 const locale = 'en';
 const t = useTranslations(locale);
+const { data: countryNames } = await getEntry('countries', locale)!;
+const countries = sortedCountryOptions(countryNames, locale);
+
+const currentYear = new Date().getFullYear();
+const academicYears = [0, 1, 2].map((offset) => {
+  const start = currentYear + offset;
+  return `${start}/${start + 1}`;
+});
+
+const FIELDS = [
+  'name',
+  'email',
+  'citizenship',
+  'study-level',
+  'study-area',
+  'university-city',
+  'start-year',
+  'stage',
+  'visa-awareness',
+  'housing-help',
+  'stay-duration',
+  'housing-window',
+  'support-level',
+  'notes',
+  'privacy-consent',
+  'marketing-consent',
+];
 ---
 
-<PageLayout locale={locale} routeKey="book" title="Book your call">
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout locale={locale} routeKey="book" title={t.cta.bookCall}>
+  <Section surface="light">
+    <p class="block-lead">{t.bookForm.intro}</p>
+  </Section>
+
+  <Section>
+    <MultiStepForm
+      name="student-enquiry"
+      action={getPath('thankYou', locale)}
+      submitLabel={t.bookForm.submitLabel}
+      fields={FIELDS}
+      labels={t.form}
+    >
+      <fieldset class="step" data-step>
+        <legend>{t.bookForm.steps.who.title}</legend>
+
+        <Field id="name" label={t.bookForm.steps.who.name} required>
+          <Input
+            id="name"
+            name="name"
+            required
+            describedBy={describedBy('name', { error: true })}
+          />
+        </Field>
+
+        <Field id="email" label={t.bookForm.steps.who.email} required>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            required
+            describedBy={describedBy('email', { error: true })}
+          />
+        </Field>
+
+        <Field
+          id="citizenship"
+          label={t.bookForm.steps.who.citizenship}
+          hint={t.bookForm.steps.who.citizenshipHint}
+          required
+        >
+          <Input
+            as="select"
+            id="citizenship"
+            name="citizenship"
+            required
+            data-branch-source
+            describedBy={describedBy('citizenship', { hint: true, error: true })}
+          >
+            <option value="">{t.bookForm.steps.who.citizenshipPlaceholder}</option>
+            {countries.map(([code, label]) => <option value={code}>{label}</option>)}
+          </Input>
+        </Field>
+      </fieldset>
+
+      <fieldset class="step" data-step>
+        <legend>{t.bookForm.steps.study.title}</legend>
+
+        <Field id="study-level" label={t.bookForm.steps.study.level} required>
+          <Input
+            as="select"
+            id="study-level"
+            name="study-level"
+            required
+            describedBy={describedBy('study-level', { error: true })}
+          >
+            <option value=""></option>
+            <option value="bachelor">{t.bookForm.steps.study.levelOptions.bachelor}</option>
+            <option value="master">{t.bookForm.steps.study.levelOptions.master}</option>
+            <option value="phd">{t.bookForm.steps.study.levelOptions.phd}</option>
+            <option value="language-course">
+              {t.bookForm.steps.study.levelOptions.languageCourse}
+            </option>
+            <option value="erasmus">{t.bookForm.steps.study.levelOptions.erasmus}</option>
+          </Input>
+        </Field>
+
+        <Field id="study-area" label={t.bookForm.steps.study.area} required>
+          <Input
+            id="study-area"
+            name="study-area"
+            required
+            placeholder={t.bookForm.steps.study.areaPlaceholder}
+            describedBy={describedBy('study-area', { error: true })}
+          />
+        </Field>
+
+        <Field
+          id="university-city"
+          label={t.bookForm.steps.study.universityCity}
+          optionalLabel={t.form.optional}
+        >
+          <Input
+            id="university-city"
+            name="university-city"
+            placeholder={t.bookForm.steps.study.universityCityPlaceholder}
+          />
+        </Field>
+      </fieldset>
+
+      <fieldset class="step" data-step>
+        <legend>{t.bookForm.steps.when.title}</legend>
+
+        <Field id="start-year" label={t.bookForm.steps.when.startYear} required>
+          <Input
+            as="select"
+            id="start-year"
+            name="start-year"
+            required
+            describedBy={describedBy('start-year', { error: true })}
+          >
+            <option value=""></option>
+            {academicYears.map((year) => <option value={year}>{year}</option>)}
+          </Input>
+        </Field>
+
+        <ChoiceGroup
+          id="stage"
+          name="stage"
+          legend={t.bookForm.steps.when.stage}
+          required
+          options={[
+            { value: 'exploring', label: t.bookForm.steps.when.stageOptions.exploring },
+            { value: 'applying', label: t.bookForm.steps.when.stageOptions.applying },
+            { value: 'admitted', label: t.bookForm.steps.when.stageOptions.admitted },
+          ]}
+        />
+      </fieldset>
+
+      <fieldset class="step" data-step data-branch="non-eu">
+        <legend>{t.bookForm.steps.situationNonEu.title}</legend>
+
+        <ChoiceGroup
+          id="visa-awareness"
+          name="visa-awareness"
+          legend={t.bookForm.steps.situationNonEu.visaAwareness}
+          hint={t.bookForm.steps.situationNonEu.visaAwarenessHint}
+          required
+          options={[
+            { value: 'yes', label: t.bookForm.steps.situationNonEu.visaAwarenessOptions.yes },
+            { value: 'no', label: t.bookForm.steps.situationNonEu.visaAwarenessOptions.no },
+            {
+              value: 'want-to-talk',
+              label: t.bookForm.steps.situationNonEu.visaAwarenessOptions.wantToTalk,
+            },
+          ]}
+        />
+
+        <ChoiceGroup
+          id="housing-help"
+          name="housing-help"
+          legend={t.bookForm.steps.situationNonEu.housingHelp}
+          required
+          options={[
+            { value: 'yes', label: t.bookForm.steps.situationNonEu.housingHelpOptions.yes },
+            { value: 'no', label: t.bookForm.steps.situationNonEu.housingHelpOptions.no },
+            {
+              value: 'not-sure',
+              label: t.bookForm.steps.situationNonEu.housingHelpOptions.notSure,
+            },
+          ]}
+        />
+      </fieldset>
+
+      <fieldset class="step" data-step data-branch="eu">
+        <legend>{t.bookForm.steps.situationEu.title}</legend>
+
+        <Field id="stay-duration" label={t.bookForm.steps.situationEu.stayDuration}>
+          <Input as="select" id="stay-duration" name="stay-duration">
+            <option value=""></option>
+            <option value="one-semester">
+              {t.bookForm.steps.situationEu.stayDurationOptions.oneSemester}
+            </option>
+            <option value="full-year">
+              {t.bookForm.steps.situationEu.stayDurationOptions.fullYear}
+            </option>
+            <option value="not-sure">
+              {t.bookForm.steps.situationEu.stayDurationOptions.notSure}
+            </option>
+          </Input>
+        </Field>
+
+        <Field id="housing-window" label={t.bookForm.steps.situationEu.housingWindow}>
+          <Input as="select" id="housing-window" name="housing-window">
+            <option value=""></option>
+            <option value="already-looking">
+              {t.bookForm.steps.situationEu.housingWindowOptions.alreadyLooking}
+            </option>
+            <option value="couple-months-before">
+              {t.bookForm.steps.situationEu.housingWindowOptions.coupleMonthsBefore}
+            </option>
+            <option value="less-than-month">
+              {t.bookForm.steps.situationEu.housingWindowOptions.lessThanMonth}
+            </option>
+            <option value="not-sure">
+              {t.bookForm.steps.situationEu.housingWindowOptions.notSure}
+            </option>
+          </Input>
+        </Field>
+      </fieldset>
+
+      <fieldset class="step" data-step>
+        <legend>{t.bookForm.steps.support.title}</legend>
+
+        <ChoiceGroup
+          id="support-level"
+          name="support-level"
+          legend={t.bookForm.steps.support.level}
+          required
+          options={[
+            { value: 'admission', label: t.bookForm.steps.support.levelOptions.admission },
+            { value: 'arrival', label: t.bookForm.steps.support.levelOptions.arrival },
+            { value: 'settled', label: t.bookForm.steps.support.levelOptions.settled },
+            { value: 'not-sure', label: t.bookForm.steps.support.levelOptions.notSure },
+          ]}
+        />
+
+        <Field id="notes" label={t.bookForm.steps.support.notes} optionalLabel={t.form.optional}>
+          <Input
+            as="textarea"
+            id="notes"
+            name="notes"
+            placeholder={t.bookForm.steps.support.notesPlaceholder}
+          />
+        </Field>
+      </fieldset>
+
+      <fieldset class="step" data-step>
+        <legend>{t.bookForm.steps.consent.title}</legend>
+
+        <label class="consent-field">
+          <input type="checkbox" name="privacy-consent" required />
+          <span>
+            {t.form.privacyConsentPrefix}
+            <a href={getPath('privacy', locale)}>{t.form.privacyConsentLink}</a>.
+          </span>
+        </label>
+
+        <label class="consent-field">
+          <input type="checkbox" name="marketing-consent" />
+          <span>{t.form.marketingConsent}</span>
+        </label>
+      </fieldset>
+    </MultiStepForm>
+  </Section>
 </PageLayout>
+
+<style>
+  :global(.qualform) {
+    max-width: 34rem;
+  }
+</style>

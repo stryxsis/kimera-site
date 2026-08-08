@@ -1,0 +1,44 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import PageLayout from './PageLayout.astro';
+import Section from '../components/ui/Section.astro';
+import { useTranslations } from '../i18n/utils';
+import type { Locale, RouteKey } from '../i18n/routes';
+
+/**
+ * Involucro delle pagine legali (privacy, cookie). Markdown ha senso qui — a
+ * differenza del resto del sito, JSON strutturato (tech-decisions.md §4) —
+ * perché è prosa lunga senza campi ricorrenti da validare.
+ */
+interface Props {
+  locale: Locale;
+  routeKey: RouteKey;
+  entry: CollectionEntry<'legal'>;
+}
+
+const { locale, routeKey, entry } = Astro.props;
+const t = useTranslations(locale);
+const { Content } = await render(entry);
+
+const formattedDate = new Intl.DateTimeFormat(locale, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(entry.data.lastUpdated);
+---
+
+<PageLayout locale={locale} routeKey={routeKey} title={entry.data.title}>
+  <Section surface="light">
+    <p class="label label-muted legal-updated">{t.legal.lastUpdated}: {formattedDate}</p>
+    <div class="prose-kimere">
+      <Content />
+    </div>
+  </Section>
+</PageLayout>
+
+<style>
+  .legal-updated {
+    margin-bottom: 1.5rem;
+  }
+</style>

@@ -2,14 +2,40 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getEntry } from 'astro:content';
 import { getPath } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
+import { sortedCountryOptions } from '../../lib/countries';
+import { describedBy } from '../../lib/field';
 import Section from '../../components/ui/Section.astro';
-import Button from '../../components/ui/Button.astro';
+import Field from '../../components/ui/Field.astro';
+import Input from '../../components/ui/Input.astro';
+import ChoiceGroup from '../../components/ui/ChoiceGroup.astro';
 import HandoverDiagram from '../../components/illustrations/HandoverDiagram.astro';
+import MultiStepForm from '../../components/forms/MultiStepForm.astro';
 
 const locale = 'en';
+const t = useTranslations(locale);
 const { data: content } = await getEntry('partnersPage', locale)!;
+const { data: countryNames } = await getEntry('countries', locale)!;
+const countries = sortedCountryOptions(countryNames, locale);
 
-// Il form B2B dedicato arriva in FASE 6 (content-map.md /partners/ R8).
+/**
+ * Form B2B (content-map.md /partners/ R8): a differenza del form studente
+ * NON è multi-step — un solo schermo, come nella tabella campi del content-map,
+ * che non ha una colonna "Step". MultiStepForm riceve un solo `[data-step]` e
+ * disattiva da sé la progressione (vedi il suo commento).
+ */
+const FIELDS = [
+  'contact-name',
+  'role',
+  'agency',
+  'country',
+  'work-email',
+  'volume-bracket',
+  'destinations-served',
+  'interest',
+  'notes',
+  'privacy-consent',
+];
 ---
 
 <PageLayout locale={locale} routeKey="partners" title={content.proposition.heading}>
@@ -45,9 +71,135 @@ const { data: content } = await getEntry('partnersPage', locale)!;
     <p class="block-lead">{content.forUniversities.body}</p>
   </Section>
 
-  <Section surface="light" size="lg">
-    <div class="closing-cta">
-      <Button href={getPath('book', locale)}>{content.ctaLabel}</Button>
+  <Section surface="light" labelledby="partner-form-heading">
+    <h2 class="block-heading" id="partner-form-heading">{content.ctaLabel}</h2>
+    <p class="block-lead">{t.partnerForm.intro}</p>
+
+    <div class="partner-form-wrap">
+      <MultiStepForm
+        name="partner-enquiry"
+        action={getPath('thankYou', locale)}
+        submitLabel={content.ctaLabel}
+        fields={FIELDS}
+        labels={t.form}
+      >
+        <fieldset class="step" data-step>
+          <legend class="sr-only">{content.ctaLabel}</legend>
+
+          <Field id="contact-name" label={t.partnerForm.contactName} required>
+            <Input
+              id="contact-name"
+              name="contact-name"
+              required
+              describedBy={describedBy('contact-name', { error: true })}
+            />
+          </Field>
+
+          <Field id="role" label={t.partnerForm.role} required>
+            <Input
+              id="role"
+              name="role"
+              required
+              describedBy={describedBy('role', { error: true })}
+            />
+          </Field>
+
+          <Field id="agency" label={t.partnerForm.agency} required>
+            <Input
+              id="agency"
+              name="agency"
+              required
+              describedBy={describedBy('agency', { error: true })}
+            />
+          </Field>
+
+          <Field id="country" label={t.partnerForm.country} required>
+            <Input
+              as="select"
+              id="country"
+              name="country"
+              required
+              describedBy={describedBy('country', { error: true })}
+            >
+              <option value=""></option>
+              {countries.map(([code, label]) => <option value={code}>{label}</option>)}
+            </Input>
+          </Field>
+
+          <Field id="work-email" label={t.partnerForm.workEmail} required>
+            <Input
+              id="work-email"
+              name="work-email"
+              type="email"
+              required
+              describedBy={describedBy('work-email', { error: true })}
+            />
+          </Field>
+
+          <Field id="volume-bracket" label={t.partnerForm.volumeBracket} required>
+            <Input
+              as="select"
+              id="volume-bracket"
+              name="volume-bracket"
+              required
+              describedBy={describedBy('volume-bracket', { error: true })}
+            >
+              <option value=""></option>
+              <option value="under-10">{t.partnerForm.volumeBracketOptions.under10}</option>
+              <option value="10-50">{t.partnerForm.volumeBracketOptions.from10to50}</option>
+              <option value="50-200">{t.partnerForm.volumeBracketOptions.from50to200}</option>
+              <option value="over-200">{t.partnerForm.volumeBracketOptions.over200}</option>
+            </Input>
+          </Field>
+
+          <Field
+            id="destinations-served"
+            label={t.partnerForm.destinationsServed}
+            optionalLabel={t.form.optional}
+          >
+            <Input
+              id="destinations-served"
+              name="destinations-served"
+              placeholder={t.partnerForm.destinationsServedPlaceholder}
+            />
+          </Field>
+
+          <ChoiceGroup
+            id="interest"
+            name="interest"
+            legend={t.partnerForm.interest}
+            required
+            options={[
+              {
+                value: 'students-to-italy',
+                label: t.partnerForm.interestOptions.studentsToItaly,
+              },
+              {
+                value: 'structured-partnership',
+                label: t.partnerForm.interestOptions.structuredPartnership,
+              },
+              { value: 'other', label: t.partnerForm.interestOptions.other },
+            ]}
+          />
+
+          <Field id="notes" label={t.partnerForm.notes} optionalLabel={t.form.optional}>
+            <Input
+              as="textarea"
+              id="notes"
+              name="notes"
+              placeholder={t.partnerForm.notesPlaceholder}
+            />
+          </Field>
+
+          <label class="consent-field">
+            <input type="checkbox" name="privacy-consent" required />
+            <span>
+              {t.form.privacyConsentPrefix}
+              <a href={getPath('privacy', locale)}>{t.form.privacyConsentLink}</a>.
+            </span>
+          </label>
+        </fieldset>
+      </MultiStepForm>
     </div>
   </Section>
 </PageLayout>
@@ -59,5 +211,19 @@ const { data: content } = await getEntry('partnersPage', locale)!;
   .start-steps {
     max-width: 34rem;
     margin-top: 1.75rem;
+  }
+  .partner-form-wrap {
+    margin-top: 2.25rem;
+  }
+  .partner-form-wrap :global(.qualform) {
+    max-width: 34rem;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 </style>
