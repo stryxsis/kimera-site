@@ -1,0 +1,12 @@
+{
+  "order": 1,
+  "key": "admission",
+  "name": "Admission",
+  "tagline": "La parte accademica fatta bene, dalla scelta del corso al fascicolo per il visto.",
+  "includes": [
+    "Orientamento su corso e ateneo, calibrato sul tuo profilo e sul budget",
+    "Pre-iscrizione su Universitaly, monitorata secondo la scadenza di ogni ateneo",
+    "Riconoscimento del titolo di studio — Dichiarazione di Valore o CIMEA, secondo il tuo caso",
+    "Fascicolo consolare per il visto, preparato secondo lo standard che il tuo consolato si aspetta"
+  ]
+}

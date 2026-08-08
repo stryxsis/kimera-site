@@ -1,0 +1,10 @@
+{
+  "phase": "before-departure",
+  "order": 4,
+  "title": "Richiedi il visto di studio Tipo D",
+  "whatHappens": "Se il corso dura più di 90 giorni serve il Visto Nazionale Tipo D (per soggiorni più brevi basta un visto Schengen Tipo C). Il consolato verifica quattro cose: l'idoneità validata su Universitaly, la disponibilità di circa 7.000 euro per l'anno, un'assicurazione sanitaria valida e la prova di un alloggio in Italia.",
+  "whoDecides": "Il consolato italiano nel tuo paese di residenza — non l'ateneo, non Kimere.",
+  "timing": "Prenota l'appuntamento consolare appena il dossier su Universitaly è approvato: nei mesi di punta gli slot si riempiono in fretta.",
+  "whatCanGoWrong": "La prova di alloggio è di solito il requisito più difficile da soddisfare a distanza — vedi il passo successivo.",
+  "whatKimereDoes": "Prepariamo il dossier secondo lo standard che il consolato si aspetta e ti prepariamo al colloquio. La decisione è loro; ci assicuriamo che il fascicolo non sia il motivo di un rigetto."
+}

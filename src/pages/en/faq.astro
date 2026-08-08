@@ -1,11 +1,45 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import { getCollection } from 'astro:content';
+import { useTranslations, renderEmphasis } from '../../i18n/utils';
 
 const locale = 'en';
 const t = useTranslations(locale);
+
+const allFaq = await getCollection('faq', (entry) => entry.id.startsWith(`${locale}/`));
+
+const groups = [
+  { group: 'before-departure' as const, label: t.faqGroups.beforeDeparture },
+  { group: 'money' as const, label: t.faqGroups.money },
+  { group: 'housing' as const, label: t.faqGroups.housing },
+  { group: 'after-arrival' as const, label: t.faqGroups.afterArrival },
+  { group: 'work-and-stay' as const, label: t.faqGroups.workAndStay },
+  { group: 'about-kimere' as const, label: t.faqGroups.aboutKimere },
+].map((g) => ({
+  ...g,
+  items: allFaq.filter((f) => f.data.group === g.group).sort((a, b) => a.data.order - b.data.order),
+}));
 ---
 
 <PageLayout locale={locale} routeKey="faq" title={t.nav.faq}>
-  <p>{t.scaffold.placeholder}</p>
+  {
+    groups.map((g) => (
+      <section aria-labelledby={`faq-${g.group}`}>
+        <h2 id={`faq-${g.group}`}>{g.label}</h2>
+        {g.items.map((item) => (
+          <details>
+            <summary>{item.data.question}</summary>
+            <p set:html={renderEmphasis(item.data.answer)} />
+            {item.data.officialSource && (
+              <p>
+                <a href={item.data.officialSource} rel="noopener">
+                  {t.process.officialSource}
+                </a>
+              </p>
+            )}
+          </details>
+        ))}
+      </section>
+    ))
+  }
 </PageLayout>

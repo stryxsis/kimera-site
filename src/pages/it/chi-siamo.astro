@@ -1,11 +1,40 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import { getEntry } from 'astro:content';
+import { getPath } from '../../i18n/routes';
 
 const locale = 'it';
-const t = useTranslations(locale);
+const { data: content } = await getEntry('aboutPage', locale)!;
 ---
 
-<PageLayout locale={locale} routeKey="about" title={t.nav.about}>
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout locale={locale} routeKey="about" title={content.intro.heading}>
+  <p>{content.intro.body}</p>
+
+  <section>
+    <h2>{content.whyWeExist.heading}</h2>
+    <p>{content.whyWeExist.body}</p>
+  </section>
+
+  <section>
+    <h2>{content.howWeWork.heading}</h2>
+    {
+      content.howWeWork.principles.map((principle) => (
+        <article>
+          <h3>{principle.title}</h3>
+          <p>{principle.body}</p>
+        </article>
+      ))
+    }
+  </section>
+
+  <section>
+    <h2>{content.whatWeDontDo.heading}</h2>
+    <ul>
+      {content.whatWeDontDo.items.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+
+  <p>
+    <a href={getPath('book', locale)}>{content.ctaLabel}</a>
+  </p>
 </PageLayout>

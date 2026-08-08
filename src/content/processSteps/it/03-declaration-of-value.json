@@ -1,0 +1,11 @@
+{
+  "phase": "before-departure",
+  "order": 3,
+  "title": "Fai riconoscere il titolo di studio estero",
+  "whatHappens": "Se il titolo precedente è stato conseguito fuori Italia, di solito serve la Dichiarazione di Valore in Loco — un documento consolare che attesta come si colloca rispetto al sistema italiano — oppure un attestato di comparabilità del CIMEA, l'ente italiano creato proprio per questo.",
+  "whoDecides": "Il consolato italiano nel tuo paese, oppure il CIMEA, secondo la strada che percorri.",
+  "timing": "Stessa finestra della pre-iscrizione — generalmente aprile-giugno. Richiede tempo, quindi conviene muoversi presto.",
+  "whatCanGoWrong": "Richiedere il documento sbagliato per la tua situazione costa settimane che non hai.",
+  "whatKimereDoes": "Ti diciamo quale strada vale per il tuo titolo e prepariamo la pratica correttamente dal primo tentativo.",
+  "officialSource": "https://www.cimea.it"
+}

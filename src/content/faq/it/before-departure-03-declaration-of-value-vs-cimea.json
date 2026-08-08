@@ -1,0 +1,7 @@
+{
+  "group": "before-departure",
+  "order": 3,
+  "question": "Serve la Dichiarazione di Valore, o basta l'attestato CIMEA?",
+  "answer": "Dipende dal titolo e dai requisiti dell'ateneo. La Dichiarazione di Valore la rilascia il consolato italiano nel tuo paese; l'attestato di comparabilità CIMEA lo rilascia un ente italiano creato apposta per questo. Alcuni atenei accettano entrambi, altri ne richiedono uno specifico — verifichiamo il tuo caso prima che tu richieda quello sbagliato.",
+  "officialSource": "https://www.cimea.it"
+}

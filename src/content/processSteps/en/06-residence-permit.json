@@ -1,0 +1,10 @@
+{
+  "phase": "after-arrival",
+  "order": 6,
+  "title": "File for your residence permit within 8 working days",
+  "whatHappens": "The clock starts the moment you land. Italian law requires you to apply for your *permesso di soggiorno* (residence permit) within 8 working days of arrival. You fill in a form from the yellow *Kit Giallo*, available at post offices with a *Sportello Amico* counter, and pay around €116 in fees.",
+  "whoDecides": "The Questura (immigration police) reviews and issues the permit; the post office just handles the paperwork.",
+  "timing": "8 working days from landing — the strictest deadline in the entire process.",
+  "whatCanGoWrong": "Missing this window, or using the wrong post office, delays everything that depends on it: your fiscal code, your bank account, your residence.",
+  "whatKimereDoes": "We tell you exactly which post office to use, help you fill in the Kit Giallo correctly, and make sure you don't lose a single one of those 8 days."
+}

@@ -1,0 +1,35 @@
+{
+  "proposition": {
+    "heading": "You recruit. We handle Italy.",
+    "body": "If your agency sends students abroad, Italy is one of the most cost-competitive destinations in Europe — but the on-the-ground execution is where most partnerships break down. We're built specifically for that part."
+  },
+  "collaborationModel": {
+    "heading": "How the collaboration works",
+    "body": "You handle marketing and recruitment in your market and manage the relationship with the family. Once a student's Universitaly pre-registration is underway, we take over everything on Italian soil — admissions support, visa file, arrival, and housing — and report back to you throughout."
+  },
+  "whatWeDoOnGround": {
+    "heading": "What we handle in Italy",
+    "items": [
+      "Course and university guidance matched to the student's profile",
+      "Universitaly pre-registration and qualification recognition",
+      "Visa file preparation to the standard the consulate expects",
+      "Residence permit filing within the 8-working-day deadline",
+      "Fiscal code, municipal registration, and health cover",
+      "Housing support: contract review, registration, and scam protection"
+    ]
+  },
+  "howToStart": {
+    "heading": "How a partnership starts",
+    "steps": [
+      "A first conversation about your current volumes and destinations",
+      "A walkthrough of exactly where our handoff begins and yours ends",
+      "A small first cohort, so both teams can see the process work end to end",
+      "A formal agreement once we've confirmed the model fits"
+    ]
+  },
+  "forUniversities": {
+    "heading": "For university international offices",
+    "body": "We support incoming students through the administrative steps your office typically doesn't have the resources to cover in detail — visa files, residence permits, and housing — reducing the volume of individual support requests your team fields each intake."
+  },
+  "ctaLabel": "Talk to us about a partnership"
+}

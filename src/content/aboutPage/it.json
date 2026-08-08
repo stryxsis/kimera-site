@@ -1,0 +1,40 @@
+{
+  "intro": {
+    "heading": "Siamo partiti a giugno 2026",
+    "body": "Non è una nota a margine che speriamo tu salti — è la prima cosa che dovresti sapere di noi. Preferiamo che ci giudichi su come lavoriamo piuttosto che su un numero di anni che ancora non abbiamo."
+  },
+  "whyWeExist": {
+    "heading": "Perché esistiamo",
+    "body": "La maggior parte delle agenzie ti aiuta a farti ammettere, poi si ferma. Il rischio reale inizia dopo: un fascicolo per il visto che deve rispettare lo standard esatto del consolato, una scadenza di 8 giorni che parte dal momento in cui atterri, e un mercato degli affitti che tratta gli studenti internazionali come un rischio. Abbiamo costruito Kimere per coprire esattamente questo vuoto — la parte tra l'ammissione e l'essersi davvero sistemati."
+  },
+  "howWeWork": {
+    "heading": "Come lavoriamo",
+    "principles": [
+      {
+        "title": "Prima la diagnosi",
+        "body": "Nella call guardiamo il tuo paese, il tuo corso e i tuoi tempi prima di dirti di cosa hai bisogno — non un pacchetto generico."
+      },
+      {
+        "title": "Pianifichiamo sulle scadenze reali",
+        "body": "Finestre di Universitaly, appuntamenti consolari, la scadenza degli 8 giorni — lavoriamo a ritroso dalle date che non si spostano."
+      },
+      {
+        "title": "Gestiamo la burocrazia con te",
+        "body": "Prepariamo dossier, prenotiamo appuntamenti e — dove conta, come per il codice fiscale — ci presentiamo con te di persona."
+      },
+      {
+        "title": "Restiamo raggiungibili dopo l'atterraggio",
+        "body": "Il lavoro non finisce al visto. Ci siamo per la residenza, la copertura sanitaria e la pratica dell'alloggio che segue."
+      }
+    ]
+  },
+  "whatWeDontDo": {
+    "heading": "Cosa non facciamo",
+    "items": [
+      "Non rilasciamo visti né garantiamo esiti — la decisione spetta al consolato.",
+      "Non siamo un'agenzia immobiliare autorizzata.",
+      "Non diamo consulenza legale o fiscale in sostituzione di un professionista qualificato — ti indirizziamo alle fonti ufficiali e ti aiutiamo ad agire di conseguenza."
+    ]
+  },
+  "ctaLabel": "Prenota la tua call di 15 minuti"
+}

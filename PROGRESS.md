@@ -7,9 +7,41 @@
 
 ## Stato corrente
 
-**Fase corrente:** FASE 2 — Scaffolding tecnico → **COMPLETATA**
-**In attesa di:** via libera per la FASE 3 (Copywriting e contenuti)
-**Modello richiesto per FASE 3:** SONNET (già impostato)
+**Fase corrente:** FASE 3 — Copywriting e contenuti → **COMPLETATA**
+**In attesa di:** via libera per la FASE 4 (Direzione visiva, design system e UI)
+**Modello richiesto per FASE 4:** OPUS
+
+**Deliverable FASE 3:**
+- 8 nuove content collection di testo di pagina in `content.config.ts` (homePage, processPage,
+  servicesPage, housingPage, costsPage, aboutPage, partnersPage, thankYouPage), oltre alle 4 già
+  esistenti (processSteps, packages, faq, legal)
+- Contenuti EN + IT completi: 11 passi del percorso, 3 pacchetti, 26 FAQ, 8 pagine di testo —
+  96 file JSON totali, `lint:content` verde (parità di chiavi EN/IT verificata)
+- `docs/glossary.md` — termini burocratici e regole di uso
+- 9 pagine (`home, process, services, housing, costs, about, partners, faq, thank-you`) collegate
+  al contenuto reale in entrambe le lingue (18 file `.astro`), ancora **non stilizzate** (nessun
+  lavoro estetico: arriva in FASE 4). `book`, `privacy`, `cookies`, `styleguide` restano scaffold
+  come previsto (form/legal/design system arrivano in fasi successive)
+
+**Due bug tecnici reali scoperti e risolti durante la stesura:**
+1. **Collisione di ID nel glob loader.** Il campo `packages.slug` veniva letto da Astro come
+   override dell'ID dell'entry (`generateIdDefault`, astro/dist/content/loaders/glob.js) — EN e IT
+   avevano lo stesso valore (`"admission"`, `"arrival"`, `"settled"`) e una lingua sovrascriveva
+   l'altra in silenzio. Verificato nel codice sorgente di Astro, non solo per sintomo. Rinominato
+   il campo in `key`.
+2. **Enfasi in stile Markdown non renderizzata.** Il copy EN marca i termini burocratici con
+   `*termine*` (convenzione di `docs/glossary.md`), ma il rendering è testo puro: gli asterischi
+   comparivano letteralmente invece di produrre corsivo. Aggiunta `renderEmphasis()` in
+   `src/i18n/utils.ts` (converte `*termine*` in `<em>termine</em>`, con escape HTML) e applicata
+   nei 4 template (`process`, `faq`, `services`, `housing`) dove il copy la usa. Verificato nel
+   build finale: zero asterischi residui in output.
+
+**Nuove voci nel dizionario UI** (`src/i18n/ui/{en,it}.ts`): `nav.primaryLabel`, `footer.navLabel`,
+`scaffold.placeholder`, `process.*` (5 etichette strutturali dei passi), `faqGroups.*` (6 etichette
+di gruppo) — tutte con parità EN/IT verificata da `lint:content`.
+
+**Perimetro dei 3 pacchetti scritto secondo la proposta di `brand-brief.md` §6** (Admission/Arrival/
+Settled) — resta la conferma del cliente più urgente in sospeso (questione #15).
 
 **Deliverable FASE 2:** progetto Astro 7.2.0 inizializzato, Tailwind 4.3.3, i18n con routing
 localizzato, content collections tipizzate (schema Zod, contenuti vuoti), layout scheletrici
@@ -211,8 +243,8 @@ Bloccanti solo alla fase indicata — non fermano l'avvio della FASE 1.
 | 0 | Ricognizione e domande | OPUS | ✅ Completata |
 | 1 | Piano d'azione e fondamenta strategiche | OPUS | ✅ Completata |
 | 2 | Scaffolding tecnico | SONNET | ✅ Completata |
-| 3 | Copywriting e contenuti | SONNET | ⏳ Prossima |
-| 4 | Direzione visiva, design system e UI | OPUS | Non iniziata |
+| 3 | Copywriting e contenuti | SONNET | ✅ Completata |
+| 4 | Direzione visiva, design system e UI | OPUS | ⏳ Prossima |
 | 5 | Implementazione pagine restanti | SONNET | Non iniziata |
 | 6 | Form di qualificazione, integrazioni, legal | SONNET | Non iniziata |
 | 7 | Accessibilità, SEO, performance | SONNET | Non iniziata |

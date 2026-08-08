@@ -1,11 +1,69 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { getEntry } from 'astro:content';
+import { getPath } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
 
 const locale = 'it';
 const t = useTranslations(locale);
+const { data: content } = await getEntry('homePage', locale)!;
 ---
 
-<PageLayout locale={locale} routeKey="home" title={t.nav.home}>
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout locale={locale} routeKey="home" title={content.hero.headline}>
+  <p>{content.hero.subhead}</p>
+  <p>
+    <a href={getPath('book', locale)}>{content.hero.ctaPrimary}</a>
+    <a href={getPath('process', locale)}>{content.hero.ctaSecondary}</a>
+  </p>
+
+  <section>
+    <h2>{content.problemScale.heading}</h2>
+    <p>{content.problemScale.body}</p>
+    <dl>
+      {
+        content.problemScale.stats.map((stat) => (
+          <div>
+            <dt>{stat.value}</dt>
+            <dd>{stat.label}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section>
+    <h2>{content.whatWeDo.heading}</h2>
+    {
+      content.whatWeDo.pillars.map((pillar) => (
+        <article>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.body}</p>
+        </article>
+      ))
+    }
+  </section>
+
+  <section>
+    <h2>{content.processPreview.heading}</h2>
+    <p>{content.processPreview.body}</p>
+    <p><a href={getPath('process', locale)}>{content.processPreview.ctaLabel}</a></p>
+  </section>
+
+  <section>
+    <h2>{content.packagesPreview.heading}</h2>
+    <p>{content.packagesPreview.body}</p>
+    <p><a href={getPath('services', locale)}>{t.nav.services}</a></p>
+  </section>
+
+  <section>
+    <h2>{content.trustBuilding.heading}</h2>
+    <p>{content.trustBuilding.body}</p>
+    <p><a href={getPath('about', locale)}>{t.nav.about}</a></p>
+  </section>
+
+  <section>
+    <h2>{content.finalCta.heading}</h2>
+    <p>{content.finalCta.body}</p>
+    <p><a href={getPath('book', locale)}>{content.finalCta.ctaLabel}</a></p>
+  </section>
 </PageLayout>

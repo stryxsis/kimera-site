@@ -1,0 +1,20 @@
+{
+  "intro": {
+    "heading": "Three levels of support, cumulative",
+    "body": "You're not choosing between different services — each level includes everything before it. The question is simply how far you want us to go with you."
+  },
+  "comparisonNote": "Each level builds on the one before it. Settled includes everything in Arrival, which includes everything in Admission.",
+  "whyNoPrices": {
+    "heading": "Why we don't list prices here",
+    "body": "The right level of support — and its cost — depends on your country of origin, your university, and how much you already have in place. On the call, we look at your specific situation and give you a real number. No obligation to continue afterward."
+  },
+  "notIncluded": {
+    "heading": "What no level includes",
+    "items": [
+      "We don't issue visas — that decision belongs to the consulate alone.",
+      "We're not a real estate agency — we review and register contracts, we don't hold listings.",
+      "We don't guarantee outcomes on admission, visas, or housing. We prepare your file to the standard each authority expects."
+    ]
+  },
+  "ctaLabel": "Book your 15-minute call"
+}

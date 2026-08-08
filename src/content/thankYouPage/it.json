@@ -1,0 +1,16 @@
+{
+  "confirmation": {
+    "heading": "Ricevuto — la tua richiesta è arrivata",
+    "body": "Grazie per i dettagli. Un membro del nostro team li esaminerà e ti contatterà per fissare la tua call di 15 minuti."
+  },
+  "responseTime": "Rispondiamo entro 2 giorni lavorativi con alcuni orari disponibili per la call.",
+  "howToPrepare": {
+    "heading": "Prima della call, ti conviene avere a portata di mano",
+    "items": [
+      "Il corso, l'ateneo o l'ambito di studio che ti interessa — anche se non è ancora definitivo",
+      "La data o l'anno accademico in cui vuoi iniziare",
+      "I documenti che hai già raccolto (diplomi, certificati precedenti)",
+      "Le domande a cui vuoi una risposta diretta"
+    ]
+  }
+}

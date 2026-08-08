@@ -1,0 +1,40 @@
+{
+  "intro": {
+    "heading": "We started in June 2026",
+    "body": "That's not a footnote we're hoping you'll skip — it's the first thing you should know about us. We'd rather you judge us on how we work than on a number of years we don't have yet."
+  },
+  "whyWeExist": {
+    "heading": "Why we exist",
+    "body": "Most agencies help you get admitted, then stop. The real risk starts after that: a visa file that has to meet a consulate's exact standard, an 8-day deadline that begins the moment you land, and a housing market that treats international students as a liability. We built Kimere to cover exactly that gap — the part between acceptance and actually being settled."
+  },
+  "howWeWork": {
+    "heading": "How we work",
+    "principles": [
+      {
+        "title": "Diagnose first",
+        "body": "On the call, we look at your country, your course, and your timeline before we tell you what you need — not a generic package."
+      },
+      {
+        "title": "Plan against real deadlines",
+        "body": "Universitaly windows, consulate appointments, the 8-day filing deadline — we work backward from the dates that don't move."
+      },
+      {
+        "title": "Handle the paperwork with you",
+        "body": "We prepare files, book appointments, and — where it matters, like your fiscal code — show up with you in person."
+      },
+      {
+        "title": "Stay reachable after you land",
+        "body": "The job isn't done at the visa. We're there for registration, health cover, and the housing paperwork that follows."
+      }
+    ]
+  },
+  "whatWeDontDo": {
+    "heading": "What we don't do",
+    "items": [
+      "We don't issue visas or guarantee outcomes — that decision belongs to the consulate.",
+      "We're not a licensed real estate agency.",
+      "We don't give legal or tax advice as a substitute for a qualified professional — we point you to official sources and help you act on them."
+    ]
+  },
+  "ctaLabel": "Book your 15-minute call"
+}

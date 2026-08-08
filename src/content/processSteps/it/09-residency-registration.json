@@ -1,0 +1,10 @@
+{
+  "phase": "after-arrival",
+  "order": 9,
+  "title": "Registra la residenza al Comune",
+  "whatHappens": "Una volta che hai un indirizzo fisso e un contratto firmato, ti registri al Comune per ottenere la residenza formale. Ogni municipio gestisce la pratica in modo leggermente diverso — alcuni accettano un modulo semplice, altri richiedono l'invio via PEC o un portale dedicato.",
+  "whoDecides": "Il Comune in cui vivi — le regole cambiano davvero da un municipio all'altro, anche tra comuni limitrofi.",
+  "timing": "Appena il contratto è firmato; alcuni passaggi successivi (come l'iscrizione al SSN) presuppongono che tu sia già registrato.",
+  "whatCanGoWrong": "Usare il formato o il canale sbagliato per il tuo municipio specifico significa ripartire da capo con l'invio.",
+  "whatKimereDoes": "Conosciamo come i municipi in cui operiamo gestiscono davvero questa pratica — non solo la regola nazionale, ma la burocrazia locale — e inviamo la richiesta nel modo che quel comune si aspetta."
+}

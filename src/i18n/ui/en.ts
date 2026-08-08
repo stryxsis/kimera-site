@@ -25,6 +25,21 @@ export interface UiDictionary {
   cta: {
     bookCall: string;
   };
+  process: {
+    whoDecides: string;
+    timing: string;
+    whatCanGoWrong: string;
+    whatKimereDoes: string;
+    officialSource: string;
+  };
+  faqGroups: {
+    beforeDeparture: string;
+    money: string;
+    housing: string;
+    afterArrival: string;
+    workAndStay: string;
+    aboutKimere: string;
+  };
   languageSwitcher: {
     label: string;
   };
@@ -66,6 +81,21 @@ export const ui: UiDictionary = {
   },
   cta: {
     bookCall: 'Book your 15-minute call',
+  },
+  process: {
+    whoDecides: 'Who decides',
+    timing: 'Timing',
+    whatCanGoWrong: 'What can go wrong',
+    whatKimereDoes: 'What Kimere does',
+    officialSource: 'Official source',
+  },
+  faqGroups: {
+    beforeDeparture: 'Before you leave',
+    money: 'Money',
+    housing: 'Housing',
+    afterArrival: 'After you land',
+    workAndStay: 'Working and staying',
+    aboutKimere: 'About Kimere',
   },
   languageSwitcher: {
     label: 'Language',

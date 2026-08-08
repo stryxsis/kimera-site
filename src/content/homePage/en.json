@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "headline": "Getting into an Italian university is the easy part.",
+    "subhead": "Visa, residence permit, fiscal code, municipal registration, health cover, housing — that's the part almost no one warns you about. We handle it with you, step by step.",
+    "ctaPrimary": "Book your 15-minute call",
+    "ctaSecondary": "See the full process"
+  },
+  "problemScale": {
+    "heading": "The part after admission is a maze",
+    "body": "Between your acceptance letter and your first day of class, you'll deal with a consulate, a university, a post office, an immigration office, a tax agency, and your local municipality — each with its own deadlines and its own paperwork.",
+    "stats": [
+      { "value": "8 working days", "label": "to file your residence permit after landing" },
+      { "value": "6+", "label": "different offices involved before you're fully settled" },
+      { "value": "90+", "label": "Italian universities, each with its own admission calendar" }
+    ]
+  },
+  "whatWeDo": {
+    "heading": "What we actually do",
+    "pillars": [
+      {
+        "title": "Before you leave",
+        "body": "University applications, Universitaly, qualification recognition, and a visa file prepared to the standard your consulate expects."
+      },
+      {
+        "title": "After you land",
+        "body": "Residence permit, fiscal code, municipal registration, and health cover — inside the deadlines that actually matter."
+      },
+      {
+        "title": "Finding a place to live",
+        "body": "Contract review, lease registration, and protection from the scams that target students applying from abroad."
+      }
+    ]
+  },
+  "processPreview": {
+    "heading": "The full path, mapped out",
+    "body": "From your first application to your residence permit, here's exactly what happens and when — including the 8-day deadline almost no one mentions.",
+    "ctaLabel": "See how it works"
+  },
+  "packagesPreview": {
+    "heading": "Three levels of support",
+    "body": "Choose how far you want us to go with you — from getting your application right, to being there when you land, to having a verified place to live."
+  },
+  "trustBuilding": {
+    "heading": "Why trust a company that started this year",
+    "body": "We won't show you fabricated numbers or fake reviews — we don't have either. What we can show you is exactly how we work: the same process, described in detail, that we'd walk you through on a call."
+  },
+  "finalCta": {
+    "heading": "Talk to us before you apply",
+    "body": "15 minutes, no cost, no obligation. Tell us where you are in the process and we'll tell you exactly what comes next.",
+    "ctaLabel": "Book your 15-minute call"
+  }
+}

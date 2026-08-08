@@ -1,0 +1,12 @@
+{
+  "order": 1,
+  "key": "admission",
+  "name": "Admission",
+  "tagline": "Get the academic side right, from course choice to your visa file.",
+  "includes": [
+    "Course and university guidance matched to your background and budget",
+    "Universitaly pre-registration, tracked against each university's deadline",
+    "Qualification recognition — Declaration of Value or CIMEA, whichever applies to you",
+    "Your consular visa file, prepared to the standard your consulate expects"
+  ]
+}

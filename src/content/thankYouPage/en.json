@@ -1,0 +1,16 @@
+{
+  "confirmation": {
+    "heading": "Got it — your request is in",
+    "body": "Thank you for the details. A member of our team will review them and reach out to schedule your 15-minute call."
+  },
+  "responseTime": "We reply within 2 business days with a few time slots for your call.",
+  "howToPrepare": {
+    "heading": "Before the call, it helps to have on hand",
+    "items": [
+      "Your target course, university, or field of study — even if it's not final yet",
+      "Your intended start date or academic year",
+      "Any documents you've already gathered (previous diplomas, transcripts)",
+      "Any questions you want a direct answer to"
+    ]
+  }
+}

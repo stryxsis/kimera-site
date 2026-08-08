@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "headline": "Entrare in un'università italiana è la parte facile.",
+    "subhead": "Visto, permesso di soggiorno, codice fiscale, residenza, copertura sanitaria, alloggio — è la parte di cui quasi nessuno ti avvisa. La affrontiamo insieme a te, passo dopo passo.",
+    "ctaPrimary": "Prenota la tua call di 15 minuti",
+    "ctaSecondary": "Guarda il percorso completo"
+  },
+  "problemScale": {
+    "heading": "Dopo l'ammissione inizia il labirinto",
+    "body": "Tra la lettera di ammissione e il primo giorno di lezione dovrai avere a che fare con un consolato, un ateneo, un ufficio postale, la Questura, l'Agenzia delle Entrate e il tuo Comune — ognuno con scadenze e pratiche proprie.",
+    "stats": [
+      {
+        "value": "8 giorni lavorativi",
+        "label": "per depositare il permesso di soggiorno dopo l'atterraggio"
+      },
+      { "value": "6+", "label": "enti diversi coinvolti prima di essere davvero sistemato" },
+      {
+        "value": "90+",
+        "label": "università italiane, ognuna con il proprio calendario di ammissione"
+      }
+    ]
+  },
+  "whatWeDo": {
+    "heading": "Cosa facciamo davvero",
+    "pillars": [
+      {
+        "title": "Prima di partire",
+        "body": "Candidature universitarie, Universitaly, riconoscimento del titolo di studio e un fascicolo per il visto preparato secondo lo standard del tuo consolato."
+      },
+      {
+        "title": "Dopo l'atterraggio",
+        "body": "Permesso di soggiorno, codice fiscale, residenza anagrafica e copertura sanitaria — dentro le scadenze che contano davvero."
+      },
+      {
+        "title": "Trovare un posto dove vivere",
+        "body": "Revisione del contratto, registrazione della locazione e protezione dalle truffe che colpiscono chi si candida dall'estero."
+      }
+    ]
+  },
+  "processPreview": {
+    "heading": "Il percorso completo, mappato",
+    "body": "Dalla prima candidatura al permesso di soggiorno, ecco esattamente cosa succede e quando — inclusa la scadenza degli 8 giorni che quasi nessuno menziona.",
+    "ctaLabel": "Scopri come funziona"
+  },
+  "packagesPreview": {
+    "heading": "Tre livelli di supporto",
+    "body": "Scegli quanto lontano vuoi che veniamo con te — dal curare bene la candidatura, all'essere presenti quando atterri, ad avere un alloggio verificato."
+  },
+  "trustBuilding": {
+    "heading": "Perché fidarsi di un'azienda nata quest'anno",
+    "body": "Non ti mostreremo numeri inventati o recensioni finte — non ne abbiamo. Quello che possiamo mostrarti è esattamente come lavoriamo: lo stesso processo, descritto nel dettaglio, che affronteremmo insieme a te in una call."
+  },
+  "finalCta": {
+    "heading": "Parliamone prima che ti candidi",
+    "body": "15 minuti, senza costi, senza impegno. Dicci a che punto sei del percorso e ti diciamo esattamente cosa viene dopo.",
+    "ctaLabel": "Prenota la tua call di 15 minuti"
+  }
+}

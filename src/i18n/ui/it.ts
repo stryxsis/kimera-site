@@ -17,6 +17,21 @@ export const ui: UiDictionary = {
   cta: {
     bookCall: 'Prenota la tua call di 15 minuti',
   },
+  process: {
+    whoDecides: 'Chi decide',
+    timing: 'Tempistiche',
+    whatCanGoWrong: 'Cosa può andare storto',
+    whatKimereDoes: 'Cosa fa Kimere',
+    officialSource: 'Fonte ufficiale',
+  },
+  faqGroups: {
+    beforeDeparture: 'Prima di partire',
+    money: 'Soldi',
+    housing: 'Alloggio',
+    afterArrival: "Dopo l'atterraggio",
+    workAndStay: 'Lavorare e restare',
+    aboutKimere: 'Su Kimere',
+  },
   languageSwitcher: {
     label: 'Lingua',
   },

@@ -1,0 +1,20 @@
+{
+  "intro": {
+    "heading": "Tre livelli di supporto, cumulativi",
+    "body": "Non stai scegliendo tra servizi diversi — ogni livello include tutto quello precedente. La domanda è semplicemente quanto lontano vuoi che veniamo con te."
+  },
+  "comparisonNote": "Ogni livello si costruisce sul precedente. Settled include tutto Arrival, che include tutto Admission.",
+  "whyNoPrices": {
+    "heading": "Perché qui non trovi i prezzi",
+    "body": "Il livello di supporto giusto — e il suo costo — dipende dal tuo paese di origine, dal tuo ateneo e da quanto hai già organizzato. Nella call guardiamo la tua situazione specifica e ti diciamo una cifra reale. Nessun obbligo di procedere dopo."
+  },
+  "notIncluded": {
+    "heading": "Cosa nessun livello include",
+    "items": [
+      "Non rilasciamo visti — la decisione spetta esclusivamente al consolato.",
+      "Non siamo un'agenzia immobiliare — revisioniamo e registriamo i contratti, non gestiamo annunci.",
+      "Non garantiamo esiti su ammissione, visti o alloggio. Prepariamo il tuo dossier secondo lo standard che ogni ente si aspetta."
+    ]
+  },
+  "ctaLabel": "Prenota la tua call di 15 minuti"
+}

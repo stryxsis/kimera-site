@@ -1,0 +1,43 @@
+{
+  "intro": {
+    "heading": "What it actually costs to study in Italy",
+    "body": "Italy is genuinely more affordable than the US, UK, or Australia — but \"affordable\" still means real numbers. Here's what to budget for, month by month."
+  },
+  "tuition": {
+    "heading": "Tuition",
+    "body": "Public universities set fees based on the institution, the course, and your family's declared income (ISEE). Private universities — often in design, fashion, business, or medicine — sit well above that.",
+    "publicRange": "€900–4,000 per year (public)",
+    "privateRange": "€6,000–20,000 per year (private)"
+  },
+  "livingCosts": {
+    "heading": "Monthly living costs",
+    "body": "This covers rent, food, transport, and everyday expenses — and it depends heavily on the city. Milan and Rome sit at the top of the range.",
+    "monthlyRange": "€800–1,200 per month, all-in"
+  },
+  "visaRequirement": {
+    "heading": "The visa financial requirement",
+    "body": "Your consulate will ask for proof of available funds — for you or your family — before approving your visa. This isn't a fee paid to anyone; it's evidence you can cover a year without needing to work illegally.",
+    "amount": "Around €7,000 per academic year"
+  },
+  "scholarships": {
+    "heading": "Scholarships can change the maths entirely",
+    "body": "Regional and national scholarships exist that can cover your tuition in full and include a yearly living allowance, sometimes with discounts on meals and public housing. Eligibility depends on income and merit, and applications are usually separate from your university application — worth checking before you assume you can't afford it."
+  },
+  "workWhileStudying": {
+    "heading": "Working while you study",
+    "body": "Your student residence permit allows part-time legal work, which can meaningfully offset living costs.",
+    "hoursPerWeek": "Up to 20 hours per week",
+    "maxHoursPerYear": "Capped at 1,040 hours across 52 weeks"
+  },
+  "healthCoverage": {
+    "heading": "Health coverage",
+    "body": "Non-EU students can enrol voluntarily in Italy's national health service (SSN) for a flat fee, paid via an F24 form, or use private insurance instead.",
+    "annualCost": "About €700 per year for SSN"
+  },
+  "afterGraduation": {
+    "heading": "After you graduate",
+    "body": "Italian law allows you to convert your student permit into a job-seeker permit, or directly into an employment or self-employment permit — a real path to staying, if that's what you want, though it requires its own application."
+  },
+  "disclaimer": "Figures are indicative and change with regional rules and annual ministerial circulars. Always confirm current amounts with official sources before making financial commitments.",
+  "ctaLabel": "Book your 15-minute call"
+}

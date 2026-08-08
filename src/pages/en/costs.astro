@@ -1,11 +1,66 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import { getEntry } from 'astro:content';
+import { getPath } from '../../i18n/routes';
 
 const locale = 'en';
-const t = useTranslations(locale);
+const { data: content } = await getEntry('costsPage', locale)!;
 ---
 
-<PageLayout locale={locale} routeKey="costs" title={t.nav.costs}>
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout locale={locale} routeKey="costs" title={content.intro.heading}>
+  <p>{content.intro.body}</p>
+
+  <section>
+    <h2>{content.tuition.heading}</h2>
+    <p>{content.tuition.body}</p>
+    <ul>
+      <li>{content.tuition.publicRange}</li>
+      <li>{content.tuition.privateRange}</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>{content.livingCosts.heading}</h2>
+    <p>{content.livingCosts.body}</p>
+    <p>{content.livingCosts.monthlyRange}</p>
+  </section>
+
+  <section>
+    <h2>{content.visaRequirement.heading}</h2>
+    <p>{content.visaRequirement.body}</p>
+    <p>{content.visaRequirement.amount}</p>
+  </section>
+
+  <section>
+    <h2>{content.scholarships.heading}</h2>
+    <p>{content.scholarships.body}</p>
+  </section>
+
+  <section>
+    <h2>{content.workWhileStudying.heading}</h2>
+    <p>{content.workWhileStudying.body}</p>
+    <ul>
+      <li>{content.workWhileStudying.hoursPerWeek}</li>
+      <li>{content.workWhileStudying.maxHoursPerYear}</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>{content.healthCoverage.heading}</h2>
+    <p>{content.healthCoverage.body}</p>
+    <p>{content.healthCoverage.annualCost}</p>
+  </section>
+
+  <section>
+    <h2>{content.afterGraduation.heading}</h2>
+    <p>{content.afterGraduation.body}</p>
+  </section>
+
+  <p>
+    <small>{content.disclaimer}</small>
+  </p>
+
+  <p>
+    <a href={getPath('book', locale)}>{content.ctaLabel}</a>
+  </p>
 </PageLayout>

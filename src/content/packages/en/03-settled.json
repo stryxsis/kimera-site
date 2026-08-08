@@ -1,0 +1,14 @@
+{
+  "order": 3,
+  "key": "settled",
+  "name": "Settled",
+  "tagline": "Everything in Arrival, plus a verified place to live and a contract that actually holds up.",
+  "includes": [
+    "Everything in Arrival",
+    "Accommodation search support, weighted toward verified listings",
+    "Contract review before you sign anything",
+    "Lease registration and the paperwork it requires",
+    "A *dichiarazione di ospitalità* if you need proof of address before your final lease is ready",
+    "Support through your first weeks in your new city"
+  ]
+}

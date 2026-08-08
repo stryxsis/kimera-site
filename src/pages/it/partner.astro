@@ -1,11 +1,39 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import { getEntry } from 'astro:content';
 
 const locale = 'it';
-const t = useTranslations(locale);
+const { data: content } = await getEntry('partnersPage', locale)!;
+
+// Il form B2B dedicato arriva in FASE 6 (content-map.md /partners/ R8).
 ---
 
-<PageLayout locale={locale} routeKey="partners" title={t.nav.partners}>
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout locale={locale} routeKey="partners" title={content.proposition.heading}>
+  <p>{content.proposition.body}</p>
+
+  <section>
+    <h2>{content.collaborationModel.heading}</h2>
+    <p>{content.collaborationModel.body}</p>
+  </section>
+
+  <section>
+    <h2>{content.whatWeDoOnGround.heading}</h2>
+    <ul>
+      {content.whatWeDoOnGround.items.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+
+  <section>
+    <h2>{content.howToStart.heading}</h2>
+    <ol>
+      {content.howToStart.steps.map((step) => <li>{step}</li>)}
+    </ol>
+  </section>
+
+  <section>
+    <h2>{content.forUniversities.heading}</h2>
+    <p>{content.forUniversities.body}</p>
+  </section>
+
+  <p>{content.ctaLabel}</p>
 </PageLayout>

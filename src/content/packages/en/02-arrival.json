@@ -1,0 +1,14 @@
+{
+  "order": 2,
+  "key": "arrival",
+  "name": "Arrival",
+  "tagline": "Everything in Admission, plus the first weeks on the ground — the part with the strict deadlines.",
+  "includes": [
+    "Everything in Admission",
+    "Your residence permit filed within the 8-working-day deadline",
+    "Support at your Questura appointment for fingerprinting",
+    "Fiscal code, done on day one",
+    "Residency registration with your specific municipality",
+    "SSN enrolment guidance, if you choose public health cover"
+  ]
+}

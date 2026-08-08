@@ -1,0 +1,9 @@
+{
+  "phase": "after-arrival",
+  "order": 7,
+  "title": "Attend your appointment at the Questura",
+  "whatHappens": "When you submit your Kit Giallo at the post office, you get a receipt with a date to appear at the Questura (immigration office) for fingerprinting and photo identification — the last step to actually receive your permit.",
+  "whoDecides": "The Questura schedules the date; you can't choose it.",
+  "timing": "Usually a few weeks after you submit your Kit Giallo — the receipt itself lets you stay legally in the meantime.",
+  "whatKimereDoes": "We tell you what to bring and what to expect, so the appointment is routine instead of stressful."
+}

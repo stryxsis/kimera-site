@@ -1,0 +1,14 @@
+{
+  "order": 2,
+  "key": "arrival",
+  "name": "Arrival",
+  "tagline": "Tutto Admission, più le prime settimane sul territorio — la parte con le scadenze rigide.",
+  "includes": [
+    "Tutto ciò che è incluso in Admission",
+    "Permesso di soggiorno depositato entro la scadenza degli 8 giorni lavorativi",
+    "Supporto all'appuntamento in Questura per il fotosegnalamento",
+    "Codice fiscale, ottenuto il primo giorno",
+    "Registrazione della residenza al tuo Comune specifico",
+    "Orientamento per l'iscrizione al SSN, se scegli la copertura sanitaria pubblica"
+  ]
+}

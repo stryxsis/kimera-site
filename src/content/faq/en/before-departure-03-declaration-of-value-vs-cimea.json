@@ -1,0 +1,7 @@
+{
+  "group": "before-departure",
+  "order": 3,
+  "question": "Do I need a Declaration of Value, or is a CIMEA statement enough?",
+  "answer": "It depends on your qualification and the university's requirements. The *Dichiarazione di Valore* comes from the Italian consulate in your country; the CIMEA comparability statement is issued by an Italian body built specifically for this. Some universities accept either, some ask for one specifically — we check this against your file before you request the wrong one.",
+  "officialSource": "https://www.cimea.it"
+}

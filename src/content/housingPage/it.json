@@ -1,0 +1,53 @@
+{
+  "intro": {
+    "heading": "La parte più difficile di tutto il percorso",
+    "body": "L'offerta di alloggi per studenti in Italia non copre la domanda, specialmente nelle città accademiche maggiori. I proprietari privati chiedono spesso garanzie — una busta paga italiana, un garante locale — che uno studente internazionale semplicemente non ha."
+  },
+  "visaParadox": {
+    "heading": "Il paradosso: la prova di domicilio prima ancora di aver visto il posto",
+    "body": "Per il visto serve un indirizzo valido in Italia, ma la maggior parte dei proprietari non si impegna con un inquilino mai incontrato, con mesi di anticipo. È esattamente qui che gli studenti senza supporto si bloccano — o vengono truffati."
+  },
+  "scamWarning": {
+    "heading": "Come funzionano di solito le truffe sugli affitti",
+    "body": "Essere costretti a prenotare prima dell'arrivo rende gli studenti un bersaglio facile per annunci inesistenti. Non inviare mai denaro senza un contratto che puoi davvero verificare.",
+    "warningSigns": [
+      "Il proprietario rifiuta una videochiamata o non permette una visita di persona",
+      "Pressione a versare una caparra entro poche ore, prima di aver visto un contratto",
+      "Richieste di bonifico verso un conto all'estero, fuori dai canali abituali",
+      "Un prezzo ben sotto la media di stanze simili in quella zona"
+    ]
+  },
+  "whatWeDo": {
+    "heading": "Cosa facciamo",
+    "items": [
+      "Revisioniamo il contratto prima che tu firmi qualsiasi cosa",
+      "Gestiamo la registrazione della locazione — un obbligo legale, e precondizione per la tua residenza",
+      "Prepariamo una dichiarazione di ospitalità se serve una prova di domicilio prima che il contratto definitivo sia pronto",
+      "Ti indirizziamo verso residenze studentesche verificate e annunci controllati",
+      "Ti supportiamo in italiano dove la pratica lo richiede"
+    ]
+  },
+  "whatWeDontDo": {
+    "heading": "Cosa non facciamo",
+    "items": [
+      "Non siamo un'agenzia immobiliare autorizzata, e non ci comportiamo come tale",
+      "Non gestiamo annunci né incassiamo caparre per conto di un proprietario",
+      "Non possiamo garantirti una stanza specifica, né che una ricerca vada a buon fine"
+    ]
+  },
+  "costsByCity": {
+    "heading": "Quanto costa davvero una stanza",
+    "cities": [
+      { "city": "Milano e Roma", "range": "Spesso 600-700€+ al mese per una stanza singola" },
+      {
+        "city": "Altre città universitarie",
+        "range": "Tipicamente 250-700€ al mese, secondo il tipo di alloggio"
+      }
+    ]
+  },
+  "euSection": {
+    "heading": "Se sei uno studente UE in Erasmus",
+    "body": "Non ti serve un visto, quindi il requisito della prova di domicilio non si applica allo stesso modo — ma il mercato è comunque teso. I proprietari preferiscono spesso inquilini a lungo termine rispetto a un soggiorno Erasmus di 6-9 mesi, quindi inizia la ricerca presto e aspettati gli stessi schemi di truffa descritti sopra."
+  },
+  "ctaLabel": "Prenota la tua call di 15 minuti"
+}

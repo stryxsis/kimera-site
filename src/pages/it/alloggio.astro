@@ -1,11 +1,63 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import { getEntry } from 'astro:content';
+import { getPath } from '../../i18n/routes';
+import { renderEmphasis } from '../../i18n/utils';
 
 const locale = 'it';
-const t = useTranslations(locale);
+const { data: content } = await getEntry('housingPage', locale)!;
 ---
 
-<PageLayout locale={locale} routeKey="housing" title={t.nav.housing}>
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout locale={locale} routeKey="housing" title={content.intro.heading}>
+  <p>{content.intro.body}</p>
+
+  <section>
+    <h2>{content.visaParadox.heading}</h2>
+    <p>{content.visaParadox.body}</p>
+  </section>
+
+  <section>
+    <h2>{content.scamWarning.heading}</h2>
+    <p>{content.scamWarning.body}</p>
+    <ul>
+      {content.scamWarning.warningSigns.map((sign) => <li>{sign}</li>)}
+    </ul>
+  </section>
+
+  <section>
+    <h2>{content.whatWeDo.heading}</h2>
+    <ul>
+      {content.whatWeDo.items.map((item) => <li set:html={renderEmphasis(item)} />)}
+    </ul>
+  </section>
+
+  <section>
+    <h2>{content.whatWeDontDo.heading}</h2>
+    <ul>
+      {content.whatWeDontDo.items.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+
+  <section>
+    <h2>{content.costsByCity.heading}</h2>
+    <dl>
+      {
+        content.costsByCity.cities.map((c) => (
+          <>
+            <dt>{c.city}</dt>
+            <dd>{c.range}</dd>
+          </>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section>
+    <h2>{content.euSection.heading}</h2>
+    <p>{content.euSection.body}</p>
+  </section>
+
+  <p>
+    <a href={getPath('book', locale)}>{content.ctaLabel}</a>
+  </p>
 </PageLayout>

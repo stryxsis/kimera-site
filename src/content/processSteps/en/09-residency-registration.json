@@ -1,0 +1,10 @@
+{
+  "phase": "after-arrival",
+  "order": 9,
+  "title": "Register your residency with the local municipality",
+  "whatHappens": "Once you have a fixed address and a signed lease, you register with the *Comune* (local municipality) to obtain formal residency. Every municipality runs this slightly differently — some accept a simple form, others require submissions by certified email (PEC) or a dedicated online portal.",
+  "whoDecides": "The Comune where you live — rules genuinely differ from one town to the next, even between neighbouring ones.",
+  "timing": "As soon as your lease is signed; some later steps (like SSN enrolment) assume you're already registered.",
+  "whatCanGoWrong": "Using the wrong format or channel for your specific municipality means starting the submission over.",
+  "whatKimereDoes": "We know how the municipalities we operate in actually handle this — not just the national rule, but the local paperwork — and we submit it the way that specific town expects."
+}

@@ -1,11 +1,26 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { getEntry } from 'astro:content';
+import { getPath } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
 
 const locale = 'it';
 const t = useTranslations(locale);
+const { data: content } = await getEntry('thankYouPage', locale)!;
 ---
 
-<PageLayout locale={locale} routeKey="thankYou" title="Grazie" noindex>
-  <p>{t.scaffold.placeholder}</p>
+<PageLayout locale={locale} routeKey="thankYou" title={content.confirmation.heading} noindex>
+  <p>{content.confirmation.body}</p>
+  <p>{content.responseTime}</p>
+
+  <section>
+    <h2>{content.howToPrepare.heading}</h2>
+    <ul>
+      {content.howToPrepare.items.map((item) => <li>{item}</li>)}
+    </ul>
+  </section>
+
+  <p>
+    <a href={getPath('process', locale)}>{t.nav.process}</a>
+  </p>
 </PageLayout>

@@ -33,7 +33,10 @@ const packages = defineCollection({
   loader: glob({ base: './src/content/packages', pattern: '**/*.json' }),
   schema: z.object({
     order: z.number(),
-    slug: z.enum(['admission', 'arrival', 'settled']),
+    // NON chiamarlo "slug": il glob loader di Astro usa data.slug come ID dell'entry
+    // (generateIdDefault, astro/dist/content/loaders/glob.js) — con lo stesso valore
+    // in en/ e it/ le due lingue collidevano e una sovrascriveva l'altra in silenzio.
+    key: z.enum(['admission', 'arrival', 'settled']),
     name: z.string(),
     tagline: z.string(),
     includes: z.array(z.string()),
@@ -69,4 +72,154 @@ const legal = defineCollection({
   }),
 });
 
-export const collections = { processSteps, packages, faq, legal };
+/**
+ * Testo di pagina (hero, intro, sezioni) — un file per lingua (en.json/it.json), non per
+ * lingua+voce ripetuta come processSteps/packages/faq. Uno schema per pagina perché le
+ * sezioni non sono intercambiabili tra pagine (content-map.md, sezioni H1–H7, P1–P17, …).
+ */
+
+const heading = z.object({ heading: z.string(), body: z.string() });
+
+const homePage = defineCollection({
+  loader: glob({ base: './src/content/homePage', pattern: '*.json' }),
+  schema: z.object({
+    hero: z.object({
+      headline: z.string(),
+      subhead: z.string(),
+      ctaPrimary: z.string(),
+      ctaSecondary: z.string(),
+    }),
+    problemScale: z.object({
+      heading: z.string(),
+      body: z.string(),
+      stats: z.array(z.object({ value: z.string(), label: z.string() })),
+    }),
+    whatWeDo: z.object({
+      heading: z.string(),
+      pillars: z.array(z.object({ title: z.string(), body: z.string() })),
+    }),
+    processPreview: z.object({ heading: z.string(), body: z.string(), ctaLabel: z.string() }),
+    packagesPreview: z.object({ heading: z.string(), body: z.string() }),
+    trustBuilding: heading,
+    finalCta: z.object({ heading: z.string(), body: z.string(), ctaLabel: z.string() }),
+  }),
+});
+
+const processPage = defineCollection({
+  loader: glob({ base: './src/content/processPage', pattern: '*.json' }),
+  schema: z.object({
+    intro: heading,
+    beforeDeparturePhaseLabel: z.string(),
+    afterArrivalPhaseLabel: z.string(),
+    disclaimer: z.string(),
+    ctaLabel: z.string(),
+  }),
+});
+
+const servicesPage = defineCollection({
+  loader: glob({ base: './src/content/servicesPage', pattern: '*.json' }),
+  schema: z.object({
+    intro: heading,
+    comparisonNote: z.string(),
+    whyNoPrices: heading,
+    notIncluded: z.object({ heading: z.string(), items: z.array(z.string()) }),
+    ctaLabel: z.string(),
+  }),
+});
+
+const housingPage = defineCollection({
+  loader: glob({ base: './src/content/housingPage', pattern: '*.json' }),
+  schema: z.object({
+    intro: heading,
+    visaParadox: heading,
+    scamWarning: z.object({
+      heading: z.string(),
+      body: z.string(),
+      warningSigns: z.array(z.string()),
+    }),
+    whatWeDo: z.object({ heading: z.string(), items: z.array(z.string()) }),
+    whatWeDontDo: z.object({ heading: z.string(), items: z.array(z.string()) }),
+    costsByCity: z.object({
+      heading: z.string(),
+      cities: z.array(z.object({ city: z.string(), range: z.string() })),
+    }),
+    euSection: heading,
+    ctaLabel: z.string(),
+  }),
+});
+
+const costsPage = defineCollection({
+  loader: glob({ base: './src/content/costsPage', pattern: '*.json' }),
+  schema: z.object({
+    intro: heading,
+    tuition: z.object({
+      heading: z.string(),
+      body: z.string(),
+      publicRange: z.string(),
+      privateRange: z.string(),
+    }),
+    livingCosts: z.object({ heading: z.string(), body: z.string(), monthlyRange: z.string() }),
+    visaRequirement: z.object({ heading: z.string(), body: z.string(), amount: z.string() }),
+    scholarships: heading,
+    workWhileStudying: z.object({
+      heading: z.string(),
+      body: z.string(),
+      hoursPerWeek: z.string(),
+      maxHoursPerYear: z.string(),
+    }),
+    healthCoverage: z.object({ heading: z.string(), body: z.string(), annualCost: z.string() }),
+    afterGraduation: heading,
+    disclaimer: z.string(),
+    ctaLabel: z.string(),
+  }),
+});
+
+const aboutPage = defineCollection({
+  loader: glob({ base: './src/content/aboutPage', pattern: '*.json' }),
+  schema: z.object({
+    intro: heading,
+    whyWeExist: heading,
+    howWeWork: z.object({
+      heading: z.string(),
+      principles: z.array(z.object({ title: z.string(), body: z.string() })),
+    }),
+    whatWeDontDo: z.object({ heading: z.string(), items: z.array(z.string()) }),
+    ctaLabel: z.string(),
+  }),
+});
+
+const partnersPage = defineCollection({
+  loader: glob({ base: './src/content/partnersPage', pattern: '*.json' }),
+  schema: z.object({
+    proposition: heading,
+    collaborationModel: heading,
+    whatWeDoOnGround: z.object({ heading: z.string(), items: z.array(z.string()) }),
+    howToStart: z.object({ heading: z.string(), steps: z.array(z.string()) }),
+    forUniversities: heading,
+    ctaLabel: z.string(),
+  }),
+});
+
+const thankYouPage = defineCollection({
+  loader: glob({ base: './src/content/thankYouPage', pattern: '*.json' }),
+  schema: z.object({
+    confirmation: heading,
+    responseTime: z.string(),
+    howToPrepare: z.object({ heading: z.string(), items: z.array(z.string()) }),
+  }),
+});
+
+export const collections = {
+  processSteps,
+  packages,
+  faq,
+  legal,
+  homePage,
+  processPage,
+  servicesPage,
+  housingPage,
+  costsPage,
+  aboutPage,
+  partnersPage,
+  thankYouPage,
+};
