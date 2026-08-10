@@ -78,31 +78,74 @@ function isExternal(href: string) {
 >
   <div class="home surface-blank">
     {
-      /* ── Hero ───────────────────────────────────────────────────────────
-        A colonna sola e centrato, senza illustrazione: il primo evento
-        visivo della pagina devono essere i quattro box, non un disegno che
-        ci competa. L'hero fa il bivio grossolano e si toglie di mezzo. */
+      /* ── Hero cinematica ────────────────────────────────────────────────
+        Il video (la Terra che si avvicina fino a restare per metà sotto
+        l'inquadratura) va per i suoi 6,2 secondi da solo; a circa due
+        secondi dalla fine lo scrim scurisce l'immagine e il testo entra
+        sfalsato. Il fotogramma finale È la composizione: il video non va in
+        loop, si ferma lì e il titolo resta sopra il cielo, con la Terra in
+        basso.
+
+        Tutta la regia è un miglioramento progressivo, e lo stato di partenza
+        del CSS è quello con il TESTO VISIBILE. Senza JavaScript, con
+        prefers-reduced-motion, con il video mancante o con l'autoplay
+        bloccato, la hero è comunque leggibile — nessuna di queste condizioni
+        può lasciare la prima schermata vuota. */
     }
-    <section class="wrap hero">
-      <div class="hero__inner">
-        <Eyebrow class="animate-rise">{content.hero.eyebrow}</Eyebrow>
-        <h1 class="heading-display hero__title animate-rise" style="animation-delay:60ms">
-          {content.hero.headline}
-        </h1>
-        <p class="lead-soft hero__lead animate-rise" style="animation-delay:120ms">
-          {content.hero.subhead}
-        </p>
-        <div class="hero__actions animate-rise" style="animation-delay:180ms">
-          <Button href="#routing" variant="pill" size="lg" arrow>
-            {content.hero.ctaStudent}
-          </Button>
-          <Button href={getPath('partners', locale)} variant="pill-ghost" size="lg">
-            {content.hero.ctaInstitution}
-          </Button>
+    <section class="stage surface-dark" data-hero aria-labelledby="hero-title">
+      <script is:inline>
+        /* Arma la sequenza PRIMA che il testo venga dipinto: da un attributo
+           messo dopo, il titolo comparirebbe per un fotogramma e poi
+           spirirebbe. `currentScript.parentElement` esiste già qui perché il
+           tag di apertura della sezione è stato letto; i figli no. */
+        (function () {
+          var stage = document.currentScript.parentElement;
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          stage.setAttribute('data-hero-state', 'armed');
+          /* Rete di sicurezza indipendente dal bundle: se lo script principale
+             non arriva mai, il testo non può restare invisibile per sempre. */
+          setTimeout(function () {
+            if (stage.getAttribute('data-hero-state') === 'armed') {
+              stage.setAttribute('data-hero-state', 'revealed');
+            }
+          }, 8000);
+        })();
+      </script>
+
+      {
+        /* Decorativo: l'informazione è tutta nel testo accanto, quindi è
+          `aria-hidden` e non ha bisogno di sottotitoli. Muto sempre — un
+          video con audio non parte da solo su nessun browser, e non dovrebbe. */
+      }
+      <video
+        class="stage__video"
+        data-hero-video
+        src="/media/hero-earth.mp4"
+        muted
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+        tabindex="-1"></video>
+
+      <div class="stage__scrim" aria-hidden="true"></div>
+
+      <div class="wrap stage__inner">
+        <div class="stage__content">
+          <div class="reveal" style="--i:0"><Eyebrow tone="gold">{content.hero.eyebrow}</Eyebrow></div>
+          <h1 class="heading-display stage__title reveal" style="--i:1" id="hero-title">
+            {content.hero.headline}
+          </h1>
+          <p class="stage__lead reveal" style="--i:2">{content.hero.subhead}</p>
+          <div class="stage__actions reveal" style="--i:3">
+            <Button href="#routing" size="lg" arrow>
+              {content.hero.ctaStudent}
+            </Button>
+            <Button href={getPath('partners', locale)} variant="secondary" size="lg">
+              {content.hero.ctaInstitution}
+            </Button>
+          </div>
+          <p class="stage__note reveal" style="--i:4">{t.cta.freeNoObligation}</p>
         </div>
-        <p class="hero__note animate-rise" style="animation-delay:240ms">
-          {t.cta.freeNoObligation}
-        </p>
       </div>
     </section>
 
@@ -337,40 +380,134 @@ function isExternal(href: string) {
     padding-bottom: var(--spacing-section-lg);
   }
 
-  /* ── Hero ─────────────────────────────────────────────────────────────
-     Centrato e a colonna sola: senza illustrazione accanto, un titolo di
-     questa misura spinto a sinistra lascerebbe mezza pagina vuota — ed è il
-     difetto già corretto altrove. Qui serve anche a un secondo scopo: il
-     primo evento visivo della home devono essere i quattro box. */
-  .hero {
-    padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 2.5vw, 2rem);
+  /* ── Hero cinematica ──────────────────────────────────────────────────── */
+  .stage {
+    position: relative;
+    display: grid;
+    align-items: center;
+    overflow: clip;
+    /* `isolation` chiude il contesto di sovrapposizione: gli z-index interni
+       non possono passare sopra l'header sticky, che ha z-index 50. */
+    isolation: isolate;
+    min-height: clamp(34rem, 88vh, 52rem);
+    min-height: clamp(34rem, 88svh, 52rem);
+    /* Sotto il video, e visibile prima che il primo fotogramma sia decodificato:
+       senza questo la prima schermata lampeggia bianca su connessione lenta. */
+    background:
+      radial-gradient(120% 85% at 50% 118%, #12406e 0%, #071f3d 52%, #030d1a 100%),
+      var(--color-ground);
   }
-  .hero__inner {
+  .stage__video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Il ritaglio verticale su mobile è severo (il video è 16:9): centrato è
+       l'unica posizione che non taglia né il cielo né la Terra in modo asimmetrico. */
+    object-position: center;
+  }
+
+  /*
+   * Lo strato che scurisce. Due livelli, e i valori NON sono a occhio: sopra il
+   * video passa del testo di cui non conosciamo i pixel sottostanti, quindi il
+   * contrasto deve essere garantito nel caso peggiore — un fotogramma bianco puro.
+   *
+   * Il fondo uniforme al 78% è la soglia sotto cui il testo tenue smetterebbe di
+   * passare l'AA (verificato in scripts/check-contrast.mjs): a quel valore anche
+   * --surface-fg-muted su bianco pieno dà 4.64, e il titolo 7.68. Il gradiente
+   * aggiunge profondità in alto (fino all'86%) senza scendere mai sotto quella
+   * soglia, così il testo è al sicuro in qualunque punto finisca — anche su un
+   * viewport basso dove il blocco è più alto della fascia scura.
+   *
+   * In riproduzione l'opacità è 0: il video si vede pieno, ed è lì che sta
+   * l'effetto. Lo scrim entra solo al momento della rivelazione.
+   */
+  .stage__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(
+        180deg,
+        rgb(7 31 61 / 0.36) 0%,
+        rgb(7 31 61 / 0.16) 46%,
+        rgb(7 31 61 / 0) 72%
+      ),
+      rgb(7 31 61 / 0.78);
+    opacity: 1;
+    transition: opacity 1100ms var(--ease-out-quart);
+  }
+  [data-hero-state='armed'] .stage__scrim {
+    opacity: 0;
+  }
+  [data-hero-state='revealed'] .stage__scrim {
+    opacity: 1;
+  }
+
+  .stage__inner {
+    position: relative;
+    z-index: 2;
+    /* Asimmetrico di proposito: dentro un'area centrata, il padding inferiore
+       più generoso spinge il testo in alto e libera la metà bassa, che è dove
+       il video lascia la Terra. */
+    padding-block: clamp(3rem, 9vh, 6rem) clamp(5rem, 20vh, 12rem);
+  }
+  .stage__content {
     display: grid;
     justify-items: center;
     text-align: center;
-    max-width: 60rem;
+    max-width: 62rem;
     margin-inline: auto;
   }
-  .hero__title {
+  .stage__title {
     margin-top: 1.4rem;
     max-width: 22ch;
   }
-  .hero__lead {
+  .stage__lead {
     margin-top: 1.3rem;
-    max-width: 62ch;
+    max-width: 58ch;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--surface-fg-soft);
   }
-  .hero__actions {
+  .stage__actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.85rem;
     margin-top: 2.25rem;
   }
-  .hero__note {
+  .stage__note {
     font-size: var(--text-sm);
     color: var(--surface-fg-muted);
     margin-top: 1.15rem;
+  }
+
+  /*
+   * La rivelazione. Lo stato senza attributo è quello VISIBILE: è ciò che vede
+   * chi non ha JavaScript, chi ha chiesto meno movimento e chi riceve un errore
+   * sul video. `armed` nasconde, `revealed` riporta — e solo su questa seconda
+   * transizione c'è il ritardo sfalsato, così l'ingresso è orchestrato e
+   * l'uscita di scena istantanea.
+   *
+   * `pointer-events: none` mentre è nascosto evita che un bottone invisibile sia
+   * cliccabile; il fuoco da tastiera è gestito nello script, che rivela tutto
+   * appena il fuoco entra nella sezione.
+   */
+  [data-hero-state='armed'] .reveal {
+    opacity: 0;
+    transform: translateY(1.75rem);
+    pointer-events: none;
+  }
+  [data-hero-state='revealed'] .reveal {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 800ms var(--ease-out-quart),
+      transform 800ms var(--ease-out-quart);
+    transition-delay: calc(var(--i, 0) * 130ms);
   }
 
   /* ── Fasce e intestazioni ─────────────────────────────────────────────── */
@@ -611,3 +748,91 @@ function isExternal(href: string) {
     max-width: 60ch;
   }
 </style>
+
+<script>
+  /**
+   * Regia della hero cinematica.
+   *
+   * Un solo compito: decidere QUANDO passare da `armed` a `revealed`. Tutto il
+   * resto (che cosa si muove e con quale ritardo) è nel CSS, dove il browser lo
+   * gestisce meglio di qualsiasi timer.
+   *
+   * Il principio è che il testo non può mai restare invisibile. Ogni cosa che
+   * può andare storta — autoplay bloccato da una politica di risparmio dati,
+   * video 404, rete lenta, scheda in background che congela `timeupdate` — ha
+   * la sua uscita di sicurezza, e sopra tutte c'è un tetto temporale assoluto.
+   */
+  const stage = document.querySelector<HTMLElement>('[data-hero]');
+  const video = stage?.querySelector<HTMLVideoElement>('[data-hero-video]');
+
+  if (stage) {
+    /** Quanto prima della fine del video comincia la rivelazione. */
+    const LEAD_IN = 2.1;
+    /** Se il video non ha ancora un fotogramma in movimento, il testo non aspetta. */
+    const START_DEADLINE = 1800;
+    /** Tetto assoluto: oltre questo il testo entra comunque. */
+    const HARD_DEADLINE = 7000;
+
+    const timers: number[] = [];
+    let revealed = false;
+
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      timers.forEach((id) => window.clearTimeout(id));
+      stage.setAttribute('data-hero-state', 'revealed');
+      window.removeEventListener('scroll', reveal);
+    };
+
+    /**
+     * Porta il video sull'ultimo fotogramma senza riprodurlo. È la composizione
+     * che il disegno vuole (la Terra in basso), e serve in due casi: quando
+     * l'utente ha chiesto meno movimento e quando l'autoplay viene rifiutato.
+     */
+    const showLastFrame = () => {
+      const end = video?.duration;
+      if (video && Number.isFinite(end) && end! > 0) {
+        video.currentTime = Math.max(0, end! - 0.04);
+      }
+    };
+
+    // `armed` lo mette lo script inline nella sezione, e solo se il sistema non
+    // ha chiesto di ridurre le animazioni. Se non c'è, il testo è già a schermo.
+    const armed = stage.getAttribute('data-hero-state') === 'armed';
+
+    if (!video) {
+      reveal();
+    } else if (!armed) {
+      if (video.readyState >= 1) showLastFrame();
+      else video.addEventListener('loadedmetadata', showLastFrame, { once: true });
+    } else {
+      timers.push(window.setTimeout(reveal, HARD_DEADLINE));
+      timers.push(
+        window.setTimeout(() => {
+          if (video.paused || video.currentTime === 0) reveal();
+        }, START_DEADLINE),
+      );
+
+      video.addEventListener('timeupdate', () => {
+        const end = video.duration;
+        if (!Number.isFinite(end) || end <= 0) return;
+        if (video.currentTime >= end - LEAD_IN) reveal();
+      });
+      video.addEventListener('ended', reveal);
+      video.addEventListener('error', reveal);
+
+      // Chi scorre ha già deciso di andare avanti, e chi arriva con il tabulatore
+      // sta per mettere il fuoco su un bottone: in entrambi i casi la regia salta.
+      window.addEventListener('scroll', reveal, { once: true, passive: true });
+      stage.addEventListener('pointerdown', reveal, { once: true });
+      stage.addEventListener('focusin', reveal, { once: true });
+
+      // `play()` restituisce una promise: se il browser rifiuta l'autoplay non
+      // resta un video fermo sul primo fotogramma con la hero vuota sopra.
+      video.play().catch(() => {
+        showLastFrame();
+        reveal();
+      });
+    }
+  }
+</script>

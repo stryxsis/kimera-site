@@ -110,6 +110,21 @@ const pairs = [
   ['blank', 'bordo dei campi di modulo', c.controlLineBlank, c.blank, 3.0],
   ['blank', 'titolo del callout di avviso', c.warningBlank, c.blank, 4.5],
 
+  // ── Hero video della home ─────────────────────────────────────────────
+  // Il testo della hero sta sopra un video, quindi il fondo NON è un token: è
+  // qualunque pixel il filmato stia mostrando. Il caso peggiore possibile è un
+  // fotogramma bianco pieno, e sono quelle le coppie verificate qui — se
+  // passano queste, passa ogni fotogramma reale del video.
+  //
+  // Lo scrim ha un fondo uniforme al 78% più un gradiente che in alto arriva
+  // all'86%. Le due righe misurano i due estremi della fascia: se il 78% smette
+  // di passare, il valore in .stage__scrim va alzato, non il testo schiarito.
+  ['hero', 'titolo sul fotogramma peggiore (scrim 78%)', c.onDark, over(c.ground, 0.78, c.blank), 4.5],
+  ['hero', 'lead sul fotogramma peggiore (scrim 78%)', c.onDarkSoft, over(c.ground, 0.78, c.blank), 4.5],
+  ['hero', 'nota sul fotogramma peggiore (scrim 78%)', c.onDarkMuted, over(c.ground, 0.78, c.blank), 4.5],
+  ['hero', 'titolo in cima, dove il gradiente somma (86%)', c.onDark, over(c.ground, 0.86, c.blank), 4.5],
+  ['hero', 'pastiglia oro sul fotogramma peggiore', c.ground, c.goldBright, 4.5],
+
   // ── surface-mist (restyle home: fascia tenue) ─────────────────────────
   ['mist', 'testo corrente', c.ink, c.mist, 4.5],
   ['mist', 'lead', c.inkSoft, c.mist, 4.5],

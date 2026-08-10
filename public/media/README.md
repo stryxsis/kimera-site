@@ -4,6 +4,22 @@ I file vanno qui. Finché un file manca, il sito mostra al suo posto un
 segnaposto dichiarato che descrive cosa dovrà rappresentare: il layout è già
 quello definitivo e non cambia di una riga quando il file arriva.
 
+## Che cosa c'è già
+
+| File              | Dove          | Note                                                        |
+| :---------------- | :------------ | :---------------------------------------------------------- |
+| `hero-earth.mp4`  | Home, hero    | 6,2 s · 1280×720 · 1,7 MB · già ottimizzato per lo streaming |
+
+Il video della home è **decorativo** (`aria-hidden`), va sempre **muto** e non è
+in loop: si ferma sull'ultimo fotogramma, che è la composizione voluta. Non
+serve un file di sottotitoli perché non veicola informazione — quella sta tutta
+nel testo accanto.
+
+⚠️ Se lo sostituisci, tieni la Terra **centrata orizzontalmente**: su mobile il
+ritaglio verticale di un 16:9 taglia i lati e un soggetto decentrato sparisce.
+La regia si adatta da sé a una durata diversa (legge `video.duration`), quindi
+non c'è nessun tempo scritto a mano da aggiornare.
+
 ## Che cosa manca oggi
 
 | Dove                            | Cosa serve                                                                     | Proporzioni | Campo da valorizzare                             |
