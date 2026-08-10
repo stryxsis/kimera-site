@@ -4,8 +4,13 @@ import { useTranslations } from '../../i18n/utils';
 
 /**
  * Primo elemento focalizzabile della pagina: salta header e navigazione.
- * Nascosto finché non riceve il focus da tastiera — non `display:none`, che
- * lo toglierebbe anche dall'ordine di tabulazione e lo renderebbe inutile.
+ *
+ * ⚠️ Nascosto SEMPRE, anche quando riceve il focus — su richiesta esplicita,
+ * consapevole del compromesso: chi usa uno screen reader lo sente e lo attiva
+ * comunque (resta nel DOM e nell'albero di accessibilità, non è `display:none`
+ * né `aria-hidden`), ma chi naviga da tastiera guardando lo schermo perde
+ * l'indicatore visivo di dover essere arrivato lì. Nessun impatto SEO: i motori
+ * di ricerca leggono l'HTML, non gli stati `:focus` del CSS.
  */
 interface Props {
   locale: Locale;
@@ -18,26 +23,22 @@ const t = useTranslations(locale);
 <a class="skip-link" href="#main-content">{t.skipToContent}</a>
 
 <style>
-  /* Discreto di proposito: chi lo vede lo sta già raggiungendo con Tab, quindi
-     non serve gridare — basta essere leggibile. `ink` su `blank` è la stessa
-     coppia già verificata come testo corrente in check-contrast.mjs (4.5+),
-     non l'oro acceso usato altrove per i richiami che DEVONO saltare all'occhio. */
+  /* Stessa tecnica di `.sr-only` usata altrove nel progetto (about.astro,
+     partners.astro): un riquadro di 1px, ritagliato al 50% su ogni lato —
+     invisibile ma ancora presente per chi usa uno screen reader, a differenza
+     di `display:none`/`aria-hidden`, che lo toglierebbero dall'albero di
+     accessibilità e lo renderebbero inutile anche per chi ne ha bisogno. */
   .skip-link {
     position: absolute;
-    left: -9999px;
-    top: 0;
-    z-index: 100;
-    background-color: var(--color-ink);
-    color: var(--color-blank);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    padding: 0.5rem 0.85rem;
-    border-radius: var(--radius-xs);
-    text-decoration: none;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
-  .skip-link:focus {
-    left: 0.6rem;
-    top: 0.6rem;
-    position: fixed;
+  /* Nessuna comparsa al focus: l'anello di `:focus-visible` (global.css) su un
+     riquadro di 1px sarebbe comunque un puntino visibile, quindi va spento qui. */
+  .skip-link:focus-visible {
+    outline: none;
   }
 </style>
