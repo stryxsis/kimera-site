@@ -42,10 +42,12 @@ const t = useTranslations(locale);
     gap: 0.7rem;
     color: var(--surface-fg);
   }
+  /* Il lockup compatto è quello dell'header: deve restare basso, perché è lui
+     a fissare l'altezza della barra su ogni pagina del sito. */
   .logo__mark {
     flex: none;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
   .logo__text {
     display: flex;
@@ -53,22 +55,22 @@ const t = useTranslations(locale);
   }
   .logo__word {
     font-family: var(--font-display);
-    font-size: 1.45rem;
+    font-size: 1.05rem;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: 0.17em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     /* la spaziatura di lettere aggiunge spazio anche dopo l'ultima: lo tolgo */
-    margin-right: -0.17em;
+    margin-right: -0.15em;
   }
   .logo__desc {
-    font-size: 0.55rem;
+    font-size: 0.46rem;
     font-weight: 600;
     line-height: 1.2;
-    letter-spacing: 0.19em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--surface-fg-muted);
-    margin-top: 0.34rem;
+    margin-top: 0.2rem;
   }
 
   /* Lockup completo: segno più grande, payoff in corsivo sotto. */

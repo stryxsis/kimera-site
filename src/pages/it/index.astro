@@ -389,13 +389,27 @@ function isExternal(href: string) {
     /* `isolation` chiude il contesto di sovrapposizione: gli z-index interni
        non possono passare sopra l'header sticky, che ha z-index 50. */
     isolation: isolate;
-    min-height: clamp(34rem, 88vh, 52rem);
-    min-height: clamp(34rem, 88svh, 52rem);
+    /* `100vh` è il fallback per i browser senza `svh`. NON riscrivere questo
+       come due `min-height` sulla stessa regola: il minificatore di Astro
+       tratta la seconda dichiarazione come sostituzione della prima invece che
+       come fallback progressivo ed elimina la riga in `vh` dal CSS finale,
+       lasciando i browser senza `svh` (Safari < 15.4) senza altezza minima.
+       `@supports` non viene toccato dal minificatore, quindi resta l'unico
+       modo sicuro di scrivere questa coppia. */
+    min-height: 100vh;
     /* Sotto il video, e visibile prima che il primo fotogramma sia decodificato:
        senza questo la prima schermata lampeggia bianca su connessione lenta. */
     background:
       radial-gradient(120% 85% at 50% 118%, #12406e 0%, #071f3d 52%, #030d1a 100%),
       var(--color-ground);
+  }
+  /* L'header è sticky e occupa spazio reale nel flusso: con `100svh` la barra
+     di stato mobile che appare/scompare non fa più tremolare l'altezza
+     dell'hero mentre si scorre, cosa che `100vh` da solo farebbe su iOS. */
+  @supports (min-height: 100svh) {
+    .stage {
+      min-height: 100svh;
+    }
   }
   .stage__video {
     position: absolute;

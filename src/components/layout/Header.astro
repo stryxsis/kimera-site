@@ -70,7 +70,9 @@ const t = useTranslations(locale);
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    padding-block: 1rem;
+    /* Il logo compatto (1.5rem + due righe di testo) è l'elemento più alto
+       della barra: questo padding è quanto basta a non farlo toccare i bordi. */
+    padding-block: 0.65rem;
   }
   .site-header__brand {
     text-decoration: none;
