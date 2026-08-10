@@ -419,6 +419,42 @@ const studyInItalyPage = defineCollection({
  * ⚠️ `ecosystem.nodes` descrive DISCIPLINE, non organico e non partner
  * contrattualizzati: non esistono accordi firmati da dichiarare.
  */
+/**
+ * Chi siamo — la pagina che deve costruire fiducia senza avere niente di ciò
+ * con cui la fiducia si costruisce di solito: nessuno storico, nessun cliente
+ * da citare, nessuna fotografia del team, una società non ancora formalizzata.
+ *
+ * La risposta non è nascondere quel vuoto, è cambiare l'oggetto della prova:
+ * invece di «guardate quanto siamo grandi», la pagina racconta COME è fatta
+ * l'azienda — una rete di professionisti indipendenti in più paesi — e perché
+ * quella forma è un vantaggio e non un ripiego. Da qui la sequenza:
+ *   hero      → il manifesto: nessun confine, solo ponti
+ *   match     → l'asso nella manica: il consulente della tua nazionalità
+ *   network   → di che cosa è fatta la rete, e chi la compone
+ *   languages → le lingue e i documenti gestiti in casa
+ *   connected → come si lavora insieme (chiamate frequenti, cliente dentro)
+ *   limits    → cosa NON facciamo, per primi
+ *   finalCta  → due porte, B2C e B2B
+ *
+ * ⚠️ Tre campi di questo schema esistono solo per impedire una promessa falsa,
+ * e non sono opzionali:
+ *
+ * `match.honestNote` — Kimere non può schierare un connazionale per ognuna
+ * delle ~190 nazionalità possibili. Senza questa riga il blocco promette una
+ * copertura universale che non esiste, e la promessa si rompe alla prima call.
+ *
+ * `languages.limitBody` — l'analisi dice che Kimere «bypassa» la procedura
+ * CIMEA. Sul sito non si può scrivere: l'attestato di comparabilità lo rilascia
+ * CIMEA o l'ateneo, e nessun privato lo rende superfluo. Prometterlo farebbe
+ * arrivare lo studente con un fascicolo respinto — il danno ricadrebbe su di
+ * lui e la colpa su Kimere. Il vantaggio vero (traduzione interna, pratica
+ * seguita) è già sufficiente e si regge da solo. La stessa riga sta in home.
+ *
+ * `limits` — non è nel brief di questa pagina, ed è tenuto comunque: è la
+ * pagina dove un lettore diffidente va a cercare cosa NON si può fare, e su un
+ * sito che tratta visti e bonifici toglierlo sarebbe una regressione, non una
+ * semplificazione.
+ */
 const aboutPage = defineCollection({
   loader: glob({ base: './src/content/aboutPage', pattern: '*.json' }),
   schema: z.object({
@@ -429,87 +465,101 @@ const aboutPage = defineCollection({
       ctaPrimary: z.string(),
       ctaSecondary: z.string(),
     }),
-    /** Il nemico comune: non le istituzioni, ma il vuoto di responsabilità fra loro. */
-    genesis: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      paragraphs: z.array(z.string()),
-      pullQuote: z.string(),
-    }),
-    /** Ciò che sostituisce lo storico: un metodo che si giudica prima di pagare. */
-    method: z.object({
+    /** Il match culturale: il differenziante più forte dell'analisi (§1). */
+    match: z.object({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string(),
-      steps: z.array(z.object({ title: z.string(), body: z.string() })),
+      points: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+      /** OBBLIGATORIA: vedi il commento sopra. Nessuna copertura universale. */
+      honestNote: z.string(),
     }),
-    ecosystem: z.object({
+    /** Di che cosa è fatta la rete, e chi la compone. */
+    network: z.object({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string(),
-      hubLabel: z.string(),
-      hubNote: z.string(),
-      nodes: z.array(z.object({ label: z.string(), body: z.string() })),
+      points: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
       /**
-       * Il blocco «le persone». Il layout è definitivo, i media ancora no:
-       * ogni scheda mostra un segnaposto dichiarato finché il file non arriva
-       * in `public/media/`, esattamente come l'immagine dell'hero di
-       * «Perché l'Italia». Appena si valorizzano `photo`/`video` il segnaposto
-       * sparisce da solo, senza toccare il layout né questo schema.
+       * Le persone. Il layout è definitivo, i media ancora no: ogni scheda
+       * mostra un segnaposto dichiarato finché il file non arriva in
+       * `public/media/`, e sparisce da sé appena si valorizza `photo`/`video`.
        *
        * ⚠️ `name` è OPZIONALE e va lasciato vuoto finché non c'è il consenso
-       * scritto della persona a comparire (PROGRESS.md, questione #18): il
-       * nome e il volto di un professionista sono dati personali, e questo è
-       * un sito che sul GDPR ha già preso posizione. Senza `name` la scheda
-       * mostra il ruolo, che è pubblicabile da subito e comunque vero.
-       * ⚠️ MAI ritratti d'archivio al posto delle foto vere: chi verifica li
-       * riconosce, ed è il genitore che paga.
+       * scritto della persona (PROGRESS.md, questione #18): nome e volto di un
+       * professionista sono dati personali, e questo sito sul GDPR ha già preso
+       * posizione. Senza `name` la scheda parte dal ruolo, vero e pubblicabile.
+       * ⚠️ MAI ritratti d'archivio: chi verifica li riconosce, ed è il genitore
+       * che paga.
        */
       team: z.object({
         heading: z.string(),
         body: z.string(),
         members: z.array(
           z.object({
-            /** Solo con consenso scritto. Assente → la scheda parte dal ruolo. */
             name: z.string().optional(),
             role: z.string(),
             bio: z.string(),
-            /** Che cosa deve rappresentare il ritratto, per chi scatterà le foto. */
             photoPlaceholder: z.string(),
             photo: z.string().optional(),
             /** Obbligatorio quando c'è `photo`, altrimenti l'immagine è muta. */
             photoAlt: z.string().optional(),
           }),
         ),
-        /** Il video di presentazione, se e quando esisterà. */
         intro: z.object({
           heading: z.string(),
           caption: z.string(),
           videoPlaceholder: z.string(),
           video: z.string().optional(),
-          /** Fotogramma di copertina mostrato prima del play. */
           poster: z.string().optional(),
           /** WebVTT: obbligatorio se il video ha parlato. */
           captions: z.string().optional(),
         }),
       }),
     }),
-    values: z.object({
+    /**
+     * Le lingue e i servizi in casa.
+     *
+     * ⚠️ L'elenco deve restare identico a `languageCourses.languages` di
+     * `homePage`: sono la stessa affermazione sulla stessa azienda, e due
+     * elenchi che divergono è il tipo di incoerenza che nota esattamente il
+     * lettore che sta verificando. Sette lingue straniere più l'italiano.
+     */
+    languages: z.object({
       eyebrow: z.string(),
       heading: z.string(),
-      items: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+      body: z.string(),
+      languagesLabel: z.string(),
+      languages: z.array(z.string()),
+      inHouse: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+      /** OBBLIGATORIE: il limite su CIMEA. Vedi il commento in testa. */
+      limitHeading: z.string(),
+      limitBody: z.string(),
+      officialSource: z.url(),
     }),
-    /** I limiti dichiarati: ricorrono su Servizi e in home, e qui sono il finale. */
+    /** «Sempre connessi»: la vision operativa dell'analisi (§1). */
+    connected: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      points: z.array(z.object({ title: z.string(), body: z.string() })),
+    }),
     limits: z.object({ heading: z.string(), items: z.array(z.string()) }),
+    /**
+     * CTA sdoppiata: lo studente e l'istituzione non vanno nello stesso imbuto.
+     * Le destinazioni le decide il template (routes.ts), non il contenuto.
+     */
     finalCta: z.object({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string(),
-      ctaLabel: z.string(),
+      studentLabel: z.string(),
+      studentNote: z.string(),
+      institutionLabel: z.string(),
+      institutionNote: z.string(),
     }),
   }),
 });
-
 /**
  * Partnerships — l'unica pagina del sito che NON parla allo studente. Il lettore
  * è il direttore di un'agenzia di reclutamento estera o il referente di un ufficio

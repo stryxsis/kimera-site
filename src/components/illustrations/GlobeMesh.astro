@@ -1,0 +1,94 @@
+---
+/**
+ * ILL-10 — «la rete globale», per il blocco della rete di Chi siamo.
+ *
+ * Un reticolo sferico con dei nodi accesi sopra. Richiama la Terra del video
+ * dell'hero della home, così le due pagine si parlano.
+ *
+ * ⚠️ DELIBERATAMENTE SENZA GEOGRAFIA. Il brief chiedeva «una mappa stilizzata
+ * del mondo con dei pin luminosi», ma una mappa con dei pin afferma di essere
+ * presenti in QUEI paesi, e l'analisi dice soltanto «dislocati in più paesi»
+ * senza nominarne nessuno (a parte il Brasile come esempio di metodo, che non
+ * è una sede). Disegnare continenti riconoscibili con dei segnaposto sarebbe
+ * la stessa invenzione delle partnership mai firmate: chi verifica conta i pin
+ * e chiede. Il reticolo dice «distribuito» senza dire dove, che è esattamente
+ * quanto si può sostenere oggi. Quando i paesi reali saranno noti, questo
+ * componente si sostituisce con una mappa vera senza toccare la pagina.
+ *
+ * Nessun testo dentro l'SVG (come ILL-06 e ILL-09): è decorazione e si
+ * dichiara tale, così chi usa uno screen reader non si sente descrivere un
+ * disegno che non aggiunge nulla al testo accanto.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={['globe', className]}
+  viewBox="0 0 300 300"
+  fill="none"
+  stroke-linecap="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {/* Il reticolo: profilo, tre paralleli e tre meridiani. */}
+  <circle class="globe__wire globe__wire--rim" cx="150" cy="150" r="130"></circle>
+  <ellipse class="globe__wire" cx="150" cy="150" rx="130" ry="34"></ellipse>
+  <ellipse class="globe__wire" cx="150" cy="105" rx="122" ry="27"></ellipse>
+  <ellipse class="globe__wire" cx="150" cy="195" rx="122" ry="27"></ellipse>
+  <ellipse class="globe__wire" cx="150" cy="150" rx="46" ry="130"></ellipse>
+  <ellipse class="globe__wire" cx="150" cy="150" rx="92" ry="130"></ellipse>
+
+  {/* Le connessioni fra i nodi: archi che passano davanti alla sfera. */}
+  <path class="globe__link" d="M92 108C130 78 176 82 196 96" />
+  <path class="globe__link" d="M196 96C232 120 226 160 212 182" />
+  <path class="globe__link" d="M212 182C176 214 128 210 106 196" />
+  <path class="globe__link" d="M106 196C74 168 70 132 92 108" />
+  <path class="globe__link globe__link--cross" d="M92 108C140 140 168 158 212 182" />
+
+  {/* I nodi. Due in oro: la rete non è piatta, ha dei punti di riferimento. */}
+  <circle class="globe__node" cx="92" cy="108" r="6"></circle>
+  <circle class="globe__node globe__node--key" cx="196" cy="96" r="7"></circle>
+  <circle class="globe__node" cx="212" cy="182" r="6"></circle>
+  <circle class="globe__node" cx="106" cy="196" r="6"></circle>
+  <circle class="globe__node globe__node--key" cx="150" cy="150" r="8"></circle>
+</svg>
+
+<style>
+  .globe {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* Il reticolo è tenue: è il contenitore, non l'informazione. */
+  .globe__wire {
+    stroke: var(--color-teal);
+    stroke-width: 1.2;
+    opacity: 0.32;
+  }
+  .globe__wire--rim {
+    opacity: 0.5;
+  }
+  .globe__link {
+    stroke: var(--surface-accent);
+    stroke-width: 1.8;
+    opacity: 0.75;
+  }
+  /* L'arco che taglia la sfera è più tenue: dà profondità senza competere. */
+  .globe__link--cross {
+    stroke-width: 1.2;
+    opacity: 0.4;
+  }
+  .globe__node {
+    fill: var(--surface-bg);
+    stroke: var(--surface-accent);
+    stroke-width: 2;
+  }
+  .globe__node--key {
+    fill: var(--color-gold);
+    stroke: none;
+  }
+</style>

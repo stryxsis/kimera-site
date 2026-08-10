@@ -1,70 +1,53 @@
 {
   "hero": {
-    "eyebrow": "Chi è Kimere",
-    "headline": "Un'azienda costruita interamente sulla parte che tutti gli altri saltano.",
-    "subhead": "Kimere è una piccola società di consulenza italiana per studenti internazionali. Siamo partiti a giugno 2026 e non abbiamo nessun interesse a far finta del contrario. Quello che abbiamo, al posto degli anni, è un metodo definito, un perimetro che nessun altro copre dall'inizio alla fine e l'abitudine di dirti cosa non possiamo fare prima che tu pensi a chiedercelo.",
-    "ctaPrimary": "Prenota la tua call di 15 minuti",
-    "ctaSecondary": "Guarda cosa facciamo"
+    "eyebrow": "Chi siamo",
+    "headline": "Nessun confine. Solo ponti.",
+    "subhead": "Kimere è giovane, piccola per scelta e distribuita su più paesi. Siamo una rete di professionisti indipendenti invece di un ufficio con una reception — costruita così di proposito, perché gli studenti e le università per cui lavoriamo non stanno in un solo posto. Siamo partiti a giugno 2026, scommettiamo su persone all'inizio del loro percorso, e preferiamo mostrarti come lavoriamo piuttosto che dirti da quanto tempo lo facciamo.",
+    "ctaPrimary": "Cominciamo a parlarne",
+    "ctaSecondary": "Come funziona il match culturale"
   },
-  "genesis": {
-    "eyebrow": "Perché esistiamo",
-    "heading": "Della parte più difficile non risponde nessuno",
-    "paragraphs": [
-      "L'Italia è una delle mete di studio più ambite d'Europa, e i suoi atenei vogliono davvero studenti internazionali. È tutto quello che sta in mezzo il punto in cui il sistema smette di aiutarti. Un consolato pubblica i propri requisiti e si aspetta che siano rispettati alla lettera. Un ateneo chiude la finestra di pre-iscrizione a una data che decide da solo. Una Questura conta otto giorni lavorativi dal momento in cui atterri, e non le interessa che tu abbia avuto un volo in ritardo, un documento fermo in traduzione o nessuna conoscenza dell'italiano.",
-      "Nessuno di questi enti sta sbagliando qualcosa. Ognuno fa correttamente il proprio lavoro, nella propria lingua, sul proprio calendario. Il problema è che tenere insieme il tutto non è il lavoro di nessuno — e quindi ricade, per default, su un diciannovenne che un modulo italiano non l'ha mai visto, di solito mentre cerca casa e dà i primi esami.",
-      "Quel vuoto non è un'opportunità di mercato che abbiamo intercettato. È la ragione per cui l'azienda esiste. Tutto quello che c'è su questo sito — la mappa del percorso, le scadenze che continuiamo a ripetere, i livelli di supporto — è costruito per chiuderlo."
-    ],
-    "pullQuote": "Il sistema non è ostile. Semplicemente non è pensato per chi lo affronta la prima volta."
-  },
-  "method": {
-    "eyebrow": "Il metodo",
-    "heading": "Cosa offriamo al posto di uno storico",
-    "body": "Operiamo da giugno 2026. Lo mettiamo agli atti invece di nasconderlo, e vuol dire che non puoi giudicarci sugli anni. Giudicaci allora su questo: su come il lavoro viene condotto davvero, che puoi valutare per intero prima di aver pagato qualsiasi cosa.",
-    "steps": [
+  "match": {
+    "eyebrow": "Il nostro asso nella manica",
+    "heading": "Chi risponde alla tua call viene da dove vieni tu",
+    "body": "Le pratiche sono solo metà di ciò che rende spaventoso trasferirsi all'estero. L'altra metà è spiegarsi in una lingua che stai ancora imparando, a qualcuno che non ha mai dovuto fare quello che stai per fare tu. Quindi facciamo la cosa ovvia che quasi nessuno fa: dove il nostro team copre il tuo paese, è quella la persona che prende la tua call — un consulente brasiliano per un'università in Brasile, e la stessa logica in ogni altro posto in cui arriviamo.",
+    "points": [
       {
-        "title": "Prima la diagnosi, poi il preventivo",
-        "body": "La prima call mappa la tua cittadinanza, il tuo corso, la tua città e il tuo calendario. Solo dopo è chiaro di quale livello di supporto hai bisogno — e a volte la risposta onesta è più leggera di quella con cui eri arrivato."
+        "icon": "compass",
+        "title": "Niente da tradurre, niente da spiegare",
+        "body": "Racconti la tua situazione una volta sola, nella lingua in cui pensi davvero, a qualcuno che già sa com'è fatto un diploma del tuo paese e come funziona la scala di voti della tua scuola."
       },
       {
-        "title": "Pianifichiamo a ritroso dalle date che non si spostano",
-        "body": "Finestre di Universitaly, appuntamenti consolari, la scadenza degli otto giorni lavorativi. Ogni piano parte dalle date fisse e torna indietro fino a oggi, così un ritardo si vede settimane prima di diventare un fallimento."
+        "icon": "building",
+        "title": "Le università accettano l'incontro",
+        "body": "Un ufficio international è molto più disponibile a sedersi con qualcuno che capisce il suo mercato, il suo calendario e quanto i suoi studenti possono realmente permettersi — nella sua lingua, senza un interprete in mezzo."
       },
       {
-        "title": "Prepariamo ogni fascicolo secondo lo standard dell'ufficio che lo riceve",
-        "body": "Non una checklist generica. Ogni consolato, ogni Questura e ogni Comune ha il proprio modo di volere le cose, e un fascicolo che soddisfa l'uno può essere respinto dall'altro."
-      },
-      {
-        "title": "Veniamo con te dove esserci È il servizio",
-        "body": "Alcuni passaggi si gestiscono a distanza, e ti diciamo quali. Per quelli che non si possono — lo sportello postale, l'appuntamento per il fotosegnalamento, il codice fiscale — essere fisicamente presenti, in italiano, è tutto il valore."
-      },
-      {
-        "title": "Restiamo raggiungibili dopo l'atterraggio",
-        "body": "Il visto non è il traguardo. Residenza anagrafica, copertura sanitaria e pratiche dell'alloggio vengono tutte dopo, ed è lì che un buon piano si sfalda in silenzio se nessuno lo sta più seguendo."
+        "icon": "health",
+        "title": "Il non-detto culturale fa il lavoro pesante",
+        "body": "Sapere perché una famiglia esita, cosa chiederà un genitore prima di dire sì, quale rassicurazione funziona davvero: niente di tutto questo sta su una checklist, e fa risparmiare conversazioni intere."
       }
-    ]
+    ],
+    "honestNote": "Dove ancora non copriamo il tuo paese te lo diciamo alla prima call, e ti affianchiamo il consulente con l'esperienza più vicina. Preferiamo essere una frase onesta più corti che promettere una nazionalità che non possiamo davvero schierare."
   },
-  "ecosystem": {
-    "eyebrow": "Con chi lavorerai",
-    "heading": "Un gruppo coordinato di specialisti, non un call center",
-    "body": "Kimere non è un grande studio e non finge di esserlo. Lavoriamo come un gruppo coordinato di professionisti indipendenti, ciascuno su una parte del percorso, con una sola persona che risponde a te di tutto quanto. È il motivo per cui non vieni mai rimbalzato da un ufficio all'altro: non ci sono uffici tra cui rimbalzarti.",
-    "hubLabel": "Kimere",
-    "hubNote": "Un solo coordinatore, responsabile dell'intero percorso",
-    "nodes": [
+  "network": {
+    "eyebrow": "Com'è fatta Kimere",
+    "heading": "Una rete, non una sede centrale",
+    "body": "Non esiste un quartier generale con una sala d'attesa. Kimere è un gruppo coordinato di professionisti indipendenti — ognuno con la propria attività, ognuno nel proprio paese, ognuno su una parte del percorso. È quella struttura la ragione per cui possiamo lavorare verso qualsiasi destinazione scelga uno studente invece che solo verso quella in cui ci troviamo, ed è la ragione per cui c'è quasi sempre qualcuno svegli quando scrivi.",
+    "points": [
       {
-        "label": "Orientamento accademico",
-        "body": "Scelta di corso e ateneo, fascicoli di candidatura, riconoscimento del titolo estero."
+        "icon": "compass",
+        "title": "Professionisti indipendenti, non dipendenti",
+        "body": "Qui ognuno ha la propria attività e la propria Partita IVA. Tiene il team esperto e la struttura leggera, e significa che hai davanti persone che hanno scelto questo lavoro, non persone assegnate al tuo fascicolo."
       },
       {
-        "label": "Pratiche di immigrazione",
-        "body": "Fascicoli consolari, permessi di soggiorno, appuntamenti in Questura e i rinnovi che seguono."
+        "icon": "building",
+        "title": "Distribuiti su più paesi",
+        "body": "È ciò che rende possibile il match culturale qui sopra, ed è ciò che ci permette di coprire una destinazione senza prima aprirci un ufficio. Crescere qui vuol dire un professionista in più in un paese in più, non un piano in più."
       },
       {
-        "label": "Amministrazione locale",
-        "body": "Codice fiscale, residenza anagrafica, copertura sanitaria — gli sportelli che richiedono l'italiano e una persona fisicamente presente."
-      },
-      {
-        "label": "Alloggio e contratti",
-        "body": "Supporto nella ricerca, revisione del contratto prima della firma e la registrazione della locazione da cui dipende la tua residenza."
+        "icon": "contract",
+        "title": "Un solo coordinatore, responsabile di tutto",
+        "body": "Una rete potrebbe facilmente diventare un rimbalzo di responsabilità. Non lo diventa, perché una persona con un nome tiene il tuo fascicolo dalla prima call all'ultima firma, ed è l'unica che devi mai rincorrere."
       }
     ],
     "team": {
@@ -82,8 +65,8 @@
           "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
         },
         {
-          "role": "Sul territorio, in Italia",
-          "bio": "Viene con te allo sportello postale, in Comune e all'Agenzia delle Entrate, e legge il tuo contratto d'affitto riga per riga prima che tu lo firmi.",
+          "role": "Lingue, traduzioni e legalizzazioni",
+          "bio": "Insegna nei nostri corsi e si occupa della traduzione dei tuoi documenti accademici — la stessa persona su entrambe le cose, ed è il motivo per cui nessuna delle due aspetta l'altra.",
           "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
         }
       ],
@@ -94,24 +77,49 @@
       }
     }
   },
-  "values": {
-    "eyebrow": "A cosa teniamo fede",
-    "heading": "Tre impegni, e cosa ci costa ciascuno",
-    "items": [
+  "languages": {
+    "eyebrow": "Lingue e documenti",
+    "heading": "Sette lingue oltre all'italiano — e sono le stesse persone a gestire le tue carte",
+    "body": "I nostri insegnanti di lingua fanno parte del team, non sono un fornitore che chiamiamo quando c'è qualcosa da tradurre. Tengono i corsi, e si occupano della traduzione dei tuoi documenti accademici. Non è una bizzarria dell'organigramma: è la ragione per cui una traduzione può partire il giorno in cui la chiedi, invece di finire a terzi e tornare dopo tre settimane.",
+    "languagesLabel": "Le lingue che insegniamo e in cui lavoriamo",
+    "languages": ["Italiano", "Inglese", "Francese", "Spagnolo", "Portoghese", "Arabo", "Albanese", "Tedesco"],
+    "inHouse": [
       {
         "icon": "document",
-        "title": "Trasparenza sui soldi",
-        "body": "Ricevi il costo reale di un anno in Italia — tasse, affitto, copertura sanitaria, i fondi che il tuo consolato si aspetta di vedere — prima di impegnarti in qualsiasi cosa, noi compresi. Ci costa i clienti che preferirebbero non saperlo subito."
+        "title": "La traduzione, dalla nostra parte del tavolo",
+        "body": "Certificati, diplomi, attestati — tradotti da persone che sono già sul tuo fascicolo e già sanno cosa l'ufficio ricevente si aspetta di vedere, e nel formato in cui si aspetta di vederlo."
       },
       {
-        "icon": "permit",
-        "title": "Rigore legale, mai scorciatoie",
-        "body": "Tutto ciò che prepariamo segue le norme sull'immigrazione così come sono pubblicate, e dove un caso richiede un avvocato o un commercialista lo diciamo invece di improvvisare. Non conosciamo un modo più veloce per aggirare una scadenza, e non te lo venderemmo."
+        "icon": "contract",
+        "title": "La pratica di legalizzazione, seguita fino in fondo",
+        "body": "Apostille o legalizzazione consolare a seconda del paese che ha rilasciato il tuo titolo, preparata e monitorata insieme a te invece di essere restituita come un elenco di istruzioni."
       },
       {
-        "icon": "health",
-        "title": "Un percorso che si possa reggere",
-        "body": "La misura di questo lavoro non è solo che le pratiche siano state depositate nei tempi. È che tu sia arrivato in condizione di pensare al primo esame invece che al permesso. Quella parte su una fattura non compare mai, ed è la parte che vendiamo davvero."
+        "icon": "calendar",
+        "title": "Corsi costruiti sulla settimana di uno studente",
+        "body": "Insegnanti freelance, online, con orari costruiti attorno a lezioni ed esami e non attorno all'apertura di un ufficio. Cominci prima di partire e continui quando sei arrivato."
+      }
+    ],
+    "limitHeading": "Cosa non vuol dire «in casa»",
+    "limitBody": "Non vuol dire che il requisito sparisce. L'attestato di comparabilità di un titolo estero lo rilascia CIMEA o lo valuta l'ateneo stesso, e nulla di ciò che facciamo lo sostituisce o lo rende facoltativo — chi ti dice che quel passaggio si può saltare ti sta vendendo una domanda respinta. Quello che facciamo è comporre il fascicolo, seguirlo fino in fondo e tenere la traduzione da parte nostra, così quella parte non è mai quella che ti blocca.",
+    "officialSource": "https://www.cimea.it"
+  },
+  "connected": {
+    "eyebrow": "Come si lavora insieme",
+    "heading": "Ci sentirai più spesso di quanto ti aspetti",
+    "body": "Il modo in cui questo team funziona al suo interno è lo stesso in cui funziona con te: chiamate di allineamento frequenti, uno scambio fluido invece di passaggi di consegne formali, e il cliente tenuto dentro al processo invece che aggiornato a cose fatte. Sembra un dettaglio. Su un percorso così lungo è la maggior parte di ciò che lo rende sostenibile.",
+    "points": [
+      {
+        "title": "Chiamate di allineamento, non rapporti di stato",
+        "body": "Brevi, regolari e con la persona che sta facendo il lavoro davvero. Saprai sempre quale è la prossima scadenza e in che campo sta la palla in questo momento."
+      },
+      {
+        "title": "Uno scambio fluido dentro il team",
+        "body": "Il tuo coordinatore raggiunge in un pomeriggio lo specialista che segue il tuo consolato. Tra loro non c'è nessuna coda, perché non c'è nessun sistema di ticket in cui accodarsi."
+      },
+      {
+        "title": "Sei coinvolto, non gestito",
+        "body": "Ti chiediamo di decidere le cose che spetta davvero a te decidere, e non ci presentiamo con un piano finito a cui non hai partecipato."
       }
     ]
   },
@@ -119,15 +127,19 @@
     "heading": "Cosa non facciamo",
     "items": [
       "Non rilasciamo visti né permessi di soggiorno, e non garantiamo esiti. Quelle decisioni spettano soltanto al consolato e alla Questura.",
-      "Non siamo un'agenzia immobiliare abilitata. Revisioniamo e registriamo contratti; non gestiamo annunci e non incassiamo caparre per conto di nessuno.",
-      "Non sostituiamo un avvocato o un commercialista. Ti indirizziamo alle fonti ufficiali e ti aiutiamo ad agire di conseguenza.",
-      "Non siamo accreditati, affiliati né agiamo per conto di nessun ateneo o ente pubblico."
+      "Non siamo accreditati, affiliati né agiamo per conto di nessun ateneo o ente pubblico — in Italia o altrove.",
+      "Non siamo un'agenzia immobiliare abilitata. Visitiamo, verifichiamo e registriamo alloggi; non gestiamo annunci e non incassiamo caparre per conto di nessuno.",
+      "Non sostituiamo un avvocato o un commercialista. Dove un caso ne richiede uno lo diciamo invece di improvvisare.",
+      "Abbiamo iniziato a operare a giugno 2026 e l'assetto giuridico è in via di formalizzazione. La documentazione societaria aggiornata la condividiamo direttamente in fase di due diligence, invece di descriverla qui."
     ]
   },
   "finalCta": {
     "eyebrow": "Si comincia",
-    "heading": "Conosci le persone dietro il tuo percorso in Italia",
-    "body": "Quindici minuti, senza costi, senza impegno. Parlerai con qualcuno che questo lavoro lo fa, non con un venditore che legge un copione, e avrai una lettura onesta della tua situazione che tu decida di proseguire con noi oppure no.",
-    "ctaLabel": "Prenota la tua call introduttiva di 15 minuti"
+    "heading": "Vuoi conoscerci meglio? Fai il primo passo.",
+    "body": "Due porte, a seconda di chi sei. Nessuna delle due costa niente, e nessuna delle due ti impegna con noi.",
+    "studentLabel": "Sono uno studente — prenota una consulenza",
+    "studentNote": "Comincia con un questionario, così la ricerca la facciamo prima di parlarci invece che durante.",
+    "institutionLabel": "Sono un'università o un'agenzia — prenota il seminario gratuito",
+    "institutionNote": "Una sessione sola, costruita sul vostro mercato, senza costi e senza impegno."
   }
 }
