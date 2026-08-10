@@ -8,9 +8,16 @@ interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  /**
+   * Colore di fondo della pagina, sotto a tutto. Non è ridondante rispetto alle
+   * superfici delle sezioni: è ciò che si vede nell'overscroll e sotto il footer
+   * quando il contenuto è più corto della finestra. Il default navy vale per le
+   * pagine del sistema originale; le pagine ristilate passano `blank`.
+   */
+  ground?: 'dark' | 'blank';
 }
 
-const { locale, routeKey, title, description, noindex = false } = Astro.props;
+const { locale, routeKey, title, description, noindex = false, ground = 'dark' } = Astro.props;
 
 const alternates = getAlternatePaths(routeKey);
 const canonicalPath = getPath(routeKey, locale);
@@ -36,7 +43,14 @@ const canonicalPath = getPath(routeKey, locale);
     }
     <link rel="alternate" hreflang="x-default" href={new URL(alternates.en, Astro.site)} />
   </head>
-  <body>
+  <body class={ground === 'blank' ? 'ground-blank' : undefined}>
     <slot />
   </body>
 </html>
+
+<style is:global>
+  body.ground-blank {
+    background-color: var(--color-blank);
+    color: var(--color-ink);
+  }
+</style>

@@ -18,9 +18,20 @@ interface Props {
    */
   bare?: boolean;
   eyebrow?: string;
+  /** Vedi BaseLayout: il colore sotto a tutto, per l'overscroll e i vuoti. */
+  ground?: 'dark' | 'blank';
 }
 
-const { locale, routeKey, title, description, noindex, bare = false, eyebrow } = Astro.props;
+const {
+  locale,
+  routeKey,
+  title,
+  description,
+  noindex,
+  bare = false,
+  eyebrow,
+  ground,
+} = Astro.props;
 ---
 
 <BaseLayout
@@ -29,6 +40,7 @@ const { locale, routeKey, title, description, noindex, bare = false, eyebrow } =
   title={title}
   description={description}
   noindex={noindex}
+  ground={ground}
 >
   <SkipLink locale={locale} />
   <Header locale={locale} routeKey={routeKey} />

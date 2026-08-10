@@ -28,7 +28,10 @@ interface Props {
 
 const { detail = 'compact', mono = false, size, class: className, title } = Astro.props;
 
-const gold = mono ? 'currentColor' : 'var(--color-gold-bright, #D6B86C)';
+/* L'oro chiaro nasce per il fondo navy: su bianco scende a ~1.9 e la punta
+   nord sparisce. `--surface-gold-mark` lascia a ogni superficie il proprio
+   oro — chiaro sullo scuro, profondo sul chiaro. */
+const gold = mono ? 'currentColor' : 'var(--surface-gold-mark, var(--color-gold-bright))';
 const dims = size ? { width: size, height: size } : {};
 const a11y = title
   ? ({ role: 'img', 'aria-label': title } as const)

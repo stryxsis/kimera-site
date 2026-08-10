@@ -1,0 +1,100 @@
+---
+/**
+ * ILL-09 — «il corridoio», visual dell'hero di Partnerships.
+ *
+ * Cinque mercati di origine entrano da sinistra, passano per un solo varco e
+ * ne escono come tre blocchi allineati. È il modello B2B2C in un'immagine: voi
+ * portate volume da paesi diversi, noi lo facciamo uscire ordinato dall'altra
+ * parte.
+ *
+ * Non è ILL-06 con un altro nome. Là le linee si INCROCIANO — è il caos che lo
+ * studente si trova addosso; qui corrono parallele e convergono senza toccarsi:
+ * un flusso commerciale, non un groviglio. Il lettore di questa pagina compra
+ * prevedibilità, e un disegno disordinato direbbe il contrario.
+ *
+ * Nessun `<text>` dentro l'SVG, come in ILL-06: i nomi sono contenuto tradotto
+ * e un `<text>` non va a capo. Il disegno è decorazione e si dichiara tale.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={['corridor', className]}
+  viewBox="0 0 460 320"
+  fill="none"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {/* I cinque mercati di origine convergono sul varco senza mai incrociarsi. */}
+  <path class="corridor__line" d="M20 36C92 36 150 160 212 160" />
+  <path class="corridor__line" d="M20 98C82 98 152 160 212 160" />
+  <path class="corridor__line" d="M20 160h192" />
+  <path class="corridor__line" d="M20 222C82 222 152 160 212 160" />
+  <path class="corridor__line" d="M20 284C92 284 150 160 212 160" />
+
+  <circle class="corridor__origin" cx="20" cy="36" r="4.5"></circle>
+  <circle class="corridor__origin" cx="20" cy="98" r="4.5"></circle>
+  <circle class="corridor__origin" cx="20" cy="160" r="4.5"></circle>
+  <circle class="corridor__origin" cx="20" cy="222" r="4.5"></circle>
+  <circle class="corridor__origin" cx="20" cy="284" r="4.5"></circle>
+
+  {/* Il varco: l'unico punto pieno del disegno, ed è dove sta Kimere. */}
+  <circle class="corridor__gate" cx="222" cy="160" r="9"></circle>
+
+  {/* Da lì esce un flusso ordinato: tre pratiche allineate, non cinque linee. */}
+  <path class="corridor__out" d="M234 160C268 160 272 82 304 82" />
+  <path class="corridor__out" d="M234 160h70" />
+  <path class="corridor__out" d="M234 160C268 160 272 238 304 238" />
+
+  <g class="corridor__card">
+    <rect x="304" y="60" width="136" height="44" rx="10"></rect>
+    <path d="M322 82h26" />
+  </g>
+  <g class="corridor__card">
+    <rect x="304" y="138" width="136" height="44" rx="10"></rect>
+    <path d="M322 160h26" />
+  </g>
+  <g class="corridor__card">
+    <rect x="304" y="216" width="136" height="44" rx="10"></rect>
+    <path d="M322 238h26" />
+  </g>
+</svg>
+
+<style>
+  .corridor {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* Tenui in entrata: è volume grezzo, non ancora un processo. */
+  .corridor__line {
+    stroke: var(--color-teal);
+    stroke-width: 1.6;
+    opacity: 0.45;
+  }
+  .corridor__origin {
+    stroke: var(--color-teal);
+    stroke-width: 1.6;
+    /* Il nodo vuoto si buca sul fondo su cui poggia, come in ILL-01 e ILL-06. */
+    fill: var(--surface-bg);
+  }
+  .corridor__gate {
+    fill: var(--surface-accent);
+  }
+  /* In uscita la linea è piena e spessa: la differenza fra prima e dopo il
+     varco è tutto ciò che questa pagina vende. */
+  .corridor__out {
+    stroke: var(--surface-accent);
+    stroke-width: 2.4;
+  }
+  .corridor__card {
+    stroke: var(--surface-accent);
+    stroke-width: 1.8;
+  }
+</style>

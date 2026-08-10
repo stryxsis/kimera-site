@@ -1,40 +1,133 @@
 {
-  "intro": {
-    "heading": "Siamo partiti a giugno 2026",
-    "body": "Non è una nota a margine che speriamo tu salti — è la prima cosa che dovresti sapere di noi. Preferiamo che ci giudichi su come lavoriamo piuttosto che su un numero di anni che ancora non abbiamo."
+  "hero": {
+    "eyebrow": "Chi è Kimere",
+    "headline": "Un'azienda costruita interamente sulla parte che tutti gli altri saltano.",
+    "subhead": "Kimere è una piccola società di consulenza italiana per studenti internazionali. Siamo partiti a giugno 2026 e non abbiamo nessun interesse a far finta del contrario. Quello che abbiamo, al posto degli anni, è un metodo definito, un perimetro che nessun altro copre dall'inizio alla fine e l'abitudine di dirti cosa non possiamo fare prima che tu pensi a chiedercelo.",
+    "ctaPrimary": "Prenota la tua call di 15 minuti",
+    "ctaSecondary": "Guarda cosa facciamo"
   },
-  "whyWeExist": {
-    "heading": "Perché esistiamo",
-    "body": "La maggior parte delle agenzie ti aiuta a farti ammettere, poi si ferma. Il rischio reale inizia dopo: un fascicolo per il visto che deve rispettare lo standard esatto del consolato, una scadenza di 8 giorni che parte dal momento in cui atterri, e un mercato degli affitti che tratta gli studenti internazionali come un rischio. Abbiamo costruito Kimere per coprire esattamente questo vuoto — la parte tra l'ammissione e l'essersi davvero sistemati."
+  "genesis": {
+    "eyebrow": "Perché esistiamo",
+    "heading": "Della parte più difficile non risponde nessuno",
+    "paragraphs": [
+      "L'Italia è una delle mete di studio più ambite d'Europa, e i suoi atenei vogliono davvero studenti internazionali. È tutto quello che sta in mezzo il punto in cui il sistema smette di aiutarti. Un consolato pubblica i propri requisiti e si aspetta che siano rispettati alla lettera. Un ateneo chiude la finestra di pre-iscrizione a una data che decide da solo. Una Questura conta otto giorni lavorativi dal momento in cui atterri, e non le interessa che tu abbia avuto un volo in ritardo, un documento fermo in traduzione o nessuna conoscenza dell'italiano.",
+      "Nessuno di questi enti sta sbagliando qualcosa. Ognuno fa correttamente il proprio lavoro, nella propria lingua, sul proprio calendario. Il problema è che tenere insieme il tutto non è il lavoro di nessuno — e quindi ricade, per default, su un diciannovenne che un modulo italiano non l'ha mai visto, di solito mentre cerca casa e dà i primi esami.",
+      "Quel vuoto non è un'opportunità di mercato che abbiamo intercettato. È la ragione per cui l'azienda esiste. Tutto quello che c'è su questo sito — la mappa del percorso, le scadenze che continuiamo a ripetere, i livelli di supporto — è costruito per chiuderlo."
+    ],
+    "pullQuote": "Il sistema non è ostile. Semplicemente non è pensato per chi lo affronta la prima volta."
   },
-  "howWeWork": {
-    "heading": "Come lavoriamo",
-    "principles": [
+  "method": {
+    "eyebrow": "Il metodo",
+    "heading": "Cosa offriamo al posto di uno storico",
+    "body": "Operiamo da giugno 2026. Lo mettiamo agli atti invece di nasconderlo, e vuol dire che non puoi giudicarci sugli anni. Giudicaci allora su questo: su come il lavoro viene condotto davvero, che puoi valutare per intero prima di aver pagato qualsiasi cosa.",
+    "steps": [
       {
-        "title": "Prima la diagnosi",
-        "body": "Nella call guardiamo il tuo paese, il tuo corso e i tuoi tempi prima di dirti di cosa hai bisogno — non un pacchetto generico."
+        "title": "Prima la diagnosi, poi il preventivo",
+        "body": "La prima call mappa la tua cittadinanza, il tuo corso, la tua città e il tuo calendario. Solo dopo è chiaro di quale livello di supporto hai bisogno — e a volte la risposta onesta è più leggera di quella con cui eri arrivato."
       },
       {
-        "title": "Pianifichiamo sulle scadenze reali",
-        "body": "Finestre di Universitaly, appuntamenti consolari, la scadenza degli 8 giorni — lavoriamo a ritroso dalle date che non si spostano."
+        "title": "Pianifichiamo a ritroso dalle date che non si spostano",
+        "body": "Finestre di Universitaly, appuntamenti consolari, la scadenza degli otto giorni lavorativi. Ogni piano parte dalle date fisse e torna indietro fino a oggi, così un ritardo si vede settimane prima di diventare un fallimento."
       },
       {
-        "title": "Gestiamo la burocrazia con te",
-        "body": "Prepariamo dossier, prenotiamo appuntamenti e — dove conta, come per il codice fiscale — ci presentiamo con te di persona."
+        "title": "Prepariamo ogni fascicolo secondo lo standard dell'ufficio che lo riceve",
+        "body": "Non una checklist generica. Ogni consolato, ogni Questura e ogni Comune ha il proprio modo di volere le cose, e un fascicolo che soddisfa l'uno può essere respinto dall'altro."
+      },
+      {
+        "title": "Veniamo con te dove esserci È il servizio",
+        "body": "Alcuni passaggi si gestiscono a distanza, e ti diciamo quali. Per quelli che non si possono — lo sportello postale, l'appuntamento per il fotosegnalamento, il codice fiscale — essere fisicamente presenti, in italiano, è tutto il valore."
       },
       {
         "title": "Restiamo raggiungibili dopo l'atterraggio",
-        "body": "Il lavoro non finisce al visto. Ci siamo per la residenza, la copertura sanitaria e la pratica dell'alloggio che segue."
+        "body": "Il visto non è il traguardo. Residenza anagrafica, copertura sanitaria e pratiche dell'alloggio vengono tutte dopo, ed è lì che un buon piano si sfalda in silenzio se nessuno lo sta più seguendo."
       }
     ]
   },
-  "whatWeDontDo": {
-    "heading": "Cosa non facciamo",
+  "ecosystem": {
+    "eyebrow": "Con chi lavorerai",
+    "heading": "Un gruppo coordinato di specialisti, non un call center",
+    "body": "Kimere non è un grande studio e non finge di esserlo. Lavoriamo come un gruppo coordinato di professionisti indipendenti, ciascuno su una parte del percorso, con una sola persona che risponde a te di tutto quanto. È il motivo per cui non vieni mai rimbalzato da un ufficio all'altro: non ci sono uffici tra cui rimbalzarti.",
+    "hubLabel": "Kimere",
+    "hubNote": "Un solo coordinatore, responsabile dell'intero percorso",
+    "nodes": [
+      {
+        "label": "Orientamento accademico",
+        "body": "Scelta di corso e ateneo, fascicoli di candidatura, riconoscimento del titolo estero."
+      },
+      {
+        "label": "Pratiche di immigrazione",
+        "body": "Fascicoli consolari, permessi di soggiorno, appuntamenti in Questura e i rinnovi che seguono."
+      },
+      {
+        "label": "Amministrazione locale",
+        "body": "Codice fiscale, residenza anagrafica, copertura sanitaria — gli sportelli che richiedono l'italiano e una persona fisicamente presente."
+      },
+      {
+        "label": "Alloggio e contratti",
+        "body": "Supporto nella ricerca, revisione del contratto prima della firma e la registrazione della locazione da cui dipende la tua residenza."
+      }
+    ],
+    "team": {
+      "heading": "Le persone con cui avrai davvero a che fare",
+      "body": "Un gruppo piccolo, per scelta. Dalla call introduttiva in poi hai un solo interlocutore, e gli altri sono persone che quell'interlocutore raggiunge in un pomeriggio — non una coda di ticket.",
+      "members": [
+        {
+          "role": "Coordinamento e primo contatto",
+          "bio": "La persona con cui parli nella call introduttiva, e quella che risponde del tuo fascicolo da quel momento fino a quando non sei sistemato.",
+          "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
+        },
+        {
+          "role": "Pratiche di immigrazione e fascicoli consolari",
+          "bio": "Prepara il fascicolo per il visto, il permesso di soggiorno e l'appuntamento in Questura — la parte del percorso con le scadenze che non si spostano.",
+          "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
+        },
+        {
+          "role": "Sul territorio, in Italia",
+          "bio": "Viene con te allo sportello postale, in Comune e all'Agenzia delle Entrate, e legge il tuo contratto d'affitto riga per riga prima che tu lo firmi.",
+          "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
+        }
+      ],
+      "intro": {
+        "heading": "Un minuto con noi, prima di prenotare",
+        "caption": "Non è un video promozionale: è la stessa spiegazione che avresti in call, così sai già con chi stai per parlare.",
+        "videoPlaceholder": "Video di presentazione breve — una persona del team che spiega cosa fa Kimere, 16:9, sottotitolato"
+      }
+    }
+  },
+  "values": {
+    "eyebrow": "A cosa teniamo fede",
+    "heading": "Tre impegni, e cosa ci costa ciascuno",
     "items": [
-      "Non rilasciamo visti né garantiamo esiti — la decisione spetta al consolato.",
-      "Non siamo un'agenzia immobiliare autorizzata.",
-      "Non diamo consulenza legale o fiscale in sostituzione di un professionista qualificato — ti indirizziamo alle fonti ufficiali e ti aiutiamo ad agire di conseguenza."
+      {
+        "icon": "document",
+        "title": "Trasparenza sui soldi",
+        "body": "Ricevi il costo reale di un anno in Italia — tasse, affitto, copertura sanitaria, i fondi che il tuo consolato si aspetta di vedere — prima di impegnarti in qualsiasi cosa, noi compresi. Ci costa i clienti che preferirebbero non saperlo subito."
+      },
+      {
+        "icon": "permit",
+        "title": "Rigore legale, mai scorciatoie",
+        "body": "Tutto ciò che prepariamo segue le norme sull'immigrazione così come sono pubblicate, e dove un caso richiede un avvocato o un commercialista lo diciamo invece di improvvisare. Non conosciamo un modo più veloce per aggirare una scadenza, e non te lo venderemmo."
+      },
+      {
+        "icon": "health",
+        "title": "Un percorso che si possa reggere",
+        "body": "La misura di questo lavoro non è solo che le pratiche siano state depositate nei tempi. È che tu sia arrivato in condizione di pensare al primo esame invece che al permesso. Quella parte su una fattura non compare mai, ed è la parte che vendiamo davvero."
+      }
     ]
   },
-  "ctaLabel": "Prenota la tua call di 15 minuti"
+  "limits": {
+    "heading": "Cosa non facciamo",
+    "items": [
+      "Non rilasciamo visti né permessi di soggiorno, e non garantiamo esiti. Quelle decisioni spettano soltanto al consolato e alla Questura.",
+      "Non siamo un'agenzia immobiliare abilitata. Revisioniamo e registriamo contratti; non gestiamo annunci e non incassiamo caparre per conto di nessuno.",
+      "Non sostituiamo un avvocato o un commercialista. Ti indirizziamo alle fonti ufficiali e ti aiutiamo ad agire di conseguenza.",
+      "Non siamo accreditati, affiliati né agiamo per conto di nessun ateneo o ente pubblico."
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Si comincia",
+    "heading": "Conosci le persone dietro il tuo percorso in Italia",
+    "body": "Quindici minuti, senza costi, senza impegno. Parlerai con qualcuno che questo lavoro lo fa, non con un venditore che legge un copione, e avrai una lettura onesta della tua situazione che tu decida di proseguire con noi oppure no.",
+    "ctaLabel": "Prenota la tua call introduttiva di 15 minuti"
+  }
 }

@@ -1,0 +1,68 @@
+---
+/**
+ * L'etichetta a pastiglia che nei riferimenti sta sopra ogni titolo di sezione
+ * («Hero Section», «HIGHLIGHTS», «Who we are», «Comparison»).
+ *
+ * Non è decorazione: è il primo elemento che dice al visitatore *di che cosa
+ * parla il blocco* prima che legga il titolo, e nella home di Kimere serve a
+ * scandire un percorso lungo. Il testo arriva sempre dalle content collection.
+ *
+ * Le varianti stanno QUI e non come override nella pagina che le usa: uno
+ * stile scoped può marcare solo gli elementi scritti nel proprio template, e
+ * la radice di questo componente porta lo scope di questo file — non quello
+ * del chiamante. Una regola come `.finalcta__eyebrow { … }` scritta nella
+ * pagina viene emessa ma non aggancia mai nulla (ed è successo davvero: la
+ * pastiglia bianca della CTA finale della home era una pastiglia navy su
+ * fondo navy, cioè invisibile). Serve un `tone`, non una classe passata.
+ */
+interface Props {
+  /**
+   * Su superficie CHIARA — l'accento è il teal, l'oro lì è 2.33 e non può
+   * portare testo (check:contrast lo verifica):
+   *   `soft`  pastiglia tenue, testo teal
+   *   `solid` navy pieno, testo bianco
+   * Su superficie SCURA — dove il navy sparisce nel fondo:
+   *   `blank` bianco pieno, testo navy
+   *   `gold`  oro pieno, testo navy
+   */
+  tone?: 'soft' | 'solid' | 'blank' | 'gold';
+  class?: string;
+}
+
+const { tone = 'soft', class: className } = Astro.props;
+---
+
+<p class:list={['eyebrow', `eyebrow--${tone}`, className]}><slot /></p>
+
+<style>
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0.42rem 0.85rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-titling);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .eyebrow--soft {
+    background-color: var(--color-mist-deep);
+    color: var(--color-teal-ink); /* 4.81 sulla nebbia profonda — AA */
+  }
+  .eyebrow--solid {
+    background-color: var(--color-ink);
+    color: var(--color-blank); /* 15.37 — AAA */
+  }
+  .eyebrow--blank {
+    background-color: var(--color-blank);
+    color: var(--color-ink); /* 15.37 — AAA */
+  }
+  .eyebrow--gold {
+    background-color: var(--color-gold-bright);
+    color: var(--color-ground); /* 6.99 — AA */
+  }
+</style>

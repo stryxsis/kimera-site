@@ -1,20 +1,182 @@
 {
-  "intro": {
-    "heading": "Tre livelli di supporto, cumulativi",
-    "body": "Non stai scegliendo tra servizi diversi — ogni livello include tutto quello precedente. La domanda è semplicemente quanto lontano vuoi che veniamo con te."
+  "hero": {
+    "eyebrow": "Servizi",
+    "headline": "Le regole si leggono gratis. Rispettarle nei tempi giusti, no.",
+    "subhead": "Ogni scadenza di questa pagina è pubblicata da un ente pubblico italiano e non costa nulla consultarla. Quello che vendiamo è l'esecuzione: il fascicolo costruito secondo lo standard che quell'ufficio si aspetta, depositato il giorno in cui va depositato, da persone che lo fanno tutto l'anno.",
+    "ctaPrimary": "Prenota la tua call di 15 minuti",
+    "ctaSecondary": "Guarda i tre livelli"
   },
-  "comparisonNote": "Ogni livello si costruisce sul precedente. Settled include tutto Arrival, che include tutto Admission.",
-  "whyNoPrices": {
-    "heading": "Perché qui non trovi i prezzi",
-    "body": "Il livello di supporto giusto — e il suo costo — dipende dal tuo paese di origine, dal tuo ateneo e da quanto hai già organizzato. Nella call guardiamo la tua situazione specifica e ti diciamo una cifra reale. Nessun obbligo di procedere dopo."
+  "bottlenecks": {
+    "eyebrow": "Cosa hai davanti",
+    "heading": "Sei enti diversi. Basta una finestra persa.",
+    "body": "Niente di tutto questo è facoltativo e niente ti aspetta. Ogni passaggio ha il suo ente, il suo modulo e la sua finestra temporale — e le finestre non coincidono. È la parte che decide se l'anno accademico lo cominci o lo perdi.",
+    "riskLabel": "Se salta",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Pre-iscrizione su Universitaly",
+        "body": "Ogni studente extra UE deve pre-iscriversi sul portale del Ministero e indicare il corso esatto prima che un consolato guardi qualsiasi cosa. Ogni ateneo chiude la propria finestra alla propria data.",
+        "risk": "Se perdi la finestra del tuo ateneo, il fascicolo per il visto non si può nemmeno aprire. L'anno è andato prima di cominciare."
+      },
+      {
+        "icon": "contract",
+        "title": "Riconoscimento del titolo di studio",
+        "body": "Il tuo diploma estero va reso leggibile al sistema italiano: una Dichiarazione di Valore in Loco rilasciata dal consolato, oppure un attestato di comparabilità CIMEA. Quale dei due dipende dal tuo paese e dal tuo ateneo.",
+        "risk": "Se avvii quello sbagliato paghi due volte e aspetti mesi per un documento che l'ateneo non accetterà."
+      },
+      {
+        "icon": "permit",
+        "title": "Il fascicolo consolare",
+        "body": "Il visto per studio tipo D si compone documento per documento secondo uno standard che il tuo consolato pubblica e applica alla lettera: mezzi economici, copertura sanitaria, alloggio, ammissione.",
+        "risk": "Manca una voce o è nella forma sbagliata e l'appuntamento è bruciato. Il successivo può essere fra settimane."
+      },
+      {
+        "icon": "calendar",
+        "title": "Otto giorni lavorativi",
+        "body": "Il permesso di soggiorno va depositato entro 8 giorni lavorativi dall'atterraggio, in un ufficio postale con Sportello Amico, con il kit giusto compilato correttamente.",
+        "risk": "Depositato in ritardo, il tuo soggiorno è irregolare mentre sei già iscritto, paghi l'affitto e dai gli esami."
+      },
+      {
+        "icon": "house",
+        "title": "Un indirizzo che ancora non hai",
+        "body": "Il fascicolo per il visto vuole un posto dove abitare in Italia. Il mercato vuole prima conoscerti, e i proprietari privati chiedono spesso una garanzia che dall'estero non puoi produrre.",
+        "risk": "È qui che si arenano le candidature preparate bene — ed è qui che le truffe sugli affitti trovano i loro bersagli."
+      },
+      {
+        "icon": "building",
+        "title": "Gli sportelli di cui nessuno ti avvisa",
+        "body": "Codice fiscale, residenza anagrafica al tuo Comune, copertura sanitaria. Nessuno è difficile da solo; tutti sono in italiano, di persona e in un ordine fisso.",
+        "risk": "Senza codice fiscale niente contratto, niente conto in banca, niente copertura sanitaria. La catena si ferma al primo anello che manca."
+      }
+    ],
+    "note": "Questo è il carico prima della tua prima lezione — in una lingua che forse ancora non parli, davanti a uffici che danno per scontato che tu sappia già come funzionano."
+  },
+  "method": {
+    "eyebrow": "Il nostro approccio",
+    "heading": "Non un portale dove caricare documenti. Qualcuno che tiene insieme tutta la sequenza.",
+    "body": "Quasi tutti in questo mercato ti danno una dashboard, una checklist e un pulsante per caricare i file, poi lasciano a te l'esecuzione. Ma ciò che fa perdere un anno agli studenti non è l'informazione che manca: è la distanza fra chi lo fa una volta sola e un'amministrazione che lo fa tutti i giorni. Quella distanza la chiudiamo prendendoci la sequenza e portandola fino in fondo.",
+    "principles": [
+      {
+        "icon": "compass",
+        "title": "Lavoriamo tutta la rotta, non un pezzo",
+        "body": "Ammissione, visto, permesso, codice fiscale, residenza, copertura sanitaria, alloggio. Quasi tutti i fallimenti nascono nei passaggi di consegne fra queste cose — quindi noi non passiamo la consegna a nessuno."
+      },
+      {
+        "icon": "calendar",
+        "title": "Partiamo dalle date che non si spostano",
+        "body": "Finestre di Universitaly, appuntamenti consolari, la scadenza degli otto giorni. Il piano si costruisce sulle scadenze che ti vincolano, e ti avvisiamo prima che una sia a rischio — non dopo."
+      },
+      {
+        "icon": "building",
+        "title": "Con gli uffici parliamo noi, in italiano",
+        "body": "I moduli, le telefonate e gli sportelli sono in italiano. È lì che se ne va il tempo ed è lì che si fanno gli errori: quella parte è nostra, e dove conta ci veniamo con te."
+      },
+      {
+        "icon": "document",
+        "title": "Ti diciamo cosa puoi fare senza di noi",
+        "body": "Alcuni di questi passaggi davvero non hanno bisogno di noi, e ti diciamo quali già in call, prima che tu decida qualsiasi cosa. Ci costa una voce di preventivo. È anche il modo più veloce per farti vedere come lavoriamo."
+      }
+    ]
+  },
+  "levels": {
+    "eyebrow": "I tre livelli",
+    "heading": "Scegli fin dove veniamo con te",
+    "body": "I livelli sono cumulativi, non alternativi: ognuno contiene tutto quello precedente. Quale sia quello giusto dipende da quanto hai già sistemato — ed è esattamente a questo che serve la call.",
+    "featuredKey": "settled",
+    "featuredLabel": "Relocation completa",
+    "ctaLabel": "Prenota la tua valutazione",
+    "whyNoPrices": {
+      "heading": "Perché in questa pagina non c'è un listino",
+      "body": "Perché una cifra onesta dipende dalla tua cittadinanza, dal tuo ateneo, dalla tua città e da quanto hai già fatto da solo. Un listino pubblico farebbe pagare troppo lo studente che ha bisogno di due passaggi e troppo poco quello che ne ha undici. In call guardiamo la tua situazione reale e ti diamo una cifra vera — senza nessun obbligo di proseguire."
+    }
+  },
+  "premium": {
+    "eyebrow": "In dettaglio",
+    "heading": "Cosa copre davvero la relocation completa",
+    "body": "Settled è il livello costruito attorno alle due cose che fanno perdere un anno accademico: le pratiche di immigrazione e l'alloggio. Poggia su tre pilastri, e il secondo è la ragione per cui esiste.",
+    "pillars": [
+      {
+        "icon": "compass",
+        "title": "Consulenza strategica, prima di depositare qualsiasi cosa",
+        "body": "Prima di tutto mappiamo il tuo caso — cittadinanza, ateneo, città, calendario — perché la sequenza giusta non è la stessa per uno studente indiano e per uno studente brasiliano.",
+        "items": [
+          "La tua rotta disegnata sulle scadenze che ti vincolano davvero",
+          "Esattamente quali documenti chiede il tuo consolato, e nella forma in cui li chiede",
+          "Una lettura onesta di ciò che è realistico nel tempo che ti resta"
+        ]
+      },
+      {
+        "icon": "permit",
+        "title": "Le pratiche, dall'inizio alla fine",
+        "body": "L'intera catena amministrativa gestita come una sequenza sola, invece che come otto commissioni separate che scopri una alla volta.",
+        "items": [
+          "Fascicolo per il visto per studio tipo D, preparato secondo lo standard consolare",
+          "Il Kit Giallo compilato e depositato in un ufficio postale con Sportello Amico",
+          "Permesso di soggiorno depositato entro la finestra degli 8 giorni lavorativi",
+          "Appuntamento in Questura per il fotosegnalamento, insieme a te",
+          "Codice fiscale, ottenuto il primo giorno",
+          "Registrazione della residenza al tuo Comune specifico",
+          "Iscrizione al SSN, se scegli la copertura sanitaria pubblica"
+        ]
+      },
+      {
+        "icon": "house",
+        "title": "Alloggio, cercato attivamente",
+        "body": "Non un elenco di link: una ricerca vera fatta insieme a te, un contratto letto riga per riga e la registrazione da cui dipende la tua residenza.",
+        "items": [
+          "Supporto nella ricerca, orientato verso studentati e annunci verificati",
+          "Revisione del contratto prima che tu firmi qualsiasi cosa",
+          "Registrazione del contratto di locazione e la pratica che richiede",
+          "Una dichiarazione di ospitalità se ti serve un indirizzo prima che esista il contratto definitivo"
+        ]
+      }
+    ],
+    "ctaLabel": "Prenota la tua valutazione"
+  },
+  "housing": {
+    "eyebrow": "La parte più difficile",
+    "heading": "L'alloggio è dove un buon piano di solito si rompe",
+    "body": "Il fascicolo per il visto ha bisogno di un indirizzo in Italia. Il mercato vuole prima conoscerti, e i proprietari privati chiedono abitualmente una garanzia — un garante italiano, una busta paga italiana — che uno studente non ancora arrivato non può proprio produrre. Quel blocco è la ragione più comune per cui una candidatura preparata bene fallisce comunque.",
+    "barriers": [
+      {
+        "title": "Una garanzia che non puoi produrre",
+        "body": "I proprietari privati vogliono spesso un garante italiano o una busta paga italiana. Nessuna delle due esiste per chi si candida dall'estero, e la buona volontà non cambia il fatto."
+      },
+      {
+        "title": "Prova di domicilio prima ancora di aver visto la casa",
+        "body": "Il fascicolo consolare vuole un indirizzo. Il mercato vuole una visita. Sono due posizioni entrambe ragionevoli e non stanno insieme — ed è esattamente il vuoto in cui la procedura ti lascia."
+      },
+      {
+        "title": "Pagare per una stanza che non esiste",
+        "body": "Essere costretti a impegnarsi dall'estero è ciò su cui sono costruite le truffe sugli affitti: un annuncio, una scadenza urgente e un bonifico verso un conto fuori dai canali normali."
+      }
+    ],
+    "responseHeading": "Come la aggiriamo",
+    "response": [
+      "Orientiamo la ricerca verso studentati e annunci verificati — la parte di mercato in cui uno studente internazionale è l'inquilino previsto, non l'eccezione",
+      "Leggiamo il contratto in italiano prima che tu lo firmi, e ti diciamo a cosa ti impegna davvero",
+      "Registriamo il contratto di locazione: è un obbligo di legge ed è il presupposto della tua residenza",
+      "Prepariamo una dichiarazione di ospitalità quando ti serve una prova di domicilio prima che esista il contratto definitivo",
+      "Confrontiamo l'annuncio con gli schemi che le truffe seguono, prima che si muova un euro"
+    ],
+    "limitsHeading": "E cosa invece non è",
+    "limits": [
+      "Non siamo un'agenzia immobiliare abilitata e non ci comportiamo come tale. Non gestiamo annunci e non incassiamo caparre per conto di nessun proprietario.",
+      "Non possiamo garantirti una stanza specifica. Possiamo garantirti che non firmerai niente che non abbiamo letto."
+    ]
   },
   "notIncluded": {
     "heading": "Cosa nessun livello include",
     "items": [
-      "Non rilasciamo visti — la decisione spetta esclusivamente al consolato.",
-      "Non siamo un'agenzia immobiliare — revisioniamo e registriamo i contratti, non gestiamo annunci.",
-      "Non garantiamo esiti su ammissione, visti o alloggio. Prepariamo il tuo dossier secondo lo standard che ogni ente si aspetta."
+      "Non rilasciamo visti né permessi di soggiorno. Quelle decisioni spettano al consolato e alla Questura, e chi ti dice il contrario ti sta vendendo una cosa che non esiste.",
+      "Non garantiamo un esito — né sull'ammissione, né sul visto, né su una stanza specifica. Prepariamo il tuo fascicolo secondo lo standard che ogni ente si aspetta e lo depositiamo dentro la finestra.",
+      "Non sostituiamo un avvocato o un commercialista. Quando un caso ne ha bisogno, lo diciamo invece di improvvisare."
     ]
   },
-  "ctaLabel": "Prenota la tua call di 15 minuti"
+  "finalCta": {
+    "eyebrow": "Il passo successivo",
+    "heading": "Pronto a cominciare il tuo percorso senza stress?",
+    "body": "Dicci la tua cittadinanza, il tuo ateneo e a che punto sei. Ti diciamo di quale livello hai davvero bisogno — anche se la risposta onesta è nessuno dei tre.",
+    "ctaLabel": "Prenota la tua call di qualificazione di 15 minuti"
+  }
 }

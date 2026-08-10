@@ -1,41 +1,140 @@
 {
-  "proposition": {
-    "heading": "You recruit. We handle Italy.",
-    "body": "If your agency sends students abroad, Italy is one of the most cost-competitive destinations in Europe — but the on-the-ground execution is where most partnerships break down. We're built specifically for that part."
+  "hero": {
+    "eyebrow": "For agencies and institutions",
+    "headline": "Add Italy to your portfolio. We handle the groundwork.",
+    "subhead": "You already know how to recruit. What stops most agencies from selling Italy is everything that happens after the student boards the plane — a consulate, a university, a police headquarters, a tax office and a landlord, none of which answer email in your timezone. That is the part we run, on the ground, in Italian.",
+    "ctaPrimary": "Start a partnership conversation",
+    "ctaSecondary": "See how the model works"
   },
-  "collaborationModel": {
-    "heading": "How the collaboration works",
-    "body": "You handle marketing and recruitment in your market and manage the relationship with the family. Once a student's Universitaly pre-registration is underway, we take over everything on Italian soil — admissions support, visa file, arrival, and housing — and report back to you throughout."
+  "market": {
+    "eyebrow": "The opportunity",
+    "heading": "The destination your catalogue is probably missing",
+    "body": "Your competitors are all selling the same four English-speaking destinations, into a market where tuition keeps rising and visa policy keeps tightening. Italy sits in a different price bracket entirely, teaches a growing share of its degrees in English, and runs a means-tested scholarship system that can take a student's tuition to zero. The demand is there. What has been missing is anyone reliable to hand the student to once they land.",
+    "metrics": [
+      { "value": "90+", "label": "universities recognised by the Ministry, across every region" },
+      { "value": "€900–4,000", "label": "public university tuition per year, scaled to family income" },
+      { "value": "3 + 2", "label": "Bologna structure, ECTS credits — a degree that travels" },
+      { "value": "20 h", "label": "legal paid work per week while studying, 1,040 hours a year" }
+    ],
+    "points": [
+      "Degree programmes taught entirely in English at both bachelor's and master's level, with the language requirement set programme by programme",
+      "A regional right-to-study system that is means-tested rather than merit-only, and can cover tuition, canteen and student housing",
+      "A student permit that converts into a job-seeker or employment permit after graduation — a real answer to the parent asking what happens after the degree"
+    ],
+    "linkLabel": "The full picture for students, with sources",
+    "officialSource": "https://www.universitaly.it"
   },
-  "handoverDiagram": {
-    "theirLabel": "You, in your market",
-    "theirItems": ["Marketing and recruitment", "The relationship with the family"],
-    "handoverLabel": "Handover once Universitaly pre-registration starts",
-    "ourLabel": "Us, in Italy"
+  "model": {
+    "eyebrow": "The model",
+    "heading": "You own the relationship. We own the ground.",
+    "body": "We work as your destination partner in Italy, not as a competing agency. You run marketing, recruitment and the relationship with the family in your own market — the part you are good at and the part that costs you money to build. Once the student's Universitaly pre-registration opens, the file moves to us and stays with one named coordinator until they are enrolled, permitted and housed. You get the reporting throughout, and the student stays yours.",
+    "handover": {
+      "theirLabel": "You, in your market",
+      "theirItems": [
+        "Marketing and recruitment",
+        "First contact and academic pre-screening",
+        "The relationship with the student and the family"
+      ],
+      "handoverLabel": "Handover at Universitaly pre-registration",
+      "ourLabel": "Us, on the ground in Italy",
+      "ourItems": [
+        "Course and university guidance, qualification recognition",
+        "Consular file prepared to that consulate's standard",
+        "Residence permit filed inside the 8-working-day deadline",
+        "Fiscal code, municipal residency, national health cover",
+        "Housing search, lease review before signature, registration"
+      ]
+    },
+    "commitmentsHeading": "What we put in the agreement, because you will ask",
+    "commitments": [
+      "We do not market to your students, and we do not recruit in your market. Our acquisition happens here or through you.",
+      "The student remains your client for the duration of the agreement. We report to you, not around you.",
+      "Commercial terms — sub-agency status, commission split, payment triggers — are agreed in writing before the first student is referred, not settled afterwards.",
+      "You get a named coordinator with direct contact, not a shared inbox and a ticket number."
+    ]
   },
-  "whatWeDoOnGround": {
-    "heading": "What we handle in Italy",
+  "advantages": {
+    "eyebrow": "Why route through us",
+    "heading": "Three failures that come back to you, not to us",
+    "body": "When something goes wrong five thousand kilometres away, the family does not call the Italian landlord. They call the agency that sold them the plan. Each of these is a failure your team currently absorbs without having any way to prevent it.",
+    "riskLabel": "The risk it removes",
     "items": [
-      "Course and university guidance matched to the student's profile",
-      "Universitaly pre-registration and qualification recognition",
-      "Visa file preparation to the standard the consulate expects",
-      "Residence permit filing within the 8-working-day deadline",
-      "Fiscal code, municipal registration, and health cover",
-      "Housing support: contract review, registration, and scam protection"
+      {
+        "icon": "house",
+        "title": "The lease that does not exist",
+        "body": "Rental fraud against arriving international students is the most common way an Italian placement goes wrong: a deposit wired for a flat that was never available, from a listing that disappears the same week. We view, verify and read the lease line by line before anyone transfers money, and we register it afterwards — which is also what the student's residency depends on.",
+        "risk": "A student who arrives to no address, and a refund conversation you did not cause"
+      },
+      {
+        "icon": "document",
+        "title": "The file the consulate turns away",
+        "body": "Every consulate applies the published requirements its own way, and a file that satisfies one is refused by another. We pre-qualify the student's documents against the standard of the specific consulate that will see them, before the appointment is booked rather than after it is lost.",
+        "risk": "A refusal that costs the student an academic year and costs you the referral"
+      },
+      {
+        "icon": "contract",
+        "title": "The margin nobody defined",
+        "body": "Most destination arrangements fall apart on commercial terms that were never written down. We work as a sub-agency partner with a defined commission split, agreed per partner and set out before the first referral. Terms depend on volume and on how much of the route you want us to carry, so we quote them in the conversation rather than publishing a rate card that would fit nobody.",
+        "risk": "An arrangement that pays well on the first cohort and quietly stops working on the fifth"
+      }
+    ]
+  },
+  "otherPartners": {
+    "eyebrow": "Beyond recruitment agencies",
+    "heading": "Two more conversations we want to be having",
+    "body": "Kimere is built to sit between the student and the Italian systems that will not talk to each other. That makes two other kinds of organisation natural counterparts, and we are open to both.",
+    "lookingLabel": "What we are looking for",
+    "items": [
+      {
+        "icon": "building",
+        "title": "University international offices",
+        "body": "Incoming international students absorb a volume of individual administrative support your office was never resourced to give — permit filings, fiscal codes, residency, health cover, housing disputes. We handle those individually, off your team's desk, without representing ourselves as the university.",
+        "looking": "A referral route for admitted students who need the administrative side handled"
+      },
+      {
+        "icon": "house",
+        "title": "Student housing operators",
+        "body": "Purpose-built student accommodation solves the single hardest problem an arriving international student has — but the booking, the guarantor requirement and the paperwork are usually where a non-resident applicant falls out of the funnel. We can bring pre-qualified students with their documentation already in order.",
+        "looking": "Direct booking arrangements for pre-qualified international students"
+      }
     ]
   },
   "howToStart": {
-    "heading": "How a partnership starts",
+    "eyebrow": "Getting started",
+    "heading": "How a partnership actually starts",
+    "body": "No exclusivity on day one, and no signature before both teams have watched the process run. Four steps, and the first one costs you a call.",
     "steps": [
-      "A first conversation about your current volumes and destinations",
-      "A walkthrough of exactly where our handoff begins and yours ends",
-      "A small first cohort, so both teams can see the process work end to end",
-      "A formal agreement once we've confirmed the model fits"
-    ]
+      {
+        "title": "A first conversation",
+        "body": "Your current volumes, the destinations you already serve, and whether Italy fits the students you actually recruit. Thirty minutes, and we will tell you if it does not."
+      },
+      {
+        "title": "The boundary, on paper",
+        "body": "Exactly where your work ends and ours begins, what we report and when, and the commercial terms in writing. Nothing about the split is left to be worked out later."
+      },
+      {
+        "title": "A small first cohort",
+        "body": "A handful of students, run end to end, so both teams see the process work on real files with real deadlines before anyone commits to volume."
+      },
+      {
+        "title": "A formal agreement",
+        "body": "Signed once the pilot has confirmed the model fits — with terms based on what the first cohort actually showed, not on what either side projected."
+      }
+    ],
+    "dueDiligence": {
+      "heading": "Due diligence, in advance",
+      "items": [
+        "Kimere began operating in June 2026 and the legal structure is being formalised. We will share current company documentation directly at the due-diligence stage rather than describe it here.",
+        "We hold no formal agreement with, and no accreditation from, any Italian university or public body. Where a page of this site describes what a university or a consulate does, it links that institution's own published source.",
+        "We do not issue visas or residence permits and we do not guarantee outcomes. Those decisions belong to the consulate and the Questura, and any partner promising you otherwise is selling something they cannot deliver.",
+        "We are not a licensed estate agency. We view, verify and register housing; we do not hold listings or take deposits on anyone's behalf."
+      ]
+    }
   },
-  "forUniversities": {
-    "heading": "For university international offices",
-    "body": "We support incoming students through the administrative steps your office typically doesn't have the resources to cover in detail — visa files, residence permits, and housing — reducing the volume of individual support requests your team fields each intake."
-  },
-  "ctaLabel": "Talk to us about a partnership"
+  "form": {
+    "eyebrow": "Talk to us",
+    "heading": "Tell us what you send, and where",
+    "body": "This form goes to the person who would run the partnership, not to a sales queue. Give us the volumes and the markets and we will come back with a straight answer on whether the model fits — including if it does not.",
+    "ctaLabel": "Send partnership enquiry"
+  }
 }

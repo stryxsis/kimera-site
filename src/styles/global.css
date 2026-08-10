@@ -7,6 +7,7 @@
 @import '@fontsource-variable/eb-garamond/wght.css';
 @import '@fontsource-variable/eb-garamond/wght-italic.css';
 @import '@fontsource-variable/archivo/wght.css';
+@import '@fontsource-variable/plus-jakarta-sans/wght.css';
 
 /* ═══════════════════════════════════════════════════════════════════════
    DESIGN SYSTEM — Kimere
@@ -36,6 +37,17 @@
   /* Superficie chiara — per i blocchi da leggere davvero */
   --color-cream: #fbf7eb;
 
+  /* ── Superfici chiare «moderne» (restyle home) ────────────────────────
+     Il cream resta la carta del sistema originale. Queste sono la sua
+     controparte fredda: bianco pieno come fondo pagina e una nebbia
+     grigio-azzurra per staccare i blocchi senza usare una linea. È il
+     meccanismo dei riferimenti scelti dal cliente — le sezioni si separano
+     per campitura, non per filetto. */
+  --color-blank: #ffffff;
+  --color-mist: #f2f5f9; /* fondo di sezione tenue */
+  --color-mist-deep: #e8edf4; /* secondo livello, chip e riquadri interni */
+  --color-mist-line: #dde4ed; /* bordo tenue su bianco */
+
   /* Inchiostro su chiaro */
   --color-ink: #0a2546; /* 14.35 su cream — AAA */
   --color-ink-strong: #071f3d;
@@ -64,6 +76,10 @@
      sola testo, etichetta e dato. Due famiglie, nessuna terza. */
   --font-display: 'EB Garamond Variable', 'Iowan Old Style', Georgia, serif;
   --font-sans: 'Archivo Variable', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  /* Grottesca geometrica per i titoli del nuovo stile: è il carattere che
+     distingue i riferimenti scelti dal cliente. Convive con il serif invece
+     di sostituirlo — le pagine non ancora ristilate continuano a usarlo. */
+  --font-titling: 'Plus Jakarta Sans Variable', 'Segoe UI', system-ui, sans-serif;
 
   /* Scala fluida: nessun breakpoint, interpolazione continua 320 → 1920 px.
      Serve anche a reggere l'italiano, più lungo dell'inglese del 15–20%. */
@@ -99,12 +115,23 @@
   --radius-xs: 2px;
   --radius-sm: 3px;
   --radius-md: 5px;
+  /* Raggi generosi del nuovo stile. La nota qui sopra («un raggio generoso
+     legge come app») resta vera per il sistema originale: qui è una scelta
+     deliberata e circoscritta al restyle, non una svista. */
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+  --radius-pill: 999px;
 
   /* ── Elevazione ──────────────────────────────────────────────────────
      Il sistema usa BORDI, non ombre: su fondo navy un'ombra non si vede e
      produce solo alone sporco. L'unica ombra definita serve agli elementi
      che galleggiano davvero (menu mobile aperto). */
   --shadow-overlay: 0 18px 40px -12px rgb(0 0 0 / 0.55);
+  /* Su fondo bianco l'ombra torna utilizzabile e diventa il modo in cui le
+     card si staccano — nei riferimenti è appena percettibile, mai drammatica. */
+  --shadow-card: 0 1px 2px rgb(9 27 51 / 0.04), 0 10px 28px -12px rgb(9 27 51 / 0.14);
+  --shadow-float: 0 4px 10px rgb(9 27 51 / 0.06), 0 20px 44px -16px rgb(9 27 51 / 0.22);
 
   /* ── Movimento ──────────────────────────────────────────────────────── */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -180,9 +207,52 @@
     --surface-warning: #9c3c26; /* 6.35 sul cream */
   }
 
+  /* ── Superfici del restyle ──────────────────────────────────────────────
+     `blank` è il fondo pagina (bianco pieno), `mist` la fascia tenue che
+     separa una sezione dall'altra senza filetti. Entrambe usano il navy come
+     inchiostro e il teal come accento: sul chiaro l'oro è 2.33 e resta
+     vietato al testo — può fare solo da fondo o da forma. */
+  .surface-blank {
+    --surface-bg: var(--color-blank);
+    --surface-raised: var(--color-mist);
+    --surface-fg: var(--color-ink);
+    --surface-fg-soft: var(--color-ink-soft);
+    --surface-fg-muted: var(--color-ink-muted);
+    --surface-accent: var(--color-teal-ink);
+    --surface-line: var(--color-mist-line);
+    --surface-rule: rgb(10 37 70 / 0.1);
+    --surface-rule-strong: rgb(10 37 70 / 0.22);
+    --surface-focus: var(--color-teal-ink);
+    --surface-marker-bg: var(--color-ink);
+    --surface-marker-fg: var(--color-blank);
+    --surface-control-line: #737d8a; /* 4.06 su bianco — WCAG 1.4.11 */
+    --surface-warning: #a33520; /* 6.51 su bianco */
+    --surface-gold-mark: var(--color-gold-deep); /* 3.6 su bianco — forma, non testo */
+  }
+
+  .surface-mist {
+    --surface-bg: var(--color-mist);
+    --surface-raised: var(--color-blank);
+    --surface-fg: var(--color-ink);
+    --surface-fg-soft: var(--color-ink-soft);
+    --surface-fg-muted: var(--color-ink-muted);
+    --surface-accent: var(--color-teal-ink);
+    --surface-line: var(--color-mist-line);
+    --surface-rule: rgb(10 37 70 / 0.1);
+    --surface-rule-strong: rgb(10 37 70 / 0.22);
+    --surface-focus: var(--color-teal-ink);
+    --surface-marker-bg: var(--color-ink);
+    --surface-marker-fg: var(--color-blank);
+    --surface-control-line: #737d8a;
+    --surface-warning: #a33520;
+    --surface-gold-mark: var(--color-gold-deep); /* 3.6 su bianco — forma, non testo */
+  }
+
   .surface-dark,
   .surface-panel,
-  .surface-light {
+  .surface-light,
+  .surface-blank,
+  .surface-mist {
     background-color: var(--surface-bg);
     color: var(--surface-fg);
   }
@@ -537,6 +607,24 @@
     border-color: var(--surface-warning);
   }
 
+  /* ── Filigrana del footer ────────────────────────────────────────────
+     Promossa da Footer.astro a globale: <LogoMark class="site-footer__watermark" />
+     è un componente figlio, e lo stile scoped di Footer.astro può marcare solo
+     gli elementi scritti direttamente nel proprio template — non l'<svg> che
+     LogoMark renderizza a sua volta. Senza questa promozione la regola non si
+     applica mai: l'SVG resta statico, a piena opacità, nel flusso normale del
+     footer (esattamente il bug osservato: sembrava una sezione a sé stante). */
+  .site-footer__watermark {
+    position: absolute;
+    right: -6%;
+    bottom: -22%;
+    width: min(38rem, 62vw);
+    height: auto;
+    color: var(--color-on-dark);
+    opacity: 0.035;
+    pointer-events: none;
+  }
+
   /* ── Gruppo di scelta (radio) ──────────────────────────────────────────
      Domande brevi a 2–4 opzioni (content-map.md: "sì/no/voglio parlarne").
      Un vero <fieldset><legend> nativo — non serve nessun ruolo ARIA aggiunto,
@@ -715,6 +803,99 @@
   }
   .prose-kimere a:hover {
     text-decoration-thickness: 2px;
+  }
+
+  /* ═════════════════════════════════════════════════════════════════════
+     RESTYLE — il linguaggio visivo dei riferimenti scelti dal cliente.
+
+     Convive con il sistema originale invece di sostituirlo: la home usa
+     queste classi, le altre pagine continuano con quelle sopra finché non
+     verranno ristilate anch'esse. Le regole del sistema restano valide —
+     l'accento su chiaro è il teal, l'oro può fare solo da fondo o da forma,
+     ogni coppia in uso passa da `npm run check:contrast`.
+     ═════════════════════════════════════════════════════════════════════ */
+
+  /* ── Titoli ───────────────────────────────────────────────────────────
+     Grottesca geometrica, crenatura stretta e interlinea corta: è ciò che
+     distingue davvero i riferimenti dal serif del sistema originale.
+     Il layer `base` assegna il serif a h1–h4, queste classi lo scavalcano
+     perché `components` viene dopo. */
+  .heading-display,
+  .heading-section,
+  .heading-card {
+    font-family: var(--font-titling);
+    text-wrap: balance;
+  }
+  /* L'interlinea era troppo stretta per un titolo su due righe: 1.02–1.07 basta
+     per una riga sola, ma sui caratteri accentati dell'italiano (é, à, ù, ò) il
+     segno diacritico della riga superiore finisce a toccare — a volte a
+     sovrapporsi — gli ascendenti della riga sotto. L'elemento non usciva mai
+     dal proprio contenitore per un problema di layout: è il glifo che dipinge
+     oltre il proprio line-box quando l'interlinea è più stretta di quanto il
+     font richieda, ed è più visibile proprio quando il titolo va a capo.
+     Valori più larghi qui bastano: non serve nessuna altezza fissa da adattare,
+     un elemento di blocco cresce già con il proprio contenuto. */
+  .heading-display {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+  .heading-section {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.028em;
+  }
+  .heading-card {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    line-height: 1.32;
+    letter-spacing: -0.015em;
+  }
+
+  /* ── Contenitori ──────────────────────────────────────────────────────
+     `panel-soft` è la fascia tenue che raccoglie un blocco; `card-soft` la
+     scheda bianca che ci sta dentro. Nei riferimenti la gerarchia è sempre
+     questa: campitura grigia → scheda bianca → contenuto. */
+  .panel-soft {
+    background-color: var(--color-mist);
+    border-radius: var(--radius-2xl);
+    padding: clamp(1.5rem, 3.2vw, 2.75rem);
+  }
+  .card-soft {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-blank);
+    border: 1px solid var(--color-mist-line);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.35rem, 2.4vw, 1.9rem);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* ── Icona in pastiglia ───────────────────────────────────────────────
+     Il quadrato arrotondato con l'icona dentro, ricorrente in tutti e tre i
+     riferimenti sopra il titolo di ogni scheda. */
+  .icon-badge {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-mist);
+    color: var(--color-teal-ink);
+  }
+
+  /* ── Lead del nuovo stile ─────────────────────────────────────────────
+     Più grande e più arioso del `.block-lead` originale: nei riferimenti il
+     paragrafo sotto il titolo è quasi un sottotitolo, non testo minore. */
+  .lead-soft {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--surface-fg-muted);
+    max-width: 56ch;
+    margin: 0;
   }
 }
 

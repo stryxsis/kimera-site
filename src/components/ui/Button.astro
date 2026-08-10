@@ -12,10 +12,17 @@
  */
 interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary' | 'quiet';
-  size?: 'md' | 'sm';
+  /**
+   * `pill` e `pill-ghost` appartengono al restyle: pastiglia piena navy e sua
+   * controparte in bianco con bordo. Non sostituiscono `primary` — le pagine
+   * non ancora ristilate continuano a usare l'oro.
+   */
+  variant?: 'primary' | 'secondary' | 'quiet' | 'pill' | 'pill-ghost';
+  size?: 'md' | 'sm' | 'lg';
   type?: 'button' | 'submit';
   disabled?: boolean;
+  /** La freccia dei riferimenti. Decorativa: il verbo lo porta già il testo. */
+  arrow?: boolean;
   class?: string;
   [key: string]: unknown;
 }
@@ -26,6 +33,7 @@ const {
   size = 'md',
   type = 'button',
   disabled = false,
+  arrow = false,
   class: className,
   ...rest
 } = Astro.props;
@@ -35,7 +43,28 @@ const classes = ['btn', `btn--${variant}`, `btn--${size}`, className].filter(Boo
 const tagProps = href ? { href } : { type, disabled };
 ---
 
-<Tag class={classes} {...tagProps} {...rest}><slot /></Tag>
+<Tag class={classes} {...tagProps} {...rest}>
+  <slot />
+  {
+    arrow && (
+      <svg
+        class="btn__arrow"
+        viewBox="0 0 16 16"
+        width="15"
+        height="15"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" />
+      </svg>
+    )
+  }
+</Tag>
 
 <style>
   .btn {
@@ -64,6 +93,53 @@ const tagProps = href ? { href } : { type, disabled };
   .btn--sm {
     font-size: var(--text-xs);
     padding: 0.58rem 1rem;
+  }
+  .btn--lg {
+    font-size: var(--text-base);
+    padding: 1rem 1.9rem;
+  }
+
+  /* ── Pastiglie del restyle ──────────────────────────────────────────── */
+  .btn--pill,
+  .btn--pill-ghost {
+    font-family: var(--font-titling);
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    letter-spacing: -0.005em;
+  }
+  .btn--pill {
+    background-color: var(--color-ink);
+    color: var(--color-blank);
+  }
+  .btn--pill:hover {
+    background-color: var(--color-ground);
+  }
+  .btn--pill-ghost {
+    background-color: var(--color-blank);
+    color: var(--color-ink);
+    border-color: var(--color-mist-line);
+    box-shadow: var(--shadow-card);
+  }
+  .btn--pill-ghost:hover {
+    border-color: var(--color-ink);
+  }
+
+  /* La freccia scorre di poco all'hover: conferma il gesto senza spostare
+     il testo, e sparisce per chi ha chiesto meno movimento. */
+  .btn__arrow {
+    flex: none;
+    transition: transform var(--duration-base) var(--ease-out-quart);
+  }
+  .btn:hover .btn__arrow {
+    transform: translateX(3px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn__arrow {
+      transition: none;
+    }
+    .btn:hover .btn__arrow {
+      transform: none;
+    }
   }
 
   /* Oro con testo navy — 6.62, AA. Identico su ogni superficie. */

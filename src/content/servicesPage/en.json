@@ -1,20 +1,182 @@
 {
-  "intro": {
-    "heading": "Three levels of support, cumulative",
-    "body": "You're not choosing between different services — each level includes everything before it. The question is simply how far you want us to go with you."
+  "hero": {
+    "eyebrow": "Services",
+    "headline": "The rules are free to read. Getting them right, on time, is not.",
+    "subhead": "Every deadline on this page is published by an Italian public authority and costs nothing to look up. What we sell is the execution — the file built to the standard the office expects, filed on the day it has to be filed, by people who do this all year.",
+    "ctaPrimary": "Book your 15-minute call",
+    "ctaSecondary": "See the three levels"
   },
-  "comparisonNote": "Each level builds on the one before it. Settled includes everything in Arrival, which includes everything in Admission.",
-  "whyNoPrices": {
-    "heading": "Why we don't list prices here",
-    "body": "The right level of support — and its cost — depends on your country of origin, your university, and how much you already have in place. On the call, we look at your specific situation and give you a real number. No obligation to continue afterward."
+  "bottlenecks": {
+    "eyebrow": "What you're up against",
+    "heading": "Six authorities. One missed window is enough.",
+    "body": "None of this is optional, and none of it waits for you. Each step has its own authority, its own form and its own window — and the windows do not line up. This is the part that decides whether you start the academic year or lose it.",
+    "riskLabel": "If it slips",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Universitaly pre-registration",
+        "body": "Every non-EU student has to pre-register on the Ministry's portal and name the exact course before a consulate will look at anything. Each university closes its own window on its own date.",
+        "risk": "Miss your university's window and the visa file can't be opened at all. The year is gone before it starts."
+      },
+      {
+        "icon": "contract",
+        "title": "Recognition of your qualification",
+        "body": "Your foreign diploma has to be made legible to the Italian system — a *Dichiarazione di Valore in Loco* from the consulate, or a comparability statement from CIMEA. Which one applies depends on your country and your university.",
+        "risk": "Start the wrong one and you pay twice and wait months for a document your university won't accept."
+      },
+      {
+        "icon": "permit",
+        "title": "The consular file",
+        "body": "The type D study visa is assembled document by document to a standard your consulate publishes and applies literally: financial means, health cover, accommodation, admission.",
+        "risk": "One item missing or in the wrong form and the appointment is spent. The next one can be weeks away."
+      },
+      {
+        "icon": "calendar",
+        "title": "Eight working days",
+        "body": "The *permesso di soggiorno* has to be filed within 8 working days of landing, through a post office with a *Sportello Amico* counter, with the right kit filled in correctly.",
+        "risk": "Filed late, your stay is irregular while you're already enrolled, paying rent and sitting exams."
+      },
+      {
+        "icon": "house",
+        "title": "An address you don't have yet",
+        "body": "The visa file wants a place to live in Italy. The market wants to meet you first, and private landlords often ask for a guarantee you can't produce from abroad.",
+        "risk": "This is where well-prepared applications stall — and where rental scams find their targets."
+      },
+      {
+        "icon": "building",
+        "title": "The counters nobody warns you about",
+        "body": "Fiscal code, residency registration at your municipality, health cover. None of them are hard on their own; all of them are in Italian, in person, and in a fixed order.",
+        "risk": "No fiscal code, no lease, no bank account, no health cover. The chain stops at the first missing link."
+      }
+    ],
+    "note": "That's the workload before your first lecture — in a language you may not speak yet, across offices that each assume you already know how they work."
+  },
+  "method": {
+    "eyebrow": "Our approach",
+    "heading": "Not a document portal. Someone holding the whole sequence.",
+    "body": "Most of this market hands you a dashboard, a checklist and an upload button, then leaves the execution to you. But what actually costs students a year isn't missing information — it's the gap between someone doing this once and an administration that does it every day. We close that gap by taking the sequence off your desk and running it end to end.",
+    "principles": [
+      {
+        "icon": "compass",
+        "title": "We work the whole route, not a slice",
+        "body": "Admission, visa, permit, fiscal code, residency, health cover, housing. Most failures happen in the handoffs between them — so we don't hand off."
+      },
+      {
+        "icon": "calendar",
+        "title": "We work backwards from the dates that don't move",
+        "body": "Universitaly windows, consular appointments, the eight-day filing deadline. Your plan is built against the deadlines that bind you, and we tell you before one is at risk — not after."
+      },
+      {
+        "icon": "building",
+        "title": "We deal with the offices, in Italian",
+        "body": "The forms, the phone calls and the counters are in Italian. That's where the time goes and where the mistakes are made, so that part is ours — and where it matters, we go with you."
+      },
+      {
+        "icon": "document",
+        "title": "We tell you what you can do without us",
+        "body": "Some of these steps genuinely don't need us, and we say which ones on the call, before you decide anything. It costs us a line item. It's also the fastest way to show you how we work."
+      }
+    ]
+  },
+  "levels": {
+    "eyebrow": "The three levels",
+    "heading": "Choose how far we come with you",
+    "body": "The levels are cumulative, not alternative: each one contains everything in the level before it. Which one is right depends on how much of this you already have in place — and that's what the call is for.",
+    "featuredKey": "settled",
+    "featuredLabel": "Full relocation",
+    "ctaLabel": "Book your assessment",
+    "whyNoPrices": {
+      "heading": "Why there's no price list on this page",
+      "body": "Because an honest number depends on your citizenship, your university, your city and how much you've already done yourself. A public list would overcharge the student who needs two steps and undersell the one who needs eleven. On the call we look at your actual situation and give you a real figure — with no obligation to continue afterwards."
+    }
+  },
+  "premium": {
+    "eyebrow": "In detail",
+    "heading": "What full relocation actually covers",
+    "body": "Settled is the level built around the two things that end academic years: the immigration paperwork and the housing. It runs on three pillars, and the second one is the reason it exists.",
+    "pillars": [
+      {
+        "icon": "compass",
+        "title": "Strategic consultation, before anything is filed",
+        "body": "We map your case first — citizenship, university, city, calendar — because the right sequence isn't the same for a student from India and a student from Brazil.",
+        "items": [
+          "Your route drawn against the deadlines that actually bind you",
+          "Exactly which documents your consulate asks for, in the form it asks for them",
+          "An honest read on what's realistic in the time you have left"
+        ]
+      },
+      {
+        "icon": "permit",
+        "title": "The paperwork, end to end",
+        "body": "The whole administrative chain run as one sequence, instead of eight separate errands you discover one at a time.",
+        "items": [
+          "Type D study visa file, prepared to consular standard",
+          "The *Kit Giallo* filled in and filed at a *Sportello Amico* post office",
+          "*Permesso di soggiorno* lodged inside the 8-working-day window",
+          "Questura appointment for fingerprinting, with you",
+          "Fiscal code, done on day one",
+          "Residency registration at your specific municipality",
+          "SSN enrolment, if you choose public health cover"
+        ]
+      },
+      {
+        "icon": "house",
+        "title": "Housing, worked actively",
+        "body": "Not a list of links: an actual search alongside you, a contract read line by line, and the registration your residency depends on.",
+        "items": [
+          "Search support weighted toward student residences and checked listings",
+          "Contract review before you sign anything",
+          "Lease registration and the paperwork it requires",
+          "A *dichiarazione di ospitalità* if you need an address before the final lease exists"
+        ]
+      }
+    ],
+    "ctaLabel": "Book your assessment"
+  },
+  "housing": {
+    "eyebrow": "The hardest part",
+    "heading": "Housing is where a good plan usually breaks",
+    "body": "Your visa file needs an address in Italy. The market wants to meet you first, and private landlords routinely ask for a guarantee — an Italian guarantor, a local payslip — that a student who hasn't arrived yet simply can't produce. That deadlock is the most common reason a well-prepared application still fails.",
+    "barriers": [
+      {
+        "title": "A guarantee you can't produce",
+        "body": "Private landlords often want an Italian guarantor or a domestic payslip. Neither exists for someone applying from abroad, and no amount of goodwill changes that."
+      },
+      {
+        "title": "Proof of address before you've seen the place",
+        "body": "The consular file wants an address. The market wants a viewing. Both positions are reasonable, and they don't fit together — that gap is exactly where the process leaves you."
+      },
+      {
+        "title": "Paying for a room that isn't there",
+        "body": "Being forced to commit from abroad is what rental scams are built on: a listing, an urgent deadline, and a transfer to an account outside normal channels."
+      }
+    ],
+    "responseHeading": "How we work around it",
+    "response": [
+      "We steer your search toward student residences and checked listings — the part of the market where an international student is the expected tenant, not the exception",
+      "We read the contract in Italian before you sign it, and tell you what it actually commits you to",
+      "We register the lease — a legal requirement, and a precondition for your residency",
+      "We prepare a *dichiarazione di ospitalità* when you need proof of address before the final lease exists",
+      "We check a listing against the patterns scams follow, before any money moves"
+    ],
+    "limitsHeading": "And what that isn't",
+    "limits": [
+      "We're not a licensed estate agency and we don't act as one. We hold no listings and take no deposits on a landlord's behalf.",
+      "We can't guarantee you a specific room. We can guarantee you won't sign anything we haven't read."
+    ]
   },
   "notIncluded": {
     "heading": "What no level includes",
     "items": [
-      "We don't issue visas — that decision belongs to the consulate alone.",
-      "We're not a real estate agency — we review and register contracts, we don't hold listings.",
-      "We don't guarantee outcomes on admission, visas, or housing. We prepare your file to the standard each authority expects."
+      "We don't issue visas or residence permits. Those decisions belong to the consulate and the Questura, and anyone who tells you otherwise is selling you something that doesn't exist.",
+      "We don't guarantee an outcome — on admission, on a visa, or on a specific room. We prepare your file to the standard each authority expects, and we file it inside the window.",
+      "We don't replace a lawyer or an accountant. Where a case needs one, we say so instead of improvising."
     ]
   },
-  "ctaLabel": "Book your 15-minute call"
+  "finalCta": {
+    "eyebrow": "Next step",
+    "heading": "Ready to start your stress-free journey?",
+    "body": "Tell us your citizenship, your university and where you are in the process. We'll tell you which level you actually need — including if the honest answer is none of them.",
+    "ctaLabel": "Book your 15-minute qualification call"
+  }
 }

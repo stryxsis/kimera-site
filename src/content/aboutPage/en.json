@@ -1,40 +1,133 @@
 {
-  "intro": {
-    "heading": "We started in June 2026",
-    "body": "That's not a footnote we're hoping you'll skip — it's the first thing you should know about us. We'd rather you judge us on how we work than on a number of years we don't have yet."
+  "hero": {
+    "eyebrow": "About Kimere",
+    "headline": "A company built entirely around the part everyone else skips.",
+    "subhead": "Kimere is a small Italian consultancy for international students. We started in June 2026 and have no interest in pretending otherwise. What we have instead is a defined method, a scope no one else covers end to end, and a habit of telling you what we can't do before you think to ask.",
+    "ctaPrimary": "Book your 15-minute call",
+    "ctaSecondary": "See what we do"
   },
-  "whyWeExist": {
-    "heading": "Why we exist",
-    "body": "Most agencies help you get admitted, then stop. The real risk starts after that: a visa file that has to meet a consulate's exact standard, an 8-day deadline that begins the moment you land, and a housing market that treats international students as a liability. We built Kimere to cover exactly that gap — the part between acceptance and actually being settled."
+  "genesis": {
+    "eyebrow": "Why we exist",
+    "heading": "Nobody is responsible for the hardest part",
+    "paragraphs": [
+      "Italy is one of the most wanted study destinations in Europe, and its universities genuinely want international students. Everything in between is where the system stops helping. A consulate publishes its requirements and expects them met exactly. A university closes its pre-registration window on a date it sets alone. A police headquarters counts eight working days from the moment you land, and does not care that you had a delayed flight, a document held up in translation, or no Italian.",
+      "None of these bodies is doing anything wrong. Each is doing its own job correctly, in its own language, on its own calendar. The problem is that holding the whole thing together is nobody's job — so by default it falls to a nineteen-year-old who has never seen an Italian form before, usually while they are also finding somewhere to live and sitting their first exams.",
+      "That gap isn't a market opportunity we spotted. It's the reason the company exists at all. Everything on this site — the route map, the deadlines we keep repeating, the levels of support — is built around closing it."
+    ],
+    "pullQuote": "The system isn't hostile. It's simply not built for someone doing it for the first time."
   },
-  "howWeWork": {
-    "heading": "How we work",
-    "principles": [
+  "method": {
+    "eyebrow": "The method",
+    "heading": "What we offer instead of a track record",
+    "body": "We have been operating since June 2026. We put that on the record rather than bury it, and it means you can't judge us on years. So judge us on this instead — the way the work is actually run, which you can assess in full before you have paid anything.",
+    "steps": [
       {
-        "title": "Diagnose first",
-        "body": "On the call, we look at your country, your course, and your timeline before we tell you what you need — not a generic package."
+        "title": "We diagnose before we quote",
+        "body": "The first call maps your citizenship, your course, your city and your calendar. Only then is it clear which level of support you need — and sometimes the honest answer is a lighter one than you came expecting."
       },
       {
-        "title": "Plan against real deadlines",
-        "body": "Universitaly windows, consulate appointments, the 8-day filing deadline — we work backward from the dates that don't move."
+        "title": "We plan backwards from the dates that don't move",
+        "body": "Universitaly windows, consular appointments, the eight-working-day filing deadline. Every plan starts at the fixed dates and works back to today, so a delay becomes visible weeks before it becomes a failure."
       },
       {
-        "title": "Handle the paperwork with you",
-        "body": "We prepare files, book appointments, and — where it matters, like your fiscal code — show up with you in person."
+        "title": "We prepare each file to the standard of the office receiving it",
+        "body": "Not a generic checklist. Each consulate, each Questura and each municipality has its own way of wanting things, and a file that satisfies one can be turned away by another."
       },
       {
-        "title": "Stay reachable after you land",
-        "body": "The job isn't done at the visa. We're there for registration, health cover, and the housing paperwork that follows."
+        "title": "We go with you where being there is the service",
+        "body": "Some steps can be handled remotely, and we say which. For the ones that can't — the post office counter, the fingerprinting appointment, the fiscal code — being physically present, in Italian, is the entire value."
+      },
+      {
+        "title": "We stay reachable after you land",
+        "body": "The visa isn't the finish line. Residency registration, health cover and the housing paperwork all come afterwards, and that is where a good plan quietly falls apart if nobody is still watching."
       }
     ]
   },
-  "whatWeDontDo": {
-    "heading": "What we don't do",
+  "ecosystem": {
+    "eyebrow": "Who you'll be working with",
+    "heading": "A coordinated group of specialists, not a call centre",
+    "body": "Kimere is not a large firm and doesn't pretend to be one. We work as a coordinated group of independent professionals, each covering a part of the route, with one person accountable to you for all of it. It's why you never get passed between departments: there are no departments to be passed between.",
+    "hubLabel": "Kimere",
+    "hubNote": "One coordinator, accountable for the whole route",
+    "nodes": [
+      {
+        "label": "Academic advisory",
+        "body": "Course and university selection, application files, recognition of your foreign qualification."
+      },
+      {
+        "label": "Immigration paperwork",
+        "body": "Consular files, residence permits, Questura appointments and the renewals that follow."
+      },
+      {
+        "label": "Local administration",
+        "body": "Fiscal code, municipal residency, health cover — the counters that need Italian and a person physically present."
+      },
+      {
+        "label": "Housing and contracts",
+        "body": "Search support, contract review before you sign, and the lease registration your residency depends on."
+      }
+    ],
+    "team": {
+      "heading": "The people you'll actually deal with",
+      "body": "A small group, deliberately. You get one point of contact from the introductory call onwards, and the others are people that contact can reach in an afternoon — not a ticket queue.",
+      "members": [
+        {
+          "role": "Coordination and first contact",
+          "bio": "The person you speak to on the introductory call, and the one accountable for your file from that point until you're settled.",
+          "photoPlaceholder": "Portrait — natural light, plain background, looking at camera, 4:5 crop"
+        },
+        {
+          "role": "Immigration and consular files",
+          "bio": "Prepares the visa file, the residence permit and the Questura appointment — the part of the route with the deadlines that don't move.",
+          "photoPlaceholder": "Portrait — natural light, plain background, looking at camera, 4:5 crop"
+        },
+        {
+          "role": "On the ground in Italy",
+          "bio": "Goes with you to the post office counter, the municipality and the tax agency, and reads your lease line by line before you sign it.",
+          "photoPlaceholder": "Portrait — natural light, plain background, looking at camera, 4:5 crop"
+        }
+      ],
+      "intro": {
+        "heading": "A minute with us, before you book",
+        "caption": "Not a promotional film: the same explanation you'd get on the call, so you know who you're about to speak to.",
+        "videoPlaceholder": "Short introduction video — someone from the team explaining what Kimere does, 16:9, subtitled"
+      }
+    }
+  },
+  "values": {
+    "eyebrow": "What we hold to",
+    "heading": "Three commitments, and what each one costs us",
     "items": [
-      "We don't issue visas or guarantee outcomes — that decision belongs to the consulate.",
-      "We're not a licensed real estate agency.",
-      "We don't give legal or tax advice as a substitute for a qualified professional — we point you to official sources and help you act on them."
+      {
+        "icon": "document",
+        "title": "Transparency about money",
+        "body": "You get the real cost of a year in Italy — tuition, rent, health cover, the funds your consulate expects to see — before you commit to anything, including us. It costs us the clients who would rather not know until later."
+      },
+      {
+        "icon": "permit",
+        "title": "Legal rigour, never shortcuts",
+        "body": "Everything we prepare follows the immigration rules as they are published, and where a case needs a lawyer or an accountant we say so instead of improvising. We don't know a faster way around a deadline, and we wouldn't sell you one."
+      },
+      {
+        "icon": "health",
+        "title": "A journey you can actually survive",
+        "body": "The measure of this job isn't only that the paperwork was filed on time. It's that you arrived able to think about your first exam instead of your permit. That part never appears on an invoice, and it's the part we're really selling."
+      }
     ]
   },
-  "ctaLabel": "Book your 15-minute call"
+  "limits": {
+    "heading": "What we don't do",
+    "items": [
+      "We don't issue visas or residence permits, and we don't guarantee outcomes. Those decisions belong to the consulate and the Questura alone.",
+      "We're not a licensed estate agency. We review and register contracts; we don't hold listings or take deposits on anyone's behalf.",
+      "We don't replace a lawyer or an accountant. We point you to official sources and help you act on them.",
+      "We're not accredited by, affiliated with, or acting on behalf of any university or public body."
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Get started",
+    "heading": "Meet the people behind your Italian journey",
+    "body": "Fifteen minutes, no cost, no obligation. You'll speak to someone who does this work rather than a salesperson reading from a script, and you'll get an honest read on your situation whether or not you take it any further with us.",
+    "ctaLabel": "Book your 15-minute introductory call"
+  }
 }

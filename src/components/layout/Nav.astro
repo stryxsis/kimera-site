@@ -10,10 +10,10 @@ interface Props {
 const { locale, currentRouteKey } = Astro.props;
 const t = useTranslations(locale);
 
-// 5 voci in menu (sitemap-ia.md §3) — FAQ e Partners restano fuori: si raggiungono dal contesto.
+// FAQ resta fuori dal menu: si raggiunge dal contesto (sitemap-ia.md §3).
 // Tipo dedicato (sottoinsieme di RouteKey) perché solo queste chiavi esistono in t.nav.
-type MenuRouteKey = 'process' | 'services' | 'housing' | 'costs' | 'about';
-const items: MenuRouteKey[] = ['process', 'services', 'housing', 'costs', 'about'];
+type MenuRouteKey = 'home' | 'services' | 'studyInItaly' | 'about' | 'partners';
+const items: MenuRouteKey[] = ['home', 'services', 'studyInItaly', 'about', 'partners'];
 ---
 
 <nav class="nav" aria-label={t.nav.primaryLabel}>
@@ -46,6 +46,7 @@ const items: MenuRouteKey[] = ['process', 'services', 'housing', 'costs', 'about
   .nav__link {
     display: block;
     padding: 0.55rem 0;
+    font-family: var(--font-titling);
     font-size: var(--text-sm);
     font-weight: 500;
     color: var(--surface-fg);

@@ -1,0 +1,126 @@
+{
+  "hero": {
+    "eyebrow": "Why Italy",
+    "headline": "World-class education, in a country people spend their lives hoping to see.",
+    "subhead": "Ninety-plus universities, degrees taught entirely in English, and public tuition that starts below what a single semester costs in the UK or the US — plus a scholarship system most applicants never find out exists. Here is what Italy actually offers, with the numbers.",
+    "ctaPrimary": "Book your 15-minute call",
+    "ctaSecondary": "See what we do",
+    "imagePlaceholder": "Historic Italian university courtyard or lecture hall — licensed stock, portrait crop, warm daylight, real students",
+    "badgeValue": "From €900",
+    "badgeLabel": "a year — public university tuition"
+  },
+  "academics": {
+    "eyebrow": "The academic side",
+    "heading": "An old university system, running on the same structure as the rest of Europe",
+    "body": "Italy uses the Bologna model — the same three-plus-two structure as the wider European Higher Education Area — so your degree reads the way employers and universities abroad already expect it to read. What changes when you choose Italy is the price and the place, not the currency of the qualification.",
+    "points": [
+      {
+        "icon": "building",
+        "title": "Ninety-plus universities",
+        "body": "State, non-state and online institutions recognised by the Ministry of University and Research, spread across every region of the country — not concentrated in two cities."
+      },
+      {
+        "icon": "document",
+        "title": "Three plus two, like everyone else",
+        "body": "A three-year bachelor's, then a two-year master's. Some fields — medicine, law, architecture — run as a single longer cycle instead. Credits are ECTS, so they travel."
+      },
+      {
+        "icon": "compass",
+        "title": "The catalogue is public",
+        "body": "Every course open to international pre-registration is listed on Universitaly, the Ministry's own portal. You can filter it yourself before you speak to anyone — including us."
+      }
+    ],
+    "language": {
+      "heading": "You do not have to speak Italian to study here",
+      "body": "This is the single biggest misconception we correct on calls. A large and growing share of Italian degree programmes — especially at master's level — are taught entirely in English, and you can filter for them on the Ministry's portal. You will want Italian for daily life, and we would tell you to learn it. You do not need it to be admitted.",
+      "points": [
+        "Degree programmes taught entirely in English, at both bachelor's and master's level",
+        "An IELTS certificate is not always required: many programmes accept documented proof that your previous studies were taught in English",
+        "Requirements are set programme by programme — the exemption is common, not universal, so it has to be checked case by case"
+      ]
+    },
+    "officialSource": "https://www.universitaly.it"
+  },
+  "costs": {
+    "eyebrow": "What it costs",
+    "heading": "The point where people stop comparing Italy to the US",
+    "body": "Italy is not free, and anyone telling you it is has something to sell. It is, however, in a different price bracket from the English-speaking destinations — and public tuition is calculated partly on your family's declared income, which is why the figure below is a range and not a sticker price.",
+    "rows": [
+      {
+        "label": "Public university tuition",
+        "value": "€900 – €4,000",
+        "note": "Per year. Set on the course and on your family's declared income (ISEE)."
+      },
+      {
+        "label": "Private university tuition",
+        "value": "€6,000 – €20,000",
+        "note": "Per year. Mostly design, fashion, business and medicine."
+      },
+      {
+        "label": "Living costs",
+        "value": "€800 – €1,200",
+        "note": "Per month, all in. Milan and Rome sit at the top of the range."
+      },
+      {
+        "label": "National health cover",
+        "value": "About €700",
+        "note": "Per year. Voluntary SSN enrolment for non-EU students; private insurance is the alternative."
+      }
+    ],
+    "disclaimer": "These are indicative ranges. Tuition brackets, regional rules and annual ministerial decrees all move the numbers, and your city moves them most. Confirm current figures with your university and with official sources before you commit money to anything."
+  },
+  "scholarships": {
+    "eyebrow": "The part most people miss",
+    "heading": "The scholarship system can take your tuition to zero — and still pay you",
+    "body": "Italy's right-to-study system is run by regional bodies and is means-tested, not merit-only. Most international applicants we speak to have never heard of it, apply too late, or assume they could not possibly qualify. It is a separate application from your university one, and it closes on its own date.",
+    "benefits": [
+      {
+        "title": "Tuition, waived",
+        "body": "An award can exempt you from tuition and from the regional student tax entirely. Not a discount — a waiver."
+      },
+      {
+        "title": "A yearly cash allowance",
+        "body": "The award includes a living allowance. The amount depends on your income bracket and on whether you live at home, commute, or move to your university's city — that last bracket is the highest, and runs into several thousand euros a year."
+      },
+      {
+        "title": "Canteen and housing",
+        "body": "Awards typically include free or heavily subsidised university canteen access, and access to public student housing at rates the private market does not offer."
+      },
+      {
+        "title": "Means-tested, not merit-only",
+        "body": "You do not need to be top of your class. Eligibility is built around household income and academic progress — which is exactly why the students who assume it is out of reach are usually wrong."
+      }
+    ],
+    "note": "Amounts and income thresholds are set annually by ministerial decree and vary by region, and some regional bodies pay above the national minimum. The part that catches people out is the deadline: it is separate from your university application and it does not wait for it. We check your eligibility and your date on the call."
+  },
+  "future": {
+    "eyebrow": "After the degree",
+    "heading": "A student visa is not a five-year tourist pass",
+    "body": "The same rules that govern your stay also govern what you can do while you are here, and what happens the day you graduate. Both are more generous than most applicants expect, and both are published in full.",
+    "points": [
+      {
+        "icon": "calendar",
+        "title": "You can work while you study",
+        "body": "A student residence permit allows part-time legal work: up to 20 hours a week, capped at 1,040 hours across the year. Enough to offset living costs without turning into a second full-time job."
+      },
+      {
+        "icon": "permit",
+        "title": "You can stay after you graduate",
+        "body": "Italian law allows you to convert a student permit into a job-seeker permit, or directly into an employment or self-employment permit. It is a formal conversion with its own requirements — not an automatic extension, and not a formality."
+      },
+      {
+        "icon": "health",
+        "title": "You are inside the system, not beside it",
+        "body": "National health service enrolment, a fiscal code, a registered address: the same administrative identity an Italian resident has. It is what makes a lease, a bank account and a phone contract possible."
+      }
+    ],
+    "officialSource": "https://www.esteri.it/en/ministero/sportello_info/domandefrequenti/studiare-in-italia/"
+  },
+  "pivot": {
+    "eyebrow": "The catch",
+    "heading": "Italy is the easy part. Italian administration is not.",
+    "body": "Everything above is real, published, and free for anyone to read. What none of it tells you is that these systems do not talk to each other — a consulate, a university, a post office, a police headquarters, a tax agency and a town hall, each with its own form, its own window, and its own assumption that you already know how it works. That is where students lose a year, and it has nothing to do with how good they are.",
+    "ctaPrimary": "Book your 15-minute call",
+    "ctaSecondary": "See how we work"
+  }
+}

@@ -1,0 +1,175 @@
+---
+/**
+ * ILL-08 — «l'ecosistema».
+ *
+ * Risolve un problema preciso: la pagina Chi siamo non ha fotografie del team
+ * e non può averne (PROGRESS.md, questione #18 — i ruoli si descrivono senza
+ * nominare nessuno, e le foto stock di persone che non lavorano qui sono il
+ * modo più rapido di perdere il genitore che verifica). Al posto della griglia
+ * di volti c'è la struttura del lavoro: un coordinatore e le discipline che il
+ * percorso attraversa.
+ *
+ * Non è un organigramma e non dichiara dipendenti: Kimere è un consorzio di
+ * professionisti indipendenti, e il diagramma mostra COMPETENZE, non persone.
+ *
+ * HTML e non SVG, per la stessa ragione di ILL-01 e ILL-02: contiene testo
+ * tradotto, che deve andare a capo, essere selezionabile e leggibile da uno
+ * screen reader. Le linee sono pseudo-elementi CSS attorno a una lista vera.
+ */
+export interface EcoNode {
+  label: string;
+  body: string;
+}
+
+interface Props {
+  hub: string;
+  hubNote: string;
+  nodes: EcoNode[];
+  class?: string;
+}
+
+const { hub, hubNote, nodes, class: className } = Astro.props;
+---
+
+<figure class:list={['eco', className]} style={`--eco-count:${nodes.length}`}>
+  <div class="eco__hub">
+    <span class="eco__hub-label">{hub}</span>
+    <span class="eco__hub-note">{hubNote}</span>
+  </div>
+
+  <ul class="eco__nodes">
+    {
+      nodes.map((node) => (
+        <li class="eco__node">
+          <span class="eco__node-label">{node.label}</span>
+          <span class="eco__node-body">{node.body}</span>
+        </li>
+      ))
+    }
+  </ul>
+</figure>
+
+<style>
+  .eco {
+    margin: 0;
+  }
+
+  /* Il centro: una sola scheda, più marcata delle altre. È il punto della
+     sezione — un solo interlocutore responsabile di tutto il percorso. */
+  .eco__hub {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 0.4rem;
+    text-align: center;
+    margin-inline: auto;
+    max-width: 26rem;
+    padding: clamp(1.25rem, 2.5vw, 1.6rem) clamp(1.5rem, 3vw, 2rem);
+    background-color: var(--color-ink);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-float);
+  }
+  .eco__hub-label {
+    font-family: var(--font-titling);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--color-blank); /* 15.37 sul navy — AAA */
+  }
+  .eco__hub-note {
+    font-size: var(--text-sm);
+    line-height: 1.45;
+    color: var(--color-on-dark-muted); /* 9.30 sul navy — AAA */
+  }
+
+  .eco__nodes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1.15rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .eco__node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1 1 min(100%, 15rem);
+    min-width: min(100%, 15rem);
+    padding: clamp(1.15rem, 2.2vw, 1.5rem);
+    background-color: var(--color-blank);
+    border: 1px solid var(--color-mist-line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+  }
+  .eco__node-label {
+    font-family: var(--font-titling);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+  .eco__node-body {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+
+  /* ── I collegamenti ─────────────────────────────────────────────────────
+     Compaiono solo dove le schede stanno GARANTITAMENTE su una riga sola:
+     sotto quella soglia una linea orizzontale attraverserebbe il vuoto fra
+     due righe di schede. La griglia esplicita a `--eco-count` colonne rende
+     impossibile sia l'a capo sia la cella vuota in coda. */
+  @media (min-width: 72rem) {
+    .eco__nodes {
+      display: grid;
+      grid-template-columns: repeat(var(--eco-count), minmax(0, 1fr));
+      /* 2rem di gambo dal centro + 1.75rem dalla traversa alle schede */
+      margin-top: 3.75rem;
+    }
+
+    /* il gambo che scende dal centro fino alla traversa */
+    .eco__hub::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -2rem;
+      width: 1px;
+      height: 2rem;
+      background-color: var(--color-mist-line);
+    }
+
+    /* la traversa: ogni scheda ne porta il proprio tratto, esteso fino a metà
+       dello spazio fra le schede. La prima parte dal proprio centro, l'ultima
+       ci finisce — così la linea non sporge oltre i due nodi esterni. */
+    .eco__node::before {
+      content: '';
+      position: absolute;
+      top: -1.75rem;
+      left: -0.575rem;
+      right: -0.575rem;
+      height: 1px;
+      background-color: var(--color-mist-line);
+    }
+    .eco__node:first-child::before {
+      left: 50%;
+    }
+    .eco__node:last-child::before {
+      right: 50%;
+    }
+
+    /* il gambo che scende dalla traversa a ciascuna scheda */
+    .eco__node::after {
+      content: '';
+      position: absolute;
+      top: -1.75rem;
+      left: 50%;
+      width: 1px;
+      height: 1.75rem;
+      background-color: var(--color-mist-line);
+    }
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import { getPath, type Locale } from '../../i18n/routes';
+import { getPath, BOOKING_FORM_URL, type Locale } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
 import Logo from '../brand/Logo.astro';
 import LogoMark from '../brand/LogoMark.astro';
@@ -13,7 +13,7 @@ const t = useTranslations(locale);
 const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer surface-panel">
+<footer class="site-footer surface-mist">
   <!-- ILL-06 — la rosa dei venti del logo come filigrana, non come texture ripetuta:
        un motivo tassellato su una superficie navy legge come carta da parati.
        Decorativa, quindi aria-hidden e fuori dal flusso. -->
@@ -29,7 +29,7 @@ const year = new Date().getFullYear();
         <h2 class="label label-muted">{t.footer.columnKimere}</h2>
         <ul>
           <li><a href={getPath('about', locale)}>{t.nav.about}</a></li>
-          <li><a href={getPath('book', locale)}>{t.footer.contact}</a></li>
+          <li><a href={BOOKING_FORM_URL} target="_blank" rel="noopener noreferrer">{t.footer.contact}</a></li>
           <!-- URL social non ancora confermati dal cliente (PROGRESS.md, questione #7) -->
           <li><a href="#" translate="no">Instagram</a></li>
           <li><a href="#" translate="no">LinkedIn</a></li>
@@ -40,10 +40,8 @@ const year = new Date().getFullYear();
       <div class="site-footer__col">
         <h2 class="label label-muted">{t.footer.columnStudents}</h2>
         <ul>
-          <li><a href={getPath('process', locale)}>{t.nav.process}</a></li>
+          <li><a href={getPath('studyInItaly', locale)}>{t.nav.studyInItaly}</a></li>
           <li><a href={getPath('services', locale)}>{t.nav.services}</a></li>
-          <li><a href={getPath('housing', locale)}>{t.nav.housing}</a></li>
-          <li><a href={getPath('costs', locale)}>{t.nav.costs}</a></li>
           <li><a href={getPath('faq', locale)}>{t.nav.faq}</a></li>
         </ul>
       </div>
@@ -80,19 +78,14 @@ const year = new Date().getFullYear();
   .site-footer {
     position: relative;
     overflow: hidden;
-    border-top: 1px solid var(--surface-rule-strong);
+    border-top: 1px solid var(--surface-line);
     padding-block: var(--spacing-section) 2rem;
   }
-
-  .site-footer__watermark {
-    position: absolute;
-    right: -6%;
-    bottom: -22%;
-    width: min(38rem, 62vw);
-    height: auto;
-    color: var(--color-on-dark);
-    opacity: 0.035;
-    pointer-events: none;
+  .site-footer :global(.site-footer__watermark) {
+    /* Sul chiaro la filigrana va scurita, non schiarita: a 0.035 di bianco
+       su nebbia sarebbe invisibile. */
+    color: var(--color-ink);
+    opacity: 0.05;
   }
 
   .site-footer__inner {
@@ -117,6 +110,7 @@ const year = new Date().getFullYear();
     gap: 0.5rem;
   }
   .site-footer__col a {
+    font-family: var(--font-titling);
     font-size: var(--text-sm);
     color: var(--surface-fg-soft);
     text-decoration: none;

@@ -1,82 +1,545 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getEntry } from 'astro:content';
-import { getPath } from '../../i18n/routes';
-import Section from '../../components/ui/Section.astro';
+import { getPath, BOOKING_FORM_URL } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
 import Button from '../../components/ui/Button.astro';
-import Card from '../../components/ui/Card.astro';
+import Eyebrow from '../../components/ui/Eyebrow.astro';
+import StepIcon from '../../components/illustrations/StepIcon.astro';
+import EcosystemWeb from '../../components/illustrations/EcosystemWeb.astro';
+import MediaFrame from '../../components/ui/MediaFrame.astro';
 
+/**
+ * Chi siamo — la pagina con il vincolo più duro del progetto: nessuno storico
+ * da vendere, nessuna società ancora costituita, nessuna fotografia del team.
+ * Su un sito che tratta visti e bonifici internazionali è normalmente il punto
+ * in cui la fiducia si rompe.
+ *
+ * La risposta è tutta di composizione, e ha due mosse.
+ *
+ * PRIMA: il navy. Dove le altre pagine aprono in bianco, questa apre e chiude
+ * su campo scuro pieno. Senza fotografie il peso istituzionale lo devono
+ * portare tipografia e colore, e il navy è il colore del marchio — la pagina
+ * risulta incorniciata invece che vuota. Il ritmo è simmetrico apposta:
+ * NAVY → bianco → nebbia → bianco → nebbia → bianco → NAVY.
+ *
+ * SECONDA: prima ILL-08, che mostra la STRUTTURA del lavoro; poi le schede
+ * persona, con un segnaposto dichiarato al posto del ritratto finché non
+ * arriva il file vero — mai un ritratto d'archivio di chi non lavora qui.
+ */
 const locale = 'it';
+const t = useTranslations(locale);
 const { data: content } = await getEntry('aboutPage', locale)!;
 ---
 
-<PageLayout locale={locale} routeKey="about" title={content.intro.heading}>
-  <Section surface="light">
-    <p class="block-lead">{content.intro.body}</p>
-  </Section>
+<PageLayout
+  locale={locale}
+  routeKey="about"
+  title={content.hero.headline}
+  description={content.hero.subhead}
+  bare
+  ground="blank"
+>
+  <div class="about surface-blank">
+    {/* ── Hero: la missione, su campo scuro ────────────────────────────── */}
+    <section class="wrap band band--first">
+      <div class="masthead surface-panel">
+        <Eyebrow tone="gold" class="animate-rise">{content.hero.eyebrow}</Eyebrow>
+        <h1 class="heading-display masthead__title animate-rise" style="animation-delay:60ms">
+          {content.hero.headline}
+        </h1>
+        <p class="lead-soft masthead__lead animate-rise" style="animation-delay:120ms">
+          {content.hero.subhead}
+        </p>
+        <div class="masthead__actions animate-rise" style="animation-delay:180ms">
+          <Button href={BOOKING_FORM_URL} target="_blank" rel="noopener noreferrer" size="lg" arrow>
+            {content.hero.ctaPrimary}
+          </Button>
+          <Button href={getPath('services', locale)} variant="secondary" size="lg">
+            {content.hero.ctaSecondary}
+          </Button>
+        </div>
+      </div>
+    </section>
 
-  <Section labelledby="why-heading">
-    <h2 class="block-heading" id="why-heading">{content.whyWeExist.heading}</h2>
-    <p class="block-lead">{content.whyWeExist.body}</p>
-  </Section>
+    {
+      /* ── La genesi ───────────────────────────────────────────────────────
+        Il nemico comune non sono le istituzioni — dirlo sarebbe falso e
+        controproducente su un sito che poi manda il lettore ai loro siti
+        ufficiali. Il nemico è il vuoto di responsabilità FRA di loro, che
+        è vero, verificabile, e mette Kimere dalla parte dello studente
+        senza accusare nessuno. */
+    }
+    <section class="wrap band" aria-labelledby="genesis-heading">
+      <div class="head">
+        <Eyebrow>{content.genesis.eyebrow}</Eyebrow>
+        <h2 class="heading-section" id="genesis-heading">{content.genesis.heading}</h2>
+      </div>
 
-  <Section surface="light" labelledby="how-heading">
-    <h2 class="block-heading" id="how-heading">{content.howWeWork.heading}</h2>
+      <div class="genesis">
+        <div class="genesis__prose">
+          {content.genesis.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+        {/* Il serif in corsivo è la voce del sistema originale: qui rientra
+            per una riga sola, dove il testo smette di spiegare e prende posizione. */}
+        <blockquote class="pullquote">{content.genesis.pullQuote}</blockquote>
+      </div>
+    </section>
 
-    <ol class="principles">
+    {/* ── Il metodo, al posto dello storico ─────────────────────────────── */}
+    <section class="wrap band" aria-labelledby="method-heading">
+      <div class="panel-soft">
+        <div class="head">
+          <Eyebrow>{content.method.eyebrow}</Eyebrow>
+          <h2 class="heading-section" id="method-heading">{content.method.heading}</h2>
+          <p class="lead-soft">{content.method.body}</p>
+        </div>
+
+        {
+          /* <ol> e non <ul>: l'ordine è l'informazione. Il numero sta nel
+            markup e non in un contatore CSS, così chi usa uno screen reader
+            lo sente come parte del passo invece di perderlo. Niente icone
+            qui: le portano già quattro sezioni del sito, e la sequenza si
+            legge meglio con i numeri. */
+        }
+        <ol class="method">
+          {
+            content.method.steps.map((step, index) => (
+              <li class="method__step">
+                <div class="method__marker">
+                  <span class="method__num">{String(index + 1).padStart(2, '0')}</span>
+                  <h3 class="heading-card method__title">{step.title}</h3>
+                </div>
+                <p class="method__body">{step.body}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    {/* ── L'ecosistema, al posto dei volti ──────────────────────────────── */}
+    <section class="wrap band" aria-labelledby="ecosystem-heading">
+      <div class="head">
+        <Eyebrow>{content.ecosystem.eyebrow}</Eyebrow>
+        <h2 class="heading-section" id="ecosystem-heading">{content.ecosystem.heading}</h2>
+        <p class="lead-soft">{content.ecosystem.body}</p>
+      </div>
+
+      <EcosystemWeb
+        hub={content.ecosystem.hubLabel}
+        hubNote={content.ecosystem.hubNote}
+        nodes={content.ecosystem.nodes}
+      />
+
       {
-        content.howWeWork.principles.map((principle, index) => (
-          <Card as="li" class="principle">
-            <span class="principle__index">{String(index + 1).padStart(2, '0')}</span>
-            <h3 class="principle__title">{principle.title}</h3>
-            <p class="principle__body">{principle.body}</p>
-          </Card>
-        ))
+        /* Le persone. Il layout è quello definitivo: MediaFrame tiene già le
+          proporzioni giuste e mostra un segnaposto dichiarato finché i file
+          non arrivano in public/media/. Appena si valorizzano `photo` e
+          `video` nel JSON, i segnaposto spariscono da soli — nessuna modifica
+          a questo template. */
       }
-    </ol>
-  </Section>
+      <div class="team">
+        <div class="team__top">
+          <div class="team__head">
+            <h3 class="heading-section team__heading">{content.ecosystem.team.heading}</h3>
+            <p class="team__body">{content.ecosystem.team.body}</p>
+          </div>
 
-  <Section labelledby="whatwedont-heading">
-    <h2 class="block-heading" id="whatwedont-heading">{content.whatWeDontDo.heading}</h2>
-    <ul class="checklist checklist--negative not-included">
-      {content.whatWeDontDo.items.map((item) => <li>{item}</li>)}
-    </ul>
-  </Section>
+          <figure class="team__intro">
+            <MediaFrame
+              video={content.ecosystem.team.intro.video}
+              src={content.ecosystem.team.intro.poster}
+              captions={content.ecosystem.team.intro.captions}
+              captionsLang={locale}
+              placeholder={content.ecosystem.team.intro.videoPlaceholder}
+              ratio="16 / 9"
+            />
+            <figcaption class="team__intro-caption">
+              <span class="team__intro-title">{content.ecosystem.team.intro.heading}</span>
+              {content.ecosystem.team.intro.caption}
+            </figcaption>
+          </figure>
+        </div>
 
-  <Section surface="light" size="lg">
-    <div class="closing-cta">
-      <Button href={getPath('book', locale)}>{content.ctaLabel}</Button>
-    </div>
-  </Section>
+        <ul class="team__grid">
+          {
+            content.ecosystem.team.members.map((member) => (
+              <li class="member">
+                <MediaFrame
+                  src={member.photo}
+                  alt={member.photoAlt}
+                  placeholder={member.photoPlaceholder}
+                  ratio="4 / 5"
+                />
+                <div class="member__text">
+                  {/* Il nome compare solo quando c'è: finché manca il consenso
+                      della persona, la scheda parte dal ruolo — che è vero
+                      comunque e si può pubblicare da subito. */}
+                  {member.name && <p class="member__name">{member.name}</p>}
+                  <p class="member__role">{member.role}</p>
+                  <p class="member__bio">{member.bio}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    {/* ── I valori ──────────────────────────────────────────────────────── */}
+    <section class="wrap band" aria-labelledby="values-heading">
+      <div class="panel-soft">
+        <div class="head">
+          <Eyebrow>{content.values.eyebrow}</Eyebrow>
+          <h2 class="heading-section" id="values-heading">{content.values.heading}</h2>
+        </div>
+
+        <ul class="values">
+          {
+            content.values.items.map((value) => (
+              <li class="card-soft value">
+                <span class="icon-badge">
+                  <StepIcon name={value.icon} size={26} />
+                </span>
+                <h3 class="heading-card value__title">{value.title}</h3>
+                <p class="value__body">{value.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    {/* ── I limiti, dichiarati ──────────────────────────────────────────── */}
+    <section class="wrap band" aria-labelledby="limits-heading">
+      <div class="head">
+        <h2 class="heading-section" id="limits-heading">{content.limits.heading}</h2>
+      </div>
+      <ul class="checklist checklist--negative limits__list">
+        {content.limits.items.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    {/* ── Conversione ──────────────────────────────────────────────────── */}
+    <section class="wrap band" aria-labelledby="cta-heading">
+      <div class="finalcta surface-panel">
+        <Eyebrow tone="blank">{content.finalCta.eyebrow}</Eyebrow>
+        <h2 class="heading-section finalcta__title" id="cta-heading">
+          {content.finalCta.heading}
+        </h2>
+        <p class="finalcta__body">{content.finalCta.body}</p>
+        <p class="finalcta__actions">
+          <Button href={BOOKING_FORM_URL} target="_blank" rel="noopener noreferrer" size="lg" arrow>
+            {content.finalCta.ctaLabel}
+          </Button>
+        </p>
+        <p class="finalcta__note">{t.cta.freeNoObligation}</p>
+      </div>
+    </section>
+  </div>
 </PageLayout>
 
 <style>
-  .principles {
+  .about {
+    padding-bottom: var(--spacing-section-lg);
+  }
+
+  /* ── Fasce e intestazioni ─────────────────────────────────────────────── */
+  .band {
+    padding-block: clamp(1rem, 2.5vw, 2rem);
+  }
+  .band--first {
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .head {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-    gap: 1.25rem;
-    margin: 2.5rem 0 0;
+    justify-items: start;
+    gap: 1.1rem;
+    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .head .lead-soft {
+    max-width: none;
+  }
+  .heading-section + p {
+    margin-top: 0.75rem;
+  }
+
+  /* ── Hero ─────────────────────────────────────────────────────────────
+     Senza fotografie il peso istituzionale lo portano tipografia e colore:
+     campo navy pieno, titolo grande, testo centrato. È l'unica pagina del
+     sito che apre su scuro, ed è la ragione per cui non legge come vuota. */
+  .masthead {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 1.15rem;
+    border-radius: var(--radius-2xl);
+    padding: clamp(2.75rem, 7vw, 5.5rem) clamp(1.5rem, 4vw, 3rem);
+  }
+  .masthead__title {
+    max-width: 20ch;
+  }
+  .masthead__lead {
+    max-width: 62ch;
+  }
+  .masthead__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-top: 1rem;
+  }
+
+  /* ── La genesi ────────────────────────────────────────────────────────── */
+  .genesis {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+    align-items: start;
+  }
+  @media (min-width: 64rem) {
+    .genesis {
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    }
+  }
+  .genesis__prose {
+    display: grid;
+    gap: 1.1rem;
+    color: var(--surface-fg-soft);
+  }
+  .genesis__prose p {
+    margin: 0;
+  }
+  /* La citazione riporta il serif del sistema originale per una riga sola:
+     è il punto in cui il testo smette di spiegare e prende posizione. */
+  .pullquote {
+    margin: 0;
+    padding-left: clamp(1.25rem, 3vw, 1.85rem);
+    border-left: 3px solid var(--color-teal-ink);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-2xl);
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    color: var(--color-ink);
+  }
+  @media (min-width: 64rem) {
+    .pullquote {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+
+  /* ── Il metodo ────────────────────────────────────────────────────────── */
+  .method {
+    display: grid;
+    margin: 0;
     padding: 0;
     list-style: none;
   }
-  .principle__index {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    color: var(--surface-accent);
+  .method__step {
+    display: grid;
+    gap: 0.6rem;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+    border-top: 1px solid var(--surface-rule);
+  }
+  .method__step:last-child {
+    padding-bottom: 0;
+  }
+  @media (min-width: 60rem) {
+    .method__step {
+      grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      align-items: start;
+    }
+  }
+  .method__marker {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+  }
+  /* Grande ma tenue: dà il ritmo della sequenza senza rubare la scena al
+     titolo del passo, che è l'informazione vera. */
+  .method__num {
+    flex: none;
+    font-family: var(--font-titling);
+    font-size: var(--text-2xl);
+    font-weight: 700;
     line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--color-mist-deep);
   }
-  .principle__title {
-    font-size: var(--text-lg);
+  .method__body {
+    color: var(--surface-fg-muted);
+    margin: 0;
+  }
+
+  /* ── Le persone ───────────────────────────────────────────────────────── */
+  .team {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--surface-rule);
+  }
+  /* Intestazione a sinistra e video a destra: due colonne entrambe piene,
+     non un titolo spinto a metà pagina con il vuoto accanto. */
+  .team__top {
+    display: grid;
+    gap: clamp(1.75rem, 3.5vw, 3rem);
+    align-items: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  @media (min-width: 64rem) {
+    .team__top {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    }
+  }
+  .team__heading {
+    max-width: 18ch;
+  }
+  .team__body {
     margin-top: 0.75rem;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--surface-fg-muted);
   }
-  .principle__body {
+  .team__intro {
+    margin: 0;
+  }
+  .team__intro-caption {
+    display: grid;
+    gap: 0.2rem;
+    margin-top: 0.9rem;
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+  }
+  .team__intro-title {
+    font-family: var(--font-titling);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  /* Contenitore più stretto della griglia dei nodi qui sopra: a piena
+     larghezza tre ritratti 4:5 diventerebbero tre colonne altissime. */
+  .team__grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 1.15rem;
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+  .member {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 min(100%, 15rem);
+    min-width: min(100%, 15rem);
+    background-color: var(--color-blank);
+    border: 1px solid var(--color-mist-line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    /* il ritratto arriva a filo dei bordi della scheda */
+    overflow: hidden;
+  }
+  /* MediaFrame arrotonda il proprio riquadro: dentro una scheda già
+     arrotondata quel raggio si vedrebbe come un doppio bordo. `:global` perché
+     l'elemento lo rende un componente figlio e non porta lo scope di questa
+     pagina — stesso motivo per cui la filigrana del footer sta in global.css. */
+  .member :global(.media) {
+    border-radius: 0;
+  }
+  .member__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: clamp(1.1rem, 2.2vw, 1.4rem);
+  }
+  .member__name {
+    font-family: var(--font-titling);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  /* Senza nome il ruolo è il titolo della scheda e ne prende il peso; con il
+     nome scala a etichetta d'accento sotto di esso. */
+  .member__role {
+    font-family: var(--font-titling);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .member__name + .member__role {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--surface-accent);
+  }
+  .member__bio {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin: 0.35rem 0 0;
+  }
+
+  /* ── I valori ─────────────────────────────────────────────────────────── */
+  .values {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1.15rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .value {
+    flex: 1 1 min(100%, 19rem);
+    min-width: min(100%, 19rem);
+  }
+  .value__title {
+    margin-top: 1.15rem;
+  }
+  .value__body {
     font-size: var(--text-sm);
     color: var(--surface-fg-muted);
     margin-top: 0.6rem;
   }
 
-  .not-included {
-    max-width: var(--container-prose);
-    margin-top: 1.5rem;
+  /* ── I limiti ─────────────────────────────────────────────────────────── */
+  .limits__list {
+    max-width: 82ch;
+  }
+
+  /* ── CTA finale ───────────────────────────────────────────────────────── */
+  .finalcta {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 1.15rem;
+    border-radius: var(--radius-2xl);
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+    margin-top: clamp(1rem, 3vw, 2.5rem);
+  }
+  .finalcta__title {
+    max-width: 24ch;
+  }
+  .finalcta__body {
+    color: var(--surface-fg-muted);
+    max-width: 60ch;
+  }
+  .finalcta__actions {
+    margin-top: 0.85rem;
+  }
+  .finalcta__note {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
   }
 </style>

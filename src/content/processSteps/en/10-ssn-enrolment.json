@@ -1,9 +1,0 @@
-{
-  "phase": "after-arrival",
-  "order": 10,
-  "title": "Enrol in the national health service",
-  "whatHappens": "Non-EU students can enrol voluntarily in the *Servizio Sanitario Nazionale* (SSN), Italy's public health service, for a flat annual fee of around €700, paid using an F24 payment form.",
-  "whoDecides": "It's your choice — private insurance is also an option, but SSN enrolment gives you full access to the public system.",
-  "timing": "Any time after you have your fiscal code and residency — best done early, before you actually need a doctor.",
-  "whatKimereDoes": "We explain the trade-offs between SSN and private cover for your situation, and handle the enrolment paperwork if you choose SSN."
-}

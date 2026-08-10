@@ -1,9 +1,0 @@
-{
-  "phase": "after-arrival",
-  "order": 7,
-  "title": "Vai all'appuntamento in Questura",
-  "whatHappens": "Quando consegni il Kit Giallo all'ufficio postale, ricevi una ricevuta con la data di convocazione in Questura per il fotosegnalamento e le impronte digitali — l'ultimo passo per ricevere davvero il permesso.",
-  "whoDecides": "La Questura fissa la data; non puoi scegliere quando.",
-  "timing": "Di solito qualche settimana dopo la consegna del Kit Giallo — la ricevuta stessa ti permette di restare regolarmente nel frattempo.",
-  "whatKimereDoes": "Ti diciamo cosa portare e cosa aspettarti, così l'appuntamento diventa una formalità invece di uno stress."
-}

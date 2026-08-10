@@ -15,10 +15,8 @@ export interface UiDictionary {
     primaryLabel: string;
     menu: string;
     home: string;
-    process: string;
+    studyInItaly: string;
     services: string;
-    housing: string;
-    costs: string;
     about: string;
     faq: string;
     partners: string;
@@ -27,11 +25,8 @@ export interface UiDictionary {
     bookCall: string;
     freeNoObligation: string;
   };
+  /** Microcopy condivisa dalla mappa del percorso (ILL-01) e dalle fonti citate in FAQ/home. */
   process: {
-    whoDecides: string;
-    timing: string;
-    whatCanGoWrong: string;
-    whatKimereDoes: string;
     officialSource: string;
     phaseBefore: string;
     phaseAfter: string;
@@ -161,6 +156,8 @@ export interface UiDictionary {
     role: string;
     agency: string;
     country: string;
+    website: string;
+    websitePlaceholder: string;
     workEmail: string;
     volumeBracket: string;
     volumeBracketOptions: {
@@ -187,10 +184,8 @@ export const ui: UiDictionary = {
     primaryLabel: 'Main navigation',
     menu: 'Menu',
     home: 'Home',
-    process: 'How it works',
+    studyInItaly: 'Study in Italy',
     services: 'Services',
-    housing: 'Housing',
-    costs: 'Costs',
     about: 'About',
     faq: 'FAQ',
     partners: 'For agencies & universities',
@@ -200,10 +195,6 @@ export const ui: UiDictionary = {
     freeNoObligation: '15 minutes · no cost · no obligation',
   },
   process: {
-    whoDecides: 'Who decides',
-    timing: 'Timing',
-    whatCanGoWrong: 'What can go wrong',
-    whatKimereDoes: 'What Kimere does',
     officialSource: 'Official source',
     phaseBefore: 'Before you leave',
     phaseAfter: 'After you land',
@@ -351,6 +342,8 @@ export const ui: UiDictionary = {
     role: 'Your role',
     agency: 'Agency name',
     country: 'Country',
+    website: 'Company website',
+    websitePlaceholder: 'https://',
     workEmail: 'Work email',
     volumeBracket: 'Students sent abroad each year',
     volumeBracketOptions: {

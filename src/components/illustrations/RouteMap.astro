@@ -29,14 +29,30 @@ interface Props {
   pivot: string;
   stopsBefore: Stop[];
   stopsAfter: Stop[];
+  /**
+   * `modern` è il trattamento del restyle della home: scheda bianca, raggio
+   * generoso, nodi più grandi, il perno reso come barra piena invece che come
+   * riga in corsivo. Una variante e non una riscrittura perché lo stesso
+   * componente serve ancora la pagina Percorso e la styleguide, che restano
+   * sul sistema originale.
+   */
+  variant?: 'classic' | 'modern';
   class?: string;
 }
 
-const { locale, title, pivot, stopsBefore, stopsAfter, class: className } = Astro.props;
+const {
+  locale,
+  title,
+  pivot,
+  stopsBefore,
+  stopsAfter,
+  variant = 'classic',
+  class: className,
+} = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<figure class:list={['routemap', className]}>
+<figure class:list={['routemap', `routemap--${variant}`, className]}>
   <figcaption class="routemap__title label label-muted">{title}</figcaption>
 
   <ol class="route">
@@ -50,7 +66,9 @@ const t = useTranslations(locale);
       ))
     }
 
-    <li class="route__stop route__stop--pivot">{pivot}</li>
+    <li class="route__stop route__stop--pivot">
+      <span class="route__pivot-label">{pivot}</span>
+    </li>
 
     <li class="route__phase">{t.process.phaseAfter}</li>
     {
@@ -89,5 +107,138 @@ const t = useTranslations(locale);
     text-transform: uppercase;
     color: var(--surface-accent);
     margin-top: 0.2rem;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     VARIANTE «MODERN» — restyle della home.
+
+     Gli elementi .route__* sono resi da QUESTO componente, quindi portano il
+     suo scope: queste regole possono sovrascrivere quelle di global.css senza
+     `!important` e senza toccare la variante classica usata altrove.
+     ═══════════════════════════════════════════════════════════════════════ */
+  .routemap--modern {
+    background-color: var(--color-blank);
+    border: 1px solid var(--color-mist-line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.5rem, 3vw, 2.15rem);
+    --route-node-bg: var(--color-blank);
+  }
+  .routemap--modern .routemap__title {
+    font-family: var(--font-titling);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--color-mist-line);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Linea più marcata e nodi più grandi: alla larghezza dell'hero la linea da
+     1px del sistema originale spariva. */
+  .routemap--modern .route__stop {
+    padding: 0.6rem 0 0.6rem 2.4rem;
+    font-family: var(--font-titling);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-ink-soft);
+  }
+  .routemap--modern .route__stop::before {
+    left: 6px;
+    width: 2px;
+    background-color: var(--color-mist-deep);
+  }
+  .routemap--modern .route__stop::after {
+    left: 0;
+    top: 0.78rem;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--color-mist-deep);
+    background-color: var(--color-blank);
+  }
+
+  /* Tappa critica: sul chiaro l'oro è illeggibile e sparisce, quindi il nodo
+     pieno prende il teal — stesso ruolo, contrasto conforme. L'anello chiaro
+     attorno lo stacca dalla linea. */
+  .routemap--modern .route__stop--key {
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .routemap--modern .route__stop--key::after {
+    background-color: var(--color-teal-ink);
+    border-color: var(--color-teal-ink);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-teal-ink) 14%, transparent);
+  }
+
+  /* Il perno: l'atterraggio, il punto in cui il percorso cambia natura.
+     Resta un nodo SULLA linea come tutti gli altri — non un elemento a parte —
+     solo più grande e in oro, perché è quello che conta di più. L'etichetta
+     in corsivo raccoglie il trattamento classico (era una riga in corsivo)
+     dentro un piccolo riquadro tenue, per distinguerla senza spezzare la
+     colonna: il testo di ogni tappa inizia comunque allo stesso rientro. */
+  .routemap--modern .route__stop--pivot {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 0 0.7rem 2.4rem;
+  }
+  .routemap--modern .route__stop--pivot::before {
+    top: 0;
+    bottom: 0;
+  }
+  /* Stessa formula di centratura degli altri nodi (linea a 6px + 2px di
+     spessore → centro a 7px; nodo largo N → left = 7 - N/2), solo più grande:
+     prima il nodo stava a 1.1rem e la linea a 6px, due colonne diverse — da
+     qui la sensazione di "sfasato". */
+  .routemap--modern .route__stop--pivot::after {
+    left: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-gold-bright);
+    border-color: var(--color-gold-bright);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-gold-bright) 20%, transparent);
+  }
+  .routemap--modern .route__pivot-label {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: var(--text-lg);
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    color: var(--color-ink);
+    background-color: var(--color-mist);
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1.2rem;
+  }
+
+  .routemap--modern .route__phase {
+    padding: 1.35rem 0 0.5rem 2.4rem;
+    font-family: var(--font-titling);
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    color: var(--color-teal-ink);
+  }
+  .routemap--modern .route__phase:first-child {
+    padding-top: 0.9rem;
+  }
+
+  /* La scadenza diventa una pastiglia: è il dato più convincente del sito e
+     nel nuovo stile un maiuscoletto sottile non reggeva il confronto. */
+  .routemap--modern .routemap__note {
+    display: inline-block;
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    color: var(--color-teal-ink);
+    background-color: var(--color-mist);
+    border-radius: var(--radius-pill);
+    padding: 0.18rem 0.6rem;
+    margin-top: 0.35rem;
   }
 </style>

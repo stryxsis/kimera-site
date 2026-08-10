@@ -9,12 +9,20 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
+/**
+ * Ogni CTA di prenotazione del sito porta qui, non a `/book/`. Il modulo di
+ * qualificazione interno (`book.astro`/`prenota.astro`, con il suo consenso
+ * GDPR e il multi-step) resta pubblicato — un lettore attento potrebbe ancora
+ * trovarlo tramite `getPath('book', locale)` — ma nessuna CTA vi rimanda più.
+ * Un solo modulo per entrambe le lingue: nessuna variante `it`.
+ */
+export const BOOKING_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSe45j2D2R2OELX78j4BpGyphF28yqAkh-1DP4gbVgUoqjd9jA/viewform';
+
 export type RouteKey =
   | 'home'
-  | 'process'
+  | 'studyInItaly'
   | 'services'
-  | 'housing'
-  | 'costs'
   | 'about'
   | 'faq'
   | 'partners'
@@ -26,10 +34,12 @@ export type RouteKey =
 
 export const routes: Record<RouteKey, Record<Locale, string>> = {
   home: { en: '', it: '' },
-  process: { en: 'process', it: 'percorso' },
+  // Lo slug italiano non traduce quello inglese: «study-in-italy» è la query che
+  // uno studente straniero digita su Google, «perche-italia» è la domanda che si
+  // fa chi legge in italiano. Sono due intenti di ricerca diversi, non due lingue
+  // della stessa frase — ed è tutto il senso di avere una mappa di slug per lingua.
+  studyInItaly: { en: 'study-in-italy', it: 'perche-italia' },
   services: { en: 'services', it: 'servizi' },
-  housing: { en: 'housing', it: 'alloggio' },
-  costs: { en: 'costs', it: 'costi' },
   about: { en: 'about', it: 'chi-siamo' },
   faq: { en: 'faq', it: 'domande-frequenti' },
   partners: { en: 'partners', it: 'partner' },

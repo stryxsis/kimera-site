@@ -1,0 +1,126 @@
+{
+  "hero": {
+    "eyebrow": "Perché l'Italia",
+    "headline": "Un'istruzione di livello mondiale, nel paese che il mondo sogna di vedere.",
+    "subhead": "Più di novanta università, corsi di laurea interamente in inglese e tasse pubbliche che partono da meno di quanto costa un solo semestre nel Regno Unito o negli Stati Uniti — più un sistema di borse di studio che quasi nessuno scopre di poter usare. Ecco cosa offre davvero l'Italia, con i numeri.",
+    "ctaPrimary": "Prenota la tua call di 15 minuti",
+    "ctaSecondary": "Guarda cosa facciamo",
+    "imagePlaceholder": "Cortile o aula di un ateneo storico italiano — foto stock su licenza, taglio verticale, luce naturale calda, studenti veri",
+    "badgeValue": "Da 900 €",
+    "badgeLabel": "all'anno — tasse universitarie pubbliche"
+  },
+  "academics": {
+    "eyebrow": "Il lato accademico",
+    "heading": "Un sistema universitario antico, sulla stessa struttura del resto d'Europa",
+    "body": "L'Italia adotta il modello di Bologna — lo stesso schema tre più due dello Spazio europeo dell'istruzione superiore — quindi il tuo titolo si legge esattamente come datori di lavoro e atenei stranieri già si aspettano. Scegliendo l'Italia cambiano il prezzo e il luogo, non il valore di scambio del titolo.",
+    "points": [
+      {
+        "icon": "building",
+        "title": "Più di novanta università",
+        "body": "Atenei statali, non statali e telematici riconosciuti dal Ministero dell'Università e della Ricerca, distribuiti in ogni regione del paese — non concentrati in due città."
+      },
+      {
+        "icon": "document",
+        "title": "Tre più due, come tutti",
+        "body": "Una laurea triennale, poi una magistrale di due anni. Alcuni ambiti — medicina, giurisprudenza, architettura — sono a ciclo unico. I crediti sono ECTS, quindi viaggiano."
+      },
+      {
+        "icon": "compass",
+        "title": "Il catalogo è pubblico",
+        "body": "Ogni corso aperto alla pre-iscrizione internazionale è elencato su Universitaly, il portale del Ministero. Puoi filtrarlo da solo prima di parlare con chiunque — noi compresi."
+      }
+    ],
+    "language": {
+      "heading": "Non devi parlare italiano per studiare qui",
+      "body": "È l'equivoco più grande che correggiamo in call. Una quota ampia e in crescita dei corsi di laurea italiani — soprattutto magistrali — è insegnata interamente in inglese, e sul portale del Ministero puoi filtrarli. L'italiano ti servirà per la vita di tutti i giorni, e ti diremmo di impararlo. Non ti serve per essere ammesso.",
+      "points": [
+        "Corsi di laurea interamente in inglese, sia triennali sia magistrali",
+        "Il certificato IELTS non è sempre richiesto: molti corsi accettano la prova documentata che i tuoi studi precedenti erano in inglese",
+        "I requisiti li fissa ogni singolo corso — l'esenzione è frequente, non automatica, quindi va verificata caso per caso"
+      ]
+    },
+    "officialSource": "https://www.universitaly.it"
+  },
+  "costs": {
+    "eyebrow": "Quanto costa",
+    "heading": "Il punto in cui si smette di paragonare l'Italia agli Stati Uniti",
+    "body": "L'Italia non è gratis, e chi ti dice il contrario ha qualcosa da venderti. È però in una fascia di prezzo diversa dalle destinazioni anglofone — e le tasse pubbliche si calcolano anche sul reddito dichiarato della tua famiglia, per questo qui sotto trovi una forbice e non un prezzo di listino.",
+    "rows": [
+      {
+        "label": "Tasse universitarie pubbliche",
+        "value": "900 – 4.000 €",
+        "note": "All'anno. Dipendono dal corso e dal reddito dichiarato della tua famiglia (ISEE)."
+      },
+      {
+        "label": "Tasse universitarie private",
+        "value": "6.000 – 20.000 €",
+        "note": "All'anno. Soprattutto design, moda, business e medicina."
+      },
+      {
+        "label": "Costo della vita",
+        "value": "800 – 1.200 €",
+        "note": "Al mese, tutto compreso. Milano e Roma stanno in cima alla forbice."
+      },
+      {
+        "label": "Copertura sanitaria nazionale",
+        "value": "Circa 700 €",
+        "note": "All'anno. Iscrizione volontaria al SSN per studenti extra UE; l'alternativa è un'assicurazione privata."
+      }
+    ],
+    "disclaimer": "Sono fasce indicative. Scaglioni di tasse, regole regionali e decreti ministeriali annuali muovono tutti questi numeri, e la tua città li muove più di ogni altra cosa. Verifica gli importi aggiornati con il tuo ateneo e con le fonti ufficiali prima di impegnare del denaro."
+  },
+  "scholarships": {
+    "eyebrow": "La parte che quasi nessuno vede",
+    "heading": "Le borse di studio possono azzerare le tasse — e pagarti comunque",
+    "body": "Il diritto allo studio italiano è gestito da enti regionali ed è basato sul reddito, non solo sul merito. Quasi tutti gli studenti internazionali con cui parliamo non ne hanno mai sentito parlare, fanno domanda troppo tardi, o danno per scontato di non avere i requisiti. È una domanda separata da quella all'università, e si chiude a una data sua.",
+    "benefits": [
+      {
+        "title": "Tasse azzerate",
+        "body": "L'assegnazione può esentarti completamente dalle tasse universitarie e dalla tassa regionale per il diritto allo studio. Non uno sconto — un'esenzione."
+      },
+      {
+        "title": "Un assegno annuale",
+        "body": "La borsa comprende un contributo per il mantenimento. L'importo dipende dalla tua fascia di reddito e dal fatto che tu viva a casa, faccia il pendolare o ti trasferisca nella città dell'ateneo — quest'ultima è la fascia più alta, e vale diverse migliaia di euro all'anno."
+      },
+      {
+        "title": "Mensa e alloggio",
+        "body": "Chi ottiene la borsa ha di norma accesso gratuito o fortemente agevolato alle mense universitarie e agli alloggi pubblici per studenti, a tariffe che il mercato privato non offre."
+      },
+      {
+        "title": "Conta il reddito, non solo il merito",
+        "body": "Non devi essere il primo della classe. I requisiti si costruiscono sul reddito familiare e sull'avanzamento negli studi — ed è esattamente per questo che chi la dà per irraggiungibile di solito si sbaglia."
+      }
+    ],
+    "note": "Importi e soglie di reddito sono fissati ogni anno per decreto ministeriale e variano da regione a regione, e alcuni enti regionali pagano più del minimo nazionale. La cosa su cui si inciampa è la scadenza: è separata da quella universitaria e non la aspetta. In call verifichiamo i tuoi requisiti e la tua data."
+  },
+  "future": {
+    "eyebrow": "Dopo la laurea",
+    "heading": "Un visto per studio non è un permesso turistico da cinque anni",
+    "body": "Le stesse norme che regolano il tuo soggiorno regolano anche cosa puoi fare mentre sei qui e cosa succede il giorno in cui ti laurei. Entrambe le cose sono più generose di quanto quasi tutti si aspettino, ed entrambe sono pubblicate per intero.",
+    "points": [
+      {
+        "icon": "calendar",
+        "title": "Puoi lavorare mentre studi",
+        "body": "Il permesso di soggiorno per studio consente il lavoro part-time regolare: fino a 20 ore a settimana, con un tetto di 1.040 ore all'anno. Abbastanza per alleggerire il costo della vita senza diventare un secondo lavoro a tempo pieno."
+      },
+      {
+        "icon": "permit",
+        "title": "Puoi restare dopo la laurea",
+        "body": "La legge italiana consente di convertire il permesso per studio in un permesso per attesa occupazione, oppure direttamente in un permesso per lavoro subordinato o autonomo. È una conversione formale con requisiti propri — non un rinnovo automatico e non una formalità."
+      },
+      {
+        "icon": "health",
+        "title": "Sei dentro il sistema, non accanto",
+        "body": "Iscrizione al servizio sanitario nazionale, codice fiscale, residenza registrata: la stessa identità amministrativa di un residente italiano. È ciò che rende possibili un contratto d'affitto, un conto in banca e un contratto telefonico."
+      }
+    ],
+    "officialSource": "https://www.esteri.it/en/ministero/sportello_info/domandefrequenti/studiare-in-italia/"
+  },
+  "pivot": {
+    "eyebrow": "Il rovescio",
+    "heading": "L'Italia è la parte facile. L'amministrazione italiana no.",
+    "body": "Tutto quello che hai letto qui sopra è vero, pubblicato e consultabile da chiunque gratuitamente. Quello che nessuna di quelle pagine ti dice è che questi sistemi non si parlano tra loro — un consolato, un ateneo, un ufficio postale, una Questura, un'agenzia fiscale e un Comune, ognuno con il suo modulo, la sua finestra e la sua convinzione che tu sappia già come funziona. È lì che gli studenti perdono un anno, e non ha niente a che vedere con quanto sono bravi.",
+    "ctaPrimary": "Prenota la tua call di 15 minuti",
+    "ctaSecondary": "Guarda come lavoriamo"
+  }
+}

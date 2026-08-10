@@ -1,0 +1,158 @@
+---
+/**
+ * Il riquadro immagine del restyle.
+ *
+ * Il cliente ha scelto di introdurre fotografia su licenza (gate del restyle),
+ * ma i file non ci sono ancora. Questo componente rende il blocco DEFINITIVO
+ * nelle proporzioni e nel layout, e mostra un segnaposto dichiarato finché
+ * l'immagine manca: appena il file compare in `public/media/`, basta passare
+ * `src` e il segnaposto sparisce senza toccare il layout.
+ *
+ * Il segnaposto è deliberatamente esplicito e non finge di essere una foto:
+ * il vincolo del progetto è che nulla di provvisorio possa passare per finito.
+ *
+ * `ratio` tiene lo spazio prima che l'immagine carichi: niente salto di layout.
+ */
+interface Props {
+  /** Percorso pubblico, es. `/media/hero.jpg`. Assente → segnaposto. */
+  src?: string;
+  /** Obbligatorio quando c'è `src`: senza, l'immagine non è accessibile. */
+  alt?: string;
+  /**
+   * Percorso di un video, es. `/media/team.mp4`. Ha la precedenza su `src`,
+   * che in quel caso diventa il poster (il fotogramma mostrato prima del play).
+   *
+   * ⚠️ Niente autoplay, mai: parte solo se l'utente lo decide. E se il video
+   * contiene parlato, `captions` NON è opzionale — un video di presentazione
+   * senza sottotitoli esclude chi non sente e chi guarda senza audio, che su
+   * un sito consultato dal telefono è la maggioranza.
+   */
+  video?: string;
+  /** File WebVTT dei sottotitoli, es. `/media/team.vtt`. */
+  captions?: string;
+  /** Lingua dei sottotitoli, per l'attributo srclang. */
+  captionsLang?: string;
+  /** Etichetta della traccia sottotitoli mostrata dal player. */
+  captionsLabel?: string;
+  /** Che cosa dovrà rappresentare — mostrato nel segnaposto, per il cliente. */
+  placeholder: string;
+  ratio?: string;
+  /** L'immagine dell'hero è l'unica che vale la pena caricare subito. */
+  eager?: boolean;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  video,
+  captions,
+  captionsLang,
+  captionsLabel,
+  placeholder,
+  ratio = '4 / 3',
+  eager = false,
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={['media', className]} style={`--media-ratio:${ratio}`}>
+  {
+    video ? (
+      <video class="media__video" src={video} poster={src} controls preload="metadata" playsinline>
+        {captions && (
+          <track
+            kind="captions"
+            src={captions}
+            srclang={captionsLang ?? 'en'}
+            label={captionsLabel ?? 'Captions'}
+            default
+          />
+        )}
+      </video>
+    ) : src ? (
+      <img
+        class="media__img"
+        src={src}
+        alt={alt ?? ''}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchpriority={eager ? 'high' : undefined}
+      />
+    ) : (
+      <div class="media__placeholder">
+        <svg
+          class="media__icon"
+          viewBox="0 0 48 48"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <rect x="6" y="10" width="36" height="28" rx="3" />
+          <circle cx="17" cy="20" r="3.2" />
+          <path d="m10 33 9.5-9 7 6.5 5.5-4.5L42 34" />
+        </svg>
+        <p class="media__label">{placeholder}</p>
+      </div>
+    )
+  }
+  <slot />
+</div>
+
+<style>
+  .media {
+    position: relative;
+    aspect-ratio: var(--media-ratio);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background-color: var(--color-mist);
+  }
+  .media__img,
+  .media__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Il fondo nero dietro al video evita la banda chiara quando le proporzioni
+     del file non coincidono esattamente con quelle del riquadro. */
+  .media__video {
+    background-color: #000;
+  }
+
+  /* Righe diagonali: segnale universale di «spazio riservato», impossibile da
+     confondere con un'immagine vera anche a colpo d'occhio. */
+  .media__placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.85rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--color-ink-muted);
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0 11px,
+      rgb(10 37 70 / 0.045) 11px 22px
+    );
+  }
+  .media__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.65;
+  }
+  .media__label {
+    margin: 0;
+    max-width: 32ch;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>
