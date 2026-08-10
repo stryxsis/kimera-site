@@ -12,8 +12,14 @@ const t = useTranslations(locale);
 
 // FAQ resta fuori dal menu: si raggiunge dal contesto (sitemap-ia.md §3).
 // Tipo dedicato (sottoinsieme di RouteKey) perché solo queste chiavi esistono in t.nav.
-type MenuRouteKey = 'home' | 'services' | 'studyInItaly' | 'about' | 'partners';
-const items: MenuRouteKey[] = ['home', 'services', 'studyInItaly', 'about', 'partners'];
+//
+// ⚠️ `forStudents` e `languageCourses` non hanno ancora una pagina propria
+// (routes.ts, 2026-08-11): il link esiste già, la pagina arriva dopo. Servizi
+// e Perché l'Italia restano pubblicate e raggiungibili (footer, box della
+// home) ma non sono più in questo menu — è il nuovo ordine richiesto, non una
+// rimozione delle pagine stesse.
+type MenuRouteKey = 'home' | 'about' | 'forStudents' | 'partners' | 'languageCourses';
+const items: MenuRouteKey[] = ['home', 'about', 'forStudents', 'partners', 'languageCourses'];
 ---
 
 <nav class="nav" aria-label={t.nav.primaryLabel}>

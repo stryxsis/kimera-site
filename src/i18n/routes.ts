@@ -26,6 +26,15 @@ export type RouteKey =
   | 'about'
   | 'faq'
   | 'partners'
+  // ⚠️ Nessun file pagina esiste ancora per queste due chiavi (2026-08-11): il
+  // nuovo ordine della nav le richiede già, ma le pagine arrivano in un passo
+  // successivo. `getPath()` non verifica che la destinazione esista — il link
+  // funziona, punta dove deve, e resta un 404 finché non si crea il file sotto
+  // `src/pages/{en,it}/`. Nessuno script di verifica del progetto enumera
+  // RouteKey per controllare che ogni chiave abbia una pagina, quindi il
+  // build resta verde in questo stato intermedio.
+  | 'forStudents'
+  | 'languageCourses'
   | 'book'
   | 'thankYou'
   | 'privacy'
@@ -43,6 +52,8 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
   about: { en: 'about', it: 'chi-siamo' },
   faq: { en: 'faq', it: 'domande-frequenti' },
   partners: { en: 'partners', it: 'partner' },
+  forStudents: { en: 'for-students', it: 'per-gli-studenti' },
+  languageCourses: { en: 'language-courses-and-translation', it: 'corsi-di-lingua-e-traduzioni' },
   book: { en: 'book', it: 'prenota' },
   thankYou: { en: 'thank-you', it: 'grazie' },
   privacy: { en: 'privacy', it: 'privacy' },

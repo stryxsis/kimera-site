@@ -134,10 +134,11 @@ const homePage = defineCollection({
      * Il differenziante dichiarato dall'analisi: team multiculturale e sette
      * lingue, con consulenti della stessa nazionalità dell'interlocutore.
      *
-     * ⚠️ Le lingue sono quelle dell'analisi e NIENTE ALTRO (§1): inglese,
-     * francese, spagnolo, portoghese, arabo, albanese, tedesco. L'italiano non
-     * è nell'elenco — se i corsi lo includono va confermato dal cliente prima
-     * di aggiungerlo, non dedotto dal fatto che l'azienda è italiana.
+     * Le lingue erano in origine solo le sette dell'analisi (§1): inglese,
+     * francese, spagnolo, portoghese, arabo, albanese, tedesco — SENZA
+     * l'italiano, deliberatamente non dedotto dal fatto che l'azienda è
+     * italiana. Il cliente ha poi confermato che i corsi lo includono
+     * (2026-08-11): `languageCourses.languages`, in `homePage`, ora lo elenca.
      */
     strengths: z.object({
       eyebrow: z.string(),

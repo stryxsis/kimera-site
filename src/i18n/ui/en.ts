@@ -20,6 +20,8 @@ export interface UiDictionary {
     about: string;
     faq: string;
     partners: string;
+    forStudents: string;
+    languageCourses: string;
   };
   cta: {
     bookCall: string;
@@ -193,7 +195,9 @@ export const ui: UiDictionary = {
     services: 'Services',
     about: 'About',
     faq: 'FAQ',
-    partners: 'For agencies & universities',
+    partners: 'B2B Partners',
+    forStudents: 'For Students',
+    languageCourses: 'Language Courses & Translation',
   },
   cta: {
     bookCall: 'Book your 15-minute call',

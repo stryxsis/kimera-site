@@ -11,7 +11,9 @@ export const ui: UiDictionary = {
     services: 'Servizi',
     about: 'Chi siamo',
     faq: 'FAQ',
-    partners: 'Per agenzie e atenei',
+    partners: 'Partner B2B',
+    forStudents: 'Per gli Studenti',
+    languageCourses: 'Corsi di Lingua e Traduzioni',
   },
   cta: {
     bookCall: 'Prenota la tua call di 15 minuti',
