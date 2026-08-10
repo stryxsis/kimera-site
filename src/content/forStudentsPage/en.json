@@ -1,0 +1,149 @@
+{
+  "hero": {
+    "eyebrow": "For students",
+    "headline": "Your academic future. Zero paperwork panic.",
+    "subhead": "You're allowed to be more frightened of the forms, the money and the language than of the entrance exam — almost everyone is, and almost nobody admits it. That part is our job. You choose where you want to study, anywhere in the world, and we take the applications, the funding, the documents and the visa file off your desk. In Italy we go furthest, because there we run the route ourselves.",
+    "ctaPrimary": "Start with the questionnaire",
+    "ctaSecondary": "See what we take off your hands",
+    "reassurance": "The questionnaire is free, takes a few minutes, and commits you to nothing."
+  },
+  "identikit": {
+    "eyebrow": "Which one is you",
+    "heading": "Two people read this page. They need opposite things.",
+    "body": "One has already decided to leave and is drowning in everything that comes after that decision. The other hasn't decided anything and is drowning in options. Both are stuck, for exactly opposite reasons — so pick your half and skip the rest.",
+    "paths": [
+      {
+        "audience": "international",
+        "icon": "permit",
+        "title": "I'm coming from abroad",
+        "body": "You're leaving your country to study, whether that's Italy or somewhere else. Between you and the lecture hall sit an application, a consulate, a funding deadline nobody has told you about, and a stack of documents that has to be legally valid in a language you don't speak yet.",
+        "points": [
+          "Applications and enrolment, from the shortlist to a confirmed place",
+          "A visa file built the way your consulate expects to receive it",
+          "Funding, tuition brackets, and the paperwork that decides both",
+          "Translation and legalisation of your qualifications, in-house",
+          "After you land: tax code, health cover, bank account, somewhere real to live"
+        ],
+        "ctaLabel": "See what we take off your hands"
+      },
+      {
+        "audience": "undecided",
+        "icon": "compass",
+        "title": "I'm still deciding — here or abroad",
+        "body": "Course, city, country, or whether to leave at all. You're not stuck for lack of information: you're stuck because there's far too much of it and none of it is about you specifically. That's a research problem, and a research problem is solvable in one session.",
+        "points": [
+          "A questionnaire that maps what you actually want, before anyone talks",
+          "Research into your real options, done while you get on with your life",
+          "Staying and leaving, compared side by side and honestly",
+          "One session that ends with a written plan instead of a reading list"
+        ],
+        "ctaLabel": "See how the consultation works"
+      }
+    ]
+  },
+  "lifelines": {
+    "eyebrow": "The part that costs people a year",
+    "heading": "Five places where it usually goes wrong. None of them is the exam.",
+    "body": "Ask anyone who has already done this and they won't tell you about the entrance test. They'll tell you about a form nobody explained, a deadline nobody mentioned, and a queue you can't join until you've finished standing in a different one. Here's the list, and what we do with each.",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Funding you may not know you qualify for",
+        "body": "Right-to-study funding in Italy is means-tested rather than merit-only, so students who assume they're not eligible very often are. It runs on its own deadline, which is not your university's and does not wait for it. We work out what you can claim where you're going, and we file it in time."
+      },
+      {
+        "icon": "contract",
+        "title": "The ISEE, rebuilt from foreign documents",
+        "body": "Your eligibility runs through the ISEE, an income indicator almost no family abroad has heard of and fewer still can calculate — least of all from payslips and tax returns issued in another country, in another language. We reconstruct it with you, document by document."
+      },
+      {
+        "icon": "building",
+        "title": "Tuition that isn't a single number",
+        "body": "What you actually pay is a bracket that moves with your declared income, not a price printed on a page. Getting that declaration right is the difference between the top band and a fraction of it, and it's decided by paperwork filed months before your first lecture."
+      },
+      {
+        "icon": "health",
+        "title": "Health cover, in the only order that works",
+        "body": "You can't enrol in the national health service without a *codice fiscale*, Italy's tax ID number, and you can't get far without cover. None of it is difficult. All of it is strictly sequential, and a step taken out of order has to be taken again."
+      },
+      {
+        "icon": "permit",
+        "title": "A bank account that actually opens",
+        "body": "You need an account before you can pay for almost anything, and opening one as a new arrival means walking in with the right set of documents instead of discovering at the counter which one is missing. We start this and the tax code early, because everything else is downstream of them."
+      }
+    ],
+    "note": "None of these is hard on its own. They're hard because they're sequential, because each one has a queue, and because a step taken in the wrong order has to be taken again — which is how a lost month turns into a lost academic year.",
+    "officialSource": "https://www.universitaly.it"
+  },
+  "documents": {
+    "eyebrow": "Documents and translation",
+    "heading": "Your diploma has to arrive in Italian, and legally valid.",
+    "body": "This is the step where months quietly disappear, and it's the one thing we don't send anywhere. The teachers who run our language courses are the same people who translate your academic documents — same team, same file, nobody in the middle. That's the whole reason a translation can start the day you ask for it instead of coming back in three weeks.",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Translation, from inside the team",
+        "body": "Transcripts, diplomas and certificates, translated by people who are already on your file and already know what the receiving office expects to see — and in the format it expects to see it."
+      },
+      {
+        "icon": "contract",
+        "title": "Legalisation, followed through",
+        "body": "Apostille or consular legalisation, depending on the country that issued your qualification. Prepared and tracked alongside you, not handed back to you as a list of instructions and a good luck."
+      },
+      {
+        "icon": "calendar",
+        "title": "Timed against the real deadline",
+        "body": "Document work has a lead time and admissions have a cut-off, and the two are set by different people who never speak to each other. We work backwards from the cut-off, which is the only order in which this ever finishes on time."
+      }
+    ],
+    "limitHeading": "What in-house does not mean",
+    "limitBody": "It does not mean the requirement disappears. The comparability statement for a foreign qualification is issued by CIMEA or assessed by the university itself, and nothing we do replaces it or makes it optional — anyone telling you that step can be skipped is selling you a rejected application. What we do is build the file, run it to the end, and keep the translation on our side of the table, so that part is never the one holding you up.",
+    "officialSource": "https://www.cimea.it"
+  },
+  "pricing": {
+    "eyebrow": "What it costs",
+    "heading": "One session — and the research is already done when it starts.",
+    "body": "Most first consultations are spent asking you basic questions. Ours isn't, because we ask them in writing first and then go away and do the work. By the time we speak we've already looked at your real options, which is what you're actually paying for — and the reason the price is on this page instead of behind a phone call.",
+    "planName": "Basic Strategic Consultation",
+    "price": "$200",
+    "priceUnit": "one session, research included",
+    "billingNote": "The figure is in US dollars. Before you pay anything we confirm to you in writing the exact amount, the currency you'll be invoiced in and the tax treatment that applies — we don't take money on the strength of a number on a web page.",
+    "stepsHeading": "What happens, in order",
+    "steps": [
+      {
+        "title": "You fill in the preliminary questionnaire",
+        "body": "Where you are now, what you've already decided, and what your constraints genuinely are — including the financial ones, which are the part most people are reluctant to write down and the part that changes the answer most."
+      },
+      {
+        "title": "We research your case before we meet",
+        "body": "Your real options against your actual profile: which courses and countries are open to you, what each one costs once funding is taken into account, and which deadlines are already too close to make."
+      },
+      {
+        "title": "The session, built on what came back",
+        "body": "We take you through what we found, you push back on it, and you leave with a route instead of a reading list. If the honest answer is that you shouldn't go, that's the answer you get."
+      }
+    ],
+    "includedHeading": "What the price includes",
+    "included": [
+      "The preliminary questionnaire, and our reading of it",
+      "Research into your specific options, done before the session",
+      "The consultation itself, in a language you're comfortable in",
+      "A written summary of what we agreed, which is yours to keep"
+    ],
+    "notIncludedHeading": "What it doesn't include — better said before you pay than after",
+    "notIncluded": [
+      "It isn't the full relocation service. Applications, visa file, funding and documents are quoted separately, once we know what you actually need.",
+      "It isn't a guarantee of admission, of a scholarship or of a visa. Those decisions belong to universities, funding bodies and consulates, and to nobody else.",
+      "It isn't legal or tax advice. Where your case needs a lawyer or an accountant we say so, rather than improvise.",
+      "University fees, official translation charges and government fees are paid to those bodies, not to us."
+    ],
+    "ctaLabel": "Start with the preliminary questionnaire"
+  },
+  "finalCta": {
+    "eyebrow": "Start here",
+    "heading": "Everything above starts in the same place.",
+    "body": "One questionnaire — the same first step whether you're moving from another continent or choosing between two cities an hour apart. It's what lets the first thing you hear back from us be about you, instead of the same paragraph everybody gets.",
+    "ctaLabel": "Start here: fill in the preliminary questionnaire",
+    "note": "A few minutes, no cost, and no payment step anywhere in the form. We read what you send and come back to you by email."
+  }
+}

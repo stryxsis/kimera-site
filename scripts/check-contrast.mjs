@@ -133,6 +133,12 @@ const pairs = [
   ['mist', 'anello di focus', c.tealInk, c.mist, 3.0],
   // Le card bianche dentro una fascia mist: il loro testo sta su bianco.
   ['mist', 'testo di card bianca dentro la fascia', c.ink, c.blank, 4.5],
+  // La scheda del prezzo (Per gli studenti): è l'unica cifra pubblicata sul sito
+  // e la nota sulla fatturazione le sta sotto in corpo minore — se una delle due
+  // non si legge, il prezzo diventa una promessa senza le sue condizioni.
+  ['price', 'la cifra, navy su bianco (oro qui sarebbe 2.33)', c.ink, c.blank, 4.5],
+  ['price', 'unità e nota di fatturazione', c.inkMuted, c.blank, 4.5],
+  ['price', 'nome del piano, accento teal', c.tealInk, c.blank, 4.5],
   // La nebbia profonda come superficie di testo, non solo come chip: il blocco
   // sulla lingua (Perché l'Italia) e i richiami del disclaimer.
   ['mist', 'titolo su nebbia profonda', c.ink, c.mistDeep, 4.5],

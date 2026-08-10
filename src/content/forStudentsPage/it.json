@@ -1,0 +1,149 @@
+{
+  "hero": {
+    "eyebrow": "Per gli studenti",
+    "headline": "Il tuo futuro accademico, zero stress burocratico.",
+    "subhead": "Puoi tranquillamente avere più paura dei moduli, dei soldi e della lingua che dell'esame di ammissione — ce l'hanno quasi tutti, e quasi nessuno lo dice. Quella parte è il nostro lavoro. Tu scegli dove vuoi studiare, ovunque nel mondo, e noi ti togliamo dal tavolo le candidature, le borse di studio, i documenti e il fascicolo per il visto. In Italia andiamo più a fondo, perché lì il percorso lo gestiamo noi.",
+    "ctaPrimary": "Parti dal questionario",
+    "ctaSecondary": "Guarda cosa ti togliamo dalle mani",
+    "reassurance": "Il questionario è gratuito, si compila in pochi minuti e non ti impegna a niente."
+  },
+  "identikit": {
+    "eyebrow": "Tu chi sei",
+    "heading": "Questa pagina la leggono due persone. Hanno bisogno di cose opposte.",
+    "body": "Una ha già deciso di partire e sta annegando in tutto quello che viene dopo quella decisione. L'altra non ha deciso niente e sta annegando nelle opzioni. Sono bloccate entrambe, per motivi esattamente opposti — quindi scegli la tua metà e salta il resto.",
+    "paths": [
+      {
+        "audience": "international",
+        "icon": "permit",
+        "title": "Vengo dall'estero",
+        "body": "Stai lasciando il tuo paese per studiare, in Italia o altrove. Tra te e l'aula ci sono una candidatura, un consolato, una scadenza per una borsa di studio di cui nessuno ti ha parlato e una pila di documenti che deve essere legalmente valida in una lingua che ancora non parli.",
+        "points": [
+          "Candidature e immatricolazione, dalla rosa di atenei al posto confermato",
+          "Un fascicolo per il visto costruito come il tuo consolato si aspetta di riceverlo",
+          "Borse di studio, fasce di contribuzione e le carte che decidono entrambe",
+          "Traduzione e legalizzazione dei tuoi titoli, in casa",
+          "Dopo l'atterraggio: codice fiscale, sanità, conto in banca, una casa vera"
+        ],
+        "ctaLabel": "Guarda cosa ti togliamo dalle mani"
+      },
+      {
+        "audience": "undecided",
+        "icon": "compass",
+        "title": "Sto ancora decidendo — qui o all'estero",
+        "body": "Corso, città, paese, o se partire del tutto. Non sei bloccato perché ti mancano informazioni: sei bloccato perché ce ne sono troppe e nessuna parla di te nello specifico. Quello è un problema di ricerca, e un problema di ricerca si risolve in una sessione sola.",
+        "points": [
+          "Un questionario che mette a fuoco cosa vuoi davvero, prima che si parli",
+          "La ricerca sulle tue opzioni reali, fatta mentre tu vivi la tua vita",
+          "Restare e partire, messi a confronto uno accanto all'altro e onestamente",
+          "Una sessione che finisce con un piano scritto, non con una lista di link"
+        ],
+        "ctaLabel": "Guarda come funziona la consulenza"
+      }
+    ]
+  },
+  "lifelines": {
+    "eyebrow": "La parte che fa perdere un anno",
+    "heading": "Cinque punti in cui di solito si rompe. Nessuno dei cinque è l'esame.",
+    "body": "Chiedi a chi l'ha già fatto e non ti parlerà del test d'ingresso. Ti parlerà di un modulo che nessuno ha spiegato, di una scadenza che nessuno ha detto, e di una coda in cui non puoi metterti finché non hai finito di stare in un'altra. Ecco l'elenco, e cosa facciamo su ciascuno.",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Borse di studio a cui forse hai diritto senza saperlo",
+        "body": "Il diritto allo studio in Italia è su base reddituale e non solo sul merito, quindi capita spesso che chi si dà per escluso in realtà sia idoneo. Ha una scadenza sua, che non è quella dell'ateneo e non la aspetta. Verifichiamo a cosa puoi accedere dove stai andando, e depositiamo la domanda in tempo."
+      },
+      {
+        "icon": "contract",
+        "title": "L'ISEE, ricostruito su documenti stranieri",
+        "body": "La tua idoneità passa dall'ISEE, un indicatore economico di cui quasi nessuna famiglia straniera ha sentito parlare e che ancora meno sanno calcolare — tanto meno partendo da buste paga e dichiarazioni emesse in un altro paese e in un'altra lingua. Lo ricostruiamo insieme a te, documento per documento."
+      },
+      {
+        "icon": "building",
+        "title": "Le tasse, che non sono un numero solo",
+        "body": "Quello che paghi davvero è una fascia che si muove con il reddito dichiarato, non un prezzo stampato su una pagina. Fare bene quella dichiarazione è la differenza tra la fascia massima e una frazione di essa, e si decide con carte depositate mesi prima della tua prima lezione."
+      },
+      {
+        "icon": "health",
+        "title": "La sanità, nell'unico ordine che funziona",
+        "body": "Non ti puoi iscrivere al Servizio Sanitario Nazionale senza codice fiscale, e senza copertura sanitaria non vai lontano. Non c'è niente di difficile. C'è tutto di rigidamente sequenziale, e un passaggio fatto fuori ordine va rifatto."
+      },
+      {
+        "icon": "permit",
+        "title": "Un conto in banca che si apre davvero",
+        "body": "Ti serve un conto prima di poter pagare quasi qualsiasi cosa, e aprirlo da appena arrivato vuol dire presentarsi con il set di documenti giusto invece di scoprire allo sportello quale manca. Questo e il codice fiscale li facciamo partire subito, perché tutto il resto viene dopo di loro."
+      }
+    ],
+    "note": "Nessuna di queste cose è difficile presa da sola. Sono difficili perché sono in sequenza, perché ognuna ha la sua coda, e perché un passaggio fatto nell'ordine sbagliato va rifatto — ed è così che un mese perso diventa un anno accademico perso.",
+    "officialSource": "https://www.universitaly.it"
+  },
+  "documents": {
+    "eyebrow": "Documenti e traduzioni",
+    "heading": "Il tuo diploma deve arrivare in italiano, e legalmente valido.",
+    "body": "È il passaggio in cui i mesi svaniscono in silenzio, ed è l'unica cosa che non mandiamo da nessuna parte. Gli insegnanti che tengono i nostri corsi di lingua sono le stesse persone che traducono i tuoi documenti accademici — stesso team, stesso fascicolo, nessuno in mezzo. È tutto qui il motivo per cui una traduzione può partire il giorno in cui la chiedi invece di tornare dopo tre settimane.",
+    "items": [
+      {
+        "icon": "document",
+        "title": "La traduzione, da dentro il team",
+        "body": "Certificati, diplomi e attestati, tradotti da persone che sono già sul tuo fascicolo e sanno già cosa l'ufficio ricevente si aspetta di vedere — e nel formato in cui si aspetta di vederlo."
+      },
+      {
+        "icon": "contract",
+        "title": "La legalizzazione, seguita fino in fondo",
+        "body": "Apostille o legalizzazione consolare, a seconda del paese che ha rilasciato il tuo titolo. Preparata e monitorata insieme a te, non restituita come un elenco di istruzioni e un in bocca al lupo."
+      },
+      {
+        "icon": "calendar",
+        "title": "Impostata sulla scadenza vera",
+        "body": "Il lavoro sui documenti ha i suoi tempi e le ammissioni hanno una data di chiusura, e le decidono due uffici diversi che non si parlano mai. Noi partiamo dalla chiusura e torniamo indietro, che è l'unico ordine in cui questa cosa finisce in tempo."
+      }
+    ],
+    "limitHeading": "Cosa non vuol dire «in casa»",
+    "limitBody": "Non vuol dire che il requisito sparisce. L'attestato di comparabilità di un titolo estero lo rilascia CIMEA o lo valuta l'ateneo stesso, e nulla di ciò che facciamo lo sostituisce o lo rende facoltativo — chi ti dice che quel passaggio si può saltare ti sta vendendo una domanda respinta. Quello che facciamo è comporre il fascicolo, seguirlo fino in fondo e tenere la traduzione dalla nostra parte del tavolo, così quella parte non è mai quella che ti blocca.",
+    "officialSource": "https://www.cimea.it"
+  },
+  "pricing": {
+    "eyebrow": "Quanto costa",
+    "heading": "Una sessione sola — e quando comincia la ricerca è già fatta.",
+    "body": "Quasi tutte le prime consulenze se ne vanno a farti domande di base. La nostra no, perché quelle domande te le facciamo prima e per iscritto, e poi andiamo a lavorare. Quando ci parliamo abbiamo già guardato le tue opzioni reali: è quello che stai pagando davvero, ed è il motivo per cui il prezzo sta su questa pagina invece che dietro una telefonata.",
+    "planName": "Consulenza Strategica Base",
+    "price": "200 $",
+    "priceUnit": "una sessione, ricerca inclusa",
+    "billingNote": "La cifra è in dollari statunitensi. Prima di qualsiasi pagamento ti confermiamo per iscritto l'importo esatto, la valuta in cui verrà fatturato e il trattamento fiscale applicabile — non prendiamo soldi sulla fiducia di un numero scritto su una pagina web.",
+    "stepsHeading": "Cosa succede, nell'ordine",
+    "steps": [
+      {
+        "title": "Compili il questionario preliminare",
+        "body": "A che punto sei, cosa hai già deciso e quali sono davvero i tuoi vincoli — compresi quelli economici, che sono la parte che quasi tutti esitano a scrivere e quella che cambia di più la risposta."
+      },
+      {
+        "title": "Studiamo il tuo caso prima di incontrarci",
+        "body": "Le tue opzioni reali sul tuo profilo reale: quali corsi e quali paesi ti sono aperti, quanto costa ciascuno una volta contate le borse di studio, e quali scadenze sono ormai troppo vicine per essere prese."
+      },
+      {
+        "title": "La sessione, costruita su quello che è emerso",
+        "body": "Ti portiamo dentro quello che abbiamo trovato, tu lo contesti, e te ne vai con un percorso invece che con una lista di link. Se la risposta onesta è che non ti conviene partire, ti diamo quella."
+      }
+    ],
+    "includedHeading": "Cosa comprende il prezzo",
+    "included": [
+      "Il questionario preliminare e la nostra lettura delle tue risposte",
+      "La ricerca sulle tue opzioni specifiche, fatta prima della sessione",
+      "La consulenza vera e propria, in una lingua in cui ti trovi a tuo agio",
+      "Una sintesi scritta di quello che ci siamo detti, che resta tua"
+    ],
+    "notIncludedHeading": "Cosa non comprende — meglio dirlo prima di pagare che dopo",
+    "notIncluded": [
+      "Non è il servizio di relocation completo. Candidature, fascicolo per il visto, borse di studio e documenti si preventivano a parte, quando sappiamo cosa ti serve davvero.",
+      "Non è una garanzia di ammissione, di borsa di studio o di visto. Quelle decisioni spettano agli atenei, agli enti erogatori e ai consolati, e a nessun altro.",
+      "Non è consulenza legale né fiscale. Dove il tuo caso richiede un avvocato o un commercialista lo diciamo, invece di improvvisare.",
+      "Tasse universitarie, diritti per le traduzioni ufficiali e oneri pubblici si pagano a quegli enti, non a noi."
+    ],
+    "ctaLabel": "Parti dal questionario preliminare"
+  },
+  "finalCta": {
+    "eyebrow": "Si comincia",
+    "heading": "Tutto quello che c'è qui sopra comincia dallo stesso punto.",
+    "body": "Un questionario — lo stesso primo passo sia che tu ti stia spostando da un altro continente, sia che tu stia scegliendo tra due città a un'ora di distanza. È quello che permette alla prima cosa che ti diciamo di parlare di te, invece di essere lo stesso paragrafo che ricevono tutti.",
+    "ctaLabel": "Inizia da qui: compila il questionario preliminare",
+    "note": "Pochi minuti, nessun costo, e in tutto il modulo non c'è nessun passaggio di pagamento. Leggiamo quello che ci mandi e ti rispondiamo via email."
+  }
+}

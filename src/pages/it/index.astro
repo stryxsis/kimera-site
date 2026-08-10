@@ -44,13 +44,20 @@ const { data: content } = await getEntry('homePage', locale)!;
  * un URL scritto a mano dentro un file di contenuto è un link morto che nessun
  * controllo intercetta, mentre `getPath()` rompe la build se la route non esiste.
  *
- * `student-undecided` e `university` sono provvisori — puntano ai due form
+ * `student-abroad` puntava provvisoriamente a Servizi; dal 2026-08-11 la pagina
+ * «Per gli studenti» esiste ed è la destinazione vera di quel box — è scritta
+ * per esattamente quel lettore e finisce nel questionario.
+ *
+ * `student-undecided` e `university` restano provvisori — puntano ai due form
  * invece che a pagine dedicate, che non esistono ancora. Sono imbuti funzionanti,
  * non vicoli ciechi: chi arriva dal box «lavoro per un'università» trova nel
- * form l'opzione «il seminario online gratuito» già in cima all'elenco.
+ * form l'opzione «il seminario online gratuito» già in cima all'elenco. Il box
+ * dell'indeciso NON viene dirottato su «Per gli studenti» perché la sua etichetta
+ * promette una prenotazione: cambiare destinazione senza cambiare etichetta
+ * sarebbe una promessa mancata, e l'etichetta è testo approvato dal cliente.
  */
 const ROUTES_BY_AUDIENCE = {
-  'student-abroad': { route: 'services' as RouteKey },
+  'student-abroad': { route: 'forStudents' as RouteKey },
   'student-undecided': { external: BOOKING_FORM_URL },
   university: { route: 'partners' as RouteKey, hash: '#partner-form' },
   agency: { route: 'partners' as RouteKey },

@@ -40,6 +40,7 @@ const year = new Date().getFullYear();
       <div class="site-footer__col">
         <h2 class="label label-muted">{t.footer.columnStudents}</h2>
         <ul>
+          <li><a href={getPath('forStudents', locale)}>{t.nav.forStudents}</a></li>
           <li><a href={getPath('studyInItaly', locale)}>{t.nav.studyInItaly}</a></li>
           <li><a href={getPath('services', locale)}>{t.nav.services}</a></li>
           <li><a href={getPath('faq', locale)}>{t.nav.faq}</a></li>

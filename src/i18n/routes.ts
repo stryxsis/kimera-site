@@ -26,14 +26,15 @@ export type RouteKey =
   | 'about'
   | 'faq'
   | 'partners'
-  // ⚠️ Nessun file pagina esiste ancora per queste due chiavi (2026-08-11): il
-  // nuovo ordine della nav le richiede già, ma le pagine arrivano in un passo
-  // successivo. `getPath()` non verifica che la destinazione esista — il link
-  // funziona, punta dove deve, e resta un 404 finché non si crea il file sotto
-  // `src/pages/{en,it}/`. Nessuno script di verifica del progetto enumera
-  // RouteKey per controllare che ogni chiave abbia una pagina, quindi il
-  // build resta verde in questo stato intermedio.
   | 'forStudents'
+  // ⚠️ Nessun file pagina esiste ancora per questa chiave (2026-08-11): la nav
+  // la richiede già, ma la pagina arriva in un passo successivo. `getPath()` non
+  // verifica che la destinazione esista — il link funziona, punta dove deve, e
+  // resta un 404 finché non si crea il file sotto `src/pages/{en,it}/`. Nessuno
+  // script di verifica del progetto enumera RouteKey per controllare che ogni
+  // chiave abbia una pagina, quindi il build resta verde in questo stato
+  // intermedio. (`forStudents` era nella stessa condizione: la sua pagina esiste
+  // dal 2026-08-11.)
   | 'languageCourses'
   | 'book'
   | 'thankYou'

@@ -25,7 +25,10 @@ const packages = defineCollection({
     // scartata al gate 4.2 (D-13): stessa informazione, detta a parole.
     coverage: z.string(),
     includes: z.array(z.string()),
-    // Niente campo "price": vincolo di prodotto non negoziabile (nessun prezzo pubblico).
+    // Niente campo "price": i tre livelli non hanno listino pubblico, la cifra si
+    // dice in call. L'unica eccezione del sito è la Consulenza Strategica Base,
+    // che ha un prezzo pubblicato in `forStudentsPage.pricing` — vedi lì il
+    // perché. Non è un precedente per questi tre.
   }),
 });
 
@@ -92,9 +95,12 @@ const stepIconName = z.enum([
  *   languageCourses → l'ecosistema a 360°, non solo scartoffie
  *   finalCta        → chi ha scrollato tutto senza cliccare nessun box
  *
- * ⚠️ NESSUN PREZZO in questo schema, ed è una decisione confermata: i price
- * point esistono (analisi §2) ma restano fuori dal sito, la cifra si dice in
- * call. Non aggiungere un campo `price` qui né altrove.
+ * ⚠️ NESSUN PREZZO in questo schema: la home smista, non vende. Dal 2026-08-11
+ * esiste UNA eccezione in tutto il sito — la Consulenza Strategica Base, il cui
+ * prezzo è pubblicato in `forStudentsPage.pricing` per decisione esplicita del
+ * cliente. Qui resta fuori di proposito: un prezzo sopra la piega, prima ancora
+ * che il lettore sappia che cosa comprende, filtra chi avrebbe convertito.
+ * Non aggiungere un campo `price` qui né in `packages`.
  *
  * ⚠️ Le destinazioni dei box NON stanno nel contenuto: `audience` è una chiave,
  * e il template la risolve in un href tramite routes.ts. Un URL scritto in un
@@ -204,6 +210,125 @@ const homePage = defineCollection({
     }),
   }),
 });
+/**
+ * Per gli studenti — la pagina B2C, e l'unica del sito il cui compito non è
+ * informare né rassicurare in generale: deve abbattere l'ansia di una persona
+ * di vent'anni che ha paura delle scartoffie, dei soldi e della lingua più che
+ * dell'esame di ammissione, e poi portarla dentro il questionario.
+ *
+ * La sequenza dei blocchi è quella del brief commerciale (2026-08-11):
+ *   hero       → la promessa emotiva, non l'elenco dei servizi
+ *   identikit  → auto-segmentazione: studente internazionale / italiano indeciso
+ *   lifelines  → i pain point tecnici risolti, uno per uno
+ *   documents  → traduzione e legalizzazione, il vantaggio competitivo vero
+ *   pricing    → la Consulenza Strategica Base, a prezzo scoperto
+ *   finalCta   → il questionario preliminare, unico ingresso all'imbuto
+ *
+ * ⚠️ QUESTO È L'UNICO SCHEMA DEL SITO CON UN PREZZO, ed è una deroga esplicita
+ * del cliente, non una svista: il prezzo in chiaro qualifica il contatto prima
+ * della call e giustifica il questionario. Vale SOLO per la Consulenza
+ * Strategica Base. I tre livelli di `packages` e la home restano senza listino.
+ *
+ * ⚠️ `pricing.billingNote` è OBBLIGATORIA. La cifra dell'analisi è in dollari,
+ * il venditore è italiano e il lettore italiano è un consumatore: il Codice del
+ * consumo vuole un prezzo comprensibile e comprensivo di imposte, e nessuno qui
+ * può dedurre il regime IVA di Kimere. La nota dice la valuta e rimanda la cifra
+ * definitiva a una conferma scritta prima di qualsiasi pagamento — che è vero,
+ * verificabile e non inventa un trattamento fiscale.
+ *
+ * ⚠️ `pricing.notIncluded` è OBBLIGATORIO. Una sessione di consulenza pagata non
+ * è il pacchetto di relocation e non garantisce un'ammissione: senza questo
+ * elenco il blocco vende implicitamente un risultato che nessuno può promettere.
+ *
+ * ⚠️ `documents.limitBody` è la stessa riga su CIMEA che portano home e Chi
+ * siamo, e per la stessa ragione: l'attestato di comparabilità lo rilascia CIMEA
+ * o l'ateneo, nessun privato lo scavalca. Il brief chiede di dire «bypassare»:
+ * non si può, e su questa pagina meno che mai — è quella che il lettore usa per
+ * decidere se pagare.
+ *
+ * ⚠️ `identikit.paths[].audience` è una CHIAVE, non un URL: il template la
+ * risolve in un'ancora di questa pagina. Vale la regola della home.
+ */
+const forStudentsPage = defineCollection({
+  loader: glob({ base: './src/content/forStudentsPage', pattern: '*.json' }),
+  schema: z.object({
+    hero: z.object({
+      eyebrow: z.string(),
+      headline: z.string(),
+      subhead: z.string(),
+      ctaPrimary: z.string(),
+      ctaSecondary: z.string(),
+      /** La riga sotto i bottoni: toglie l'ultimo attrito prima del clic. */
+      reassurance: z.string(),
+    }),
+    /** Auto-segmentazione: due lettori con quasi nulla in comune da chiedere. */
+    identikit: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      paths: z.array(
+        z.object({
+          audience: z.enum(['international', 'undecided']),
+          icon: stepIconName,
+          title: z.string(),
+          body: z.string(),
+          points: z.array(z.string()),
+          ctaLabel: z.string(),
+        }),
+      ),
+    }),
+    /**
+     * Il blocco «salvavita». Ogni voce è un ostacolo che il sito già descrive
+     * altrove con la sua fonte: qui non entrano cifre, soglie o scadenze nuove.
+     */
+    lifelines: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      items: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+      note: z.string(),
+      officialSource: z.url(),
+    }),
+    documents: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      items: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+      /** OBBLIGATORIE: il limite su CIMEA. Vedi il commento in testa. */
+      limitHeading: z.string(),
+      limitBody: z.string(),
+      officialSource: z.url(),
+    }),
+    pricing: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      planName: z.string(),
+      /** La cifra dell'analisi, testuale: nessun calcolo, nessuna conversione. */
+      price: z.string(),
+      priceUnit: z.string(),
+      /** OBBLIGATORIA: valuta e conferma scritta. Vedi il commento in testa. */
+      billingNote: z.string(),
+      stepsHeading: z.string(),
+      steps: z.array(z.object({ title: z.string(), body: z.string() })),
+      includedHeading: z.string(),
+      included: z.array(z.string()),
+      /** OBBLIGATORIO: cosa il prezzo NON compra. Vedi il commento in testa. */
+      notIncludedHeading: z.string(),
+      notIncluded: z.array(z.string()),
+      ctaLabel: z.string(),
+    }),
+    finalCta: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      ctaLabel: z.string(),
+      /** Che cosa succede dopo l'invio: nessun imbuto che finisce nel buio. */
+      note: z.string(),
+    }),
+  }),
+});
+
 /**
  * Servizi — la pagina commerciale del sito, e l'unica il cui compito non è
  * informare ma costruire il valore percepito prima che il prezzo esista.
@@ -692,6 +817,7 @@ export const collections = {
   legal,
   countries,
   homePage,
+  forStudentsPage,
   studyInItalyPage,
   servicesPage,
   aboutPage,
