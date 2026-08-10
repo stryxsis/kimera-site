@@ -178,6 +178,7 @@ export const ui: UiDictionary = {
     destinationsServedPlaceholder: 'Facoltativo — es. Regno Unito, Germania, Polonia…',
     interest: 'Cosa state cercando?',
     interestOptions: {
+      freeSeminar: 'Il seminario online gratuito',
       studentsToItaly: 'Mandare studenti in Italia',
       structuredPartnership: 'Una partnership strutturata',
       other: "Qualcos'altro",

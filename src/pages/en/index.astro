@@ -1,38 +1,71 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { getCollection, getEntry } from 'astro:content';
-import { getPath, BOOKING_FORM_URL } from '../../i18n/routes';
-import { useTranslations, renderEmphasis } from '../../i18n/utils';
+import { getEntry } from 'astro:content';
+import { getPath, BOOKING_FORM_URL, type RouteKey } from '../../i18n/routes';
+import { useTranslations } from '../../i18n/utils';
 import Button from '../../components/ui/Button.astro';
 import Eyebrow from '../../components/ui/Eyebrow.astro';
-import RouteMap from '../../components/illustrations/RouteMap.astro';
 import StepIcon from '../../components/illustrations/StepIcon.astro';
 
 /**
- * Home ristilata sui riferimenti scelti dal cliente: fondo chiaro, fasce che
- * si separano per campitura invece che per filetto, schede bianche con raggi
- * generosi, pastiglie di sezione, titoli in grottesca geometrica.
+ * Home — uno smistatore, non una vetrina.
  *
- * Due elementi dei riferimenti NON sono stati trasportati, ed è deliberato:
- * le griglie di testimonial e i contatori di clienti. Kimere è nata quest'anno
- * e non li ha; riempirli sarebbe l'invenzione che il progetto vieta e che
- * farebbe leggere il sito come agenzia fantasma (Rischio 1 dell'analisi).
- * Al loro posto, negli stessi punti del layout, stanno fatti verificabili.
+ * L'analisi strategica aggiornata dà a Kimere quattro destinatari con bisogni
+ * quasi disgiunti: studente che ha scelto, studente indeciso, ateneo, agenzia.
+ * Una home che parlasse a tutti e quattro contemporaneamente non parlerebbe a
+ * nessuno, quindi la pagina fa una cosa sola per due volte: sopra la piega
+ * separa B2C da B2B con due bottoni, subito sotto separa i quattro problemi con
+ * quattro box. Tutto il resto della pagina è materiale di supporto a quella
+ * decisione, non un secondo argomento di vendita.
  *
- * Questa pagina non usa <Section>: quel componente appartiene al sistema
- * originale (fasce a piena larghezza, superfici scure). Qui le fasce sono
- * blocchi arrotondati dentro il contenitore, e il markup lo dice.
+ * Tre scelte deliberate che vale la pena non dimenticare.
+ *
+ * PRIMA: nessun prezzo. I price point esistono nell'analisi ($1.000 / $200 /
+ * $180) ma la decisione confermata è di tenerli fuori dal sito — la cifra si
+ * dice in call. La «consulenza strategica» si nomina come prodotto, mai come
+ * importo.
+ *
+ * SECONDA: due dei quattro box puntano a destinazioni provvisorie ma REALI, non
+ * a pagine che non esistono. Studente indeciso → il form di qualificazione;
+ * ateneo → il form B2B, dove è stata aggiunta l'opzione «seminario gratuito».
+ * Quando esisteranno /orientamento/ e /universita/ basta cambiare la mappa
+ * ROUTES_BY_AUDIENCE qui sotto: il contenuto non contiene URL.
+ *
+ * TERZA: il tono è più giovane e diretto di quello delle altre pagine (ToV da
+ * startup, richiesto dall'analisi §3) ma il sistema visivo è invariato — navy,
+ * oro, griglie e componenti restano quelli approvati.
  */
 const locale = 'en';
 const t = useTranslations(locale);
 const { data: content } = await getEntry('homePage', locale)!;
 
-const allPackages = await getCollection('packages', (entry) => entry.id.startsWith(`${locale}/`));
-const packages = allPackages.sort((a, b) => a.data.order - b.data.order);
+/**
+ * Dove porta ciascun box del bivio. La mappa sta QUI e non nel JSON di contenuto:
+ * un URL scritto a mano dentro un file di contenuto è un link morto che nessun
+ * controllo intercetta, mentre `getPath()` rompe la build se la route non esiste.
+ *
+ * `student-undecided` e `university` sono provvisori — puntano ai due form
+ * invece che a pagine dedicate, che non esistono ancora. Sono imbuti funzionanti,
+ * non vicoli ciechi: chi arriva dal box «lavoro per un'università» trova nel
+ * form l'opzione «il seminario online gratuito» già in cima all'elenco.
+ */
+const ROUTES_BY_AUDIENCE = {
+  'student-abroad': { route: 'services' as RouteKey },
+  'student-undecided': { external: BOOKING_FORM_URL },
+  university: { route: 'partners' as RouteKey, hash: '#partner-form' },
+  agency: { route: 'partners' as RouteKey },
+} satisfies Record<string, { route?: RouteKey; hash?: string; external?: string }>;
 
-// I tre pilastri seguono le tre fasi reali del percorso, quindi le icone sono
-// quelle: fascicolo → scadenza → alloggio. Non icone decorative intercambiabili.
-const pillarIcons = ['document', 'calendar', 'house'] as const;
+function hrefFor(audience: keyof typeof ROUTES_BY_AUDIENCE) {
+  const target = ROUTES_BY_AUDIENCE[audience];
+  if ('external' in target) return target.external;
+  return getPath(target.route, locale) + ('hash' in target ? target.hash : '');
+}
+
+/** Un link esterno va aperto in una scheda nuova e isolato da questa pagina. */
+function isExternal(href: string) {
+  return href.startsWith('http');
+}
 ---
 
 <PageLayout
@@ -44,9 +77,14 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
   ground="blank"
 >
   <div class="home surface-blank">
-    {/* ── Hero ─────────────────────────────────────────────────────────── */}
+    {
+      /* ── Hero ───────────────────────────────────────────────────────────
+        A colonna sola e centrato, senza illustrazione: il primo evento
+        visivo della pagina devono essere i quattro box, non un disegno che
+        ci competa. L'hero fa il bivio grossolano e si toglie di mezzo. */
+    }
     <section class="wrap hero">
-      <div class="hero__intro">
+      <div class="hero__inner">
         <Eyebrow class="animate-rise">{content.hero.eyebrow}</Eyebrow>
         <h1 class="heading-display hero__title animate-rise" style="animation-delay:60ms">
           {content.hero.headline}
@@ -55,48 +93,88 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
           {content.hero.subhead}
         </p>
         <div class="hero__actions animate-rise" style="animation-delay:180ms">
-          <Button href={BOOKING_FORM_URL} target="_blank" rel="noopener noreferrer" variant="pill" size="lg" arrow>
-            {content.hero.ctaPrimary}
+          <Button href="#routing" variant="pill" size="lg" arrow>
+            {content.hero.ctaStudent}
+          </Button>
+          <Button href={getPath('partners', locale)} variant="pill-ghost" size="lg">
+            {content.hero.ctaInstitution}
           </Button>
         </div>
         <p class="hero__note animate-rise" style="animation-delay:240ms">
           {t.cta.freeNoObligation}
         </p>
       </div>
-
-      {
-        /* Metà dell'hero è il percorso: il visitatore lo VEDE nei primi secondi
-          invece di leggere che esiste. È il principio della direzione «Rotta»,
-          e nei riferimenti occupa esattamente questo posto — con la differenza
-          che lì è una fotografia, qui è l'informazione che vende. */
-      }
-      <div class="hero__media animate-rise" style="animation-delay:300ms">
-        <RouteMap
-          locale={locale}
-          variant="modern"
-          title={content.processPreview.heading}
-          pivot={content.processPreview.pivot}
-          stopsBefore={content.processPreview.stopsBefore}
-          stopsAfter={content.processPreview.stopsAfter}
-        />
-      </div>
     </section>
 
-    {/* ── Il labirinto ─────────────────────────────────────────────────── */}
-    <section class="wrap band" aria-labelledby="scale-heading">
-      <div class="panel-soft band__inner">
-        <div class="band__head">
-          <Eyebrow>{content.problemScale.eyebrow}</Eyebrow>
-          <h2 class="heading-section" id="scale-heading">{content.problemScale.heading}</h2>
-          <p class="lead-soft">{content.problemScale.body}</p>
+    {
+      /* ── Il bivio ───────────────────────────────────────────────────────
+        Il centro di gravità della pagina. I box sono divisi per PROBLEMA e
+        non per prodotto: il visitatore riconosce la propria situazione senza
+        dover dedurre quale servizio gli spetti. `audience` è una chiave, e
+        l'href lo risolve ROUTES_BY_AUDIENCE qui sopra. */
+    }
+    <section class="wrap band" id="routing" aria-labelledby="routing-heading">
+      <div class="head">
+        <Eyebrow>{content.routing.eyebrow}</Eyebrow>
+        <h2 class="heading-section" id="routing-heading">{content.routing.heading}</h2>
+        <p class="lead-soft">{content.routing.body}</p>
+      </div>
+
+      <ul class="routes">
+        {
+          content.routing.boxes.map((box) => {
+            const href = hrefFor(box.audience);
+            const external = isExternal(href);
+            return (
+              <li class="card-soft route">
+                <span class="icon-badge">
+                  <StepIcon name={box.icon} size={26} />
+                </span>
+                <h3 class="heading-card route__title">{box.title}</h3>
+                <p class="route__body">{box.body}</p>
+                <p class="route__cta">
+                  <Button
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    variant="pill-ghost"
+                    size="sm"
+                    arrow
+                  >
+                    {box.ctaLabel}
+                  </Button>
+                </p>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+
+    {
+      /* ── I superpoteri ──────────────────────────────────────────────────
+        Il differenziante vero secondo l'analisi: non la tecnologia (dove
+        Kimere perde contro chiunque abbia una dashboard) ma il team
+        multiculturale. Le sette lingue NON stanno qui: stanno nel blocco
+        dei corsi, dove sono un prodotto invece di un vanto. */
+    }
+    <section class="wrap band" aria-labelledby="strengths-heading">
+      <div class="panel-soft">
+        <div class="head">
+          <Eyebrow>{content.strengths.eyebrow}</Eyebrow>
+          <h2 class="heading-section" id="strengths-heading">{content.strengths.heading}</h2>
+          <p class="lead-soft">{content.strengths.body}</p>
         </div>
 
-        <ul class="stats">
+        <ul class="strengths">
           {
-            content.problemScale.stats.map((stat) => (
-              <li class="card-soft stat">
-                <span class="stat__value">{stat.value}</span>
-                <span class="stat__label">{stat.label}</span>
+            content.strengths.points.map((point) => (
+              <li class="card-soft strength">
+                <span class="icon-badge">
+                  <StepIcon name={point.icon} size={26} />
+                </span>
+                <h3 class="heading-card strength__title">{point.title}</h3>
+                <p class="strength__body">{point.body}</p>
               </li>
             ))
           }
@@ -104,171 +182,139 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
       </div>
     </section>
 
-    {/* ── Il perimetro, in tre blocchi ─────────────────────────────────── */}
-    <section class="wrap block" aria-labelledby="whatwedo-heading">
-      <div class="block__head">
-        <Eyebrow>{content.whatWeDo.eyebrow}</Eyebrow>
-        <h2 class="heading-section" id="whatwedo-heading">{content.whatWeDo.heading}</h2>
-        <p class="lead-soft">{content.whatWeDo.body}</p>
+    {
+      /* ── Zero burocrazia ────────────────────────────────────────────────
+        I pain point che fermano davvero: soldi e documenti, non ammissione.
+        Il riquadro `limit` alla fine è OBBLIGATORIO e non è prudenza
+        eccessiva: l'analisi dice che Kimere «bypassa» la procedura CIMEA,
+        ma l'attestato di comparabilità lo rilascia CIMEA o l'ateneo e
+        nessun privato può renderlo superfluo. Promettere il contrario
+        farebbe arrivare lo studente con una domanda respinta — e il
+        vantaggio vero (traduzione in casa, pratica seguita) si regge da sé. */
+    }
+    <section class="wrap band" aria-labelledby="bureaucracy-heading">
+      <div class="head">
+        <Eyebrow>{content.bureaucracy.eyebrow}</Eyebrow>
+        <h2 class="heading-section" id="bureaucracy-heading">{content.bureaucracy.heading}</h2>
+        <p class="lead-soft">{content.bureaucracy.body}</p>
       </div>
 
-      <ul class="pillars">
+      <ul class="hurdles">
         {
-          content.whatWeDo.pillars.map((pillar, index) => (
-            <li class="card-soft pillar">
+          content.bureaucracy.items.map((item) => (
+            <li class="card-soft hurdle">
               <span class="icon-badge">
-                <StepIcon name={pillarIcons[index] ?? 'compass'} size={26} />
+                <StepIcon name={item.icon} size={26} />
               </span>
-              <h3 class="heading-card pillar__title">{pillar.title}</h3>
-              <p class="pillar__body">{pillar.body}</p>
+              <h3 class="heading-card hurdle__title">{item.title}</h3>
+              <p class="hurdle__body">{item.body}</p>
             </li>
           ))
         }
       </ul>
-    </section>
 
-    {/* ── I tre livelli. Anticipa Services, non la duplica. ─────────────── */}
-    <section class="wrap block" aria-labelledby="levels-heading">
-      <div class="block__head">
-        <Eyebrow>{content.packagesPreview.eyebrow}</Eyebrow>
-        <h2 class="heading-section" id="levels-heading">{content.packagesPreview.heading}</h2>
-        <p class="lead-soft">{content.packagesPreview.body}</p>
-      </div>
-
-      <ul class="levels">
-        {
-          packages.map((pkg) => (
-            <li class="card-soft level">
-              <h3 class="heading-card level__name">{pkg.data.name}</h3>
-              <p class="level__tagline">{pkg.data.tagline}</p>
-
-              <p class="level__coverage">
-                <span class="level__coverage-key">{t.packages.included}</span>
-                {pkg.data.coverage}
-              </p>
-              {/* Il copy EN marca i termini burocratici italiani con *asterischi*
-                  (docs/glossary.md): senza renderEmphasis finirebbero a video così. */}
-              <ul class="checklist level__list">
-                {pkg.data.includes.map((item) => (
-                  <li set:html={renderEmphasis(item)} />
-                ))}
-              </ul>
-
-              <p class="level__cta">
-                <Button
-                  href={BOOKING_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="pill-ghost"
-                  size="sm"
-                  arrow
-                >
-                  {t.cta.bookCall}
-                </Button>
-              </p>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    {/* ── Che cosa succede dopo il bottone ─────────────────────────────── */}
-    <section class="wrap band" aria-labelledby="how-heading">
-      <div class="panel-soft band__inner">
-        <div class="band__head">
-          <Eyebrow>{content.howItWorks.eyebrow}</Eyebrow>
-          <h2 class="heading-section" id="how-heading">{content.howItWorks.heading}</h2>
-          <p class="lead-soft">{content.howItWorks.body}</p>
-        </div>
-
-        {
-          /* <ol> e non <ul>: qui l'ordine È l'informazione. Il numero è scritto
-            nel markup e non generato da CSS, così chi usa uno screen reader lo
-            sente come parte del passo invece di perderlo. */
-        }
-        <ol class="steps">
-          {
-            content.howItWorks.steps.map((step, index) => (
-              <li class="card-soft step">
-                <div class="step__top">
-                  <span class="icon-badge">
-                    <StepIcon name={step.icon} size={26} />
-                  </span>
-                  <span class="step__num">{String(index + 1).padStart(2, '0')}</span>
-                </div>
-                <h3 class="heading-card step__title">{step.title}</h3>
-                <p class="step__body">{step.body}</p>
-              </li>
-            ))
-          }
-        </ol>
+      <div class="limit">
+        <h3 class="limit__title">{content.bureaucracy.limitHeading}</h3>
+        <p class="limit__body">{content.bureaucracy.limitBody}</p>
+        <a
+          class="limit__link"
+          href={content.bureaucracy.officialSource}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t.process.officialSource}
+          <svg
+            viewBox="0 0 14 14"
+            width="12"
+            height="12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M5 2h7v7M12 2 3 11" />
+          </svg>
+        </a>
       </div>
     </section>
 
     {
-      /* ── L'obiezione, disinnescata prima che si formi ────────────────────
-        Nessun logo, per scelta: il marchio di un ministero su un sito
-        commerciale comunica un accreditamento che non esiste, e per gli enti
-        pubblici è uso non autorizzato di segni dello Stato. I nomi in chiaro
-        con il link ufficiale dicono la stessa cosa — e reggono la verifica
-        del genitore che finanzia, che è esattamente chi va a controllare. */
+      /* ── Il canale B2B ──────────────────────────────────────────────────
+        Il seminario gratuito è il lead magnet più pulito dell'analisi, e la
+        CTA di questo blocco NON è «contattaci»: è la prenotazione del
+        seminario. Su navy perché è la seconda conversione della pagina e
+        deve pesare quanto la prima. */
     }
-    <section class="wrap block" aria-labelledby="trust-heading">
-      <div class="block__head trust__head">
-        <Eyebrow>{content.trustBuilding.eyebrow}</Eyebrow>
-        <h2 class="heading-section" id="trust-heading">{content.trustBuilding.heading}</h2>
-        <p class="lead-soft">{content.trustBuilding.body}</p>
+    <section class="wrap band" aria-labelledby="universities-heading">
+      <div class="panel-dark surface-dark">
+        <div class="unis">
+          <div class="head unis__head">
+            <Eyebrow tone="gold">{content.forUniversities.eyebrow}</Eyebrow>
+            <h2 class="heading-section" id="universities-heading">
+              {content.forUniversities.heading}
+            </h2>
+            <p class="lead-soft">{content.forUniversities.body}</p>
+          </div>
+
+          <div class="seminar">
+            <h3 class="heading-card seminar__title">{content.forUniversities.seminarHeading}</h3>
+            <p class="seminar__body">{content.forUniversities.seminarBody}</p>
+            <ul class="checklist seminar__list">
+              {content.forUniversities.seminarPoints.map((point) => <li>{point}</li>)}
+            </ul>
+            <p class="seminar__cta">
+              <Button href={`${getPath('partners', locale)}#partner-form`} variant="pill" arrow>
+                {content.forUniversities.ctaLabel}
+              </Button>
+            </p>
+          </div>
+        </div>
       </div>
-
-      <ul class="institutions">
-        {
-          content.trustBuilding.institutions.map((org) => (
-            <li class="card-soft institution">
-              <p class="institution__name" translate="no">
-                {org.name}
-              </p>
-              <p class="institution__authority">{org.authority}</p>
-              <p class="institution__role">{org.role}</p>
-              {/* rel="noopener": il link apre un dominio pubblico in una nuova
-                  scheda e non deve poter toccare questa. */}
-              <a class="institution__link" href={org.url} target="_blank" rel="noopener noreferrer">
-                {t.process.officialSource}
-                <svg
-                  viewBox="0 0 14 14"
-                  width="12"
-                  height="12"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path d="M5 2h7v7M12 2 3 11" />
-                </svg>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-
-      {
-        /* Il disclaimer non è in fondo in corpo 10: sta in evidenza, perché
-          dichiarare di NON essere accreditati è ciò che rende credibile tutto
-          il blocco sopra — e perché nessuno può promettere l'esito di un visto. */
-      }
-      <p class="affiliation">{content.trustBuilding.affiliationNote}</p>
-
-      <p class="trust__cta">
-        <Button href={getPath('about', locale)} variant="pill" arrow>
-          {content.trustBuilding.ctaLabel}
-        </Button>
-      </p>
     </section>
 
-    {/* ── Conversione ──────────────────────────────────────────────────── */}
-    <section class="wrap block" aria-labelledby="cta-heading">
+    {
+      /* ── I corsi di lingua ──────────────────────────────────────────────
+        Il ponte che mostra l'ecosistema a 360°. Le sette lingue sono
+        esattamente quelle dell'analisi: l'italiano NON è nell'elenco e non
+        va aggiunto per deduzione. */
+    }
+    <section class="wrap band" aria-labelledby="languages-heading">
+      <div class="panel-soft langs">
+        <div class="langs__text">
+          <Eyebrow>{content.languageCourses.eyebrow}</Eyebrow>
+          <h2 class="heading-section langs__title" id="languages-heading">
+            {content.languageCourses.heading}
+          </h2>
+          <p class="langs__body">{content.languageCourses.body}</p>
+          <p class="langs__cta">
+            <Button href={BOOKING_FORM_URL} target="_blank" rel="noopener noreferrer" variant="pill" arrow>
+              {content.languageCourses.ctaLabel}
+            </Button>
+          </p>
+        </div>
+
+        <div class="langs__list">
+          <p class="langs__label">{content.languageCourses.languagesLabel}</p>
+          {/* Pastiglie e non elenco puntato: sette voci brevi lette come
+              catalogo, che è quello che sono. */}
+          <ul class="chips">
+            {content.languageCourses.languages.map((language) => <li class="chip">{language}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {
+      /* ── Conversione ────────────────────────────────────────────────────
+        Per chi ha scrollato tutto senza cliccare nessun box: molto
+        interessato, ma non si è riconosciuto in nessuna delle quattro
+        caselle. `surveyNote` cita il sondaggio preliminare, che è ciò che
+        distingue questa consulenza da una call di vendita. */
+    }
+    <section class="wrap band" aria-labelledby="cta-heading">
       <div class="finalcta surface-panel">
         <Eyebrow tone="blank">{content.finalCta.eyebrow}</Eyebrow>
         <h2 class="heading-section finalcta__title" id="cta-heading">{content.finalCta.heading}</h2>
@@ -278,7 +324,7 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
             {content.finalCta.ctaLabel}
           </Button>
         </p>
-        <p class="finalcta__note">{t.cta.freeNoObligation}</p>
+        <p class="finalcta__note">{content.finalCta.surveyNote}</p>
       </div>
     </section>
   </div>
@@ -291,29 +337,33 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
     padding-bottom: var(--spacing-section-lg);
   }
 
-  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  /* ── Hero ─────────────────────────────────────────────────────────────
+     Centrato e a colonna sola: senza illustrazione accanto, un titolo di
+     questa misura spinto a sinistra lascerebbe mezza pagina vuota — ed è il
+     difetto già corretto altrove. Qui serve anche a un secondo scopo: il
+     primo evento visivo della home devono essere i quattro box. */
   .hero {
-    display: grid;
-    gap: clamp(2.5rem, 5vw, 4rem);
-    padding-block: clamp(2.5rem, 6vw, 5rem) var(--spacing-section);
-    align-items: center;
+    padding-block: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 2.5vw, 2rem);
   }
-  @media (min-width: 64rem) {
-    .hero {
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    }
+  .hero__inner {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    max-width: 60rem;
+    margin-inline: auto;
   }
   .hero__title {
     margin-top: 1.4rem;
-    max-width: 15ch;
+    max-width: 22ch;
   }
   .hero__lead {
-    margin-top: 1.4rem;
-    max-width: 48ch;
+    margin-top: 1.3rem;
+    max-width: 62ch;
   }
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.85rem;
     margin-top: 2.25rem;
   }
@@ -323,71 +373,32 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
     margin-top: 1.15rem;
   }
 
-
-  /* ── Fasce e blocchi ──────────────────────────────────────────────────── */
-  .band,
-  .block {
+  /* ── Fasce e intestazioni ─────────────────────────────────────────────── */
+  .band {
     padding-block: clamp(1rem, 2.5vw, 2rem);
   }
-  .band__inner {
-    display: grid;
-    gap: clamp(2rem, 4vw, 3rem);
+  /* L'ancora del bottone primario dell'hero: l'header è sticky e senza questo
+     margine la fascia finirebbe sotto la barra. */
+  #routing {
+    scroll-margin-top: 6rem;
   }
-  .band__head,
-  .block__head {
+  .head {
     display: grid;
     justify-items: start;
     gap: 1.1rem;
-  }
-  .block__head {
     margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
   }
-  /* Il paragrafo non è più chiuso in un contenitore più stretto della griglia
-     che gli sta sotto: usa la stessa larghezza disponibile. */
-  .band__head .lead-soft,
-  .block__head .lead-soft {
+  .head .lead-soft {
     max-width: none;
   }
-
-  /* Un titolo grande (text-4xl) ha bisogno di più margine sotto di sé di
-     quanto ne serva sopra — il `gap` uniforme del contenitore dava lo stesso
-     spazio in entrambi i punti, e dopo il titolo si sentiva stretto. Questa
-     regola vale per ogni paragrafo che segue un titolo di sezione, quindi
-     copre allo stesso modo band__head, block__head, trust__main e finalcta. */
   .heading-section + p {
     margin-top: 0.75rem;
   }
 
-  /* ── Dati ─────────────────────────────────────────────────────────────── */
-  .stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .stat {
-    flex: 1 1 min(100%, 15rem);
-    min-width: min(100%, 15rem);
-    gap: 0.6rem;
-  }
-  .stat__value {
-    font-family: var(--font-titling);
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--color-teal-ink);
-  }
-  .stat__label {
-    font-size: var(--text-sm);
-    color: var(--surface-fg-muted);
-  }
-
-  /* ── Pilastri ─────────────────────────────────────────────────────────── */
-  .pillars,
-  .levels {
+  /* ── Il bivio ─────────────────────────────────────────────────────────── */
+  .routes,
+  .strengths,
+  .hurdles {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -396,142 +407,84 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
     padding: 0;
     list-style: none;
   }
-  .pillar {
-    flex: 1 1 min(100%, 17rem);
-    min-width: min(100%, 17rem);
+  /* Base larga apposta: con quattro box una base stretta ne metterebbe tre in
+     fila e uno solo sotto, largo il triplo. Due e due sta insieme, e a schermo
+     grande i quattro entrano comunque in riga. */
+  .route {
+    flex: 1 1 min(100%, 21rem);
+    min-width: min(100%, 21rem);
   }
-  .pillar__title {
+  .route__title {
     margin-top: 1.15rem;
   }
-  .pillar__body {
-    font-size: var(--text-sm);
-    color: var(--surface-fg-muted);
-    margin-top: 0.6rem;
-  }
-
-  /* ── Livelli ──────────────────────────────────────────────────────────── */
-  .level {
-    flex: 1 1 min(100%, 18rem);
-    min-width: min(100%, 18rem);
-  }
-  .level__tagline {
-    font-size: var(--text-sm);
-    color: var(--surface-fg-muted);
-    margin-top: 0.6rem;
-  }
-  .level__coverage {
-    display: grid;
-    gap: 0.3rem;
-    font-size: var(--text-sm);
-    margin-top: 1.35rem;
-    padding-top: 1.1rem;
-    border-top: 1px solid var(--surface-rule);
-  }
-  .level__coverage-key {
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--surface-accent);
-  }
-  .level__list {
+  .route__body {
     flex: 1;
-    margin-top: 0.9rem;
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.6rem;
   }
-  .level__cta {
+  .route__cta {
     margin-top: 1.5rem;
   }
 
-  /* ── Come funziona ────────────────────────────────────────────────────── */
-  .steps {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 1.15rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    counter-reset: none;
+  /* ── I superpoteri ────────────────────────────────────────────────────── */
+  .strength {
+    flex: 1 1 min(100%, 19rem);
+    min-width: min(100%, 19rem);
   }
-  .step {
-    flex: 1 1 min(100%, 17rem);
-    min-width: min(100%, 17rem);
-  }
-  .step__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  /* Il numero è grande ma tenue: dà il ritmo della sequenza senza rubare la
-     scena al titolo del passo, che è l'informazione vera. */
-  .step__num {
-    font-family: var(--font-titling);
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: var(--color-mist-deep);
-  }
-  .step__title {
+  .strength__title {
     margin-top: 1.15rem;
   }
-  .step__body {
+  .strength__body {
     font-size: var(--text-sm);
     color: var(--surface-fg-muted);
     margin-top: 0.6rem;
   }
 
-  /* ── Le istituzioni del percorso ──────────────────────────────────────── */
-  .trust__head {
-    max-width: 54rem;
+  /* ── Zero burocrazia ──────────────────────────────────────────────────── */
+  .hurdle {
+    flex: 1 1 min(100%, 19rem);
+    min-width: min(100%, 19rem);
   }
-  .institutions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 1.15rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  .hurdle__title {
+    margin-top: 1.15rem;
   }
-  .institution {
-    flex: 1 1 min(100%, 16rem);
-    min-width: min(100%, 16rem);
-  }
-  /* Il nome dell'ente prende il trattamento che altrove avrebbe avuto il logo:
-     grande, in grottesca, stretto di crenatura. È il sostituto tipografico. */
-  .institution__name {
-    font-family: var(--font-titling);
-    font-size: var(--text-lg);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    color: var(--color-ink);
-    margin: 0;
-  }
-  .institution__authority {
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--surface-accent);
-    margin: 0.4rem 0 0;
-  }
-  .institution__role {
-    flex: 1;
+  .hurdle__body {
     font-size: var(--text-sm);
     color: var(--surface-fg-muted);
-    margin: 0.95rem 0 0;
-    padding-top: 0.95rem;
-    border-top: 1px solid var(--surface-rule);
+    margin-top: 0.6rem;
   }
-  .institution__link {
+
+  /* Il limite dichiarato: bordo d'accento e corpo pieno, non una postilla in
+     corpo 10. Dire cosa NON si può fare è ciò che rende credibile il blocco
+     qui sopra — e su una promessa burocratica è anche l'unica versione che
+     non fa arrivare lo studente con un fascicolo respinto. */
+  .limit {
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    padding: clamp(1.35rem, 2.6vw, 1.9rem) clamp(1.35rem, 2.6vw, 2rem);
+    border-left: 3px solid var(--color-teal-ink);
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    background-color: var(--color-mist);
+    max-width: 78rem;
+  }
+  .limit__title {
+    font-family: var(--font-titling);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .limit__body {
+    margin: 0.7rem 0 0;
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--surface-fg-soft);
+    max-width: 88ch;
+  }
+  .limit__link {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    align-self: start;
-    margin-top: 1.15rem;
+    margin-top: 1.1rem;
     font-family: var(--font-titling);
     font-size: var(--text-xs);
     font-weight: 600;
@@ -540,31 +493,99 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
     text-underline-offset: 3px;
     text-decoration-color: var(--color-mist-line);
   }
-  .institution__link:hover {
+  .limit__link:hover {
     color: var(--color-teal-ink);
     text-decoration-color: currentColor;
   }
 
-  /* Il disclaimer di non affiliazione: bordo d'accento e corpo pieno, non una
-     nota a piè di pagina. È ciò che rende credibile l'elenco qui sopra. */
-  .affiliation {
-    margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
-    padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.2rem, 2.5vw, 1.75rem);
-    border-left: 3px solid var(--color-teal-ink);
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-    background-color: var(--color-mist);
-    font-size: var(--text-sm);
-    line-height: 1.65;
-    color: var(--surface-fg-soft);
-    max-width: 62rem;
+  /* ── Il canale B2B ────────────────────────────────────────────────────── */
+  .panel-dark {
+    border-radius: var(--radius-2xl);
+    padding: clamp(1.75rem, 4vw, 3.25rem);
   }
-  .trust__cta {
-    margin-top: clamp(1.5rem, 3vw, 2rem);
+  .unis {
+    display: grid;
+    gap: clamp(1.75rem, 3.5vw, 3rem);
+    align-items: start;
+  }
+  @media (min-width: 64rem) {
+    .unis {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+  .unis__head {
+    margin-bottom: 0;
+  }
+  /* Scheda chiara dentro la fascia scura: il seminario è l'offerta, e deve
+     staccarsi dall'argomento che la precede invece di continuarlo. */
+  .seminar {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-panel-line);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.5rem, 2.8vw, 2rem);
+  }
+  .seminar__body {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.7rem;
+  }
+  .seminar__list {
+    margin-top: 1.2rem;
+  }
+  .seminar__cta {
+    margin-top: 1.6rem;
+  }
+
+  /* ── I corsi di lingua ────────────────────────────────────────────────── */
+  .langs {
+    display: grid;
+    gap: clamp(1.75rem, 3.5vw, 3rem);
+    align-items: center;
+  }
+  @media (min-width: 60rem) {
+    .langs {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    }
+  }
+  .langs__title {
+    margin-top: 1.1rem;
+    max-width: 20ch;
+  }
+  .langs__body {
+    color: var(--surface-fg-muted);
+    margin-top: 0.75rem;
+  }
+  .langs__cta {
+    margin-top: 1.6rem;
+  }
+  .langs__label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--surface-accent);
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .chip {
+    padding: 0.5rem 0.95rem;
+    background-color: var(--color-blank);
+    border: 1px solid var(--color-mist-line);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-titling);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
   }
 
   /* ── CTA finale ───────────────────────────────────────────────────────── */
-  /* L'unico blocco scuro della pagina: chiude il percorso e riporta il navy
-     del marchio esattamente dove si chiede l'azione. */
   .finalcta {
     display: grid;
     justify-items: center;
@@ -575,11 +596,11 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
     margin-top: clamp(1rem, 3vw, 2.5rem);
   }
   .finalcta__title {
-    max-width: 26ch;
+    max-width: 24ch;
   }
   .finalcta__body {
     color: var(--surface-fg-muted);
-    max-width: 46ch;
+    max-width: 56ch;
   }
   .finalcta__actions {
     margin-top: 0.85rem;
@@ -587,5 +608,6 @@ const pillarIcons = ['document', 'calendar', 'house'] as const;
   .finalcta__note {
     font-size: var(--text-sm);
     color: var(--surface-fg-muted);
+    max-width: 60ch;
   }
 </style>

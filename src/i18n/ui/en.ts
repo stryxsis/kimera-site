@@ -169,7 +169,12 @@ export interface UiDictionary {
     destinationsServed: string;
     destinationsServedPlaceholder: string;
     interest: string;
-    interestOptions: { studentsToItaly: string; structuredPartnership: string; other: string };
+    interestOptions: {
+      freeSeminar: string;
+      studentsToItaly: string;
+      structuredPartnership: string;
+      other: string;
+    };
     notes: string;
     notesPlaceholder: string;
   };
@@ -356,6 +361,9 @@ export const ui: UiDictionary = {
     destinationsServedPlaceholder: 'Optional — e.g. UK, Germany, Poland…',
     interest: 'What are you looking for?',
     interestOptions: {
+      // Primo nell'elenco perché è il lead magnet B2B della home: chi arriva dal
+      // box «lavoro per un'università» trova la propria opzione già in cima.
+      freeSeminar: 'The free online seminar',
       studentsToItaly: 'Sending students to Italy',
       structuredPartnership: 'A structured partnership',
       other: 'Something else',

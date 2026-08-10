@@ -1,154 +1,120 @@
 {
   "hero": {
-    "eyebrow": "Per studenti in arrivo in Italia",
-    "headline": "Entrare in un'università italiana è la parte facile.",
-    "subhead": "Visto, permesso di soggiorno, codice fiscale, residenza, copertura sanitaria, alloggio — è la parte di cui quasi nessuno ti avvisa. La affrontiamo insieme a te, passo dopo passo.",
-    "ctaPrimary": "Prenota la tua call di 15 minuti"
+    "eyebrow": "Studiare all'estero, senza impazzire",
+    "headline": "Scegli il paese. A tutto quello che non è studiare pensiamo noi.",
+    "subhead": "Kimere è una società di consulenza giovane, costruita interamente sulla parte del trasferimento all'estero di cui nessuno ti avvisa — candidature, visti, borse di studio, documenti, una casa che esiste davvero. Lavoriamo verso qualsiasi destinazione tu scelga, e andiamo più a fondo in Italia, dove il percorso lo gestiamo noi, sul territorio.",
+    "ctaStudent": "Sono uno studente",
+    "ctaInstitution": "Sono un'università o un'agenzia"
   },
-  "problemScale": {
-    "eyebrow": "Il problema",
-    "heading": "Dopo l'ammissione inizia il labirinto",
-    "body": "Tra la lettera di ammissione e il primo giorno di lezione dovrai avere a che fare con un consolato, un ateneo, un ufficio postale, la Questura, l'Agenzia delle Entrate e il tuo Comune — ognuno con scadenze e pratiche proprie.",
-    "stats": [
+  "routing": {
+    "eyebrow": "Parti da qui",
+    "heading": "Quattro problemi molto diversi. Prendi il tuo.",
+    "body": "Uno studente che sa dove andare, uno studente che non lo sa, un'università che apre un nuovo corridoio e un'agenzia che aggiunge una destinazione hanno quasi nulla in comune da chiederci. Quindi non facciamo finta del contrario — scegli la tua situazione e salta tutto il resto.",
+    "boxes": [
       {
-        "value": "8 giorni lavorativi",
-        "label": "per depositare il permesso di soggiorno dopo l'atterraggio"
+        "audience": "student-abroad",
+        "icon": "compass",
+        "title": "Voglio studiare all'estero",
+        "body": "Hai più o meno scelto. Restano la candidatura, un fascicolo per il visto che regge davanti al tuo consolato, una borsa di studio per cui probabilmente non sai di essere idoneo e un contratto d'affitto che si rivela vero.",
+        "ctaLabel": "Guarda cosa gestiamo"
       },
       {
-        "value": "6+",
-        "label": "enti diversi coinvolti prima di essere davvero sistemato"
-      },
-      {
-        "value": "90+",
-        "label": "università italiane, ognuna con il proprio calendario di ammissione"
-      }
-    ]
-  },
-  "whatWeDo": {
-    "eyebrow": "Cosa facciamo",
-    "heading": "Tre momenti in cui le cose vanno storte",
-    "body": "Il nostro lavoro copre tutto il percorso, ma si concentra dove gli studenti perdono davvero tempo, soldi o la regolarità del soggiorno.",
-    "pillars": [
-      {
-        "title": "Prima di partire",
-        "body": "Candidature universitarie, Universitaly, riconoscimento del titolo di studio e un fascicolo per il visto preparato secondo lo standard del tuo consolato."
-      },
-      {
-        "title": "Dopo l'atterraggio",
-        "body": "Permesso di soggiorno, codice fiscale, residenza anagrafica e copertura sanitaria — dentro le scadenze che contano davvero."
-      },
-      {
-        "title": "Trovare un posto dove vivere",
-        "body": "Revisione del contratto, registrazione della locazione e protezione dalle truffe che colpiscono chi si candida dall'estero."
-      }
-    ]
-  },
-  "processPreview": {
-    "heading": "Il percorso completo, mappato",
-    "body": "Dalla prima candidatura al permesso di soggiorno, ecco esattamente cosa succede e quando — inclusa la scadenza degli 8 giorni che quasi nessuno menziona.",
-    "pivot": "Atterri in Italia",
-    "stopsBefore": [
-      {
-        "label": "Scelta di corso e ateneo"
-      },
-      {
-        "label": "Pre-iscrizione su Universitaly"
-      },
-      {
-        "label": "Riconoscimento del titolo di studio"
-      },
-      {
-        "label": "Fascicolo consolare e visto tipo D",
-        "key": true
-      }
-    ],
-    "stopsAfter": [
-      {
-        "label": "Permesso di soggiorno depositato",
-        "key": true,
-        "note": "entro 8 giorni lavorativi"
-      },
-      {
-        "label": "Appuntamento in Questura e codice fiscale"
-      },
-      {
-        "label": "Residenza anagrafica e copertura sanitaria"
-      },
-      {
-        "label": "Un contratto d'affitto che regge davvero"
-      }
-    ]
-  },
-  "packagesPreview": {
-    "eyebrow": "I livelli",
-    "heading": "Tre livelli di supporto",
-    "body": "Scegli quanto lontano vuoi che veniamo con te — dal curare bene la candidatura, all'essere presenti quando atterri, ad avere un alloggio verificato."
-  },
-  "howItWorks": {
-    "eyebrow": "Come funziona",
-    "heading": "Cosa succede dopo che premi il bottone",
-    "body": "Nessun impegno finché non decidi tu che ci sia. Tre passi, e puoi fermarti a ognuno.",
-    "steps": [
-      {
+        "audience": "student-undecided",
         "icon": "document",
-        "title": "Compili il modulo",
-        "body": "Cinque minuti. Ci dici a che punto sei del percorso; noi capiamo se possiamo esserti davvero utili — e se non possiamo, te lo diciamo."
+        "title": "Non so cosa scegliere",
+        "body": "Corso, paese, o se partire del tutto. Compili un questionario, noi studiamo le tue opzioni reali prima di parlarci, e chiudi la sessione con un piano invece di quaranta schede aperte.",
+        "ctaLabel": "Prenota una sessione di orientamento"
       },
+      {
+        "audience": "university",
+        "icon": "building",
+        "title": "Lavoro per un'università",
+        "body": "Volete studenti dall'estero, ma le regole su borse di studio e riconoscimento dei titoli nel paese di destinazione sono una scatola nera — e lo è anche quanto i vostri candidati possono davvero permettersi. Il primo seminario online è gratuito e costruito sul vostro mercato.",
+        "ctaLabel": "Prenota il seminario gratuito"
+      },
+      {
+        "audience": "agency",
+        "icon": "contract",
+        "title": "Dirigo un'agenzia di reclutamento",
+        "body": "Voi reclutate; noi diventiamo la vostra operatività sul terreno. Il confine tra noi e la ripartizione della commissione si mettono per iscritto prima che il primo studente si muova, non si rinegoziano dopo.",
+        "ctaLabel": "Vedi il modello di partnership"
+      }
+    ]
+  },
+  "strengths": {
+    "eyebrow": "Perché noi",
+    "heading": "Parliamo la tua lingua. Non come slogan.",
+    "body": "Lasciare il proprio paese fa paura in un modo che nessun opuscolo ammette, e quello che aiuta di più è ovvio la prima volta che lo vedi funzionare: parlare con qualcuno che viene da dove vieni tu, nella lingua in cui pensi davvero. Questo team è costruito così — professionisti indipendenti distribuiti in più paesi, coordinati da una persona che risponde a te.",
+    "points": [
       {
         "icon": "compass",
-        "title": "La call di 15 minuti",
-        "body": "Non è una call di vendita. Mettiamo a fuoco la tua situazione, ti diciamo quali scadenze ti vincolano e quali parti puoi gestire da solo."
+        "title": "Qualcuno del tuo paese, dove lo copriamo",
+        "body": "Dove il nostro team copre il paese da cui vieni, è quella la persona che prende la tua call. Il non-detto culturale che non devi spiegare fa risparmiare conversazioni intere — ed è il motivo per cui le università estere accettano di incontrarci."
       },
       {
-        "icon": "house",
-        "title": "Il tuo percorso comincia",
-        "body": "Se decidi di procedere, ci prendiamo le pratiche. Tu studi; noi teniamo il calendario e depositiamo tutto nei tempi."
+        "icon": "building",
+        "title": "Una rete, non una sede centrale",
+        "body": "Specialisti in più paesi invece di un palazzo con una coda telefonica. C'è quasi sempre qualcuno svegli nel tuo fuso orario, e nessuno viene rimbalzato da un ufficio all'altro perché non ci sono uffici."
+      },
+      {
+        "icon": "document",
+        "title": "Sette lingue, e sono in casa",
+        "body": "Gli insegnanti che tengono i nostri corsi di lingua sono le stesse persone che si occupano della traduzione dei documenti. Non è una bizzarria dell'organigramma — è il motivo per cui una traduzione può partire il giorno in cui la chiedi invece di finire a un fornitore esterno."
       }
     ]
   },
-  "trustBuilding": {
-    "eyebrow": "Con chi hai a che fare",
-    "heading": "Noi siamo nuovi. Queste istituzioni no.",
-    "body": "Il tuo percorso verso l'Italia passa da enti pubblici con regole pubblicate e scadenze pubbliche. Non li sostituiamo e non siamo accreditati da loro — prepariamo il tuo fascicolo per ciascuno e ci assicuriamo che nulla arrivi tardi. Ogni nome qui sotto porta al suo sito ufficiale: puoi verificare quello che ti diciamo.",
-    "institutions": [
+  "bureaucracy": {
+    "eyebrow": "La parte che ferma davvero le persone",
+    "heading": "Quasi nessuno fallisce l'ammissione. Fallisce le scartoffie.",
+    "body": "È raro che sia l'ingresso a non funzionare. Non funzionano una domanda di borsa di studio di cui non hai mai sentito parlare, che scade a una data che nessuno ti ha detto, e un diploma che all'estero non è legalmente utilizzabile nella forma in cui lo hai. In Italia — il mercato dove andiamo più a fondo — sono tre battaglie precise.",
+    "items": [
       {
-        "name": "Universitaly",
-        "authority": "Portale del Ministero dell'Università e della Ricerca",
-        "role": "La pre-iscrizione obbligatoria per chi arriva da fuori UE. Prepariamo la domanda e verifichiamo che i documenti siano quelli giusti.",
-        "url": "https://www.universitaly.it"
+        "icon": "document",
+        "title": "Borse di studio e ISEE",
+        "body": "Il diritto allo studio in Italia è su base reddituale, e la tua idoneità passa dall'ISEE — un indicatore economico di cui quasi nessuna famiglia straniera ha sentito parlare, e che ancora meno sanno calcolare. Lo ricostruiamo noi e depositiamo la domanda entro la sua scadenza, che non è quella dell'ateneo e non la aspetta."
       },
       {
-        "name": "CIMEA",
-        "authority": "Centro italiano per il riconoscimento dei titoli",
-        "role": "L'attestato di comparabilità del tuo titolo estero. Componiamo il fascicolo e seguiamo la richiesta.",
-        "url": "https://www.cimea.it"
+        "icon": "contract",
+        "title": "Tradurre e legalizzare il tuo diploma",
+        "body": "Il tuo titolo deve arrivare in italiano e legalmente valido, e quella sequenza è il punto dove i mesi svaniscono in silenzio. La traduzione la fanno i nostri traduttori interni e la pratica di legalizzazione la seguiamo insieme a te, invece di lasciarti in coda dietro l'esternalizzazione di qualcun altro."
       },
       {
-        "name": "Il visto per l'Italia",
-        "authority": "Ministero degli Affari Esteri",
-        "role": "Il visto per studio tipo D lo rilascia il consolato competente. Prepariamo il fascicolo secondo lo standard che richiede.",
-        "url": "https://vistoperitalia.esteri.it"
-      },
-      {
-        "name": "Polizia di Stato",
-        "authority": "Questure — permessi di soggiorno",
-        "role": "Il permesso va depositato entro 8 giorni lavorativi dall'arrivo. Prepariamo il kit e teniamo quella scadenza insieme a te.",
-        "url": "https://questure.poliziadistato.it/stranieri/"
-      },
-      {
-        "name": "Agenzia delle Entrate",
-        "authority": "Agenzia fiscale italiana",
-        "role": "Il codice fiscale — serve per il contratto d'affitto, il conto in banca e la copertura sanitaria. Lo otteniamo insieme a te.",
-        "url": "https://www.agenziaentrate.gov.it"
+        "icon": "health",
+        "title": "Tasse, sanità, conto in banca",
+        "body": "Fasce di contribuzione che si muovono con il reddito dichiarato, una copertura sanitaria a cui non puoi iscriverti senza codice fiscale, e un conto che ti serve prima di poter pagare qualsiasi cosa. Noioso, rigidamente sequenziale, e il punto in cui di solito si perde un anno accademico."
       }
     ],
-    "affiliationNote": "Per essere espliciti: Kimere non è affiliata, accreditata né agisce per conto di nessuno di questi enti. Li elenchiamo perché sono le istituzioni con cui dovrai avere a che fare. Noi prepariamo le pratiche e teniamo le scadenze — ogni decisione resta loro, e nessuno può prometterti quale sarà.",
-    "ctaLabel": "Come lavoriamo"
+    "limitHeading": "Cosa non possiamo fare — meglio saperlo qui",
+    "limitBody": "L'attestato di comparabilità di un titolo estero lo rilascia CIMEA o lo valuta l'ateneo stesso, e nulla di ciò che facciamo lo sostituisce o lo rende facoltativo. Quello che facciamo è comporre il fascicolo, seguirlo fino in fondo e tenere la traduzione in casa, così quel passaggio non è quello che ti blocca. Chi ti dice che il requisito si può saltare ti sta vendendo una domanda respinta.",
+    "officialSource": "https://www.cimea.it"
+  },
+  "forUniversities": {
+    "eyebrow": "Per le università",
+    "heading": "Portate la vostra università oltre i suoi confini",
+    "body": "Le università perdono candidati internazionali per colpa di un regolamento che nessuna delle due parti riesce a leggere. Uno studente a Buenos Aires potrebbe avere diritto a una retta pubblica italiana calibrata sul reddito familiare, più un assegno di mantenimento sopra — e se nessuno ai due capi lo sa, si iscrive altrove spendendo di più. Colmare quel divario è tutta la conversazione.",
+    "seminarHeading": "Si comincia con un seminario gratuito",
+    "seminarBody": "Ci colleghiamo con il vostro team e costruiamo la sessione sul vostro mercato, non sul nostro. Dove vogliono andare i vostri studenti, cosa finanzia davvero quel paese, cosa pretenderanno da loro le sue pratiche — con risposte sul vostro caso e le fonti pubblicate allegate.",
+    "seminarPoints": [
+      "Costruito sulla destinazione che vi interessa, che sia l'Italia o no",
+      "Borse di studio, tasse e riconoscimento dei titoli con risposte da fonti pubblicate",
+      "Nessun costo e nessun impegno sulla prima sessione",
+      "Una sintesi scritta che il vostro ufficio tiene, qualsiasi cosa decidiate dopo"
+    ],
+    "ctaLabel": "Prenota il seminario gratuito"
+  },
+  "languageCourses": {
+    "eyebrow": "Non solo burocrazia",
+    "heading": "Impara la lingua prima che ti serva",
+    "body": "Il team che si occupa dei tuoi documenti insegna anche le lingue, così le due cose non diventano mai due aziende diverse che devi presentare l'una all'altra. I corsi li tengono insegnanti freelance madrelingua o fluenti in quello che insegnano, online, sull'orario di uno studente e non su quello di un ufficio.",
+    "languagesLabel": "Corsi attualmente offerti",
+    "languages": ["Inglese", "Francese", "Spagnolo", "Portoghese", "Arabo", "Albanese", "Tedesco"],
+    "ctaLabel": "Chiedi informazioni sui corsi"
   },
   "finalCta": {
-    "eyebrow": "Si comincia",
-    "heading": "Parliamone prima che ti candidi",
-    "body": "15 minuti, senza costi, senza impegno. Dicci a che punto sei del percorso e ti diciamo esattamente cosa viene dopo.",
-    "ctaLabel": "Prenota la tua call di 15 minuti"
+    "eyebrow": "Sei ancora qui",
+    "heading": "Nessuna delle quattro caselle era la tua?",
+    "body": "Allora parti da una consulenza strategica. È una sessione sola, e finisce con un piano invece che con un opuscolo — perché la ricerca la facciamo prima di incontrarci, non mentre tu guardi.",
+    "surveyNote": "Comincia con un questionario, ed è il punto: è quello che ci permette di studiare il tuo caso reale in anticipo invece di spendere la tua sessione a farti domande di base.",
+    "ctaLabel": "Richiedi una consulenza strategica"
   }
 }

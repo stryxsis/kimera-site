@@ -1,154 +1,120 @@
 {
   "hero": {
-    "eyebrow": "For students coming to Italy",
-    "headline": "Getting into an Italian university is the easy part.",
-    "subhead": "Visa, residence permit, fiscal code, municipal registration, health cover, housing — that's the part almost no one warns you about. We handle it with you, step by step.",
-    "ctaPrimary": "Book your 15-minute call"
+    "eyebrow": "Studying abroad, handled",
+    "headline": "Pick the country. We'll handle everything that isn't studying.",
+    "subhead": "Kimere is a young consultancy built entirely around the part of moving abroad nobody warns you about — applications, visas, funding, documents, somewhere real to live. We work towards any destination you choose, and we go deepest in Italy, where we run the whole route ourselves, on the ground.",
+    "ctaStudent": "I'm a student",
+    "ctaInstitution": "I'm a university or an agency"
   },
-  "problemScale": {
-    "eyebrow": "The problem",
-    "heading": "The part after admission is a maze",
-    "body": "Between your acceptance letter and your first day of class, you'll deal with a consulate, a university, a post office, an immigration office, a tax agency, and your local municipality — each with its own deadlines and its own paperwork.",
-    "stats": [
+  "routing": {
+    "eyebrow": "Start here",
+    "heading": "Four very different problems. Take the one that's yours.",
+    "body": "A student who knows where they're going, a student who doesn't, a university opening a new corridor and an agency adding a destination need almost nothing in common from us. So we don't pretend otherwise — pick your situation and skip everything else.",
+    "boxes": [
       {
-        "value": "8 working days",
-        "label": "to file your residence permit after landing"
+        "audience": "student-abroad",
+        "icon": "compass",
+        "title": "I want to study abroad",
+        "body": "You've more or less chosen. What's left is the application, a visa file that survives your consulate, funding you probably don't know you qualify for, and a lease that turns out to be real.",
+        "ctaLabel": "See what we handle"
       },
       {
-        "value": "6+",
-        "label": "different offices involved before you're fully settled"
-      },
-      {
-        "value": "90+",
-        "label": "Italian universities, each with its own admission calendar"
-      }
-    ]
-  },
-  "whatWeDo": {
-    "eyebrow": "What we do",
-    "heading": "Three moments where things go wrong",
-    "body": "Our work covers the whole path, but it concentrates where students actually lose time, money, or their legal status.",
-    "pillars": [
-      {
-        "title": "Before you leave",
-        "body": "University applications, Universitaly, qualification recognition, and a visa file prepared to the standard your consulate expects."
-      },
-      {
-        "title": "After you land",
-        "body": "Residence permit, fiscal code, municipal registration, and health cover — inside the deadlines that actually matter."
-      },
-      {
-        "title": "Finding a place to live",
-        "body": "Contract review, lease registration, and protection from the scams that target students applying from abroad."
-      }
-    ]
-  },
-  "processPreview": {
-    "heading": "The full path, mapped out",
-    "body": "From your first application to your residence permit, here's exactly what happens and when — including the 8-day deadline almost no one mentions.",
-    "pivot": "You land in Italy",
-    "stopsBefore": [
-      {
-        "label": "Course and university choice"
-      },
-      {
-        "label": "Universitaly pre-registration"
-      },
-      {
-        "label": "Qualification recognition"
-      },
-      {
-        "label": "Consular file and type D visa",
-        "key": true
-      }
-    ],
-    "stopsAfter": [
-      {
-        "label": "Residence permit filed",
-        "key": true,
-        "note": "within 8 working days"
-      },
-      {
-        "label": "Questura appointment and fiscal code"
-      },
-      {
-        "label": "Residency registration and health cover"
-      },
-      {
-        "label": "A lease that actually holds up"
-      }
-    ]
-  },
-  "packagesPreview": {
-    "eyebrow": "Support levels",
-    "heading": "Three levels of support",
-    "body": "Choose how far you want us to go with you — from getting your application right, to being there when you land, to having a verified place to live."
-  },
-  "howItWorks": {
-    "eyebrow": "How it works",
-    "heading": "What happens after you press the button",
-    "body": "No commitment until you decide there is one. Three steps, and you can stop at any of them.",
-    "steps": [
-      {
+        "audience": "student-undecided",
         "icon": "document",
-        "title": "You fill in the form",
-        "body": "Five minutes. You tell us where you are in the process; we work out whether we can actually be useful to you — and say so if we can't."
+        "title": "I don't know what to choose",
+        "body": "Course, country, or whether to leave at all. You fill in a questionnaire, we research your actual options before we speak, and you finish the session with a plan instead of forty tabs open.",
+        "ctaLabel": "Book an orientation session"
       },
+      {
+        "audience": "university",
+        "icon": "building",
+        "title": "I work for a university",
+        "body": "You want students from abroad, but the destination's funding and recognition rules are a black box — and so is what your candidates can actually afford. The first online seminar is free and built on your market.",
+        "ctaLabel": "Book the free seminar"
+      },
+      {
+        "audience": "agency",
+        "icon": "contract",
+        "title": "I run a recruitment agency",
+        "body": "You recruit; we become your operation on the ground. The boundary between us and the commission split are written down before the first student moves, not renegotiated after.",
+        "ctaLabel": "See the partnership model"
+      }
+    ]
+  },
+  "strengths": {
+    "eyebrow": "Why us",
+    "heading": "We speak your language. Not as a slogan.",
+    "body": "Leaving your country is frightening in a way no brochure admits, and what helps most is obvious the first time you see it work: talking to someone from where you're from, in the language you actually think in. That's how this team is built — independent professionals spread across several countries, coordinated by one person who answers to you.",
+    "points": [
       {
         "icon": "compass",
-        "title": "The 15-minute call",
-        "body": "Not a sales call. We map your situation, name the deadlines that bind you, and tell you which parts you can handle on your own."
+        "title": "Someone from your country, where we cover it",
+        "body": "Where our team covers where you're from, that's who takes your call. The cultural shorthand you don't have to explain saves entire conversations — and it's the reason universities abroad agree to the meeting in the first place."
       },
       {
-        "icon": "house",
-        "title": "Your Italian journey begins",
-        "body": "If you decide to go ahead, we take the paperwork off your desk. You study; we hold the calendar and file everything on time."
+        "icon": "building",
+        "title": "A network, not a head office",
+        "body": "Specialists in several countries rather than one building with a phone queue. There's usually someone awake in your timezone, and nobody gets passed between departments because there are no departments."
+      },
+      {
+        "icon": "document",
+        "title": "Seven languages, and they're in-house",
+        "body": "The teachers who run our language courses are the same people who handle document translation. That isn't a quirk of the org chart — it's why a translation can start the day you ask instead of going out to a supplier."
       }
     ]
   },
-  "trustBuilding": {
-    "eyebrow": "Who you're dealing with",
-    "heading": "We're new. These institutions are not.",
-    "body": "Your path to Italy runs through public bodies with published rules and public deadlines. We don't replace them and we're not accredited by them — we prepare your file for each one and make sure nothing arrives late. Every name below links to its official site, so you can check what we tell you.",
-    "institutions": [
+  "bureaucracy": {
+    "eyebrow": "The part that actually stops people",
+    "heading": "Almost nobody fails the admission. They fail the paperwork.",
+    "body": "Getting in is rarely where it goes wrong. It goes wrong on a funding application you never heard of, closing on a date nobody mentioned, and a diploma that isn't legally usable abroad in the form you're holding. In Italy — the market where we go deepest — that's three specific fights.",
+    "items": [
       {
-        "name": "Universitaly",
-        "authority": "Portal of the Ministry of University and Research",
-        "role": "Mandatory pre-registration for non-EU students. We prepare the application and check the documents are the right ones.",
-        "url": "https://www.universitaly.it"
+        "icon": "document",
+        "title": "Scholarships and the ISEE",
+        "body": "Italy's right-to-study funding is means-tested, and your eligibility runs through the ISEE — an income indicator almost no family abroad has heard of, let alone knows how to calculate. We work it out and file on its own deadline, which is not your university's deadline and does not wait for it."
       },
       {
-        "name": "CIMEA",
-        "authority": "Italian centre for academic recognition",
-        "role": "The comparability statement for your foreign qualification. We assemble the file and follow the request.",
-        "url": "https://www.cimea.it"
+        "icon": "contract",
+        "title": "Translating and legalising your diploma",
+        "body": "Your qualification has to arrive in Italian and legally valid, and that sequence is where months quietly disappear. Our own translators do the translation and we run the legalisation file alongside you, instead of leaving you in a queue behind someone else's outsourcing."
       },
       {
-        "name": "Il visto per l'Italia",
-        "authority": "Ministry of Foreign Affairs",
-        "role": "The type D study visa is issued by your consulate. We prepare the file to the standard it expects.",
-        "url": "https://vistoperitalia.esteri.it"
-      },
-      {
-        "name": "Polizia di Stato",
-        "authority": "Questura — residence permits",
-        "role": "The permit must be filed within 8 working days of landing. We prepare the kit and hold that deadline with you.",
-        "url": "https://questure.poliziadistato.it/stranieri/"
-      },
-      {
-        "name": "Agenzia delle Entrate",
-        "authority": "Italian revenue agency",
-        "role": "Your fiscal code — required for a lease, a bank account and health cover. We obtain it with you.",
-        "url": "https://www.agenziaentrate.gov.it"
+        "icon": "health",
+        "title": "Fees, health cover, a bank account",
+        "body": "Tuition brackets that move with your declared income, health cover you can't enrol in without a fiscal code, and an account you need before you can pay for any of it. Boring, strictly sequential, and the usual place an academic year gets lost."
       }
     ],
-    "affiliationNote": "To be explicit: Kimere is not affiliated with, accredited by, or acting on behalf of any of these bodies. We list them because they are the institutions you will have to deal with. We prepare the paperwork and keep the deadlines — every decision remains theirs, and no one can promise you its outcome.",
-    "ctaLabel": "How we work"
+    "limitHeading": "What we can't do — better you hear it here",
+    "limitBody": "The comparability statement for a foreign qualification is issued by CIMEA or assessed by the university itself, and nothing we do replaces it or makes it optional. What we do is build the file, follow it through, and keep the translation in-house so that step isn't the one holding you up. Anyone telling you the requirement can be skipped is selling you a rejected application.",
+    "officialSource": "https://www.cimea.it"
+  },
+  "forUniversities": {
+    "eyebrow": "For universities",
+    "heading": "Push your university past its own borders",
+    "body": "Universities lose international candidates to a rulebook neither side can read. A student in Buenos Aires might qualify for Italian public tuition scaled to family income, plus a maintenance grant on top — and if nobody at either end knows that, they enrol somewhere more expensive instead. Closing that gap is the entire conversation.",
+    "seminarHeading": "It starts with a free seminar",
+    "seminarBody": "We get on a call with your team and build the session around your market rather than ours. Where your students want to go, what that country actually funds, what its paperwork will demand of them — answered for your case, with the published sources attached.",
+    "seminarPoints": [
+      "Built on the destination you care about, whether that's Italy or not",
+      "Funding, fees and qualification recognition answered from published sources",
+      "No cost and no commitment on the first session",
+      "A written summary your office keeps, whatever you decide afterwards"
+    ],
+    "ctaLabel": "Book the free seminar"
+  },
+  "languageCourses": {
+    "eyebrow": "Not only paperwork",
+    "heading": "Learn the language before you need it",
+    "body": "The team that handles your documents also teaches the languages, so the two never end up as separate companies you have to introduce to each other. Courses run with freelance teachers who are native or fluent in what they teach, online, around a student's timetable rather than an office's.",
+    "languagesLabel": "Courses currently offered",
+    "languages": ["English", "French", "Spanish", "Portuguese", "Arabic", "Albanian", "German"],
+    "ctaLabel": "Ask about language courses"
   },
   "finalCta": {
-    "eyebrow": "Get started",
-    "heading": "Talk to us before you apply",
-    "body": "15 minutes, no cost, no obligation. Tell us where you are in the process and we'll tell you exactly what comes next.",
-    "ctaLabel": "Book your 15-minute call"
+    "eyebrow": "Still here",
+    "heading": "None of the four felt like yours?",
+    "body": "Then start with a strategic consultation. It's one session, and it ends with a plan rather than a brochure — because the research happens before we meet, not while you watch.",
+    "surveyNote": "It begins with a questionnaire, and that's the point: it's what lets us research your actual case in advance instead of spending your session asking basic questions.",
+    "ctaLabel": "Request a strategic consultation"
   }
 }

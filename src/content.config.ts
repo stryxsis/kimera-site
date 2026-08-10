@@ -77,120 +77,132 @@ const stepIconName = z.enum([
   'compass',
 ]);
 
+/**
+ * Home — non è una vetrina, è uno smistatore. L'analisi strategica aggiornata
+ * dà a Kimere QUATTRO destinatari con bisogni quasi disgiunti (studente che sa
+ * dove andare, studente indeciso, ateneo, agenzia): la home ha pochi secondi
+ * per mandare ciascuno nel proprio imbuto invece di parlare a tutti e a nessuno.
+ *
+ * Da qui la sequenza dei blocchi, che NON è arbitraria:
+ *   hero            → promessa e primo bivio grossolano (B2C / B2B)
+ *   routing         → il bivio fine, per problema e non per prodotto
+ *   strengths       → il vantaggio vero: team multiculturale, sette lingue
+ *   bureaucracy     → i pain point che fermano davvero (ISEE, borse, documenti)
+ *   forUniversities → il canale B2B più pulito: il seminario gratuito
+ *   languageCourses → l'ecosistema a 360°, non solo scartoffie
+ *   finalCta        → chi ha scrollato tutto senza cliccare nessun box
+ *
+ * ⚠️ NESSUN PREZZO in questo schema, ed è una decisione confermata: i price
+ * point esistono (analisi §2) ma restano fuori dal sito, la cifra si dice in
+ * call. Non aggiungere un campo `price` qui né altrove.
+ *
+ * ⚠️ Le destinazioni dei box NON stanno nel contenuto: `audience` è una chiave,
+ * e il template la risolve in un href tramite routes.ts. Un URL scritto in un
+ * JSON di contenuto è un link morto che nessun controllo intercetta.
+ */
 const homePage = defineCollection({
   loader: glob({ base: './src/content/homePage', pattern: '*.json' }),
   schema: z.object({
     hero: z.object({
-      // Dichiara il destinatario nella prima riga: la home ha 8 secondi per
-      // smistare studenti e agenzie su due percorsi diversi (content-map.md).
       eyebrow: z.string(),
       headline: z.string(),
       subhead: z.string(),
-      ctaPrimary: z.string(),
-      /* Niente immagine nell'hero: quella metà la occupa la mappa del percorso
-         (ILL-01). Dove i riferimenti mettono una fotografia, qui sta
-         l'informazione che vende — è il principio della direzione «Rotta». */
-    }),
-    problemScale: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      body: z.string(),
-      stats: z.array(z.object({ value: z.string(), label: z.string() })),
-    }),
-    whatWeDo: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      body: z.string(),
-      pillars: z.array(z.object({ title: z.string(), body: z.string() })),
+      /** Il bivio grossolano: B2C e B2B separati già sopra la piega. */
+      ctaStudent: z.string(),
+      ctaInstitution: z.string(),
     }),
     /**
-     * L'anteprima del percorso — nella direzione «Rotta» (D-13) non è una sezione
-     * più in basso: è metà dell'hero. Il visitatore VEDE il percorso nei primi tre
-     * secondi invece di leggere che esiste.
-     * `key` marca le tappe critiche (nodo pieno in oro), `note` la scadenza.
+     * Il bivio, per PROBLEMA e non per prodotto: il visitatore riconosce la
+     * propria situazione, non deve dedurre quale servizio gli spetta.
      */
-    processPreview: z.object({
-      heading: z.string(),
-      body: z.string(),
-      pivot: z.string(),
-      stopsBefore: z.array(
-        z.object({ label: z.string(), key: z.boolean().optional(), note: z.string().optional() }),
-      ),
-      stopsAfter: z.array(
-        z.object({ label: z.string(), key: z.boolean().optional(), note: z.string().optional() }),
-      ),
-    }),
-    packagesPreview: z.object({
+    routing: z.object({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string(),
-    }),
-    /**
-     * Che cosa succede DOPO aver premuto il bottone. Sta subito sotto i tre
-     * livelli perché è lì che nasce l'attrito: il visitatore ha appena letto
-     * che deve prenotare una call e non sa a che cosa va incontro. Tre passi,
-     * non di più — il percorso vero è già raccontato altrove.
-     */
-    howItWorks: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      body: z.string(),
-      steps: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
-    }),
-    /**
-     * L'obiezione più grave del progetto — "azienda nata quest'anno, zero track
-     * record" (Kimera_Analisi_Strategica.md, Rischio 1). La risposta non può
-     * essere social proof: non esiste, e inventarla è vietato. È l'opposto —
-     * mostrare ciò che è GIÀ pubblico e verificabile senza parlare con nessuno,
-     * e dichiarare apertamente ciò che non si ha. Da qui i tre blocchi:
-     *   proofs      → le prove verificabili sul sito stesso
-     *   noProofNote → ciò che manca, detto per primo invece che nascosto
-     *   guarantees  → i due impegni concreti, con l'icona del set ILL-03
-     */
-    /**
-     * L'obiezione più grave del progetto — «azienda nata quest'anno, zero track
-     * record» (Kimera_Analisi_Strategica.md, Rischio 1). Senza recensioni né
-     * clienti da citare, la fiducia si costruisce sull'unica autorevolezza
-     * disponibile: quella delle ISTITUZIONI che il percorso attraversa per
-     * legge. Non è social proof presa in prestito indebitamente — è il
-     * contrario: ogni voce porta il link al sito ufficiale dell'ente, e il
-     * genitore che finanzia può verificare da solo, in un clic.
-     *
-     * ⚠️ NIENTE LOGHI. Mostrare il marchio di un ministero o di un operatore
-     * privato su un sito commerciale comunica accreditamento o partnership:
-     * per gli enti pubblici è uso non autorizzato di segni dello Stato, per i
-     * privati è dichiarare un rapporto che non esiste. I nomi in chiaro con il
-     * link ufficiale dicono la stessa cosa e sono uso nominativo legittimo.
-     * `affiliationNote` lo mette nero su bianco ed è OBBLIGATORIA.
-     */
-    trustBuilding: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      body: z.string(),
-      institutions: z.array(
+      boxes: z.array(
         z.object({
-          /** Nome proprio dell'ente — non va tradotto né adattato. */
-          name: z.string(),
-          /** Che cosa è, in una riga: serve a chi non conosce il sistema italiano. */
-          authority: z.string(),
-          /** Che cosa fa Kimere presso quell'ente. Mai «siamo partner di». */
-          role: z.string(),
-          /** Sito ufficiale. Solo URL verificati e con certificato valido. */
-          url: z.url(),
+          /** Chiave, non URL: il template la mappa sulla destinazione reale. */
+          audience: z.enum(['student-abroad', 'student-undecided', 'university', 'agency']),
+          icon: stepIconName,
+          title: z.string(),
+          body: z.string(),
+          ctaLabel: z.string(),
         }),
       ),
-      affiliationNote: z.string(),
+    }),
+    /**
+     * Il differenziante dichiarato dall'analisi: team multiculturale e sette
+     * lingue, con consulenti della stessa nazionalità dell'interlocutore.
+     *
+     * ⚠️ Le lingue sono quelle dell'analisi e NIENTE ALTRO (§1): inglese,
+     * francese, spagnolo, portoghese, arabo, albanese, tedesco. L'italiano non
+     * è nell'elenco — se i corsi lo includono va confermato dal cliente prima
+     * di aggiungerlo, non dedotto dal fatto che l'azienda è italiana.
+     */
+    strengths: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      points: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+    }),
+    /**
+     * «Zero burocrazia»: il vero scoglio non è l'ammissione ma i soldi e i
+     * documenti (analisi §4).
+     *
+     * ⚠️ `limitBody` è OBBLIGATORIA e non è una postilla difensiva. L'analisi
+     * dice che Kimere «bypassa» la procedura CIMEA: sul sito non si può
+     * scrivere, perché l'attestato di comparabilità lo rilascia CIMEA o
+     * l'ateneo e nessun privato può renderlo superfluo. Prometterlo farebbe
+     * arrivare lo studente con un fascicolo respinto. Quello che Kimere fa
+     * davvero — traduzione interna e pratica seguita passo per passo — è già
+     * un vantaggio verificabile e si regge da solo.
+     */
+    bureaucracy: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      items: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+      limitHeading: z.string(),
+      limitBody: z.string(),
+      officialSource: z.url(),
+    }),
+    /**
+     * Il canale B2B più pulito dell'analisi (§5): il seminario online gratuito,
+     * modellato sul mercato dell'ateneo. La CTA di questo blocco non è
+     * «contattaci» — è la prenotazione del seminario.
+     */
+    forUniversities: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      seminarHeading: z.string(),
+      seminarBody: z.string(),
+      seminarPoints: z.array(z.string()),
       ctaLabel: z.string(),
     }),
+    languageCourses: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      languagesLabel: z.string(),
+      languages: z.array(z.string()),
+      ctaLabel: z.string(),
+    }),
+    /**
+     * Per chi è arrivato in fondo senza cliccare nessun box: molto interessato
+     * ma non si riconosce in nessuna delle quattro caselle. `surveyNote` cita
+     * il sondaggio preliminare, che è ciò che giustifica il prezzo della
+     * consulenza — la ricerca si fa PRIMA della call, non durante.
+     */
     finalCta: z.object({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string(),
+      surveyNote: z.string(),
       ctaLabel: z.string(),
     }),
   }),
 });
-
 /**
  * Servizi — la pagina commerciale del sito, e l'unica il cui compito non è
  * informare ma costruire il valore percepito prima che il prezzo esista.
