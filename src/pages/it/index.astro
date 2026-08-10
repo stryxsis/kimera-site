@@ -781,8 +781,20 @@ function isExternal(href: string) {
   const video = stage?.querySelector<HTMLVideoElement>('[data-hero-video]');
 
   if (stage) {
-    /** Quanto prima della fine del video comincia la rivelazione. */
-    const LEAD_IN = 2.1;
+    /**
+     * Il ritmo del video: veloce per la maggior parte della corsa, poi un
+     * rallentamento verso la fine che accompagna lo zoom mentre si assesta —
+     * non è un semplice arrivo, è un respiro prima di fermarsi. `playbackRate`
+     * non tocca `currentTime`/`duration`: sono sempre secondi di VIDEO, quindi
+     * `LEAD_IN` e tutto il resto della logica sotto restano corretti a ogni
+     * velocità, cambiata o no.
+     */
+    const FAST_RATE = 1.6;
+    const SLOW_RATE = 0.5;
+    /** Quanti secondi (di video) prima della fine comincia il rallentamento. */
+    const SLOWDOWN_WINDOW = 2.6;
+    /** Quanto prima della fine comincia la rivelazione del testo. */
+    const LEAD_IN = 2.4;
     /** Se il video non ha ancora un fotogramma in movimento, il testo non aspetta. */
     const START_DEADLINE = 1800;
     /** Tetto assoluto: oltre questo il testo entra comunque. */
@@ -790,13 +802,32 @@ function isExternal(href: string) {
 
     const timers: number[] = [];
     let revealed = false;
+    let rateLoop = 0;
 
     const reveal = () => {
       if (revealed) return;
       revealed = true;
       timers.forEach((id) => window.clearTimeout(id));
+      window.cancelAnimationFrame(rateLoop);
       stage.setAttribute('data-hero-state', 'revealed');
       window.removeEventListener('scroll', reveal);
+    };
+
+    /**
+     * Aggiorna `playbackRate` fotogramma per fotogramma: un `timeupdate` non
+     * basta, scatta troppo di rado per una rampa che si deve sentire liscia.
+     * `smoothstep` (3t²-2t³) invece di una rampa lineare: parte e arriva
+     * piatta, così il cambio di velocità non si sente come uno scatto.
+     */
+    const rampPlaybackRate = (v: HTMLVideoElement) => {
+      const end = v.duration;
+      if (Number.isFinite(end) && end > 0) {
+        const remaining = end - v.currentTime;
+        const t = Math.max(0, Math.min(1, 1 - remaining / SLOWDOWN_WINDOW));
+        const eased = t * t * (3 - 2 * t);
+        v.playbackRate = FAST_RATE + (SLOW_RATE - FAST_RATE) * eased;
+      }
+      if (!v.paused && !v.ended) rateLoop = window.requestAnimationFrame(() => rampPlaybackRate(v));
     };
 
     /**
@@ -844,10 +875,16 @@ function isExternal(href: string) {
 
       // `play()` restituisce una promise: se il browser rifiuta l'autoplay non
       // resta un video fermo sul primo fotogramma con la hero vuota sopra.
-      video.play().catch(() => {
-        showLastFrame();
-        reveal();
-      });
+      video.play().then(
+        () => {
+          video.playbackRate = FAST_RATE;
+          rateLoop = window.requestAnimationFrame(() => rampPlaybackRate(video));
+        },
+        () => {
+          showLastFrame();
+          reveal();
+        },
+      );
     }
   }
 </script>
