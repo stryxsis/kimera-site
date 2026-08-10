@@ -20,6 +20,8 @@ interface Props {
   eyebrow?: string;
   /** Vedi BaseLayout: il colore sotto a tutto, per l'overscroll e i vuoti. */
   ground?: 'dark' | 'blank';
+  /** Vedi Header: l'header non riserva spazio e galleggia sulla hero di questa pagina. */
+  heroOverlay?: boolean;
 }
 
 const {
@@ -31,6 +33,7 @@ const {
   bare = false,
   eyebrow,
   ground,
+  heroOverlay = false,
 } = Astro.props;
 ---
 
@@ -43,7 +46,7 @@ const {
   ground={ground}
 >
   <SkipLink locale={locale} />
-  <Header locale={locale} routeKey={routeKey} />
+  <Header locale={locale} routeKey={routeKey} overlay={heroOverlay} />
 
   <main id="main-content">
     {

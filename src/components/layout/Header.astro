@@ -9,13 +9,22 @@ import Button from '../ui/Button.astro';
 interface Props {
   locale: Locale;
   routeKey: RouteKey;
+  /**
+   * Per pagine con una hero a piena altezza che deve iniziare esattamente a
+   * y=0: l'header non riserva più spazio nel flusso (`position: fixed` invece
+   * di `sticky`) e galleggia sopra il primo tratto della hero, che è comunque
+   * più alta della barra stessa. Ogni altra pagina resta `sticky` come prima:
+   * questa prop cambia SOLO la pagina che la passa, non il comportamento
+   * globale dell'header.
+   */
+  overlay?: boolean;
 }
 
-const { locale, routeKey } = Astro.props;
+const { locale, routeKey, overlay = false } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<header class="site-header surface-blank">
+<header class:list={['site-header surface-blank', overlay && 'site-header--overlay']}>
   <div class="wrap site-header__inner">
     <a class="site-header__brand" href={getPath('home', locale)}>
       <Logo locale={locale} />
@@ -65,14 +74,23 @@ const t = useTranslations(locale);
       background-color: var(--color-blank);
     }
   }
+  /* `fixed` invece di `sticky`: rimosso dal flusso, la pagina non gli riserva
+     più la propria altezza e la sezione che segue nel markup (la hero) parte
+     da y=0 con la barra che le galleggia sopra. `sticky` non basta perché
+     resta comunque IN flusso finché non si scorre oltre la propria altezza —
+     è esattamente lo spazio vuoto che questa variante deve togliere. */
+  .site-header--overlay {
+    position: fixed;
+    inset-inline: 0;
+  }
   .site-header__inner {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    /* Il logo compatto (1.5rem + due righe di testo) è l'elemento più alto
-       della barra: questo padding è quanto basta a non farlo toccare i bordi. */
-    padding-block: 0.65rem;
+    /* Il logo compatto (1.1rem + due righe di testo minuscolo) è l'elemento più
+       alto della barra: questo padding è quanto basta a non farlo toccare i bordi. */
+    padding-block: 0.55rem;
   }
   .site-header__brand {
     text-decoration: none;
@@ -90,7 +108,9 @@ const t = useTranslations(locale);
     font: 600 var(--text-xs) / 1 var(--font-titling);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 0.6rem 0.95rem;
+    /* Tenuto vicino all'altezza del logo ridotto: altrimenti su mobile è
+       questo bottone, e non più il lockup, a dettare l'altezza della barra. */
+    padding: 0.42rem 0.8rem;
     cursor: pointer;
   }
   .site-header__bars,
