@@ -16,32 +16,42 @@ import HandoverDiagram from '../../components/illustrations/HandoverDiagram.astr
 import MultiStepForm from '../../components/forms/MultiStepForm.astro';
 
 /**
- * Partnerships — l'unica pagina del sito che non parla allo studente. Il lettore
- * è chi dirige un'agenzia di reclutamento estera o un ufficio international: legge
+ * Partner B2B — l'unica pagina del sito che non parla allo studente. Il lettore
+ * dirige un'agenzia di reclutamento estera o un ufficio international: legge
  * volumi, rischio e margine, e ha già respinto una dozzina di partner di
- * destinazione prima di arrivare qui.
+ * destinazione prima di arrivare qui. Qui Kimere smette di rassicurare.
  *
- * Tre conseguenze sul progetto della pagina, tutte deliberate.
+ * Cinque cose da non dimenticare quando si torna su questo file.
  *
- * PRIMA: la CTA NON porta al form Google della call studenti. Una richiesta di
- * partnership non è una consulenza da quindici minuti, e mandare un direttore
- * d'agenzia nello stesso imbuto del diciannovenne è il modo più rapido di
- * dichiarare che non si distingue fra i due. Tutte le CTA puntano al form B2B in
- * fondo alla pagina, che qualifica il partner prima della riunione.
+ * PRIMA: il seminario gratuito è il blocco dominante, ed è l'unico su campo
+ * navy insieme al modulo. È il lead magnet dichiarato dall'analisi (§5) e lo
+ * strumento di chiusura migliore che l'azienda abbia: se un giorno smette di
+ * essere la cosa più grande della pagina, la pagina ha perso il suo scopo.
  *
- * SECONDA: la due diligence sta PRIMA del form, non dopo. Un'agenzia scopre
- * comunque che Kimere opera da giugno 2026 e non ha accreditamenti; scoprirlo da
- * sé dopo aver letto tre schermate di promesse ferma la trattativa. Dirlo per
- * primi, accanto a ciò che invece si mette per iscritto, la fa proseguire.
+ * SECONDA: NESSUNA percentuale di conversione, da nessuna parte. L'analisi dice
+ * che gli atenei privati sono attratti dalle «percentuali di conversione»:
+ * quella è la loro motivazione, non un dato che Kimere possieda. L'azienda opera
+ * da giugno 2026 e non ha storico — pubblicare un tasso, o anche solo «alte
+ * percentuali», sarebbe un numero inventato su una pagina che si legge con il
+ * contratto in mano. Si dice cosa si toglie di mezzo, mai quanto rende.
  *
- * TERZA: nessun operatore terzo è nominato, da nessuna parte. Il brief chiedeva
- * di citare due catene di studentati per nome: non esiste alcun rapporto con
- * loro, e scriverlo sarebbe pubblicità ingannevole verso il lettore che verifica
- * per mestiere. L'invito è aperto e per categoria (vedi `otherPartners`).
+ * TERZA: le due tariffe sono scoperte per decisione esplicita del cliente, e la
+ * quota all-inclusive è dichiarata PER L'ITALIA. L'accompagnamento fisico sul
+ * territorio non diventa replicabile altrove per decreto: una tariffa unica
+ * «per qualsiasi destinazione» si romperebbe alla prima pratica fuori dai
+ * confini. `pricing.limits` e `pricing.billingNote` sono obbligatorie.
  *
- * Il ritmo delle superfici segue Servizi, che ha lo stesso compito commerciale:
- * bianco → NAVY (il mercato) → bianco (il modello) → nebbia (i vantaggi) →
- * bianco (gli altri interlocutori) → nebbia (come si comincia) → NAVY (il form).
+ * QUARTA: la due diligence sta PRIMA del modulo. Un'agenzia scopre comunque che
+ * Kimere opera da giugno 2026 e non ha accreditamenti; scoprirlo da sé dopo tre
+ * schermate di promesse ferma la trattativa, leggerlo qui la fa proseguire.
+ *
+ * QUINTA: nessun operatore terzo è nominato, da nessuna parte, e lo stato
+ * d'animo di atenei reali non viene diagnosticato. L'analisi dice che «molte
+ * università estere (es. argentine) temono l'Italia»: sul sito il fatto si
+ * racconta dal lato di Kimere — la domanda che ci arriva più spesso.
+ *
+ * Ritmo delle superfici: bianco → bianco/nebbia (i due segmenti) → NAVY (il
+ * seminario) → bianco (l'ostacolo) → nebbia (le tariffe) → NAVY (il modulo).
  */
 const locale = 'en';
 const t = useTranslations(locale);
@@ -77,7 +87,7 @@ const FIELDS = [
   ground="blank"
 >
   <div class="partners surface-blank">
-    {/* ── Hero B2B ─────────────────────────────────────────────────────── */}
+    {/* ── Hero: la promessa commerciale ────────────────────────────────── */}
     <section class="wrap hero">
       <div class="hero__intro">
         <Eyebrow class="animate-rise">{content.hero.eyebrow}</Eyebrow>
@@ -91,7 +101,7 @@ const FIELDS = [
           <Button href="#partner-form" variant="pill" size="lg" arrow>
             {content.hero.ctaPrimary}
           </Button>
-          <Button href="#model" variant="pill-ghost" size="lg">
+          <Button href="#pricing" variant="pill-ghost" size="lg">
             {content.hero.ctaSecondary}
           </Button>
         </div>
@@ -105,204 +115,304 @@ const FIELDS = [
     </section>
 
     {
-      /* ── L'opportunità di mercato ───────────────────────────────────────
+      /* ── I due interlocutori ────────────────────────────────────────────
+        Metà per gli atenei e metà per le agenzie, e volutamente asimmetriche:
+        per l'ateneo l'approfondimento è il seminario qui sotto, quindi qui
+        bastano tre argomenti e un rimando; per l'agenzia serve invece tutto
+        il modello commerciale — il confine disegnato, gli impegni per
+        iscritto e la sequenza con cui si comincia. */
+    }
+    <section class="wrap band" id="segments" aria-labelledby="segments-heading">
+      <div class="head">
+        <Eyebrow>{content.segments.eyebrow}</Eyebrow>
+        <h2 class="heading-section" id="segments-heading">{content.segments.heading}</h2>
+        <p class="lead-soft">{content.segments.body}</p>
+      </div>
+
+      {/* Atenei */}
+      <div class="segment" id="universities" aria-labelledby="universities-heading">
+        <div class="segment__head">
+          <Eyebrow tone="solid">{content.segments.universities.eyebrow}</Eyebrow>
+          <h3 class="heading-section segment__title" id="universities-heading">
+            {content.segments.universities.heading}
+          </h3>
+          <p class="segment__body">{content.segments.universities.body}</p>
+        </div>
+
+        <ul class="cards">
+          {
+            content.segments.universities.points.map((point) => (
+              <li class="card-soft card">
+                <span class="icon-badge">
+                  <StepIcon name={point.icon} size={26} />
+                </span>
+                <h4 class="heading-card card__title">{point.title}</h4>
+                <p class="card__body">{point.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="segment__action">
+          <Button href="#seminar" variant="pill" arrow>
+            {content.segments.universities.ctaLabel}
+          </Button>
+        </div>
+      </div>
+
+      {/* Agenzie */}
+      <div class="segment panel-soft" id="agencies" aria-labelledby="agencies-heading">
+        <div class="segment__head">
+          <Eyebrow tone="solid">{content.segments.agencies.eyebrow}</Eyebrow>
+          <h3 class="heading-section segment__title" id="agencies-heading">
+            {content.segments.agencies.heading}
+          </h3>
+          <p class="segment__body">{content.segments.agencies.body}</p>
+        </div>
+
+        <HandoverDiagram
+          theirTitle={content.segments.agencies.handover.theirLabel}
+          theirItems={content.segments.agencies.handover.theirItems}
+          handover={content.segments.agencies.handover.handoverLabel}
+          ourTitle={content.segments.agencies.handover.ourLabel}
+          ourItems={content.segments.agencies.handover.ourItems}
+        />
+
+        {
+          /* Gli impegni stanno attaccati al diagramma, non in fondo alla
+            pagina: sono la risposta all'obiezione che il diagramma stesso
+            solleva, cioè «che cosa impedisce che ci portiate via il cliente». */
+        }
+        <div class="commitments">
+          <h4 class="heading-card commitments__title">
+            {content.segments.agencies.commitmentsHeading}
+          </h4>
+          <ul class="checklist commitments__list">
+            {content.segments.agencies.commitments.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+
+        {
+          /* `startstep` e non `step`: quest'ultima è una classe globale che
+            azzera i <fieldset> del modulo più in basso nella stessa pagina, e
+            lo scope di Astro non le terrebbe separate. */
+        }
+        <div class="start">
+          <h4 class="heading-card start__title">{content.segments.agencies.startHeading}</h4>
+          <ol class="startsteps">
+            {
+              content.segments.agencies.steps.map((step, index) => (
+                <li class="startstep">
+                  <div class="startstep__marker">
+                    <span class="startstep__num">{String(index + 1).padStart(2, '0')}</span>
+                    <h5 class="heading-card startstep__title">{step.title}</h5>
+                  </div>
+                  <p class="startstep__body">{step.body}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="segment__action">
+          <Button href="#pricing" variant="pill" arrow>
+            {content.segments.agencies.ctaLabel}
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    {
+      /* ── Il seminario gratuito ──────────────────────────────────────────
+        Il blocco più importante della pagina, e l'unico che deve pesare come
+        pesa una hero. È il lead magnet dell'analisi (§5): campo navy pieno,
+        titolo grande, la sequenza a numeri e una sola azione in fondo. */
+    }
+    <section class="wrap band" id="seminar" aria-labelledby="seminar-heading">
+      <div class="lead-magnet surface-dark">
+        <div class="lead-magnet__top">
+          <div class="lead-magnet__intro">
+            <Eyebrow tone="gold">{content.seminar.eyebrow}</Eyebrow>
+            <h2 class="heading-display lead-magnet__title" id="seminar-heading">
+              {content.seminar.heading}
+            </h2>
+            <p class="lead-soft lead-magnet__lead">{content.seminar.body}</p>
+          </div>
+
+          <ul class="checklist lead-magnet__points">
+            {content.seminar.points.map((point) => <li>{point}</li>)}
+          </ul>
+        </div>
+
+        <div class="lead-magnet__how">
+          <h3 class="heading-card lead-magnet__how-title">{content.seminar.stepsHeading}</h3>
+          <ol class="seminarsteps">
+            {
+              content.seminar.steps.map((step, index) => (
+                <li class="seminarstep">
+                  <span class="seminarstep__num">{String(index + 1).padStart(2, '0')}</span>
+                  <h4 class="heading-card seminarstep__title">{step.title}</h4>
+                  <p class="seminarstep__body">{step.body}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="lead-magnet__foot">
+          <Button href="#partner-form" size="lg" arrow>{content.seminar.ctaLabel}</Button>
+          <p class="lead-magnet__note">{content.seminar.note}</p>
+        </div>
+      </div>
+    </section>
+
+    {
+      /* ── L'ostacolo Italia ──────────────────────────────────────────────
         Ogni cifra qui è una che «Perché l'Italia» già dichiara con la sua
         fonte. I conteggi di studenti internazionali e di corsi disponibili
-        chiesti dal brief sono rimasti fuori: erano già stati esclusi da
-        quella pagina perché non verificabili, e un dato che non regge su
-        una pagina B2B non è un'imprecisione, è la fine della trattativa. */
+        erano già stati esclusi da quella pagina perché non verificabili, e un
+        dato che non regge su una pagina B2B non è un'imprecisione: è la fine
+        della trattativa. Ogni paura porta accanto la risposta operativa —
+        una paura da sola sarebbe soltanto un ostacolo in più. */
     }
-    <section class="wrap band" aria-labelledby="market-heading">
-      <div class="panel-dark surface-dark">
-        <div class="head">
-          <Eyebrow tone="gold">{content.market.eyebrow}</Eyebrow>
-          <h2 class="heading-section" id="market-heading">{content.market.heading}</h2>
-          <p class="lead-soft">{content.market.body}</p>
-        </div>
-
-        <ul class="metrics">
-          {
-            content.market.metrics.map((metric) => (
-              <li class="metric">
-                <span class="metric__value">{metric.value}</span>
-                <span class="metric__label">{metric.label}</span>
-              </li>
-            ))
-          }
-        </ul>
-
-        <div class="market__foot">
-          <ul class="checklist market__points">
-            {content.market.points.map((point) => <li>{point}</li>)}
-          </ul>
-
-          <p class="market__links">
-            <a class="market__link" href={getPath('studyInItaly', locale)}>
-              {content.market.linkLabel}
-            </a>
-            <a
-              class="market__link"
-              href={content.market.officialSource}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t.process.officialSource}
-              <svg
-                viewBox="0 0 14 14"
-                width="12"
-                height="12"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M5 2h7v7M12 2 3 11" />
-              </svg>
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    {
-      /* ── Il modello ─────────────────────────────────────────────────────
-        Il cuore dell'accordo. ILL-04 disegna il confine, e subito sotto
-        stanno gli impegni che lo rendono firmabile — a partire dal solo che
-        conta davvero per chi legge: non andiamo a prenderci i vostri
-        studenti. Sono impegni che Kimere prende su di sé, non affermazioni
-        su terzi, quindi si possono pubblicare. */
-    }
-    <section class="wrap band" id="model" aria-labelledby="model-heading">
+    <section class="wrap band" id="obstacle" aria-labelledby="obstacle-heading">
       <div class="head">
-        <Eyebrow>{content.model.eyebrow}</Eyebrow>
-        <h2 class="heading-section" id="model-heading">{content.model.heading}</h2>
-        <p class="lead-soft">{content.model.body}</p>
+        <Eyebrow>{content.obstacle.eyebrow}</Eyebrow>
+        <h2 class="heading-section" id="obstacle-heading">{content.obstacle.heading}</h2>
+        <p class="lead-soft">{content.obstacle.body}</p>
       </div>
 
-      <HandoverDiagram
-        theirTitle={content.model.handover.theirLabel}
-        theirItems={content.model.handover.theirItems}
-        handover={content.model.handover.handoverLabel}
-        ourTitle={content.model.handover.ourLabel}
-        ourItems={content.model.handover.ourItems}
-      />
-
-      <div class="commitments">
-        <h3 class="heading-card commitments__title">{content.model.commitmentsHeading}</h3>
-        <ul class="checklist commitments__list">
-          {content.model.commitments.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-    </section>
-
-    {
-      /* ── I vantaggi ─────────────────────────────────────────────────────
-        Stesso schema delle strozzature di Servizi: ogni voce porta la sua
-        conseguenza, perché è la conseguenza a costruire il valore. Qui però
-        la conseguenza ricade sull'agenzia che legge, non sullo studente —
-        ed è quello che la rende un argomento di vendita B2B. */
-    }
-    <section class="wrap band" aria-labelledby="advantages-heading">
-      <div class="panel-soft">
-        <div class="head">
-          <Eyebrow>{content.advantages.eyebrow}</Eyebrow>
-          <h2 class="heading-section" id="advantages-heading">{content.advantages.heading}</h2>
-          <p class="lead-soft">{content.advantages.body}</p>
-        </div>
-
-        <ul class="advantages">
-          {
-            content.advantages.items.map((item) => (
-              <li class="card-soft advantage">
-                <span class="icon-badge">
-                  <StepIcon name={item.icon} size={26} />
-                </span>
-                <h3 class="heading-card advantage__title">{item.title}</h3>
-                <p class="advantage__body">{item.body}</p>
-                <p class="advantage__risk">
-                  <span class="advantage__risk-key">{content.advantages.riskLabel}</span>
-                  {item.risk}
-                </p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
-
-    {/* ── Atenei e operatori dell'housing ───────────────────────────────── */}
-    <section class="wrap band" aria-labelledby="other-heading">
-      <div class="head">
-        <Eyebrow>{content.otherPartners.eyebrow}</Eyebrow>
-        <h2 class="heading-section" id="other-heading">{content.otherPartners.heading}</h2>
-        <p class="lead-soft">{content.otherPartners.body}</p>
-      </div>
-
-      <ul class="others">
+      <ul class="metrics">
         {
-          content.otherPartners.items.map((item) => (
-            <li class="card-soft other">
+          content.obstacle.metrics.map((metric) => (
+            <li class="metric">
+              <span class="metric__value">{metric.value}</span>
+              <span class="metric__label">{metric.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul class="cards fears">
+        {
+          content.obstacle.fears.map((fear) => (
+            <li class="card-soft card">
               <span class="icon-badge">
-                <StepIcon name={item.icon} size={26} />
+                <StepIcon name={fear.icon} size={26} />
               </span>
-              <h3 class="heading-card other__title">{item.title}</h3>
-              <p class="other__body">{item.body}</p>
-              <p class="other__looking">
-                <span class="other__looking-key">{content.otherPartners.lookingLabel}</span>
-                {item.looking}
+              <h3 class="heading-card card__title">{fear.title}</h3>
+              <p class="card__body">{fear.body}</p>
+              <p class="answer">
+                <span class="answer__key">{content.obstacle.answerLabel}</span>
+                {fear.answer}
               </p>
             </li>
           ))
         }
       </ul>
+
+      <p class="links">
+        <a class="link" href={getPath('studyInItaly', locale)}>{content.obstacle.linkLabel}</a>
+        <a
+          class="link"
+          href={content.obstacle.officialSource}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t.process.officialSource}
+          <svg
+            viewBox="0 0 14 14"
+            width="12"
+            height="12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M5 2h7v7M12 2 3 11"></path>
+          </svg>
+        </a>
+      </p>
     </section>
 
-    {/* ── Come si comincia, e la due diligence ──────────────────────────── */}
-    <section class="wrap band" aria-labelledby="start-heading">
+    {
+      /* ── Le tariffe ─────────────────────────────────────────────────────
+        Scoperte per decisione del cliente. La nota sulla fatturazione e i
+        limiti stanno DENTRO questo blocco, non in fondo alla pagina: chi
+        legge un listino decide qui, e quello che una tariffa non compra deve
+        stare accanto alla tariffa. */
+    }
+    <section class="wrap band" id="pricing" aria-labelledby="pricing-heading">
       <div class="panel-soft">
         <div class="head">
-          <Eyebrow>{content.howToStart.eyebrow}</Eyebrow>
-          <h2 class="heading-section" id="start-heading">{content.howToStart.heading}</h2>
-          <p class="lead-soft">{content.howToStart.body}</p>
+          <Eyebrow>{content.pricing.eyebrow}</Eyebrow>
+          <h2 class="heading-section" id="pricing-heading">{content.pricing.heading}</h2>
+          <p class="lead-soft">{content.pricing.body}</p>
         </div>
 
-        {/* <ol> e non <ul>: l'ordine è l'informazione, e il numero sta nel
-            markup invece che in un contatore CSS così chi usa uno screen
-            reader lo sente come parte del passo. */}
-        {/* `startstep` e non `step`: quest'ultima è una classe globale che
-            azzera i <fieldset> del form più in basso nella stessa pagina, e
-            lo scope di Astro non le terrebbe separate. */}
-        <ol class="startsteps">
+        <ul class="plans">
           {
-            content.howToStart.steps.map((step, index) => (
-              <li class="startstep">
-                <div class="startstep__marker">
-                  <span class="startstep__num">{String(index + 1).padStart(2, '0')}</span>
-                  <h3 class="heading-card startstep__title">{step.title}</h3>
-                </div>
-                <p class="startstep__body">{step.body}</p>
+            content.pricing.plans.map((plan) => (
+              <li class="card-soft plan">
+                <p class="plan__name">{plan.name}</p>
+                <p class="plan__price">{plan.price}</p>
+                <p class="plan__unit">{plan.priceUnit}</p>
+                <p class="plan__body">{plan.body}</p>
+
+                <h3 class="plan__includes-title">{plan.includesHeading}</h3>
+                <ul class="checklist plan__includes">
+                  {plan.includes.map((item) => <li>{item}</li>)}
+                </ul>
+
+                <p class="plan__note">{plan.note}</p>
+                {
+                  /* Il rimando alla tariffa pubblica sta solo sotto il piano
+                    dell'ateneo: è ciò che rende verificabile lo sconto invece
+                    di lasciarlo come affermazione. */
+                }
+                {
+                  plan.audience === 'university' && (
+                    <a class="plan__compare" href={`${getPath('forStudents', locale)}#pricing`}>
+                      {content.pricing.compareLabel}
+                    </a>
+                  )
+                }
               </li>
             ))
           }
-        </ol>
+        </ul>
 
-        <div class="diligence">
-          <h3 class="diligence__title">{content.howToStart.dueDiligence.heading}</h3>
-          <ul class="checklist checklist--negative diligence__list">
-            {content.howToStart.dueDiligence.items.map((item) => <li>{item}</li>)}
+        <p class="billing">{content.pricing.billingNote}</p>
+
+        <div class="limits">
+          <h3 class="limits__title">{content.pricing.limitsHeading}</h3>
+          <ul class="checklist checklist--negative limits__list">
+            {content.pricing.limits.map((item) => <li>{item}</li>)}
           </ul>
         </div>
       </div>
     </section>
 
+    {/* ── Due diligence, prima del modulo ───────────────────────────────── */}
+    <section class="wrap band" aria-labelledby="diligence-heading">
+      <div class="diligence">
+        <h2 class="diligence__title" id="diligence-heading">{content.dueDiligence.heading}</h2>
+        <ul class="checklist checklist--negative diligence__list">
+          {content.dueDiligence.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
     {
-      /* ── Il form B2B ────────────────────────────────────────────────────
-        Un professionista non compila lo stesso modulo di uno studente:
-        questo chiede agenzia, paese, sito e volume annuo, cioè quanto basta
-        a qualificare l'interlocutore prima di fissare una riunione. */
+      /* ── Il modulo ──────────────────────────────────────────────────────
+        Un professionista non compila lo stesso modulo di uno studente: questo
+        chiede agenzia, paese, sito e volume annuo, cioè quanto basta a
+        qualificare l'interlocutore prima di fissare una riunione. Il campo
+        «cosa state cercando» ha il seminario gratuito come prima opzione:
+        è la stessa porta per le due conversazioni, e la sceglie chi scrive. */
     }
     <section class="wrap band" id="partner-form" aria-labelledby="partner-form-heading">
       <div class="formband surface-panel">
@@ -507,9 +617,11 @@ const FIELDS = [
   .band {
     padding-block: clamp(1rem, 2.5vw, 2rem);
   }
-  /* Le due ancore dell'hero: l'header è sticky e senza questo margine la
-     fascia finirebbe sotto la barra. */
-  #model,
+  /* Le ancore interne: l'header è fisso e senza questo margine la fascia
+     finirebbe sotto la barra. */
+  #segments,
+  #seminar,
+  #pricing,
   #partner-form {
     scroll-margin-top: 6rem;
   }
@@ -526,15 +638,37 @@ const FIELDS = [
     margin-top: 0.75rem;
   }
 
-  /* ── Il mercato (fascia scura) ────────────────────────────────────────── */
-  .panel-dark {
-    border-radius: var(--radius-2xl);
-    padding: clamp(1.75rem, 4vw, 3.25rem);
+  /* ── I due segmenti ───────────────────────────────────────────────────
+     Il secondo sta su campitura nebbia e il primo no: sono due conversazioni
+     diverse e devono leggersi come due blocchi, non come un elenco unico. */
+  .segment + .segment {
+    margin-top: clamp(2rem, 4vw, 3.25rem);
   }
-  /* Le cifre sono il motivo per cui un direttore d'agenzia continua a leggere:
-     stanno in fila, grandi, in oro — l'unico posto della pagina dove un numero
-     ha più peso della frase che lo accompagna. */
-  .metrics {
+  .segment.panel-soft {
+    padding: clamp(1.5rem, 3.2vw, 2.75rem);
+  }
+  .segment__head {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .segment__title {
+    max-width: 26ch;
+  }
+  .segment__body {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--surface-fg-muted);
+    max-width: 74ch;
+    margin: 0;
+  }
+  .segment__action {
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  /* ── Griglia di schede, condivisa da due sezioni ──────────────────────── */
+  .cards {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -543,77 +677,27 @@ const FIELDS = [
     padding: 0;
     list-style: none;
   }
-  .metric {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1 1 min(100%, 13rem);
-    min-width: min(100%, 13rem);
-    padding: clamp(1.25rem, 2.2vw, 1.6rem);
-    background-color: var(--color-panel);
-    border: 1px solid var(--color-panel-line);
-    border-radius: var(--radius-xl);
+  .card {
+    flex: 1 1 min(100%, 19rem);
+    min-width: min(100%, 19rem);
   }
-  .metric__value {
-    font-family: var(--font-titling);
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--color-gold-bright); /* 8.59 sul navy — AAA */
+  .card__title {
+    margin-top: 1.15rem;
   }
-  .metric__label {
+  .card__body {
+    flex: 1;
     font-size: var(--text-sm);
-    line-height: 1.5;
     color: var(--surface-fg-muted);
+    margin-top: 0.6rem;
   }
 
-  .market__foot {
-    display: grid;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
-    align-items: start;
-  }
-  @media (min-width: 64rem) {
-    .market__foot {
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-    }
-  }
-  .market__points {
-    max-width: 72ch;
-  }
-  .market__links {
-    display: grid;
-    justify-items: start;
-    gap: 0.9rem;
-    margin: 0;
-  }
-  /* Su una pagina che vive di numeri il rimando alla fonte non è una cortesia:
-     è ciò che la distingue dalle pagine di agenzia che i numeri se li inventano. */
-  .market__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-titling);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--surface-fg);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--surface-rule-strong);
-  }
-  .market__link:hover {
-    color: var(--surface-accent);
-    text-decoration-color: currentColor;
-  }
-
-  /* ── Il modello ───────────────────────────────────────────────────────── */
-  /* Gli impegni stanno attaccati al diagramma, non in fondo alla pagina: sono
-     la risposta all'obiezione che il diagramma stesso solleva. */
-  .commitments {
+  /* Gli impegni stanno attaccati al diagramma: sono la risposta all'obiezione
+     che il diagramma stesso solleva. Bianchi dentro la campitura nebbia. */
+  .commitments,
+  .start {
     margin-top: clamp(1.5rem, 3vw, 2.25rem);
     padding: clamp(1.35rem, 2.6vw, 1.9rem) clamp(1.35rem, 2.6vw, 2rem);
-    background-color: var(--color-mist);
+    background-color: var(--color-blank);
     border-radius: var(--radius-xl);
   }
   .commitments__list {
@@ -621,86 +705,13 @@ const FIELDS = [
     max-width: 88ch;
   }
 
-  /* ── I vantaggi ───────────────────────────────────────────────────────── */
-  .advantages,
-  .others {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 1.15rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  /* ── Come nasce una partnership ───────────────────────────────────────
+     Prefisso `startstep` e non `step`: `.step` è una classe globale che azzera
+     i <fieldset> del modulo, che sta nella stessa pagina e quindi porta lo
+     stesso attributo di scope — le due regole si sovrapporrebbero. */
+  .start__title {
+    margin-bottom: 0.5rem;
   }
-  .advantage {
-    flex: 1 1 min(100%, 19rem);
-    min-width: min(100%, 19rem);
-  }
-  .advantage__title {
-    margin-top: 1.15rem;
-  }
-  .advantage__body {
-    flex: 1;
-    font-size: var(--text-sm);
-    color: var(--surface-fg-muted);
-    margin-top: 0.6rem;
-  }
-  /* La conseguenza è la parte che vende: staccata da un filetto, con
-     l'etichetta nel rosso di sicurezza — che non è un colore di brand. */
-  .advantage__risk {
-    display: grid;
-    gap: 0.35rem;
-    margin-top: 1.15rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--surface-rule);
-    font-size: var(--text-sm);
-    color: var(--surface-fg-soft);
-  }
-  .advantage__risk-key {
-    font-family: var(--font-titling);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--surface-warning);
-  }
-
-  /* ── Gli altri interlocutori ──────────────────────────────────────────── */
-  .other {
-    flex: 1 1 min(100%, 24rem);
-    min-width: min(100%, 24rem);
-  }
-  .other__title {
-    margin-top: 1.15rem;
-  }
-  .other__body {
-    flex: 1;
-    font-size: var(--text-sm);
-    color: var(--surface-fg-muted);
-    margin-top: 0.6rem;
-  }
-  .other__looking {
-    display: grid;
-    gap: 0.35rem;
-    margin-top: 1.15rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--surface-rule);
-    font-size: var(--text-sm);
-    color: var(--surface-fg-soft);
-  }
-  .other__looking-key {
-    font-family: var(--font-titling);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--surface-accent);
-  }
-
-  /* ── Come si comincia ─────────────────────────────────────────────────── */
-  /* Prefisso `startstep` e non `step`: `.step` è una classe globale che azzera
-     i <fieldset> del form, che sta nella stessa pagina e quindi porta lo stesso
-     attributo di scope — le due regole si sovrapporrebbero. */
   .startsteps {
     display: grid;
     margin: 0;
@@ -710,7 +721,7 @@ const FIELDS = [
   .startstep {
     display: grid;
     gap: 0.6rem;
-    padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+    padding: clamp(1.25rem, 2.5vw, 1.6rem) 0;
     border-top: 1px solid var(--surface-rule);
   }
   .startstep:last-child {
@@ -744,28 +755,299 @@ const FIELDS = [
     margin: 0;
   }
 
-  /* La due diligence sta prima del form, non dopo: un'agenzia queste cose le
-     scopre comunque, e scoprirle da sé a trattativa avviata la ferma. */
-  .diligence {
-    margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  /* ── Il seminario: il blocco dominante ────────────────────────────────
+     Campo navy pieno e titolo in corpo da hero. È il lead magnet, e sulla
+     pagina deve pesare più di ogni altra cosa tranne il modulo. */
+  .lead-magnet {
+    border-radius: var(--radius-2xl);
+    padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.25rem);
+  }
+  .lead-magnet__top {
+    display: grid;
+    gap: clamp(1.75rem, 3.5vw, 3rem);
+    align-items: start;
+  }
+  @media (min-width: 64rem) {
+    .lead-magnet__top {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+    }
+  }
+  .lead-magnet__intro {
+    display: grid;
+    justify-items: start;
+    gap: 1.1rem;
+  }
+  .lead-magnet__title {
+    max-width: 20ch;
+  }
+  .lead-magnet__lead {
+    max-width: 62ch;
+  }
+  .lead-magnet__points {
+    max-width: 46ch;
+  }
+  @media (min-width: 64rem) {
+    .lead-magnet__points {
+      padding-top: 0.5rem;
+    }
+  }
+
+  .lead-magnet__how {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--surface-rule);
+  }
+  .lead-magnet__how-title {
+    margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  }
+  .seminarsteps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1.15rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .seminarstep {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 min(100%, 15rem);
+    min-width: min(100%, 15rem);
+    padding: clamp(1.25rem, 2.2vw, 1.6rem);
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-panel-line);
+    border-radius: var(--radius-xl);
+  }
+  .seminarstep__num {
+    font-family: var(--font-titling);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--surface-accent); /* oro chiaro sul navy — 8.59, AAA */
+  }
+  .seminarstep__title {
+    margin-top: 0.6rem;
+  }
+  .seminarstep__body {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin-top: 0.5rem;
+  }
+
+  .lead-magnet__foot {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .lead-magnet__note {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  /* ── L'ostacolo Italia ────────────────────────────────────────────────
+     Le cifre sono il motivo per cui un direttore continua a leggere: in fila,
+     grandi, ma navy e non oro — su fondo chiaro l'oro è 2.33 e non può
+     portare testo (check:contrast lo verifica). */
+  .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1.15rem;
+    margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+    padding: 0;
+    list-style: none;
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1 1 min(100%, 13rem);
+    min-width: min(100%, 13rem);
+    padding: clamp(1.25rem, 2.2vw, 1.6rem);
+    background-color: var(--color-mist);
+    border: 1px solid var(--color-mist-line);
+    border-radius: var(--radius-xl);
+  }
+  .metric__value {
+    font-family: var(--font-titling);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-ink);
+  }
+  .metric__label {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--surface-fg-muted);
+  }
+
+  /* La risposta operativa accanto alla paura: staccata da un filetto, con
+     l'etichetta nell'accento della superficie. */
+  .answer {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 1.15rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--surface-rule);
+    font-size: var(--text-sm);
+    color: var(--surface-fg-soft);
+  }
+  .answer__key {
+    font-family: var(--font-titling);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--surface-accent);
+  }
+
+  /* Su una pagina che vive di numeri il rimando alla fonte non è una cortesia:
+     è ciò che la distingue dalle pagine di agenzia che i numeri se li inventano. */
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  }
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-titling);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-mist-line);
+  }
+  .link:hover {
+    color: var(--color-teal-ink);
+    text-decoration-color: currentColor;
+  }
+
+  /* ── Le tariffe ───────────────────────────────────────────────────────── */
+  .plans {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 1.15rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .plan {
+    flex: 1 1 min(100%, 24rem);
+    min-width: min(100%, 24rem);
+  }
+  .plan__name {
+    font-family: var(--font-titling);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--surface-accent);
+    margin: 0;
+  }
+  /* L'oro su bianco è 2.33 e non può portare testo: la cifra è navy. */
+  .plan__price {
+    font-family: var(--font-titling);
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-ink);
+    margin: 0.5rem 0 0;
+  }
+  .plan__unit {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin: 0.35rem 0 0;
+  }
+  .plan__body {
+    font-size: var(--text-sm);
+    color: var(--surface-fg-muted);
+    margin: 1.15rem 0 0;
+  }
+  .plan__includes-title {
+    font-family: var(--font-titling);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-top: 1.5rem;
+  }
+  .plan__includes {
+    margin-top: 0.75rem;
+  }
+  /* La riga di scoping della tariffa: spinta in fondo alla scheda così le due
+     schede restano allineate anche con elenchi di lunghezza diversa. */
+  .plan__note {
+    margin: auto 0 0;
+    padding-top: 1.15rem;
+    font-size: var(--text-xs);
+    line-height: 1.6;
+    color: var(--surface-fg-muted);
+  }
+  .plan__compare {
+    margin-top: 0.85rem;
+    font-family: var(--font-titling);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-mist-line);
+  }
+  .plan__compare:hover {
+    color: var(--color-teal-ink);
+    text-decoration-color: currentColor;
+  }
+
+  .billing {
+    margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--surface-fg-soft);
+    max-width: 88ch;
+  }
+
+  .limits {
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
     padding: clamp(1.35rem, 2.6vw, 1.9rem) clamp(1.35rem, 2.6vw, 2rem);
     border-left: 3px solid var(--color-teal-ink);
     border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
     background-color: var(--color-blank);
   }
+  .limits__title,
   .diligence__title {
     font-family: var(--font-titling);
     font-size: var(--text-base);
     font-weight: 700;
     letter-spacing: -0.01em;
   }
+  .limits__list,
   .diligence__list {
     margin-top: 0.9rem;
     max-width: 88ch;
   }
 
-  /* ── Il form ──────────────────────────────────────────────────────────── */
-  /* Su navy come la CTA finale delle altre pagine: è la conversione di questa
+  /* ── Due diligence ────────────────────────────────────────────────────
+     Prima del modulo, non dopo: un'agenzia queste cose le scopre comunque, e
+     scoprirle da sé a trattativa avviata la ferma. */
+  .diligence {
+    padding: clamp(1.35rem, 2.6vw, 1.9rem) clamp(1.35rem, 2.6vw, 2rem);
+    border-left: 3px solid var(--color-teal-ink);
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    background-color: var(--color-mist);
+  }
+
+  /* ── Il modulo ──────────────────────────────────────────────────────────
+     Su navy come la CTA finale delle altre pagine: è la conversione di questa
      pagina, e deve pesare quanto pesa lì il bottone della call. */
   .formband {
     display: grid;

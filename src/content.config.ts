@@ -686,19 +686,49 @@ const aboutPage = defineCollection({
   }),
 });
 /**
- * Partnerships — l'unica pagina del sito che NON parla allo studente. Il lettore
- * è il direttore di un'agenzia di reclutamento estera o il referente di un ufficio
- * international: valuta volumi, rischio e margine, non un sogno di studio.
+ * Partner B2B — l'unica pagina del sito che NON parla allo studente. Il lettore
+ * è il direttore di un'agenzia di reclutamento estera o il referente di un
+ * ufficio international: valuta volumi, rischio e margine, non un sogno di
+ * studio. Qui Kimere smette di rassicurare e comincia a proporre un accordo.
  *
- * ⚠️ Due vincoli che questo schema non può imporre ma che valgono per il copy:
+ * La sequenza dei blocchi è quella del brief commerciale (2026-08-11):
+ *   hero         → la promessa commerciale, non emotiva
+ *   segments     → due interlocutori, due conversazioni separate
+ *   seminar      → il lead magnet, ed è il blocco dominante della pagina
+ *   obstacle     → perché un ateneo estero si ferma davanti all'Italia
+ *   pricing      → le due tariffe B2B, scoperte
+ *   dueDiligence → cosa scoprirebbero comunque verificando
+ *   form         → la prenotazione del seminario
  *
- * 1. NESSUN operatore terzo nominato. Citare per nome una rete di studentati o un
- *    ateneo suggerisce un rapporto che non esiste. `otherPartners` è un invito
- *    aperto a categorie di operatori, mai un elenco di partner.
- * 2. NESSUNA cifra non verificata. `market.metrics` riporta solo numeri che il
+ * ⚠️ QUATTRO vincoli che questo schema non può imporre ma che valgono per il copy.
+ *
+ * 1. NESSUN operatore terzo nominato, mai. Citare per nome una rete di studentati
+ *    o un ateneo suggerisce un rapporto che non esiste, e chi legge questa pagina
+ *    verifica per mestiere.
+ * 2. NESSUNA percentuale di conversione, e nessuna promessa di iscrizioni.
+ *    L'analisi dice che gli atenei privati sono attratti dalle «percentuali di
+ *    conversione»: è la loro motivazione, non un dato che Kimere possieda. Kimere
+ *    opera da giugno 2026 e non ha uno storico: pubblicare un tasso — o anche solo
+ *    «alte percentuali» — sarebbe un numero inventato su una pagina che si legge
+ *    con il contratto in mano. Si dice cosa si toglie di mezzo, non quanto rende.
+ * 3. NESSUNA cifra non verificata. `obstacle.metrics` riporta solo numeri che il
  *    sito già dichiara altrove con la loro fonte (vedi studyInItalyPage): conteggi
- *    di studenti internazionali e di corsi disponibili sono stati esclusi in quella
- *    pagina perché non verificabili, e non rientrano qui dalla porta di servizio.
+ *    di studenti internazionali e di corsi disponibili erano stati esclusi in
+ *    quella pagina perché non verificabili, e non rientrano qui di soppiatto.
+ * 4. NESSUNA affermazione sullo stato d'animo di atenei terzi. L'analisi dice che
+ *    «molte università estere (es. argentine) temono l'Italia»: sul sito il fatto
+ *    si racconta dal lato di Kimere — la domanda che ci arriva più spesso — non
+ *    come diagnosi di ciò che pensano istituzioni reali e nominabili.
+ *
+ * ⚠️ `pricing.billingNote` e `pricing.limits` sono OBBLIGATORIE, per le stesse
+ * ragioni di `forStudentsPage`: la valuta è il dollaro, l'importo definitivo va
+ * confermato per iscritto, e una tariffa per studente non è una garanzia di
+ * visto, ammissione o borsa — decisioni che spettano a consolati, atenei ed enti
+ * erogatori. Senza quei due campi il listino promette un esito.
+ *
+ * ⚠️ `dueDiligence` sta PRIMA del modulo e non in fondo alla pagina: un'agenzia
+ * scopre comunque che Kimere opera da giugno 2026 e non ha accreditamenti, e
+ * scoprirlo da sé dopo tre schermate di promesse ferma la trattativa.
  */
 const partnersPage = defineCollection({
   loader: glob({ base: './src/content/partnersPage', pattern: '*.json' }),
@@ -710,78 +740,132 @@ const partnersPage = defineCollection({
       ctaPrimary: z.string(),
       ctaSecondary: z.string(),
     }),
-    /** L'opportunità di mercato, in numeri che il sito già sostiene con una fonte. */
-    market: z.object({
+    /**
+     * I due interlocutori hanno bisogni disgiunti e vanno separati: l'ateneo è un
+     * canale di acquisizione e il suo approfondimento è il seminario qui sotto;
+     * l'agenzia è una trattativa commerciale, e ha bisogno del confine disegnato,
+     * degli impegni scritti e della sequenza con cui si comincia. L'asimmetria
+     * delle due metà è voluta, non una dimenticanza.
+     */
+    segments: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      universities: z.object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        body: z.string(),
+        points: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+        ctaLabel: z.string(),
+      }),
+      agencies: z.object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        body: z.string(),
+        /** Etichette per ILL-04: dove finisce il loro lavoro e comincia il nostro. */
+        handover: z.object({
+          theirLabel: z.string(),
+          theirItems: z.array(z.string()),
+          handoverLabel: z.string(),
+          ourLabel: z.string(),
+          ourItems: z.array(z.string()),
+        }),
+        /**
+         * La paura numero uno di chi valuta un partner sul territorio è che il
+         * partner gli porti via il cliente — simmetrica al rischio che l'analisi
+         * attribuisce alle agenzie. Sono impegni che Kimere prende su di sé,
+         * legittimi da pubblicare, non affermazioni su terzi.
+         */
+        commitmentsHeading: z.string(),
+        commitments: z.array(z.string()),
+        startHeading: z.string(),
+        steps: z.array(z.object({ title: z.string(), body: z.string() })),
+        ctaLabel: z.string(),
+      }),
+    }),
+    /**
+     * Il lead magnet, e il blocco che deve dominare la pagina: la prima sessione
+     * di seminario online è gratuita ed è modellata sul mercato dell'ateneo, non
+     * sul nostro. `points` deve restare identico a `forUniversities.seminarPoints`
+     * della home: è la stessa offerta descritta due volte, e due descrizioni che
+     * divergono si notano.
+     */
+    seminar: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      points: z.array(z.string()),
+      stepsHeading: z.string(),
+      steps: z.array(z.object({ title: z.string(), body: z.string() })),
+      ctaLabel: z.string(),
+      note: z.string(),
+    }),
+    /**
+     * L'ostacolo vero: non gli atenei italiani, ma il fatto che nessuno nella
+     * stanza sappia come funzionano borse di studio e ISEE. Ogni voce porta la
+     * risposta operativa accanto alla paura — la paura da sola è solo un ostacolo
+     * in più. Vedi il vincolo 4 in testa: si racconta dal lato di Kimere.
+     */
+    obstacle: z.object({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string(),
       metrics: z.array(z.object({ value: z.string(), label: z.string() })),
-      points: z.array(z.string()),
+      answerLabel: z.string(),
+      fears: z.array(
+        z.object({
+          icon: stepIconName,
+          title: z.string(),
+          body: z.string(),
+          answer: z.string(),
+        }),
+      ),
       linkLabel: z.string(),
       officialSource: z.url(),
     }),
-    /** Il modello B2B2C: etichette per ILL-04 più gli impegni che lo rendono firmabile. */
-    model: z.object({
+    /**
+     * Le due tariffe B2B, scoperte. Deroga esplicita del cliente alla regola
+     * «nessun prezzo sul sito», come in `forStudentsPage`: qui il prezzo serve
+     * all'agenzia per calcolare il proprio costo per pratica prima di preventivare
+     * al cliente finale, e all'ateneo per vedere quanto vale lo sconto riservato.
+     *
+     * ⚠️ La quota all-inclusive va dichiarata PER L'ITALIA. È il mercato in cui
+     * Kimere gestisce il percorso di persona, e l'accompagnamento fisico sul
+     * territorio non diventa replicabile altrove per decreto: una tariffa unica
+     * «per qualsiasi destinazione» sarebbe una promessa che si rompe alla prima
+     * pratica fuori dall'Italia.
+     */
+    pricing: z.object({
       eyebrow: z.string(),
       heading: z.string(),
       body: z.string(),
-      handover: z.object({
-        theirLabel: z.string(),
-        theirItems: z.array(z.string()),
-        handoverLabel: z.string(),
-        ourLabel: z.string(),
-        ourItems: z.array(z.string()),
-      }),
-      /**
-       * La paura numero uno di chi valuta un partner sul territorio è che il
-       * partner gli porti via il cliente. Sono impegni che Kimere prende su di
-       * sé — legittimi da pubblicare — non affermazioni su terzi.
-       */
-      commitmentsHeading: z.string(),
-      commitments: z.array(z.string()),
-    }),
-    advantages: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      body: z.string(),
-      /** Etichetta della riga «rischio rimosso», come `bottlenecks.riskLabel` in Servizi. */
-      riskLabel: z.string(),
-      items: z.array(
+      plans: z.array(
         z.object({
-          icon: stepIconName,
-          title: z.string(),
+          audience: z.enum(['agency', 'university']),
+          name: z.string(),
+          /** La cifra dell'analisi, testuale: nessun calcolo, nessuna conversione. */
+          price: z.string(),
+          priceUnit: z.string(),
           body: z.string(),
-          risk: z.string(),
+          includesHeading: z.string(),
+          includes: z.array(z.string()),
+          note: z.string(),
         }),
       ),
+      /** Rimando alla tariffa pubblica su «Per gli studenti»: rende reale lo sconto. */
+      compareLabel: z.string(),
+      /** OBBLIGATORIA: valuta e conferma scritta. Vedi il commento in testa. */
+      billingNote: z.string(),
+      /** OBBLIGATORIE: cosa la tariffa NON compra. Vedi il commento in testa. */
+      limitsHeading: z.string(),
+      limits: z.array(z.string()),
     }),
-    /** Atenei e operatori dell'housing: un invito aperto, mai un elenco di partner. */
-    otherPartners: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      body: z.string(),
-      lookingLabel: z.string(),
-      items: z.array(
-        z.object({
-          icon: stepIconName,
-          title: z.string(),
-          body: z.string(),
-          looking: z.string(),
-        }),
-      ),
-    }),
-    howToStart: z.object({
-      eyebrow: z.string(),
-      heading: z.string(),
-      body: z.string(),
-      steps: z.array(z.object({ title: z.string(), body: z.string() })),
-      /**
-       * Ciò che un'agenzia scoprirebbe comunque facendo due diligence. Dirlo per
-       * primi è l'unico modo in cui non diventa il motivo per cui la trattativa
-       * si ferma: su questa pagina la trasparenza è un argomento di vendita.
-       */
-      dueDiligence: z.object({ heading: z.string(), items: z.array(z.string()) }),
-    }),
+    /**
+     * Ciò che un'agenzia scoprirebbe comunque verificando. Dirlo per primi è
+     * l'unico modo in cui non diventa il motivo per cui la trattativa si ferma:
+     * su questa pagina la trasparenza è un argomento di vendita.
+     */
+    dueDiligence: z.object({ heading: z.string(), items: z.array(z.string()) }),
     form: z.object({
       eyebrow: z.string(),
       heading: z.string(),
