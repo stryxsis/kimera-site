@@ -99,9 +99,22 @@
   --text-2xl--line-height: 1.25;
   --text-3xl: clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem);
   --text-3xl--line-height: 1.12;
-  --text-4xl: clamp(2.1rem, 1.5rem + 2.4vw, 3.2rem);
+  /*
+   * Questi due gradini sono stati rimpiccioliti in basso dopo averli misurati
+   * su un telefono a 375px: il titolo della pagina Partner occupava sei righe
+   * e spingeva sotto la piega tutto il resto. Su uno schermo stretto un titolo
+   * che riempie mezza schermata non è più enfasi, è un ostacolo.
+   *
+   * Non bastava alzare il minimo della `clamp`: con la pendenza precedente il
+   * minimo entrava in gioco solo sotto i 376px, quindi a 375px il titolo
+   * misurava comunque 40px. Serviva spostare anche la pendenza. Il risultato,
+   * misurato: 40 → 35px a 375px, 53 → 50px a 768px, e sopra i ~1200px le due
+   * formule tornano identiche perché entrambe hanno raggiunto il tetto. Il
+   * disegno su desktop è quindi intatto, la riduzione si esaurisce salendo.
+   */
+  --text-4xl: clamp(1.85rem, 1.25rem + 2.6vw, 3.2rem);
   --text-4xl--line-height: 1.06;
-  --text-5xl: clamp(2.5rem, 1.7rem + 3.4vw, 4.1rem);
+  --text-5xl: clamp(2.15rem, 1.35rem + 3.7vw, 4.1rem);
   --text-5xl--line-height: 1.02;
 
   /* ── Ritmo verticale ────────────────────────────────────────────────── */
@@ -660,6 +673,19 @@
     border-radius: var(--radius-xs);
     cursor: pointer;
   }
+  /* Col dito la pastiglia di scelta misura 38px: sotto la soglia, e questi
+     sono controlli che si sbagliano volentieri perché stanno vicini fra loro.
+     La casella di consenso cresce per lo stesso motivo — lì il bersaglio vero
+     è l'etichetta, ma chi punta il quadratino deve poterlo prendere. */
+  @media (pointer: coarse) {
+    .choice-group__option {
+      min-height: 2.75rem;
+    }
+    .consent-field input {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
   .choice-group__option:has(input:checked) {
     border-color: var(--surface-accent);
     color: var(--surface-fg);
@@ -671,6 +697,36 @@
   .choice-group[data-invalid] .choice-group__option {
     border-color: var(--surface-warning);
   }
+
+  /* ── Rimandi alle fonti ufficiali, su schermo tattile ──────────────────
+     I link «Fonte ufficiale» e simili sono alti 18px. Superano WCAG 2.5.8
+     per la deroga sulla spaziatura — stanno isolati, nessun altro bersaglio
+     entro 24px — ma restano scomodi da prendere col pollice, e compaiono su
+     quasi ogni pagina del sito.
+
+     La regola sta QUI e non nei sei template che li disegnano perché è una
+     correzione trasversale: replicarla in ognuno vorrebbe dire sei posti da
+     tenere allineati. Gli stili scoped di Astro aggiungono un attributo alle
+     regole del componente, non alla classe: una regola globale che nomina la
+     stessa classe aggancia comunque l'elemento. `.links > .link` è scritto
+     con il contenitore davanti perché `.link` da solo è un nome troppo
+     generico per stare in un foglio globale. */
+  @media (pointer: coarse) {
+    .limit__link,
+    .source,
+    .source__link,
+    .plan__compare,
+    .market__link,
+    .links > .link {
+      min-height: 2.75rem;
+    }
+  }
+
+  /* ⚠️ I link DENTRO una frase restano com'erano, ed è corretto: WCAG 2.5.8
+     li esclude esplicitamente («il bersaglio è in una frase»), e allargarli
+     sfonderebbe l'interlinea del paragrafo che li contiene. Vale per i
+     rimandi nel corpo di privacy e cookie policy, che la sonda segnala e che
+     non vanno «sistemati». */
 
   /* ── Casella di consenso ───────────────────────────────────────────────
      Consenso privacy e marketing: mai pre-spuntate, sempre separate

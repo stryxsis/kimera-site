@@ -116,6 +116,16 @@ const year = new Date().getFullYear();
     color: var(--surface-fg-soft);
     text-decoration: none;
   }
+  /* Le voci del footer sono alte 18px: distanziate abbastanza da non farsi
+     sbagliare, ma il bersaglio vero è la riga di testo. `display: block` più
+     padding rende toccabile tutta la larghezza della colonna, che su un
+     telefono è il gesto che si fa davvero — si punta la voce, non la parola. */
+  @media (pointer: coarse) {
+    .site-footer__col a {
+      display: block;
+      padding-block: 0.7rem;
+    }
+  }
   .site-footer__col a:hover {
     color: var(--surface-accent);
     text-decoration: underline;

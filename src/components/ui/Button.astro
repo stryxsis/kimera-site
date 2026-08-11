@@ -99,6 +99,22 @@ const tagProps = href ? { href } : { type, disabled };
     padding: 1rem 1.9rem;
   }
 
+  /* Su un puntatore grossolano — il dito — le altezze disegnate per il mouse
+     non bastano: misurate su un telefono a 375px, `btn--md` risulta alta 36px
+     e `btn--sm` 34px, sotto i 44 raccomandati da Apple e Google. Si corregge
+     con `min-height` e non con più padding, così il testo dentro il bottone
+     resta dove il disegno lo vuole e cambia solo l'area toccabile.
+     `pointer: coarse` invece di una larghezza: la soglia giusta è il dito, non
+     lo schermo — un tablet grande ha lo stesso problema di un telefono. */
+  @media (pointer: coarse) {
+    /* Tutte le taglie alla stessa soglia, `sm` compresa: «piccolo» è una
+       nozione da mouse, e su un telefono il bottone piccolo è quasi sempre
+       una CTA di smistamento — sbagliarlo costa quanto sbagliare gli altri. */
+    .btn {
+      min-height: 2.75rem;
+    }
+  }
+
   /* ── Pastiglie del restyle ──────────────────────────────────────────── */
   .btn--pill,
   .btn--pill-ghost {

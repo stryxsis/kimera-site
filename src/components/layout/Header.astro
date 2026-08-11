@@ -97,6 +97,35 @@ const t = useTranslations(locale);
     margin-right: auto;
   }
 
+  /*
+   * Area toccabile estesa su logo e bottone del menu, SENZA alzare la barra.
+   *
+   * Misurati su un telefono a 375px erano 70x26 e 89x27: molto sotto i 44px
+   * raccomandati, ed è il bottone del menu a pagarla più cara, perché su
+   * mobile è l'unico modo di raggiungere la navigazione. Alzare gli elementi
+   * risolverebbe il tocco ma rifarebbe crescere la barra, che è esattamente
+   * ciò che era stato chiesto di ridurre.
+   *
+   * Lo pseudo-elemento vive fuori dal flusso: allarga la zona che intercetta
+   * il dito senza occupare un pixel di layout. Il bottone e il link sono già
+   * `position: relative` per via del contesto, che qui va dichiarato.
+   */
+  @media (pointer: coarse) {
+    .site-header__brand,
+    .site-header__toggle {
+      position: relative;
+    }
+    .site-header__brand::after,
+    .site-header__toggle::after {
+      content: '';
+      position: absolute;
+      inset-inline: -0.35rem;
+      top: 50%;
+      height: 2.75rem;
+      transform: translateY(-50%);
+    }
+  }
+
   .site-header__toggle {
     display: inline-flex;
     align-items: center;

@@ -1,6 +1,7 @@
 ---
 import HoneypotField from './HoneypotField.astro';
 import NetlifyFormDeclaration from './NetlifyFormDeclaration.astro';
+import Button from '../ui/Button.astro';
 
 /**
  * Involucro dei due form del sito (student-enquiry, partner-enquiry).
@@ -68,10 +69,21 @@ const { name, action, submitLabel, fields, labels, class: className } = Astro.pr
 
   <slot />
 
+  {
+    /* Passano da <Button> e non da `<button class="btn">` scritto a mano.
+       Le classi `.btn` vivono SOLO dentro Button.astro, e gli stili scoped di
+       Astro marcano gli elementi del proprio template: scritti qui, quei tre
+       bottoni portavano l'attributo di scope di QUESTO file e la regola non
+       li agganciava mai. Il risultato era che «Continua» e «Invia i miei
+       dati» erano testo nudo su fondo navy — senza sfondo, senza padding,
+       alti 26px — sull'unico modulo rimasto del sito. Nessun controllo poteva
+       accorgersene: le classi c'erano, semplicemente non corrispondevano a
+       nulla. */
+  }
   <div class="step-nav">
-    <button type="button" class="btn btn--secondary" data-step-prev hidden>{labels.back}</button>
-    <button type="button" class="btn btn--primary" data-step-next hidden>{labels.continue}</button>
-    <button type="submit" class="btn btn--primary" data-step-submit>{submitLabel}</button>
+    <Button type="button" variant="secondary" data-step-prev hidden>{labels.back}</Button>
+    <Button type="button" data-step-next hidden>{labels.continue}</Button>
+    <Button type="submit" data-step-submit>{submitLabel}</Button>
   </div>
 </form>
 

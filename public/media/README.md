@@ -6,19 +6,55 @@ quello definitivo e non cambia di una riga quando il file arriva.
 
 ## Che cosa c'è già
 
-| File              | Dove          | Note                                                        |
-| :---------------- | :------------ | :---------------------------------------------------------- |
-| `hero-earth.mp4`  | Home, hero    | 6,2 s · 1280×720 · 1,7 MB · già ottimizzato per lo streaming |
+| File                        | Dove       | Note                                                     |
+| :-------------------------- | :--------- | :------------------------------------------------------- |
+| `hero-earth.mp4`            | Home, hero | 6,2 s · 1280×720 · 557 KB · senza audio · faststart       |
+| `hero-earth-portrait.mp4`   | Home, hero | lo stesso video ritagliato 9:16 · 406×720 · 231 KB        |
+| `hero-earth-poster.webp`    | Home, hero | primo fotogramma · 31 KB · si dipinge subito              |
 
 Il video della home è **decorativo** (`aria-hidden`), va sempre **muto** e non è
 in loop: si ferma sull'ultimo fotogramma, che è la composizione voluta. Non
 serve un file di sottotitoli perché non veicola informazione — quella sta tutta
 nel testo accanto.
 
-⚠️ Se lo sostituisci, tieni la Terra **centrata orizzontalmente**: su mobile il
-ritaglio verticale di un 16:9 taglia i lati e un soggetto decentrato sparisce.
-La regia si adatta da sé a una durata diversa (legge `video.duration`), quindi
-non c'è nessun tempo scritto a mano da aggiornare.
+### Perché tre file e non uno
+
+L'originale era un unico 1280×720 da 1,71 MB con dentro una traccia audio mai
+riprodotta, caricato con `preload="auto"`: su rete mobile competeva per la banda
+con CSS e font, e spesso arrivava dopo che il testo era già entrato — quindi si
+pagava tutto quel peso senza vedere niente.
+
+- **Il ritaglio verticale non perde nulla.** La hero usa `object-fit: cover` su
+  un'area alta e stretta: su un telefono in portrait il browser scarta già da sé
+  tutta la larghezza fuori dalla fascia centrale. Codificare solo quella fascia
+  mostra esattamente la stessa immagine a un terzo dei byte. La variante la
+  sceglie lo script con `matchMedia`, non l'attributo `media` su `<source>`, che
+  non viene rivalutato ed è meno affidabile.
+- **Il poster copre l'attesa.** Sono 31 KB che si dipingono subito, ed è anche
+  l'unica cosa che vede chi non ha JavaScript.
+- **Su rete lenta o con il risparmio dati attivo il video non si scarica
+  affatto**: restano poster e testo, che sono già la composizione.
+
+Risultato misurato: telefono da 1,71 MB a **253 KB**, e a **31 KB** su
+connessione lenta. Desktop a 589 KB.
+
+⚠️ Se lo sostituisci servono **tutti e tre** i file. Si rigenerano con ffmpeg —
+`-an` toglie l'audio, `+faststart` porta l'indice in testa (senza, il browser
+deve scaricare fino in fondo prima di poter cominciare):
+
+```sh
+ffmpeg -i sorgente.mp4 -c:v libx264 -profile:v main -pix_fmt yuv420p \
+  -preset veryslow -crf 30 -movflags +faststart -an hero-earth.mp4
+ffmpeg -i sorgente.mp4 -vf "crop=406:720:(iw-406)/2:0" -c:v libx264 \
+  -profile:v main -pix_fmt yuv420p -preset veryslow -crf 30 \
+  -movflags +faststart -an hero-earth-portrait.mp4
+ffmpeg -i sorgente.mp4 -frames:v 1 -q:v 72 hero-earth-poster.webp
+```
+
+⚠️ Tieni la Terra **centrata orizzontalmente**: il ritaglio verticale prende la
+fascia centrale, e un soggetto decentrato sparisce. La regia si adatta da sé a
+una durata diversa (legge `video.duration`), quindi non c'è nessun tempo scritto
+a mano da aggiornare.
 
 ## Che cosa manca oggi
 

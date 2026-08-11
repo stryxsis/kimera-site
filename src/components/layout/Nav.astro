@@ -63,6 +63,14 @@ const items: MenuRouteKey[] = ['home', 'about', 'forStudents', 'partners', 'lang
   .nav__link:hover {
     color: var(--surface-accent);
   }
+  /* Nel pannello mobile le voci sono in colonna e si toccano col dito: qui
+     alzare la riga non ha nessun costo di layout, perché il pannello si apre
+     sopra la pagina invece di spingerla. */
+  @media (pointer: coarse) {
+    .nav__link {
+      padding: 0.8rem 0;
+    }
+  }
   /* La pagina corrente è marcata dal colore E da un filetto: il colore da solo
      non basta come unico veicolo d'informazione (WCAG 1.4.1). */
   .nav__link[aria-current='page'] {

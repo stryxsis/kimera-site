@@ -123,15 +123,32 @@ function isExternal(href: string) {
       {
         /* Decorativo: l'informazione è tutta nel testo accanto, quindi è
           `aria-hidden` e non ha bisogno di sottotitoli. Muto sempre — un
-          video con audio non parte da solo su nessun browser, e non dovrebbe. */
+          video con audio non parte da solo su nessun browser, e non dovrebbe.
+          La traccia audio è stata rimossa anche dal file: era da 2 kbps e non
+          è mai stata riprodotta.
+
+          NIENTE `src` NEL MARKUP, ed è la correzione più importante di questa
+          hero. Con `src` + `preload="auto"` il browser cominciava a scaricare
+          l'intero video insieme a CSS e font: su rete mobile la banda è una
+          sola, e il risultato era che ci metteva molto e spesso arrivava dopo
+          che il testo era già entrato (con lo scrim al 78% davanti, quindi
+          invisibile). Ora la sorgente la sceglie e la carica lo script, che
+          può decidere la variante giusta e rinunciare del tutto se la
+          connessione non regge.
+
+          `poster` invece resta nel markup: sono 32 KB, si dipinge subito, e
+          copre l'attesa con l'immagine vera invece che col gradiente. È anche
+          l'unica cosa che vede chi non ha JavaScript. */
       }
       <video
         class="stage__video"
         data-hero-video
-        src="/media/hero-earth.mp4"
+        data-src-wide="/media/hero-earth.mp4"
+        data-src-portrait="/media/hero-earth-portrait.mp4"
+        poster="/media/hero-earth-poster.webp"
         muted
         playsinline
-        preload="auto"
+        preload="none"
         aria-hidden="true"
         tabindex="-1"></video>
 
@@ -801,8 +818,15 @@ function isExternal(href: string) {
     const SLOWDOWN_WINDOW = 2.6;
     /** Quanto prima della fine comincia la rivelazione del testo. */
     const LEAD_IN = 2.4;
-    /** Se il video non ha ancora un fotogramma in movimento, il testo non aspetta. */
-    const START_DEADLINE = 1800;
+    /**
+     * Quanto si aspetta che il video abbia abbastanza buffer per partire.
+     * Scaduto questo, la regia si annulla: il testo entra e il download viene
+     * interrotto. Prima si aspettava lo stesso tempo ma il download proseguiva,
+     * e il video finiva per riprodursi dietro allo scrim opaco — cioè si
+     * pagavano i byte senza che si vedesse niente. Su rete mobile era la
+     * situazione normale, non il caso limite.
+     */
+    const BUFFER_DEADLINE = 2500;
     /** Tetto assoluto: oltre questo il testo entra comunque. */
     const HARD_DEADLINE = 7000;
 
@@ -848,49 +872,114 @@ function isExternal(href: string) {
       }
     };
 
+    /**
+     * Interrompe lo scaricamento del video e libera quello già preso. Senza
+     * questo, rinunciare alla regia non impedirebbe al file di continuare ad
+     * arrivare: su una connessione a consumo sarebbero megabyte spesi per una
+     * cosa che non si vedrà: lo scrim, a quel punto, è di nuovo opaco.
+     */
+    const abortVideo = () => {
+      if (!video) return;
+      video.removeAttribute('src');
+      video.load();
+    };
+
+    /**
+     * Quando NON vale la pena scaricare il video. Il risparmio dati esplicito
+     * dell'utente e le connessioni lente sono un no secco: la hero funziona
+     * senza, perché il poster e il gradiente sono già la composizione.
+     * `navigator.connection` non esiste su Safari, e va bene — in quel caso si
+     * prova, e se la banda non basta interviene comunque BUFFER_DEADLINE.
+     */
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } })
+      .connection;
+    const frugal =
+      window.matchMedia('(prefers-reduced-data: reduce)').matches ||
+      !!conn?.saveData ||
+      /(^|-)2g$/.test(conn?.effectiveType ?? '');
+
     // `armed` lo mette lo script inline nella sezione, e solo se il sistema non
     // ha chiesto di ridurre le animazioni. Se non c'è, il testo è già a schermo.
     const armed = stage.getAttribute('data-hero-state') === 'armed';
 
-    if (!video) {
+    if (!video || !armed || frugal) {
+      // Nessuna regia da fare. Il poster resta a schermo e il testo è visibile:
+      // non si scarica un video da mezzo megabyte per non riprodurlo.
       reveal();
-    } else if (!armed) {
-      if (video.readyState >= 1) showLastFrame();
-      else video.addEventListener('loadedmetadata', showLastFrame, { once: true });
     } else {
-      timers.push(window.setTimeout(reveal, HARD_DEADLINE));
-      timers.push(
-        window.setTimeout(() => {
-          if (video.paused || video.currentTime === 0) reveal();
-        }, START_DEADLINE),
-      );
+      /*
+       * La sorgente si sceglie qui, non nel markup. Su un telefono in verticale
+       * `object-fit: cover` mostra solo la fascia centrale del 16:9, quindi la
+       * variante già ritagliata 9:16 fa vedere esattamente la stessa immagine
+       * pesando un terzo. `matchMedia` è affidabile; l'attributo `media` su
+       * <source> lo è molto meno, e non viene rivalutato.
+       */
+      const portrait = window.matchMedia('(max-width: 48rem) and (orientation: portrait)').matches;
+      const src = portrait ? video.dataset.srcPortrait : video.dataset.srcWide;
+      if (!src) {
+        reveal();
+      } else {
+        timers.push(window.setTimeout(reveal, HARD_DEADLINE));
 
-      video.addEventListener('timeupdate', () => {
-        const end = video.duration;
-        if (!Number.isFinite(end) || end <= 0) return;
-        if (video.currentTime >= end - LEAD_IN) reveal();
-      });
-      video.addEventListener('ended', reveal);
-      video.addEventListener('error', reveal);
-
-      // Chi scorre ha già deciso di andare avanti, e chi arriva con il tabulatore
-      // sta per mettere il fuoco su un bottone: in entrambi i casi la regia salta.
-      window.addEventListener('scroll', reveal, { once: true, passive: true });
-      stage.addEventListener('pointerdown', reveal, { once: true });
-      stage.addEventListener('focusin', reveal, { once: true });
-
-      // `play()` restituisce una promise: se il browser rifiuta l'autoplay non
-      // resta un video fermo sul primo fotogramma con la hero vuota sopra.
-      video.play().then(
-        () => {
-          video.playbackRate = FAST_RATE;
-          rateLoop = window.requestAnimationFrame(() => rampPlaybackRate(video));
-        },
-        () => {
-          showLastFrame();
+        video.addEventListener('timeupdate', () => {
+          const end = video.duration;
+          if (!Number.isFinite(end) || end <= 0) return;
+          if (video.currentTime >= end - LEAD_IN) reveal();
+        });
+        video.addEventListener('ended', reveal);
+        video.addEventListener('error', () => {
+          abortVideo();
           reveal();
-        },
-      );
+        });
+
+        // Chi scorre ha già deciso di andare avanti, e chi arriva con il tabulatore
+        // sta per mettere il fuoco su un bottone: in entrambi i casi la regia salta.
+        const bail = () => {
+          if (!revealed) abortVideo();
+          reveal();
+        };
+        window.addEventListener('scroll', bail, { once: true, passive: true });
+        stage.addEventListener('pointerdown', bail, { once: true });
+        stage.addEventListener('focusin', bail, { once: true });
+
+        /*
+         * Si parte solo quando c'è abbastanza buffer. `canplay` è il primo
+         * momento in cui il browser dice di poter mostrare qualcosa in
+         * movimento; prima si chiamava `play()` immediatamente e il video
+         * partiva a singhiozzo o non partiva affatto.
+         */
+        let started = false;
+        const start = () => {
+          if (started || revealed) return;
+          started = true;
+          // `play()` restituisce una promise: se il browser rifiuta l'autoplay
+          // (iOS in risparmio energetico, per esempio) non resta un video fermo
+          // sul primo fotogramma con la hero vuota sopra.
+          video.play().then(
+            () => {
+              video.playbackRate = FAST_RATE;
+              rateLoop = window.requestAnimationFrame(() => rampPlaybackRate(video));
+            },
+            () => {
+              showLastFrame();
+              reveal();
+            },
+          );
+        };
+
+        video.addEventListener('canplay', start, { once: true });
+        timers.push(
+          window.setTimeout(() => {
+            if (!started) {
+              abortVideo();
+              reveal();
+            }
+          }, BUFFER_DEADLINE),
+        );
+
+        video.src = src;
+        video.load();
+      }
     }
   }
 </script>
