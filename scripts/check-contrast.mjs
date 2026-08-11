@@ -110,6 +110,21 @@ const pairs = [
   ['blank', 'bordo dei campi di modulo', c.controlLineBlank, c.blank, 3.0],
   ['blank', 'titolo del callout di avviso', c.warningBlank, c.blank, 4.5],
 
+  // ── Hero video della home ─────────────────────────────────────────────
+  // Il testo della hero sta sopra un video, quindi il fondo NON è un token: è
+  // qualunque pixel il filmato stia mostrando. Il caso peggiore possibile è un
+  // fotogramma bianco pieno, e sono quelle le coppie verificate qui — se
+  // passano queste, passa ogni fotogramma reale del video.
+  //
+  // Lo scrim ha un fondo uniforme al 78% più un gradiente che in alto arriva
+  // all'86%. Le due righe misurano i due estremi della fascia: se il 78% smette
+  // di passare, il valore in .stage__scrim va alzato, non il testo schiarito.
+  ['hero', 'titolo sul fotogramma peggiore (scrim 78%)', c.onDark, over(c.ground, 0.78, c.blank), 4.5],
+  ['hero', 'lead sul fotogramma peggiore (scrim 78%)', c.onDarkSoft, over(c.ground, 0.78, c.blank), 4.5],
+  ['hero', 'nota sul fotogramma peggiore (scrim 78%)', c.onDarkMuted, over(c.ground, 0.78, c.blank), 4.5],
+  ['hero', 'titolo in cima, dove il gradiente somma (86%)', c.onDark, over(c.ground, 0.86, c.blank), 4.5],
+  ['hero', 'pastiglia oro sul fotogramma peggiore', c.ground, c.goldBright, 4.5],
+
   // ── surface-mist (restyle home: fascia tenue) ─────────────────────────
   ['mist', 'testo corrente', c.ink, c.mist, 4.5],
   ['mist', 'lead', c.inkSoft, c.mist, 4.5],
@@ -118,6 +133,18 @@ const pairs = [
   ['mist', 'anello di focus', c.tealInk, c.mist, 3.0],
   // Le card bianche dentro una fascia mist: il loro testo sta su bianco.
   ['mist', 'testo di card bianca dentro la fascia', c.ink, c.blank, 4.5],
+  // Le due porte di «Corsi di lingua e traduzioni»: riquadri su `ground` incassati
+  // dentro una fascia `panel`, quindi il testo sta su un fondo più scuro di quello
+  // per cui i token della superficie sono stati calcolati. Va verificato a parte.
+  ['door', 'testo del modulo su riquadro incassato', c.onDark, c.ground, 4.5],
+  ['door', 'descrizione della porta', c.onDarkMuted, c.ground, 4.5],
+  ['door', 'bordo dei controlli sul riquadro incassato', '#6F7D8B', c.ground, 3.0],
+  // La scheda del prezzo (Per gli studenti): è l'unica cifra pubblicata sul sito
+  // e la nota sulla fatturazione le sta sotto in corpo minore — se una delle due
+  // non si legge, il prezzo diventa una promessa senza le sue condizioni.
+  ['price', 'la cifra, navy su bianco (oro qui sarebbe 2.33)', c.ink, c.blank, 4.5],
+  ['price', 'unità e nota di fatturazione', c.inkMuted, c.blank, 4.5],
+  ['price', 'nome del piano, accento teal', c.tealInk, c.blank, 4.5],
   // La nebbia profonda come superficie di testo, non solo come chip: il blocco
   // sulla lingua (Perché l'Italia) e i richiami del disclaimer.
   ['mist', 'titolo su nebbia profonda', c.ink, c.mistDeep, 4.5],

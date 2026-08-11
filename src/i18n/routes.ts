@@ -19,6 +19,14 @@ export const defaultLocale: Locale = 'en';
 export const BOOKING_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSe45j2D2R2OELX78j4BpGyphF28yqAkh-1DP4gbVgUoqjd9jA/viewform';
 
+/**
+ * ⚠️ `getPath()` NON verifica che la destinazione esista: costruisce un path
+ * dagli slug qui sotto e basta. Aggiungere una chiave senza creare il file
+ * corrispondente sotto `src/pages/{en,it}/` produce un link che funziona,
+ * punta dove deve e restituisce 404 — e il build resta verde. È già successo
+ * di proposito (nav riordinata prima che le due pagine esistessero); se
+ * ricapita, ogni chiave va accompagnata dalla sua pagina in ENTRAMBE le lingue.
+ */
 export type RouteKey =
   | 'home'
   | 'studyInItaly'
@@ -26,6 +34,8 @@ export type RouteKey =
   | 'about'
   | 'faq'
   | 'partners'
+  | 'forStudents'
+  | 'languageCourses'
   | 'book'
   | 'thankYou'
   | 'privacy'
@@ -43,6 +53,8 @@ export const routes: Record<RouteKey, Record<Locale, string>> = {
   about: { en: 'about', it: 'chi-siamo' },
   faq: { en: 'faq', it: 'domande-frequenti' },
   partners: { en: 'partners', it: 'partner' },
+  forStudents: { en: 'for-students', it: 'per-gli-studenti' },
+  languageCourses: { en: 'language-courses-and-translation', it: 'corsi-di-lingua-e-traduzioni' },
   book: { en: 'book', it: 'prenota' },
   thankYou: { en: 'thank-you', it: 'grazie' },
   privacy: { en: 'privacy', it: 'privacy' },

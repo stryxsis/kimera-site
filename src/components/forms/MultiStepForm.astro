@@ -189,7 +189,7 @@ const { name, action, submitLabel, fields, labels, class: className } = Astro.pr
       else statusEl.removeAttribute('data-tone');
     }
 
-    function showStep(next: number) {
+    function showStep(next: number, moveFocus = true) {
       const steps = visibleSteps();
       index = Math.max(0, Math.min(next, steps.length - 1));
       const isMulti = steps.length > 1;
@@ -213,10 +213,20 @@ const { name, action, submitLabel, fields, labels, class: className } = Astro.pr
       if (nextBtn) nextBtn.hidden = !isMulti || index === steps.length - 1;
       submitBtn.hidden = isMulti && index !== steps.length - 1;
 
-      const heading = steps[index]?.querySelector<HTMLElement>('legend');
-      if (heading) {
-        heading.setAttribute('tabindex', '-1');
-        heading.focus();
+      // `moveFocus` è false solo alla prima resa (subito sotto, al caricamento
+      // della pagina): `.focus()` porta il browser a scrollare l'elemento in
+      // vista, e su una pagina con il modulo più in basso questo scaraventava
+      // il lettore dritto al modulo appena la pagina finiva di caricare — anche
+      // senza che avesse cliccato "continua". Quando l'utente avanza o torna
+      // indietro DENTRO al modulo, invece, spostare il focus sul titolo del
+      // nuovo passo è il comportamento corretto (annuncia il cambio a chi usa
+      // uno screen reader), quindi resta il default.
+      if (moveFocus) {
+        const heading = steps[index]?.querySelector<HTMLElement>('legend');
+        if (heading) {
+          heading.setAttribute('tabindex', '-1');
+          heading.focus();
+        }
       }
     }
 
@@ -279,7 +289,7 @@ const { name, action, submitLabel, fields, labels, class: className } = Astro.pr
       }
     });
 
-    showStep(0);
+    showStep(0, false);
   }
 
   document.querySelectorAll<HTMLFormElement>('form[data-multistep]').forEach(initMultiStepForm);

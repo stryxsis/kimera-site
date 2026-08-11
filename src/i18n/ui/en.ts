@@ -20,6 +20,8 @@ export interface UiDictionary {
     about: string;
     faq: string;
     partners: string;
+    forStudents: string;
+    languageCourses: string;
   };
   cta: {
     bookCall: string;
@@ -149,30 +151,6 @@ export interface UiDictionary {
     };
     submitLabel: string;
   };
-  /** Form di partnership B2B — in coda a /partners/, content-map.md "Struttura del form B2B". */
-  partnerForm: {
-    intro: string;
-    contactName: string;
-    role: string;
-    agency: string;
-    country: string;
-    website: string;
-    websitePlaceholder: string;
-    workEmail: string;
-    volumeBracket: string;
-    volumeBracketOptions: {
-      under10: string;
-      from10to50: string;
-      from50to200: string;
-      over200: string;
-    };
-    destinationsServed: string;
-    destinationsServedPlaceholder: string;
-    interest: string;
-    interestOptions: { studentsToItaly: string; structuredPartnership: string; other: string };
-    notes: string;
-    notesPlaceholder: string;
-  };
   scaffold: {
     placeholder: string;
   };
@@ -188,7 +166,9 @@ export const ui: UiDictionary = {
     services: 'Services',
     about: 'About',
     faq: 'FAQ',
-    partners: 'For agencies & universities',
+    partners: 'B2B Partners',
+    forStudents: 'For Students',
+    languageCourses: 'Language Courses & Translation',
   },
   cta: {
     bookCall: 'Book your 15-minute call',
@@ -334,34 +314,6 @@ export const ui: UiDictionary = {
       },
     },
     submitLabel: 'Send my details',
-  },
-  partnerForm: {
-    intro:
-      'A first conversation about your volumes and destinations — no commitment, just a look at whether the model fits.',
-    contactName: 'Your name',
-    role: 'Your role',
-    agency: 'Agency name',
-    country: 'Country',
-    website: 'Company website',
-    websitePlaceholder: 'https://',
-    workEmail: 'Work email',
-    volumeBracket: 'Students sent abroad each year',
-    volumeBracketOptions: {
-      under10: 'Under 10',
-      from10to50: '10–50',
-      from50to200: '50–200',
-      over200: '200+',
-    },
-    destinationsServed: 'Destinations you currently serve',
-    destinationsServedPlaceholder: 'Optional — e.g. UK, Germany, Poland…',
-    interest: 'What are you looking for?',
-    interestOptions: {
-      studentsToItaly: 'Sending students to Italy',
-      structuredPartnership: 'A structured partnership',
-      other: 'Something else',
-    },
-    notes: 'Anything else worth knowing',
-    notesPlaceholder: 'Optional',
   },
   scaffold: {
     // FASE 2 — sostituito da contenuto reale (content collections) in FASE 3.

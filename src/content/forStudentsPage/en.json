@@ -1,0 +1,149 @@
+{
+  "hero": {
+    "eyebrow": "For students",
+    "headline": "Your academic future. Zero paperwork panic.",
+    "subhead": "You can absolutely be more afraid of forms, taxes and the language than of the entrance exam. It is completely normal, but almost nobody has the courage to admit it. Managing that pressure is our job. You choose where you want to study, anywhere in the world, and we take care of applications, scholarships, translations and visas. In Italy, we follow you even closer because we manage the entire route ourselves.",
+    "ctaPrimary": "Start from the questionnaire",
+    "ctaSecondary": "Discover what we handle for you",
+    "reassurance": "The questionnaire is free, takes a few minutes and commits you to nothing."
+  },
+  "identikit": {
+    "eyebrow": "Which one is you",
+    "heading": "Two starting points, two completely different paths",
+    "body": "On one hand, there are those who have already decided to leave and are drowning in bureaucracy. On the other, those who have not chosen anything yet and are sinking in available options. Two completely opposite roadblocks. Pick the profile that describes you best and ignore the rest.",
+    "paths": [
+      {
+        "audience": "international",
+        "icon": "permit",
+        "title": "I am coming from abroad",
+        "body": "You are leaving your country to study in Italy or elsewhere. Before sitting in the classroom, you have to overcome applications, consulates, hidden scholarship deadlines and a mountain of legal documents in a language you do not know.",
+        "points": [
+          "From selecting universities to final enrollment",
+          "A visa file prepared exactly how your consulate wants it",
+          "Management of scholarships, tuition calculation and related documentation",
+          "Translation and legalization of your qualifications handled internally",
+          "Support upon arrival with tax code, healthcare, bank account and housing search"
+        ],
+        "ctaLabel": "Discover what we can do for you"
+      },
+      {
+        "audience": "undecided",
+        "icon": "compass",
+        "title": "I still have to decide between Italy and abroad",
+        "body": "Course, city, country or the very idea of leaving. You are not stuck due to a lack of information, but because there is too much of it and none perfectly fits your case. This is a clarity problem we can solve together in a single session.",
+        "points": [
+          "A questionnaire to focus on your real ambitions before we speak",
+          "We analyze your concrete options for you, so you do not waste time",
+          "We compare the idea of staying with leaving in complete honesty",
+          "At the end of the session you will have a written plan, not a simple list of links"
+        ],
+        "ctaLabel": "Discover how the consultation works"
+      }
+    ]
+  },
+  "lifelines": {
+    "eyebrow": "The part that costs people a year",
+    "heading": "The five obstacles that can make you lose an academic year",
+    "body": "Ask anyone who has been through this. They will not talk about the difficulty of the entrance exam. They will tell you about incomprehensible forms, hidden deadlines and endless bureaucratic queues. Here is our list and how we solve every single point.",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Scholarships you might be entitled to without knowing",
+        "body": "In Italy, the right to study is often based on income and not just merit. Many people rule themselves out despite having the perfect requirements. The timelines do not match those of the university. We verify all your options and submit the application in time."
+      },
+      {
+        "icon": "contract",
+        "title": "The ISEE calculation starting from foreign documents",
+        "body": "Your eligibility depends on the ISEE, an economic indicator unknown to almost all foreign families and even harder to calculate starting from payslips of another country. We reconstruct it with you, document by document."
+      },
+      {
+        "icon": "building",
+        "title": "University tuition, much more than a single figure",
+        "body": "The actual amount of your tuition depends on your income bracket, not a fixed price on the university website. A well-made declaration is the difference between paying the maximum or just a fraction of the cost. Everything relies on documents submitted months before your first lecture."
+      },
+      {
+        "icon": "health",
+        "title": "Health coverage, in the right order",
+        "body": "You cannot enroll in the National Health Service without a tax code, and without health coverage in Italy you will not go far. It is nothing complex, but the rules are strict and a single mistake forces you to start over."
+      },
+      {
+        "icon": "permit",
+        "title": "A bank account that actually opens",
+        "body": "You need a bank account to pay for almost everything. Opening it right after arriving means showing up at the bank with all the exact documents, avoiding surprises at the counter. We start the procedure for the bank account and tax code immediately, because they are the foundation for everything else."
+      }
+    ],
+    "note": "Taken individually, none of these practices is impossible. The problem is the sequential order, the queues and the rigidity of the system. A timing mistake can easily make you lose an entire academic year.",
+    "officialSource": "https://www.universitaly.it"
+  },
+  "documents": {
+    "eyebrow": "Documents and translation",
+    "heading": "Your diploma must be in Italian and legally valid",
+    "body": "This is the moment when precious months are lost without noticing. That is why we manage everything internally. Our language teachers personally handle the translation of your documents. No external intermediaries. That is why we can start a translation the very same day you request it, eliminating wait times.",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Translations managed by our team",
+        "body": "We translate your certificates, diplomas and attestations. Already knowing your file, we know exactly what the competent office demands and the required format."
+      },
+      {
+        "icon": "contract",
+        "title": "Legalization followed down to the last detail",
+        "body": "We manage the Apostille or consular legalization based on the origin country of your qualification. We prepare and follow the procedure with you, without brushing you off with a useless list of bureaucratic instructions."
+      },
+      {
+        "icon": "calendar",
+        "title": "Organization based on real deadlines",
+        "body": "Document preparation takes time and admissions have inflexible dates managed by offices that do not communicate with each other. We calculate times starting backwards from the final deadline. It is the only strategy to finish on time."
+      }
+    ],
+    "limitHeading": "What we cannot guarantee you (and nobody else can either)",
+    "limitBody": "No agency can erase legal requirements. The comparability statement of a foreign qualification is the exclusive responsibility of CIMEA or the university. Beware of those promising easy shortcuts, they are only selling illusions. Our job is to compile a flawless file, translate the documents internally and follow it through to ensure bureaucracy does not stop you.",
+    "officialSource": "https://www.cimea.it"
+  },
+  "pricing": {
+    "eyebrow": "What it costs",
+    "heading": "A single strategic session based on concrete data",
+    "body": "Standard initial consultations waste time with basic questions. We collect the key information via questionnaire, before meeting, and then we get to work. When we finally speak we have already outlined your real options. This is the true value of the service and it is why we state our prices clearly.",
+    "planName": "Basic Strategic Consultation",
+    "price": "$200",
+    "priceUnit": "one session, research included",
+    "billingNote": "All prices are in US dollars. Before proceeding, we will confirm in writing the exact amount, the billing currency and the applied tax regime. Maximum transparency comes first.",
+    "stepsHeading": "What happens, in order",
+    "steps": [
+      {
+        "title": "You fill out the preliminary questionnaire",
+        "body": "We want to understand where you stand and what your real constraints are. Including the economic ones, the decisive factor that completely changes your prospects."
+      },
+      {
+        "title": "We study your case before meeting",
+        "body": "We analyze the options on your actual profile. Courses, accessible countries, effective costs after scholarships and bureaucratic deadlines that are still feasible."
+      },
+      {
+        "title": "The strategic session",
+        "body": "We discuss the options that emerged and structure a concrete path. If we believe the best choice is not to leave, we will tell you with complete honesty."
+      }
+    ],
+    "includedHeading": "What the price includes",
+    "included": [
+      "The preliminary questionnaire and our reading of your answers",
+      "Research into your specific options, done before the session",
+      "The actual consultation, in a language you are comfortable in",
+      "A written summary of what we discussed, which remains yours"
+    ],
+    "notIncludedHeading": "What it does not include, in the name of transparency",
+    "notIncluded": [
+      "It is not a complete relocation service. Applications, visa files, scholarships and translations are quoted separately only after understanding what you really need.",
+      "We do not guarantee admission, obtaining a scholarship or a visa. These decisions belong exclusively to the universities and competent consulates.",
+      "We do not offer legal or tax advice. If your case requires a specialized professional, we will recommend one with absolute transparency.",
+      "University tuition, taxes and public fees must be paid directly to the institutions in charge, never to us."
+    ],
+    "ctaLabel": "Start from the preliminary questionnaire"
+  },
+  "finalCta": {
+    "eyebrow": "Get started",
+    "heading": "Every great project starts with a first step",
+    "body": "Our questionnaire is the essential first step, whether you are arriving from another continent or simply changing cities. It is the only way to guarantee a service tailored to you, avoiding the usual copy-paste responses.",
+    "ctaLabel": "Start here: fill out the preliminary questionnaire",
+    "note": "A few minutes and no cost. The form requires no initial payment. We will carefully read your profile and reply by email."
+  }
+}

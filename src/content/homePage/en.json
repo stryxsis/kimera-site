@@ -1,154 +1,128 @@
 {
   "hero": {
-    "eyebrow": "For students coming to Italy",
-    "headline": "Getting into an Italian university is the easy part.",
-    "subhead": "Visa, residence permit, fiscal code, municipal registration, health cover, housing — that's the part almost no one warns you about. We handle it with you, step by step.",
-    "ctaPrimary": "Book your 15-minute call"
+    "eyebrow": "Studying abroad, handled",
+    "headline": "You pick the destination. We handle the bureaucracy.",
+    "subhead": "Kimere is the startup revolutionizing global student mobility. From choosing your university to getting a visa, all the way through funding, documents and housing. We build a custom roadmap to let you study anywhere you want, tearing down every obstacle.",
+    "ctaStudent": "I'm a student",
+    "ctaInstitution": "I'm a university or an agency"
   },
-  "problemScale": {
-    "eyebrow": "The problem",
-    "heading": "The part after admission is a maze",
-    "body": "Between your acceptance letter and your first day of class, you'll deal with a consulate, a university, a post office, an immigration office, a tax agency, and your local municipality — each with its own deadlines and its own paperwork.",
-    "stats": [
+  "routing": {
+    "eyebrow": "Start here",
+    "heading": "Four profiles. One clear path.",
+    "body": "Your needs are unique, whether you are a student with a clear goal or still deciding, a university seeking international talent or an agency looking to expand. Pick your profile and discover how we can accelerate your goals.",
+    "boxes": [
       {
-        "value": "8 working days",
-        "label": "to file your residence permit after landing"
+        "audience": "student-abroad",
+        "icon": "compass",
+        "title": "I want to study abroad",
+        "body": "Already have a destination in mind? Perfect. We take care of your application, build a bulletproof visa file for your consulate, handle the ISEE for your scholarships and find you a real home without nasty surprises.",
+        "ctaLabel": "See what we handle"
       },
       {
-        "value": "6+",
-        "label": "different offices involved before you're fully settled"
-      },
-      {
-        "value": "90+",
-        "label": "Italian universities, each with its own admission calendar"
-      }
-    ]
-  },
-  "whatWeDo": {
-    "eyebrow": "What we do",
-    "heading": "Three moments where things go wrong",
-    "body": "Our work covers the whole path, but it concentrates where students actually lose time, money, or their legal status.",
-    "pillars": [
-      {
-        "title": "Before you leave",
-        "body": "University applications, Universitaly, qualification recognition, and a visa file prepared to the standard your consulate expects."
-      },
-      {
-        "title": "After you land",
-        "body": "Residence permit, fiscal code, municipal registration, and health cover — inside the deadlines that actually matter."
-      },
-      {
-        "title": "Finding a place to live",
-        "body": "Contract review, lease registration, and protection from the scams that target students applying from abroad."
-      }
-    ]
-  },
-  "processPreview": {
-    "heading": "The full path, mapped out",
-    "body": "From your first application to your residence permit, here's exactly what happens and when — including the 8-day deadline almost no one mentions.",
-    "pivot": "You land in Italy",
-    "stopsBefore": [
-      {
-        "label": "Course and university choice"
-      },
-      {
-        "label": "Universitaly pre-registration"
-      },
-      {
-        "label": "Qualification recognition"
-      },
-      {
-        "label": "Consular file and type D visa",
-        "key": true
-      }
-    ],
-    "stopsAfter": [
-      {
-        "label": "Residence permit filed",
-        "key": true,
-        "note": "within 8 working days"
-      },
-      {
-        "label": "Questura appointment and fiscal code"
-      },
-      {
-        "label": "Residency registration and health cover"
-      },
-      {
-        "label": "A lease that actually holds up"
-      }
-    ]
-  },
-  "packagesPreview": {
-    "eyebrow": "Support levels",
-    "heading": "Three levels of support",
-    "body": "Choose how far you want us to go with you — from getting your application right, to being there when you land, to having a verified place to live."
-  },
-  "howItWorks": {
-    "eyebrow": "How it works",
-    "heading": "What happens after you press the button",
-    "body": "No commitment until you decide there is one. Three steps, and you can stop at any of them.",
-    "steps": [
-      {
+        "audience": "student-undecided",
         "icon": "document",
-        "title": "You fill in the form",
-        "body": "Five minutes. You tell us where you are in the process; we work out whether we can actually be useful to you — and say so if we can't."
+        "title": "I don't know where to start",
+        "body": "Overwhelmed by choices across courses, countries or budgets? We help you find clarity. Fill out the questionnaire, we will research your actual options and you will finish the session with a strategic plan instead of a thousand doubts.",
+        "ctaLabel": "Book an orientation session"
       },
+      {
+        "audience": "university",
+        "icon": "building",
+        "title": "I represent a university",
+        "body": "Attracting international students means navigating a bureaucracy that makes no sense to outsiders. We support you with targeted seminars to turn interest into actual enrollments.",
+        "ctaLabel": "Book the free seminar"
+      },
+      {
+        "audience": "agency",
+        "icon": "contract",
+        "title": "I run a recruitment agency",
+        "body": "You find the talent, we guarantee a safe landing. We become your operational arm on the ground, with roles and commissions put in writing before the first student even moves.",
+        "ctaLabel": "See the partnership model"
+      }
+    ]
+  },
+  "strengths": {
+    "eyebrow": "Why us",
+    "heading": "We speak your language. And we know your culture.",
+    "body": "Studying abroad is a massive challenge. Our real secret? A young, diverse and globally distributed team. When you trust Kimere, you speak with someone from your own country in the language you actually think in, instantly eliminating any cultural barrier.",
+    "points": [
       {
         "icon": "compass",
-        "title": "The 15-minute call",
-        "body": "Not a sales call. We map your situation, name the deadlines that bind you, and tell you which parts you can handle on your own."
+        "title": "A consultant who gets you instantly",
+        "body": "We pair you with a professional of your exact same nationality. That unspoken cultural understanding saves endless conversations, and it's the exact reason foreign universities trust us."
       },
       {
-        "icon": "house",
-        "title": "Your Italian journey begins",
-        "body": "If you decide to go ahead, we take the paperwork off your desk. You study; we hold the calendar and file everything on time."
+        "icon": "building",
+        "title": "A global network with zero borders",
+        "body": "No call centers or rigid offices. We are an agile team of specialists ready to support you across any time zone. Nobody gets bounced from one department to another."
+      },
+      {
+        "icon": "document",
+        "title": "Seven languages and in-house documents",
+        "body": "Our native teachers directly handle the translation of your documents as well. No slow middlemen, just translations that begin the exact day you ask for them."
       }
     ]
   },
-  "trustBuilding": {
-    "eyebrow": "Who you're dealing with",
-    "heading": "We're new. These institutions are not.",
-    "body": "Your path to Italy runs through public bodies with published rules and public deadlines. We don't replace them and we're not accredited by them — we prepare your file for each one and make sure nothing arrives late. Every name below links to its official site, so you can check what we tell you.",
-    "institutions": [
+  "bureaucracy": {
+    "eyebrow": "The part that actually stops people",
+    "heading": "Bureaucracy will no longer be your nightmare.",
+    "body": "It is rarely an admission test that stops a dream. What blocks you is a scholarship you didn't know existed, uncommunicated deadlines and an unrecognized diploma. This is exactly where we step in. Especially in Italy, our primary market, we solve the three biggest obstacles at their root.",
+    "items": [
       {
-        "name": "Universitaly",
-        "authority": "Portal of the Ministry of University and Research",
-        "role": "Mandatory pre-registration for non-EU students. We prepare the application and check the documents are the right ones.",
-        "url": "https://www.universitaly.it"
+        "icon": "document",
+        "title": "Scholarships and ISEE calculation",
+        "body": "The Italian university system relies on the ISEE, an economic indicator almost nobody abroad knows how to calculate. We reconstruct it for you and file your scholarship application right on time."
       },
       {
-        "name": "CIMEA",
-        "authority": "Italian centre for academic recognition",
-        "role": "The comparability statement for your foreign qualification. We assemble the file and follow the request.",
-        "url": "https://www.cimea.it"
+        "icon": "contract",
+        "title": "Translating and legalizing your diploma",
+        "body": "Your foreign qualification must be legally valid. Our in-house professionals translate your documents and guide you through the complex legalization procedure, saving you months of pointless waiting."
       },
       {
-        "name": "Il visto per l'Italia",
-        "authority": "Ministry of Foreign Affairs",
-        "role": "The type D study visa is issued by your consulate. We prepare the file to the standard it expects.",
-        "url": "https://vistoperitalia.esteri.it"
-      },
-      {
-        "name": "Polizia di Stato",
-        "authority": "Questura — residence permits",
-        "role": "The permit must be filed within 8 working days of landing. We prepare the kit and hold that deadline with you.",
-        "url": "https://questure.poliziadistato.it/stranieri/"
-      },
-      {
-        "name": "Agenzia delle Entrate",
-        "authority": "Italian revenue agency",
-        "role": "Your fiscal code — required for a lease, a bank account and health cover. We obtain it with you.",
-        "url": "https://www.agenziaentrate.gov.it"
+        "icon": "health",
+        "title": "Taxes, healthcare and bank accounts",
+        "body": "Income brackets, health coverage and fiscal codes are boring and strictly sequential procedures. We walk you through them step by step to ensure no minor technicality costs you an academic year."
       }
     ],
-    "affiliationNote": "To be explicit: Kimere is not affiliated with, accredited by, or acting on behalf of any of these bodies. We list them because they are the institutions you will have to deal with. We prepare the paperwork and keep the deadlines — every decision remains theirs, and no one can promise you its outcome.",
-    "ctaLabel": "How we work"
+    "limitHeading": "What we cannot do (and you better know it upfront)",
+    "limitBody": "The CIMEA comparability statement or the evaluation of a foreign qualification are the exclusive responsibility of the authorities. No private entity can replace them. We will not promise you non-existent shortcuts, but we will prepare a flawless file to get you through the process smoothly. Anyone promising miracles is selling you a rejected application.",
+    "officialSource": "https://www.cimea.it"
+  },
+  "forUniversities": {
+    "eyebrow": "For universities",
+    "heading": "Multiply your international student base",
+    "body": "How much talent are you losing because of a rulebook nobody understands? A South American student might be entitled to scholarships or benefits they ignore, forcing them to enroll elsewhere. We bridge that gap and unlock enrollments.",
+    "seminarHeading": "The first step is a Free Online Seminar",
+    "seminarBody": "We analyze the pain points of the market you want to attract students from and offer your team a tailored training session. We explain exactly what the regulations demand, providing clear answers and official sources.",
+    "seminarPoints": [
+      "A customized session focused entirely on your target foreign market",
+      "A practical deep dive into scholarships, fees and qualification recognition",
+      "Zero costs and no commercial strings attached for this first session",
+      "An operational summary that your office gets to keep forever"
+    ],
+    "ctaLabel": "Book the free seminar"
+  },
+  "languageCourses": {
+    "eyebrow": "Not only paperwork",
+    "heading": "Learn the language before you actually need it",
+    "body": "The same team handling your translations also teaches you the language, creating a perfectly integrated ecosystem. Our online courses are taught by native professionals and adapt to your schedule, not a traditional school's timetable.",
+    "languagesLabel": "Currently offered courses",
+    "languages": [
+      "English",
+      "French",
+      "Spanish",
+      "Portuguese",
+      "Arabic",
+      "Albanian",
+      "German"
+    ],
+    "ctaLabel": "Ask about language courses"
   },
   "finalCta": {
-    "eyebrow": "Get started",
-    "heading": "Talk to us before you apply",
-    "body": "15 minutes, no cost, no obligation. Tell us where you are in the process and we'll tell you exactly what comes next.",
-    "ctaLabel": "Book your 15-minute call"
+    "eyebrow": "Still here",
+    "heading": "Didn't find your perfect fit?",
+    "body": "Not a problem. Every journey is unique, which is why we highly recommend booking a tailored Strategic Consultation. It is an intensive session where we build a real action plan, simply because we do the research on your case before we even meet.",
+    "surveyNote": "You will start by filling out a preliminary questionnaire. This is a crucial step that allows us to study your profile in advance and avoid wasting a single minute of our call on basic questions.",
+    "ctaLabel": "Request a strategic consultation"
   }
 }

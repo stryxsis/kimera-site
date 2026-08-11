@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "eyebrow": "Languages and documents",
+    "headline": "Speak the language of your future, while we translate your bureaucracy.",
+    "subhead": "Learning a language and handling paperwork are not separate worlds. The professionals who teach our language courses are the exact same people who translate your academic documents. Language preparation and bureaucracy move forward together towards your chosen destination. That is why a translation with us can start the exact moment you request it.",
+    "ctaDocuments": "I need documents translated",
+    "ctaCourses": "I want to learn a language",
+    "reassurance": "Two short, separate questionnaires, completely free and with no obligation."
+  },
+  "academy": {
+    "eyebrow": "The academy",
+    "heading": "Seven languages beyond Italian, taught by our professionals",
+    "body": "Our teachers are not operators randomly assigned by an algorithm. They are independent professionals integrated into our team. They teach the language they use every day for work, the same one they will read your certificates in. Moreover, they adapt their schedules to your real student life, not the other way around.",
+    "languagesLabel": "Languages we teach and work in",
+    "languages": ["Italian", "English", "French", "Spanish", "Portuguese", "Arabic", "Albanian", "German"],
+    "points": [
+      {
+        "icon": "calendar",
+        "title": "Lessons built around your schedule",
+        "body": "Fully online. We fit lessons between your university classes, exams, and work shifts. You can start before you leave and continue after you arrive, always followed by the same teacher."
+      },
+      {
+        "icon": "compass",
+        "title": "Free and transparent level assessment",
+        "body": "A brief conversation to objectively evaluate your real level. No time wasted on things you already know, and no courses that are too advanced."
+      },
+      {
+        "icon": "document",
+        "title": "Teachers who handle your paperwork",
+        "body": "The same person teaching you Italian will manage your paperwork. This means learning truly useful vocabulary for dealing with official counters and bureaucracy, moving past textbook theory."
+      }
+    ],
+    "ctaLabel": "Book a level assessment"
+  },
+  "documents": {
+    "eyebrow": "Documents",
+    "heading": "Translation and legalisation managed internally",
+    "body": "A foreign qualification must reach the Italian university perfectly translated and legally valid. This phase is a black hole for deadlines because external suppliers do not know what the university is looking for and are in no hurry. We handle everything internally. We calculate timelines backwards from your admission date, eliminating delays.",
+    "steps": [
+      {
+        "title": "Initial document assessment",
+        "body": "Just tell us what documents you have, the issuing country, and your required deadline. We will immediately tell you the exact procedure to follow and estimated times."
+      },
+      {
+        "title": "Immediate in-house translations",
+        "body": "Our translators already know your file. We produce certificates, diplomas, and transcripts exactly in the format the receiving office expects."
+      },
+      {
+        "title": "Legalisation process management",
+        "body": "We manage the Apostille or consular legalisation based on the issuing country. We follow and monitor the entire process right alongside you."
+      },
+      {
+        "title": "Direct integration into your file",
+        "body": "The translation immediately becomes part of your complete application file. No separate errands to chase, avoiding the roadblocks faced by those who do it alone."
+      }
+    ],
+    "handledHeading": "What we guarantee",
+    "handled": [
+      "Internal translation of academic and civil-status documents.",
+      "Complete preparation and tracking of consular legalisation or Apostille procedures.",
+      "Backward planning based on your actual admission deadlines.",
+      "Free and transparent assessment of the exact procedure required by your country."
+    ],
+    "institutionsHeading": "Exclusive competencies of institutional bodies",
+    "institutions": [
+      "Issuance of the comparability statement by CIMEA or direct evaluation by the university.",
+      "Final decisions on visas and residence permits by consulates and Police Headquarters.",
+      "The definitive decision on your admission made by the university.",
+      "Payment of public fees owed exclusively to government and academic bodies."
+    ],
+    "limitHeading": "What managing everything internally actually means",
+    "limitBody": "Procedures for foreign qualifications take time and money. The comparability statement is the exclusive responsibility of CIMEA or the university. No agency can skip this step. If someone promises you otherwise, they are deceiving you. We eliminate delays by handling all translations internally and explaining legalisation procedures to you step by step. That is the real advantage of our team.",
+    "officialSource": "https://www.cimea.it",
+    "ctaLabel": "Request a quote for translation"
+  },
+  "comparison": {
+    "eyebrow": "Why here",
+    "heading": "The chaos of multiple suppliers versus the efficiency of one team",
+    "body": "The traditional route forces you to coordinate a language school, a sworn translator, and a bureaucratic agency. They all work separately, ignoring each other's needs. Ultimately, every miscommunication becomes your personal problem to solve in a language you do not yet master.",
+    "traditionalLabel": "The old fragmented method",
+    "traditional": [
+      "A language school completely unaware of your academic deadlines.",
+      "An online translator working without context, providing inadequate standard formats.",
+      "A paperwork agency that submits poorly translated documents, forcing you to start over.",
+      "You, stuck in the middle, forced to act as an intermediary between three disconnected parties."
+    ],
+    "kimereLabel": "The integrated Kimere method",
+    "kimere": [
+      "A single united team and one point of contact responsible for the entire process.",
+      "The teacher giving your lessons is the exact same person translating your certificates.",
+      "We prepare every translation knowing perfectly what the receiving office expects.",
+      "A single timeline managed backwards to always guarantee delivery."
+    ],
+    "note": "The integrated system drastically reduces document rejections caused by out-of-context translations. The final outcome always depends on the university commission, but we eliminate formal errors and technical delays."
+  },
+  "forms": {
+    "eyebrow": "Choose your path",
+    "heading": "What do you need today?",
+    "body": "On one hand, someone needing an urgent translation to avoid losing a scholarship. On the other, someone planning to study a new language. Two different goals and two separate forms. Choose the right one for you.",
+    "quote": {
+      "heading": "Quote for translation or legalisation",
+      "body": "Show us your documents and your final deadline. We will quickly provide a precise plan with estimated costs and timelines for your country.",
+      "ctaLabel": "Request the quote"
+    },
+    "course": {
+      "heading": "Language course and level assessment",
+      "body": "Tell us what language you want to study and your starting level. If you do not know it, you can take a level assessment to start off on the right foot.",
+      "ctaLabel": "Book the assessment"
+    }
+  }
+}
