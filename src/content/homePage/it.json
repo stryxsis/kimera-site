@@ -1,120 +1,128 @@
 {
   "hero": {
     "eyebrow": "Studiare all'estero, senza impazzire",
-    "headline": "Scegli il paese. A tutto quello che non è studiare pensiamo noi.",
-    "subhead": "Kimere è una società di consulenza giovane, costruita interamente sulla parte del trasferimento all'estero di cui nessuno ti avvisa — candidature, visti, borse di studio, documenti, una casa che esiste davvero. Lavoriamo verso qualsiasi destinazione tu scelga, e andiamo più a fondo in Italia, dove il percorso lo gestiamo noi, sul territorio.",
+    "headline": "Tu scegli la destinazione. Alla burocrazia pensiamo noi.",
+    "subhead": "Kimere è la startup che rivoluziona la mobilità studentesca globale. Dalla scelta dell'ateneo all'ottenimento del visto, passando per borse di studio, documenti e alloggio. Costruiamo un percorso su misura per farti studiare ovunque desideri, abbattendo ogni ostacolo.",
     "ctaStudent": "Sono uno studente",
     "ctaInstitution": "Sono un'università o un'agenzia"
   },
   "routing": {
     "eyebrow": "Parti da qui",
-    "heading": "Quattro problemi molto diversi. Prendi il tuo.",
-    "body": "Uno studente che sa dove andare, uno studente che non lo sa, un'università che apre un nuovo corridoio e un'agenzia che aggiunge una destinazione hanno quasi nulla in comune da chiederci. Quindi non facciamo finta del contrario — scegli la tua situazione e salta tutto il resto.",
+    "heading": "Quattro profili. Una sola bussola.",
+    "body": "Le tue esigenze sono uniche: che tu sia uno studente con le idee chiare o ancora indeciso, un'università in cerca di talenti internazionali o un'agenzia che vuole espandersi. Scegli il tuo profilo e scopri come possiamo accelerare i tuoi obiettivi.",
     "boxes": [
       {
         "audience": "student-abroad",
         "icon": "compass",
         "title": "Voglio studiare all'estero",
-        "body": "Hai più o meno scelto. Restano la candidatura, un fascicolo per il visto che regge davanti al tuo consolato, una borsa di studio per cui probabilmente non sai di essere idoneo e un contratto d'affitto che si rivela vero.",
+        "body": "Hai già una meta? Perfetto. Noi ci occupiamo della candidatura, di un fascicolo per il visto a prova di consolato, dell'ISEE per le borse di studio e di farti trovare una casa vera, senza brutte sorprese.",
         "ctaLabel": "Guarda cosa gestiamo"
       },
       {
         "audience": "student-undecided",
         "icon": "document",
-        "title": "Non so cosa scegliere",
-        "body": "Corso, paese, o se partire del tutto. Compili un questionario, noi studiamo le tue opzioni reali prima di parlarci, e chiudi la sessione con un piano invece di quaranta schede aperte.",
+        "title": "Non so da dove iniziare",
+        "body": "Hai troppe opzioni tra corso, paese o budget? Ti aiutiamo a fare chiarezza. Compila il questionario, noi studiamo le tue opzioni reali e chiudi la sessione con un piano strategico al posto di mille dubbi.",
         "ctaLabel": "Prenota una sessione di orientamento"
       },
       {
         "audience": "university",
         "icon": "building",
-        "title": "Lavoro per un'università",
-        "body": "Volete studenti dall'estero, ma le regole su borse di studio e riconoscimento dei titoli nel paese di destinazione sono una scatola nera — e lo è anche quanto i vostri candidati possono davvero permettersi. Il primo seminario online è gratuito e costruito sul vostro mercato.",
+        "title": "Rappresento un'università",
+        "body": "Attrarre studenti internazionali significa scontrarsi con burocrazie incomprensibili per chi viene da fuori. Vi affianchiamo con seminari mirati per convertire l'interesse in immatricolazioni reali.",
         "ctaLabel": "Prenota il seminario gratuito"
       },
       {
         "audience": "agency",
         "icon": "contract",
         "title": "Dirigo un'agenzia di reclutamento",
-        "body": "Voi reclutate; noi diventiamo la vostra operatività sul terreno. Il confine tra noi e la ripartizione della commissione si mettono per iscritto prima che il primo studente si muova, non si rinegoziano dopo.",
+        "body": "Voi trovate i talenti, noi garantiamo l'atterraggio. Diventiamo il vostro braccio operativo sul territorio, con ruoli e commissioni messe nero su bianco prima che il primo studente si muova.",
         "ctaLabel": "Vedi il modello di partnership"
       }
     ]
   },
   "strengths": {
     "eyebrow": "Perché noi",
-    "heading": "Parliamo la tua lingua. Non come slogan.",
-    "body": "Lasciare il proprio paese fa paura in un modo che nessun opuscolo ammette, e quello che aiuta di più è ovvio la prima volta che lo vedi funzionare: parlare con qualcuno che viene da dove vieni tu, nella lingua in cui pensi davvero. Questo team è costruito così — professionisti indipendenti distribuiti in più paesi, coordinati da una persona che risponde a te.",
+    "heading": "Parliamo la tua lingua. E conosciamo la tua cultura.",
+    "body": "Studiare all'estero è una sfida enorme. Il nostro vero segreto? Un team multiculturale, giovane e diffuso. Quando ti affidi a Kimere, parli con chi viene dal tuo stesso paese, nella lingua in cui pensi, eliminando in un istante ogni barriera culturale.",
     "points": [
       {
         "icon": "compass",
-        "title": "Qualcuno del tuo paese, dove lo copriamo",
-        "body": "Dove il nostro team copre il paese da cui vieni, è quella la persona che prende la tua call. Il non-detto culturale che non devi spiegare fa risparmiare conversazioni intere — ed è il motivo per cui le università estere accettano di incontrarci."
+        "title": "Un consulente che ti capisce al volo",
+        "body": "Ti affianchiamo un professionista della tua stessa nazionalità. Il non-detto culturale fa risparmiare conversazioni infinite ed è il motivo per cui le università estere si fidano di noi."
       },
       {
         "icon": "building",
-        "title": "Una rete, non una sede centrale",
-        "body": "Specialisti in più paesi invece di un palazzo con una coda telefonica. C'è quasi sempre qualcuno svegli nel tuo fuso orario, e nessuno viene rimbalzato da un ufficio all'altro perché non ci sono uffici."
+        "title": "Un network globale, zero confini",
+        "body": "Nessun call center o uffici rigidi: siamo un team di specialisti agili, pronti a supportarti fuso orario dopo fuso orario. Nessuno viene rimbalzato da un dipartimento all'altro."
       },
       {
         "icon": "document",
-        "title": "Sette lingue, e sono in casa",
-        "body": "Gli insegnanti che tengono i nostri corsi di lingua sono le stesse persone che si occupano della traduzione dei documenti. Non è una bizzarria dell'organigramma — è il motivo per cui una traduzione può partire il giorno in cui la chiedi invece di finire a un fornitore esterno."
+        "title": "Sette lingue e documenti in-house",
+        "body": "I nostri insegnanti madrelingua gestiscono direttamente anche la traduzione dei tuoi documenti. Niente intermediari lenti, solo traduzioni che partono il giorno stesso in cui le chiedi."
       }
     ]
   },
   "bureaucracy": {
     "eyebrow": "La parte che ferma davvero le persone",
-    "heading": "Quasi nessuno fallisce l'ammissione. Fallisce le scartoffie.",
-    "body": "È raro che sia l'ingresso a non funzionare. Non funzionano una domanda di borsa di studio di cui non hai mai sentito parlare, che scade a una data che nessuno ti ha detto, e un diploma che all'estero non è legalmente utilizzabile nella forma in cui lo hai. In Italia — il mercato dove andiamo più a fondo — sono tre battaglie precise.",
+    "heading": "La burocrazia non sarà più il tuo incubo.",
+    "body": "Raramente è il test d'ingresso a fermare un sogno. A bloccarti sono una borsa di studio di cui ignoravi l'esistenza, scadenze non comunicate e un diploma non riconosciuto. Noi interveniamo proprio qui: specialmente in Italia, il nostro mercato principale, risolviamo alla radice i tre ostacoli più grandi.",
     "items": [
       {
         "icon": "document",
-        "title": "Borse di studio e ISEE",
-        "body": "Il diritto allo studio in Italia è su base reddituale, e la tua idoneità passa dall'ISEE — un indicatore economico di cui quasi nessuna famiglia straniera ha sentito parlare, e che ancora meno sanno calcolare. Lo ricostruiamo noi e depositiamo la domanda entro la sua scadenza, che non è quella dell'ateneo e non la aspetta."
+        "title": "Borse di studio e calcolo ISEE",
+        "body": "Il sistema universitario italiano si basa sull'ISEE, un indicatore economico che quasi nessuno all'estero sa calcolare. Noi lo ricostruiamo per te e depositiamo la richiesta di borsa di studio nei tempi esatti."
       },
       {
         "icon": "contract",
         "title": "Tradurre e legalizzare il tuo diploma",
-        "body": "Il tuo titolo deve arrivare in italiano e legalmente valido, e quella sequenza è il punto dove i mesi svaniscono in silenzio. La traduzione la fanno i nostri traduttori interni e la pratica di legalizzazione la seguiamo insieme a te, invece di lasciarti in coda dietro l'esternalizzazione di qualcun altro."
+        "body": "Il tuo titolo estero deve essere legalmente valido. I nostri professionisti interni traducono i documenti e ti guidano nella complessa procedura di legalizzazione, evitandoti mesi di attese inutili."
       },
       {
         "icon": "health",
         "title": "Tasse, sanità, conto in banca",
-        "body": "Fasce di contribuzione che si muovono con il reddito dichiarato, una copertura sanitaria a cui non puoi iscriverti senza codice fiscale, e un conto che ti serve prima di poter pagare qualsiasi cosa. Noioso, rigidamente sequenziale, e il punto in cui di solito si perde un anno accademico."
+        "body": "Fasce di reddito, copertura sanitaria e codice fiscale sono procedure noiose e rigidamente sequenziali. Ti accompagniamo passo dopo passo per evitare che un cavillo ti faccia perdere l'anno accademico."
       }
     ],
-    "limitHeading": "Cosa non possiamo fare — meglio saperlo qui",
-    "limitBody": "L'attestato di comparabilità di un titolo estero lo rilascia CIMEA o lo valuta l'ateneo stesso, e nulla di ciò che facciamo lo sostituisce o lo rende facoltativo. Quello che facciamo è comporre il fascicolo, seguirlo fino in fondo e tenere la traduzione in casa, così quel passaggio non è quello che ti blocca. Chi ti dice che il requisito si può saltare ti sta vendendo una domanda respinta.",
+    "limitHeading": "Cosa non possiamo fare (ed è meglio saperlo subito)",
+    "limitBody": "L'attestato di comparabilità CIMEA o la valutazione del titolo estero sono di competenza esclusiva delle autorità. Nessun privato può sostituirsi a loro. Noi non ti promettiamo scorciatoie inesistenti, ma ti prepariamo un fascicolo perfetto per superare l'iter senza intoppi. Chi promette miracoli ti sta vendendo una domanda respinta.",
     "officialSource": "https://www.cimea.it"
   },
   "forUniversities": {
     "eyebrow": "Per le università",
-    "heading": "Portate la vostra università oltre i suoi confini",
-    "body": "Le università perdono candidati internazionali per colpa di un regolamento che nessuna delle due parti riesce a leggere. Uno studente a Buenos Aires potrebbe avere diritto a una retta pubblica italiana calibrata sul reddito familiare, più un assegno di mantenimento sopra — e se nessuno ai due capi lo sa, si iscrive altrove spendendo di più. Colmare quel divario è tutta la conversazione.",
-    "seminarHeading": "Si comincia con un seminario gratuito",
-    "seminarBody": "Ci colleghiamo con il vostro team e costruiamo la sessione sul vostro mercato, non sul nostro. Dove vogliono andare i vostri studenti, cosa finanzia davvero quel paese, cosa pretenderanno da loro le sue pratiche — con risposte sul vostro caso e le fonti pubblicate allegate.",
+    "heading": "Moltiplicate i vostri studenti internazionali",
+    "body": "Quanti talenti perdete a causa di un regolamento che nessuno comprende? Uno studente sudamericano potrebbe avere diritto a borse di studio o agevolazioni che ignora, ripiegando altrove. Noi colmiamo questo divario, sbloccando le immatricolazioni.",
+    "seminarHeading": "Il primo passo: un Seminario Online Gratuito",
+    "seminarBody": "Analizziamo i problemi del mercato da cui volete attrarre studenti e offriamo al vostro team una sessione formativa su misura. Vi spieghiamo esattamente cosa pretendono le normative, con risposte chiare e fonti ufficiali.",
     "seminarPoints": [
-      "Costruito sulla destinazione che vi interessa, che sia l'Italia o no",
-      "Borse di studio, tasse e riconoscimento dei titoli con risposte da fonti pubblicate",
-      "Nessun costo e nessun impegno sulla prima sessione",
-      "Una sintesi scritta che il vostro ufficio tiene, qualsiasi cosa decidiate dopo"
+      "Sessione personalizzata sul vostro mercato estero di riferimento",
+      "Focus pratico su borse di studio, tasse e riconoscimento dei titoli",
+      "Nessun costo e nessun vincolo commerciale per questa prima sessione",
+      "Una sintesi operativa che il vostro ufficio conserverà per sempre"
     ],
     "ctaLabel": "Prenota il seminario gratuito"
   },
   "languageCourses": {
     "eyebrow": "Non solo burocrazia",
     "heading": "Impara la lingua prima che ti serva",
-    "body": "Il team che si occupa dei tuoi documenti insegna anche le lingue, così le due cose non diventano mai due aziende diverse che devi presentare l'una all'altra. I corsi li tengono insegnanti freelance madrelingua o fluenti in quello che insegnano, online, sull'orario di uno studente e non su quello di un ufficio.",
+    "body": "Il team che gestisce le tue traduzioni ti insegna anche le lingue, in un ecosistema perfettamente integrato. I nostri corsi online sono tenuti da professionisti madrelingua e si adattano ai tuoi orari, non a quelli di una scuola tradizionale.",
     "languagesLabel": "Corsi attualmente offerti",
-    "languages": ["Italiano", "Inglese", "Francese", "Spagnolo", "Portoghese", "Arabo", "Albanese", "Tedesco"],
+    "languages": [
+      "Inglese",
+      "Francese",
+      "Spagnolo",
+      "Portoghese",
+      "Arabo",
+      "Albanese",
+      "Tedesco"
+    ],
     "ctaLabel": "Chiedi informazioni sui corsi"
   },
   "finalCta": {
     "eyebrow": "Sei ancora qui",
-    "heading": "Nessuna delle quattro caselle era la tua?",
-    "body": "Allora parti da una consulenza strategica. È una sessione sola, e finisce con un piano invece che con un opuscolo — perché la ricerca la facciamo prima di incontrarci, non mentre tu guardi.",
-    "surveyNote": "Comincia con un questionario, ed è il punto: è quello che ci permette di studiare il tuo caso reale in anticipo invece di spendere la tua sessione a farti domande di base.",
+    "heading": "Non hai trovato la tua casella?",
+    "body": "Nessun problema. Ogni percorso è unico, per questo ti invitiamo a prenotare una Consulenza Strategica su misura. È una sessione intensiva in cui costruiamo un piano d'azione reale, perché la ricerca sul tuo caso la facciamo prima di incontrarci.",
+    "surveyNote": "Comincerai compilando un questionario preliminare. È uno step fondamentale per studiare il tuo profilo in anticipo e non sprecare nemmeno un minuto della nostra call in domande di base.",
     "ctaLabel": "Richiedi una consulenza strategica"
   }
 }

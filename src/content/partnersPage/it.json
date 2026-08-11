@@ -1,51 +1,51 @@
 {
   "hero": {
     "eyebrow": "Per università e agenzie",
-    "headline": "Il ponte logistico per i vostri studenti. Espandete le vostre iscrizioni internazionali.",
-    "subhead": "Kimere è un hub di facilitazione e consulenza — il ponte operativo tra le università, il territorio del paese di destinazione e le agenzie che reclutano gli studenti. Voi tenete il marketing, il reclutamento e la relazione con la famiglia. Noi prendiamo la parte che rende costoso il corridoio: il fascicolo, il consolato, le borse di studio, l'arrivo.",
+    "headline": "Il ponte logistico per i vostri studenti. Espandete le iscrizioni internazionali senza stress.",
+    "subhead": "Kimere è un hub di consulenza avanzata che funge da ponte operativo tra le università, il paese di destinazione e le agenzie di reclutamento. Voi gestite il marketing e la relazione con la famiglia. Noi ci prendiamo carico della parte più complessa e costosa. Gestiamo fascicoli, consolati, borse di studio e l'intero arrivo dello studente.",
     "ctaPrimary": "Prenota il seminario gratuito",
     "ctaSecondary": "Guarda il modello e le tariffe"
   },
   "segments": {
     "eyebrow": "Due conversazioni",
-    "heading": "Un'università e un'agenzia non ci stanno facendo la stessa domanda.",
-    "body": "Una vuole iscrizioni da mercati che non riesce a servire dopo la lettera di ammissione. L'altra vuole un partner sul campo senza doverlo diventare. La risposta è davvero diversa, quindi abbiamo smesso di scrivere una pagina sola per entrambe.",
+    "heading": "Università e agenzie hanno esigenze diverse, noi rispondiamo a entrambe.",
+    "body": "Un ateneo cerca iscrizioni da mercati che fatica a gestire dopo la lettera di ammissione. Un'agenzia cerca un partner affidabile sul campo senza doversi strutturare all'estero. Due necessità diverse meritano due percorsi dedicati.",
     "universities": {
       "eyebrow": "Per le università",
-      "heading": "Il vostro ufficio international si ferma alla lettera di ammissione. È lì che i candidati si perdono.",
-      "body": "Quasi niente di ciò che vi fa perdere un candidato internazionale succede durante l'ammissione. Succede dopo, nel vuoto amministrativo tra l'ammissione e la prima lezione — e il vostro ufficio non ha mai avuto le persone per coprirlo, in ogni fuso orario e in ogni lingua. Quel vuoto è esattamente tutto ciò che facciamo.",
+      "heading": "Il vostro ufficio si ferma alla lettera di ammissione. È proprio lì che perdete i candidati migliori.",
+      "body": "Quasi nulla di ciò che vi fa perdere un candidato estero accade durante l'ammissione. I problemi nascono nel vuoto burocratico tra l'ammissione e la prima lezione in aula. Nessun ufficio interno ha il personale per gestire ogni fuso orario e lingua. Noi colmiamo esattamente quel vuoto operativo.",
       "points": [
         {
           "icon": "building",
           "title": "Il lavoro individuale che il vostro ufficio non può assorbire",
-          "body": "Depositi del permesso di soggiorno, codici fiscali, residenza anagrafica, copertura sanitaria, controversie sull'alloggio — uno studente alla volta, tolti dalla scrivania del vostro team, senza mai presentarci come l'ateneo."
+          "body": "Gestiamo permessi di soggiorno, codici fiscali, residenze e controversie abitative per ogni singolo studente. Alleggeriamo le scrivanie del vostro team lavorando dietro le quinte, senza mai sostituirci al nome dell'ateneo."
         },
         {
           "icon": "document",
           "title": "Domande sulle borse di studio con la fonte allegata",
-          "body": "Quanto pagherà davvero un candidato di un certo paese una volta contate le agevolazioni su base reddituale, con risposte da fonti pubblicate che il vostro ufficio può girare alla famiglia senza doverle verificare prima."
+          "body": "Calcoliamo con precisione le agevolazioni su base reddituale per ogni paese. Vi forniamo risposte certe basate su fonti ufficiali, pronte per essere inoltrate alle famiglie senza ulteriori verifiche."
         },
         {
           "icon": "compass",
           "title": "Un solo interlocutore, nella lingua del candidato",
-          "body": "Dove il nostro team copre il paese in cui reclutate, è quella la persona che prende la call — con il vostro ufficio e con la famiglia. È la stessa conversazione, meno l'interprete e il fraintendimento."
+          "body": "Se copriamo il paese in cui reclutate, vi assegniamo un nostro esperto locale. Gestirà direttamente le comunicazioni con l'ufficio e la famiglia, azzerando fraintendimenti e bisogno di interpreti."
         }
       ],
       "ctaLabel": "Si comincia dal seminario gratuito"
     },
     "agencies": {
       "eyebrow": "Per le agenzie",
-      "heading": "La relazione resta vostra. Il terreno è nostro.",
-      "body": "Lavoriamo come vostro partner di destinazione in Italia, non come agenzia concorrente. Voi gestite marketing, reclutamento e la relazione con la famiglia nel vostro mercato — la parte in cui siete bravi e quella che vi è costata denaro per costruirla. Appena si apre la pre-iscrizione su Universitaly il fascicolo passa a noi e resta con un coordinatore dedicato fino a quando lo studente è iscritto, in regola con il permesso e sistemato. Voi ricevete aggiornamenti lungo tutto il percorso, e lo studente resta vostro.",
+      "heading": "Voi mantenete la relazione, noi gestiamo la burocrazia sul campo.",
+      "body": "Lavoriamo come vostro braccio operativo in Italia e non come agenzia concorrente. Voi gestite marketing, reclutamento e relazione con la famiglia, proteggendo l'investimento fatto nel vostro mercato. Al momento della pre-iscrizione su Universitaly il fascicolo passa a un nostro coordinatore dedicato. Ci occupiamo di tutto fino alla sistemazione finale dello studente. Riceverete aggiornamenti costanti, mantenendo sempre la completa titolarità del cliente.",
       "handover": {
-        "theirLabel": "Voi, nel vostro mercato",
+        "theirLabel": "Il vostro ruolo sul mercato locale",
         "theirItems": [
           "Marketing e reclutamento",
           "Primo contatto e pre-valutazione accademica",
           "La relazione con lo studente e con la famiglia"
         ],
-        "handoverLabel": "Il passaggio avviene alla pre-iscrizione su Universitaly",
-        "ourLabel": "Noi, sul territorio in Italia",
+        "handoverLabel": "Transizione alla pre-iscrizione su Universitaly",
+        "ourLabel": "Il nostro ruolo operativo in Italia",
         "ourItems": [
           "Orientamento su corso e ateneo, riconoscimento del titolo",
           "Fascicolo consolare preparato secondo lo standard di quel consolato",
@@ -54,96 +54,96 @@
           "Ricerca dell'alloggio, revisione del contratto prima della firma, registrazione"
         ]
       },
-      "commitmentsHeading": "Cosa mettiamo nell'accordo, perché ce lo chiederete",
+      "commitmentsHeading": "Le nostre garanzie contrattuali, nero su bianco",
       "commitments": [
-        "Non facciamo marketing verso i vostri studenti e non recluteremo nel vostro mercato. La nostra acquisizione avviene qui, oppure tramite voi.",
-        "Lo studente resta vostro cliente per tutta la durata dell'accordo. Riportiamo a voi, non scavalcandovi.",
-        "I termini commerciali — status di sub-agenzia, ripartizione della commissione, momenti di pagamento — si concordano per iscritto prima del primo studente segnalato, non si sistemano dopo.",
-        "Avete un coordinatore dedicato con un contatto diretto, non una casella condivisa e un numero di ticket."
+        "Nessuna concorrenza sleale. Non facciamo marketing diretto sui vostri studenti e non reclutiamo nel vostro mercato.",
+        "Lo studente rimane vostro cliente esclusivo per tutta la durata dell'accordo. Riportiamo i progressi direttamente a voi.",
+        "Ogni termine commerciale viene concordato per iscritto prima di iniziare. Definiamo chiaramente le fee, lo status e i pagamenti, senza sorprese in corsa.",
+        "Vi assegniamo un coordinatore dedicato con contatto diretto. Niente caselle di posta condivise o impersonali sistemi a ticket."
       ],
-      "startHeading": "Come nasce davvero una partnership",
+      "startHeading": "Come costruiamo una partnership solida",
       "steps": [
         {
-          "title": "Una prima conversazione",
-          "body": "I vostri volumi attuali, le destinazioni che già servite e se l'Italia è adatta agli studenti che reclutate davvero. Mezz'ora, e se non lo è ve lo diciamo."
+          "title": "La prima conversazione",
+          "body": "Analizziamo i vostri volumi, le destinazioni attive e l'effettiva attrattiva dell'Italia per i vostri studenti. In mezz'ora vi diciamo in totale trasparenza se ha senso collaborare."
         },
         {
-          "title": "Il confine, per iscritto",
-          "body": "Esattamente dove finisce il vostro lavoro e comincia il nostro, cosa riportiamo e con che frequenza, e le condizioni commerciali nero su bianco. Niente della ripartizione viene lasciato da definire dopo."
+          "title": "Regole chiare e scritte",
+          "body": "Definiamo esattamente dove finisce il vostro lavoro e dove inizia il nostro. Mettiamo nero su bianco le condizioni commerciali e la frequenza dei report."
         },
         {
-          "title": "Un primo gruppo ridotto",
-          "body": "Pochi studenti, seguiti dall'inizio alla fine, così entrambi i team vedono il processo funzionare su fascicoli veri con scadenze vere prima che qualcuno si impegni sui volumi."
+          "title": "Un progetto pilota ridotto",
+          "body": "Testiamo il processo seguendo un piccolo gruppo di studenti dall'inizio alla fine. Entrambi i team valutano l'efficacia su fascicoli reali e scadenze concrete prima di scalare i volumi."
         },
         {
-          "title": "Un accordo formale",
-          "body": "Firmato una volta che il pilota ha confermato che il modello funziona — con condizioni basate su ciò che il primo gruppo ha effettivamente mostrato, non su ciò che le due parti avevano previsto."
+          "title": "L'accordo formale definitivo",
+          "body": "Fermiamo l'accordo solo quando il progetto pilota dimostra che il modello funziona. Le condizioni si basano sui risultati concreti ottenuti, non su semplici previsioni."
         }
       ],
       "ctaLabel": "Guarda la quota per studente"
     }
   },
   "seminar": {
-    "eyebrow": "Da qui si entra",
-    "heading": "Il primo seminario online è gratuito — ed è costruito sul vostro mercato, non sul nostro.",
-    "body": "Ci colleghiamo con il vostro team e modelliamo la sessione sul problema che avete davvero. Se i vostri studenti guardano all'Italia, portiamo il vostro ufficio dentro borse di studio, fasce di contribuzione e ISEE. Se guardano alla Francia, andiamo a studiare la Francia e torniamo con quella. In entrambi i casi avete una sessione che risponde alle vostre domande invece che alle nostre, e quello che ne esce resta a voi.",
+    "eyebrow": "Il primo passo",
+    "heading": "Il seminario online gratuito è costruito sulle esigenze del vostro mercato.",
+    "body": "Incontriamo il vostro team per affrontare le criticità reali del vostro mercato. Se puntate all'Italia, vi formiamo su borse di studio, fasce di reddito e ISEE. Se vi interessa la Francia, studiamo le normative francesi e vi portiamo le soluzioni. Il materiale prodotto durante la sessione resterà a vostra completa disposizione.",
     "points": [
-      "Costruito sulla destinazione che vi interessa, che sia l'Italia o no",
-      "Borse di studio, tasse e riconoscimento dei titoli con risposte da fonti pubblicate",
-      "Nessun costo e nessun impegno sulla prima sessione",
-      "Una sintesi scritta che il vostro ufficio tiene, qualsiasi cosa decidiate dopo"
+      "Completamente personalizzato sulla destinazione di vostro interesse.",
+      "Chiarimenti su borse di studio, tasse e titoli accademici basati su fonti istituzionali.",
+      "La prima sessione strategica è totalmente gratuita e senza impegno.",
+      "Una sintesi scritta finale che rimarrà a vostra disposizione per ogni uso futuro."
     ],
-    "stepsHeading": "Come si costruisce una sessione",
+    "stepsHeading": "Come strutturiamo la sessione",
     "steps": [
       {
-        "title": "Ci dite dove vogliono andare i vostri studenti",
-        "body": "La destinazione, il livello, e le domande a cui il vostro ufficio si trova a rispondere senza una fonte affidabile. È tutto il briefing che ci serve."
+        "title": "Analizziamo gli obiettivi dei vostri studenti",
+        "body": "Basta indicarci la destinazione, il livello di studi e le domande a cui faticate a trovare risposte affidabili. Noi partiamo da lì."
       },
       {
-        "title": "Studiamo quel mercato, non uno generico",
-        "body": "Se è un paese che gestiamo noi, ricevete quello che sappiamo di prima mano. Se non lo è, andiamo a documentarci sul serio — e vi diciamo quale delle due cose state ricevendo."
+        "title": "Ricerca su misura del mercato",
+        "body": "Se operiamo già nel paese richiesto, vi trasferiamo le nostre competenze dirette. Se è una meta nuova, conduciamo una ricerca approfondita e trasparente sulle fonti."
       },
       {
-        "title": "La sessione, con il vostro team",
-        "body": "Online, circa un'ora, con dentro le persone che poi dovranno usare le risposte. Domande durante, non alla fine."
+        "title": "Incontro operativo con il vostro team",
+        "body": "Una sessione online di un'ora pensata per il personale operativo. Favoriamo le domande in tempo reale per risolvere dubbi immediati."
       },
       {
-        "title": "La sintesi scritta",
-        "body": "Vostra da tenere e da far girare internamente, con le fonti allegate. Nessuna sequenza di follow-up che non avete chiesto."
+        "title": "Consegna della sintesi scritta",
+        "body": "Un documento completo di fonti ufficiali, pronto per essere utilizzato internamente dal vostro team. Zero pressioni commerciali successive."
       }
     ],
     "ctaLabel": "Prenota il seminario gratuito",
-    "note": "Una sessione, nessun costo, nessun impegno — e nessun obbligo di diventare partner dopo. Se l'unica cosa che prendete da noi è la sintesi, per noi è un esito onesto."
+    "note": "Una singola sessione totalmente gratuita e senza alcun obbligo di partnership. Siamo felici anche solo di avervi fornito informazioni preziose per il vostro lavoro."
   },
   "obstacle": {
     "eyebrow": "L'ostacolo",
-    "heading": "Perché un ateneo estero si ferma davanti all'Italia — e cosa colma il vuoto",
-    "body": "La domanda che ci arriva più spesso da un ufficio international non riguarda le università italiane. È una qualche versione di «non riusciamo a dire a una famiglia quanto costerà». Qui le agevolazioni sono su base reddituale e passano da un indicatore di cui quasi nessuno fuori dal paese ha sentito parlare, quindi il numero che decide tutta la scelta è proprio quello che nessuno nella stanza riesce a produrre. Un costo ignoto è peggio di un costo alto — e il corridoio non si apre mai.",
+    "heading": "Perché gli atenei esteri frenano sull'Italia e come risolviamo il problema",
+    "body": "La principale barriera per gli uffici internazionali è non saper quantificare esattamente i costi per le famiglie. In Italia le agevolazioni dipendono da indicatori reddituali complessi e quasi sconosciuti all'estero. L'incertezza economica spaventa più di una retta alta, bloccando di fatto le iscrizioni. Noi calcoliamo con precisione quel numero, sbloccando finalmente il corridoio accademico.",
     "metrics": [
       { "value": "90+", "label": "atenei riconosciuti dal Ministero, in ogni regione del paese" },
       { "value": "900–4.000 €", "label": "retta annua all'università pubblica, calibrata sul reddito familiare" },
       { "value": "3 + 2", "label": "struttura di Bologna, crediti ECTS — un titolo che viaggia" },
       { "value": "20 h", "label": "di lavoro retribuito a settimana durante gli studi, 1.040 ore l'anno" }
     ],
-    "answerLabel": "Cosa facciamo noi",
+    "answerLabel": "La nostra soluzione",
     "fears": [
       {
         "icon": "document",
         "title": "Nessuno riesce a dire alla famiglia quanto costerà davvero",
-        "body": "La retta pubblicata è una fascia, non un prezzo, e la fascia si muove con il reddito familiare dichiarato. Se citate il massimo, la famiglia rinuncia a un corso che avrebbe quasi potuto avere gratis.",
-        "answer": "Produciamo la cifra reale per un profilo di candidato preciso, con dietro la fonte pubblica, così il vostro ufficio può girarla alla famiglia senza doverla verificare prima."
+        "body": "La retta italiana è una fascia mobile basata sul reddito familiare, non un prezzo fisso. Citare l'importo massimo spaventa le famiglie, spingendole a rinunciare a corsi quasi gratuiti.",
+        "answer": "Forniamo la cifra esatta e reale per il profilo specifico del candidato. Lo facciamo supportati da fonti pubbliche, permettendo al vostro ufficio di rassicurare le famiglie con certezze assolute."
       },
       {
         "icon": "contract",
         "title": "L'ISEE è una scatola nera",
-        "body": "L'indicatore economico che decide agevolazioni e tasse va ricostruito partendo da buste paga e dichiarazioni emesse in un altro paese e in un'altra lingua. È il motivo più frequente per cui un candidato non presenta mai la domanda.",
-        "answer": "Lo ricostruiamo insieme alla famiglia, documento per documento, e depositiamo entro la sua scadenza — che non è quella dell'ateneo e non la aspetta."
+        "body": "Questo indicatore decide agevolazioni e tasse, ma va ricostruito su documenti emessi all'estero e in lingue diverse. Questa complessità porta moltissimi candidati ad abbandonare la procedura.",
+        "answer": "Affianchiamo la famiglia ricostruendo l'indicatore documento dopo documento. Inviamo la pratica rispettando le scadenze ministeriali, che spesso non coincidono affatto con quelle degli atenei."
       },
       {
         "icon": "building",
-        "title": "Il riconoscimento del titolo sembra un muro",
-        "body": "Un diploma estero deve arrivare in italiano e legalmente valido, e la sequenza è abbastanza lunga da far pensare a un ufficio che non ci si stia dentro in un ciclo di ammissione.",
-        "answer": "Componiamo il fascicolo, teniamo la traduzione in casa e partiamo a ritroso dalla data di chiusura delle ammissioni. L'attestato di comparabilità resta però rilasciato da CIMEA o valutato dall'ateneo: nulla di ciò che facciamo lo sostituisce, e chi vi dice il contrario vi sta vendendo una domanda respinta."
+        "title": "Il riconoscimento del titolo appare come un muro insormontabile",
+        "body": "Un diploma estero richiede una traduzione legale e un iter di validazione lungo. Questo iter scoraggia gli uffici internazionali per via dei tempi stretti di ammissione.",
+        "answer": "Gestiamo internamente tutto il fascicolo e le traduzioni legali, calcolando i tempi a ritroso dalla scadenza. Ricordiamo sempre che l'attestato di comparabilità rimane competenza esclusiva del CIMEA o dell'ateneo. Diffidate da chi offre false scorciatoie."
       }
     ],
     "linkLabel": "Il quadro completo per gli studenti, con le fonti",
@@ -151,15 +151,15 @@
   },
   "pricing": {
     "eyebrow": "Tariffe",
-    "heading": "Due prezzi, entrambi pubblicati. Il vostro margine lo costruite sopra il nostro.",
-    "body": "Un'agenzia deve conoscere il proprio costo per pratica prima di poter preventivare al cliente, e un ateneo vuole vedere quanto vale davvero la tariffa riservata. Nessuna delle due domande sopravvive a «contattaci per un preventivo», quindi ecco entrambe le cifre.",
+    "heading": "Prezzi pubblici e trasparenti per costruire il vostro margine",
+    "body": "Un'agenzia deve conoscere i costi esatti per elaborare un preventivo e un ateneo esige chiarezza sulle tariffe riservate. La formula del preventivo su richiesta rallenta inutilmente il processo. Per noi la trasparenza viene prima di tutto.",
     "plans": [
       {
         "audience": "agency",
         "name": "All-Inclusive, per studente",
         "price": "1.000 $",
         "priceUnit": "per studente, in Italia",
-        "body": "Il pacchetto completo sul territorio per uno studente che ci mandate in Italia. È un costo fisso per pratica, il che vuol dire che conoscete il vostro margine prima di preventivare alla famiglia, non dopo.",
+        "body": "Questo è il pacchetto completo per assistere uno studente in Italia. Il costo è fisso e vi permette di calcolare con precisione il vostro margine di ricarico prima ancora di proporlo alla famiglia.",
         "includesHeading": "Cosa comprende la quota",
         "includes": [
           "Ricerca dell'alloggio, contratto revisionato prima della firma, registrazione",
@@ -169,14 +169,14 @@
           "Qualcuno fisicamente accanto allo studente sul territorio",
           "Copertura sanitaria attivata e in vigore"
         ],
-        "note": "Tariffa riferita all'Italia, che è il mercato in cui gestiamo il percorso di persona e possiamo essere fisicamente presenti. Per le altre destinazioni preventiviamo caso per caso, perché quello che riusciamo davvero a fare sul territorio cambia con il paese."
+        "note": "La tariffa si applica in Italia, dove gestiamo il percorso in prima persona. Per le altre nazioni elaboriamo preventivi su misura, calibrando l'offerta sull'effettiva presenza locale."
       },
       {
         "audience": "university",
         "name": "Consulenza, tariffa partner",
         "price": "180 $",
         "priceUnit": "a sessione, ricerca inclusa",
-        "body": "La stessa consulenza strategica che prenota uno studente, alla tariffa riservata agli atenei partner — per i casi in cui il vostro ufficio vuole veder lavorato un profilo di candidato preciso invece che spiegato un mercato.",
+        "body": "La nostra consulenza strategica, proposta alla tariffa riservata ai nostri partner istituzionali. Ideale quando il vostro ufficio richiede un'analisi dettagliata su un profilo candidato specifico.",
         "includesHeading": "Cosa comprende la quota",
         "includes": [
           "Il questionario preliminare e la nostra lettura delle risposte",
@@ -184,32 +184,32 @@
           "La sessione vera e propria, in una lingua comoda per il vostro team",
           "Una sintesi scritta, vostra da tenere"
         ],
-        "note": "20 $ in meno della tariffa pubblica. Il primo seminario resta gratuito ed è un'altra cosa: per fare quella conversazione non dovete comprare niente."
+        "note": "Offriamo uno sconto di 20 $ rispetto alla tariffa al pubblico. Ricordiamo che il primo seminario strategico rimane sempre gratuito e senza alcun obbligo di acquisto."
       }
     ],
     "compareLabel": "Vedi la tariffa pubblica sulla pagina degli studenti",
-    "billingNote": "Entrambe le cifre sono in dollari statunitensi. Prima di qualsiasi fattura vi confermiamo per iscritto l'importo esatto, la valuta in cui verrà fatturato e il trattamento fiscale applicabile — nessun incarico parte sulla fiducia di un numero scritto su una pagina web.",
-    "limitsHeading": "Cosa una tariffa non compra — meglio dirlo ora che al terzo mese",
+    "billingNote": "Le tariffe sono indicate in dollari statunitensi. Prima dell'emissione della fattura, vi confermeremo per iscritto l'importo, la valuta e il relativo trattamento fiscale. Mettiamo tutto nero su bianco prima di iniziare.",
+    "limitsHeading": "I limiti del servizio e la trasparenza che vi dobbiamo",
     "limits": [
-      "Non è una garanzia di visto, di ammissione o di borsa di studio. Quelle decisioni spettano soltanto a consolati, atenei ed enti erogatori, e qualsiasi partner vi prometta il contrario vi sta vendendo qualcosa che non può consegnare.",
-      "Tasse universitarie, diritti per le traduzioni ufficiali e oneri pubblici si pagano a quegli enti, non a noi: non sono dentro la quota per studente.",
-      "Non siamo un'agenzia immobiliare abilitata. Visitiamo, verifichiamo e registriamo alloggi; non gestiamo annunci e non incassiamo caparre per conto di nessuno.",
-      "I termini commerciali — status di sub-agenzia, ripartizione della commissione, momenti di pagamento — si mettono per iscritto prima del primo studente segnalato. La tariffa pubblicata è il punto di partenza di quella conversazione, non la sua conclusione."
+      "Non garantiamo l'ottenimento di visti, ammissioni o borse di studio. Le decisioni competono esclusivamente agli enti ufficiali. Diffidate da chi vi garantisce risultati sicuri al 100%.",
+      "Le tasse universitarie e gli oneri pubblici vanno versati direttamente agli enti competenti e non sono inclusi nelle nostre quote operative.",
+      "Agiamo come consulenti e non come agenzia immobiliare. Verifichiamo la regolarità degli alloggi per conto vostro, ma non incassiamo depositi o caparre.",
+      "Ogni termine commerciale viene discusso e siglato contrattualmente prima di avviare le procedure. La tariffa pubblica è solo il solido punto di partenza per definire una partnership."
     ]
   },
   "dueDiligence": {
-    "heading": "Due diligence, in anticipo",
+    "heading": "Due diligence in totale trasparenza",
     "items": [
-      "Kimere ha iniziato a operare a giugno 2026 e l'assetto giuridico è in via di formalizzazione. La documentazione societaria aggiornata la condividiamo direttamente in fase di due diligence, invece di descriverla qui.",
-      "Non abbiamo alcun accordo formale né alcun accreditamento con università o enti pubblici italiani. Dove una pagina di questo sito descrive cosa fa un ateneo o un consolato, riporta il link alla fonte pubblicata da quell'istituzione.",
-      "Non rilasciamo visti né permessi di soggiorno e non garantiamo esiti. Quelle decisioni spettano al consolato e alla Questura.",
-      "Non siamo un'agenzia immobiliare abilitata. Visitiamo, verifichiamo e registriamo alloggi; non gestiamo annunci e non incassiamo caparre per conto di nessuno."
+      "La società opera da giugno 2026 con un assetto giuridico in via di formalizzazione. Condivideremo tutta la documentazione ufficiale in fase di due diligence operativa.",
+      "Operiamo in modo indipendente, senza accreditamenti con enti pubblici italiani. Le informazioni fornite si basano sempre su fonti ufficiali e verificabili tramite link diretti.",
+      "Non abbiamo alcun potere di rilascio su visti e permessi di soggiorno. Tali decisioni rimangono insindacabili da parte di consolati e Questure.",
+      "La verifica degli alloggi per conto dello studente è un servizio logistico. Non svolgiamo attività di intermediazione immobiliare diretta."
     ]
   },
   "form": {
     "eyebrow": "Parliamone",
     "heading": "Prenota il seminario gratuito",
-    "body": "Lo stesso modulo gestisce anche una richiesta di partnership — è il campo «cosa state cercando» a decidere quale conversazione ricevete. Arriva alla persona che seguirebbe la partnership, non a una coda commerciale. Dateci i volumi e i mercati e vi torniamo con una risposta netta sul fatto che il modello sia adatto, compreso il caso in cui non lo sia.",
+    "body": "Il modulo è il punto di contatto unico per seminari o richieste di partnership. Selezionando «Cosa state cercando» verrete indirizzati direttamente al vostro referente dedicato. Inviateci volumi e mercati di riferimento e vi forniremo una valutazione schietta sulla reale fattibilità del progetto.",
     "ctaLabel": "Invia la richiesta"
   }
 }

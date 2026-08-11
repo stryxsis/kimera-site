@@ -1,19 +1,13 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getEntry } from 'astro:content';
-import { getPath } from '../../i18n/routes';
+import { getPath, BOOKING_FORM_URL } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
-import { sortedCountryOptions } from '../../lib/countries';
-import { describedBy } from '../../lib/field';
 import Button from '../../components/ui/Button.astro';
 import Eyebrow from '../../components/ui/Eyebrow.astro';
-import Field from '../../components/ui/Field.astro';
-import Input from '../../components/ui/Input.astro';
-import ChoiceGroup from '../../components/ui/ChoiceGroup.astro';
 import StepIcon from '../../components/illustrations/StepIcon.astro';
 import CorridorFlow from '../../components/illustrations/CorridorFlow.astro';
 import HandoverDiagram from '../../components/illustrations/HandoverDiagram.astro';
-import MultiStepForm from '../../components/forms/MultiStepForm.astro';
 
 /**
  * Partner B2B — l'unica pagina del sito che non parla allo studente. Il lettore
@@ -24,8 +18,8 @@ import MultiStepForm from '../../components/forms/MultiStepForm.astro';
  * Cinque cose da non dimenticare quando si torna su questo file.
  *
  * PRIMA: il seminario gratuito è il blocco dominante, ed è l'unico su campo
- * navy insieme al modulo. È il lead magnet dichiarato dall'analisi (§5) e lo
- * strumento di chiusura migliore che l'azienda abbia: se un giorno smette di
+ * navy insieme alla CTA finale. È il lead magnet dichiarato dall'analisi (§5) e
+ * lo strumento di chiusura migliore che l'azienda abbia: se un giorno smette di
  * essere la cosa più grande della pagina, la pagina ha perso il suo scopo.
  *
  * SECONDA: NESSUNA percentuale di conversione, da nessuna parte. L'analisi dice
@@ -41,7 +35,7 @@ import MultiStepForm from '../../components/forms/MultiStepForm.astro';
  * «per qualsiasi destinazione» si romperebbe alla prima pratica fuori dai
  * confini. `pricing.limits` e `pricing.billingNote` sono obbligatorie.
  *
- * QUARTA: la due diligence sta PRIMA del modulo. Un'agenzia scopre comunque che
+ * QUARTA: la due diligence sta PRIMA della CTA. Un'agenzia scopre comunque che
  * Kimere opera da giugno 2026 e non ha accreditamenti; scoprirlo da sé dopo tre
  * schermate di promesse ferma la trattativa, leggerlo qui la fa proseguire.
  *
@@ -51,31 +45,11 @@ import MultiStepForm from '../../components/forms/MultiStepForm.astro';
  * racconta dal lato di Kimere — la domanda che ci arriva più spesso.
  *
  * Ritmo delle superfici: bianco → bianco/nebbia (i due segmenti) → NAVY (il
- * seminario) → bianco (l'ostacolo) → nebbia (le tariffe) → NAVY (il modulo).
+ * seminario) → bianco (l'ostacolo) → nebbia (le tariffe) → NAVY (la CTA).
  */
 const locale = 'en';
 const t = useTranslations(locale);
 const { data: content } = await getEntry('partnersPage', locale)!;
-const { data: countryNames } = await getEntry('countries', locale)!;
-const countries = sortedCountryOptions(countryNames, locale);
-
-/**
- * Form B2B: a differenza di quello studente NON è multi-step — un solo schermo.
- * MultiStepForm riceve un solo `[data-step]` e disattiva da sé la progressione.
- */
-const FIELDS = [
-  'contact-name',
-  'role',
-  'agency',
-  'country',
-  'website',
-  'work-email',
-  'volume-bracket',
-  'destinations-served',
-  'interest',
-  'notes',
-  'privacy-consent',
-];
 ---
 
 <PageLayout
@@ -407,165 +381,27 @@ const FIELDS = [
     </section>
 
     {
-      /* ── Il modulo ──────────────────────────────────────────────────────
-        Un professionista non compila lo stesso modulo di uno studente: questo
-        chiede agenzia, paese, sito e volume annuo, cioè quanto basta a
-        qualificare l'interlocutore prima di fissare una riunione. Il campo
-        «cosa state cercando» ha il seminario gratuito come prima opzione:
-        è la stessa porta per le due conversazioni, e la sceglie chi scrive. */
+      /* ── La conversione ─────────────────────────────────────────────────
+        Il modulo B2B interno è stato rimosso (2026-08-11, richiesta del
+        cliente): la raccolta contatti passa tutta dal modulo Google, che è
+        già l'imbuto del resto del sito. Resta una CTA sola.
+
+        ⚠️ L'id `partner-form` NON si può rinominare: ci puntano l'hero e il
+        seminario di questa pagina, ma anche la CTA istituzionale di Chi siamo
+        e il box «lavoro per un'università» della home, in entrambe le lingue.
+        Cambiarlo qui rompe quattro link altrove senza che nulla se ne accorga
+        — `getPath()` costruisce il path, non verifica l'ancora. */
     }
     <section class="wrap band" id="partner-form" aria-labelledby="partner-form-heading">
-      <div class="formband surface-panel">
-        <div class="formband__head">
-          <Eyebrow tone="blank">{content.form.eyebrow}</Eyebrow>
-          <h2 class="heading-section formband__title" id="partner-form-heading">
-            {content.form.heading}
-          </h2>
-          <p class="formband__body">{content.form.body}</p>
-        </div>
-
-        <div class="formband__form">
-          <MultiStepForm
-            name="partner-enquiry"
-            action={getPath('thankYou', locale)}
-            submitLabel={content.form.ctaLabel}
-            fields={FIELDS}
-            labels={t.form}
-          >
-            <fieldset class="step" data-step>
-              <legend class="sr-only">{content.form.heading}</legend>
-
-              <Field id="contact-name" label={t.partnerForm.contactName} required>
-                <Input
-                  id="contact-name"
-                  name="contact-name"
-                  required
-                  describedBy={describedBy('contact-name', { error: true })}
-                />
-              </Field>
-
-              <Field id="role" label={t.partnerForm.role} required>
-                <Input
-                  id="role"
-                  name="role"
-                  required
-                  describedBy={describedBy('role', { error: true })}
-                />
-              </Field>
-
-              <Field id="agency" label={t.partnerForm.agency} required>
-                <Input
-                  id="agency"
-                  name="agency"
-                  required
-                  describedBy={describedBy('agency', { error: true })}
-                />
-              </Field>
-
-              <Field id="country" label={t.partnerForm.country} required>
-                <Input
-                  as="select"
-                  id="country"
-                  name="country"
-                  required
-                  describedBy={describedBy('country', { error: true })}
-                >
-                  <option value=""></option>
-                  {countries.map(([code, label]) => <option value={code}>{label}</option>)}
-                </Input>
-              </Field>
-
-              {/* Il sito aziendale è il campo che qualifica più in fretta di
-                  ogni altro: dieci secondi di verifica dicono se l'agenzia
-                  esiste davvero e su che mercati lavora. */}
-              <Field id="website" label={t.partnerForm.website} optionalLabel={t.form.optional}>
-                <Input
-                  id="website"
-                  name="website"
-                  type="url"
-                  placeholder={t.partnerForm.websitePlaceholder}
-                />
-              </Field>
-
-              <Field id="work-email" label={t.partnerForm.workEmail} required>
-                <Input
-                  id="work-email"
-                  name="work-email"
-                  type="email"
-                  required
-                  describedBy={describedBy('work-email', { error: true })}
-                />
-              </Field>
-
-              <Field id="volume-bracket" label={t.partnerForm.volumeBracket} required>
-                <Input
-                  as="select"
-                  id="volume-bracket"
-                  name="volume-bracket"
-                  required
-                  describedBy={describedBy('volume-bracket', { error: true })}
-                >
-                  <option value=""></option>
-                  <option value="under-10">{t.partnerForm.volumeBracketOptions.under10}</option>
-                  <option value="10-50">{t.partnerForm.volumeBracketOptions.from10to50}</option>
-                  <option value="50-200">{t.partnerForm.volumeBracketOptions.from50to200}</option>
-                  <option value="over-200">{t.partnerForm.volumeBracketOptions.over200}</option>
-                </Input>
-              </Field>
-
-              <Field
-                id="destinations-served"
-                label={t.partnerForm.destinationsServed}
-                optionalLabel={t.form.optional}
-              >
-                <Input
-                  id="destinations-served"
-                  name="destinations-served"
-                  placeholder={t.partnerForm.destinationsServedPlaceholder}
-                />
-              </Field>
-
-              <ChoiceGroup
-                id="interest"
-                name="interest"
-                legend={t.partnerForm.interest}
-                required
-                options={[
-                  {
-                    value: 'free-seminar',
-                    label: t.partnerForm.interestOptions.freeSeminar,
-                  },
-                  {
-                    value: 'students-to-italy',
-                    label: t.partnerForm.interestOptions.studentsToItaly,
-                  },
-                  {
-                    value: 'structured-partnership',
-                    label: t.partnerForm.interestOptions.structuredPartnership,
-                  },
-                  { value: 'other', label: t.partnerForm.interestOptions.other },
-                ]}
-              />
-
-              <Field id="notes" label={t.partnerForm.notes} optionalLabel={t.form.optional}>
-                <Input
-                  as="textarea"
-                  id="notes"
-                  name="notes"
-                  placeholder={t.partnerForm.notesPlaceholder}
-                />
-              </Field>
-
-              <label class="consent-field">
-                <input type="checkbox" name="privacy-consent" required />
-                <span>
-                  {t.form.privacyConsentPrefix}
-                  <a href={getPath('privacy', locale)}>{t.form.privacyConsentLink}</a>.
-                </span>
-              </label>
-            </fieldset>
-          </MultiStepForm>
-        </div>
+      <div class="ctaband surface-panel">
+        <Eyebrow tone="blank">{content.form.eyebrow}</Eyebrow>
+        <h2 class="heading-section ctaband__title" id="partner-form-heading">
+          {content.form.heading}
+        </h2>
+        <p class="ctaband__body">{content.form.body}</p>
+        <Button href={BOOKING_FORM_URL} target="_blank" rel="noopener noreferrer" size="lg" arrow>
+          {content.form.ctaLabel}
+        </Button>
       </div>
     </section>
   </div>
@@ -660,8 +496,8 @@ const FIELDS = [
     font-size: var(--text-lg);
     line-height: 1.6;
     color: var(--surface-fg-muted);
-    max-width: 74ch;
     margin: 0;
+    max-width: none;
   }
   .segment__action {
     margin-top: clamp(1.5rem, 3vw, 2.25rem);
@@ -702,7 +538,7 @@ const FIELDS = [
   }
   .commitments__list {
     margin-top: 1.1rem;
-    max-width: 88ch;
+    max-width: none;
   }
 
   /* ── Come nasce una partnership ───────────────────────────────────────
@@ -1013,7 +849,7 @@ const FIELDS = [
     font-size: var(--text-sm);
     line-height: 1.65;
     color: var(--surface-fg-soft);
-    max-width: 88ch;
+    max-width: none;
   }
 
   .limits {
@@ -1033,7 +869,7 @@ const FIELDS = [
   .limits__list,
   .diligence__list {
     margin-top: 0.9rem;
-    max-width: 88ch;
+    max-width: none;
   }
 
   /* ── Due diligence ────────────────────────────────────────────────────
@@ -1046,47 +882,24 @@ const FIELDS = [
     background-color: var(--color-mist);
   }
 
-  /* ── Il modulo ──────────────────────────────────────────────────────────
+  /* ── La CTA finale ────────────────────────────────────────────────────
      Su navy come la CTA finale delle altre pagine: è la conversione di questa
-     pagina, e deve pesare quanto pesa lì il bottone della call. */
-  .formband {
+     pagina, e deve pesare quanto pesava il modulo che ha sostituito. */
+  .ctaband {
     display: grid;
-    gap: clamp(2rem, 4vw, 3rem);
+    justify-items: center;
+    text-align: center;
+    gap: 1.15rem;
     border-radius: var(--radius-2xl);
-    padding: clamp(2rem, 5vw, 3.5rem);
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
     margin-top: clamp(1rem, 3vw, 2.5rem);
-    align-items: start;
   }
-  @media (min-width: 64rem) {
-    .formband {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    }
+  .ctaband__title {
+    max-width: 22ch;
   }
-  .formband__head {
-    display: grid;
-    justify-items: start;
-    gap: 1.1rem;
-  }
-  .formband__title {
-    max-width: 18ch;
-  }
-  .formband__body {
+  .ctaband__body {
     color: var(--surface-fg-muted);
-    max-width: 52ch;
-  }
-  @media (min-width: 64rem) {
-    .formband__head {
-      position: sticky;
-      top: 7rem;
-    }
+    max-width: 58ch;
   }
 
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
 </style>

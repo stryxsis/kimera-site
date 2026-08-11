@@ -1,110 +1,110 @@
 {
   "hero": {
     "eyebrow": "Lingue e documenti",
-    "headline": "Parla la lingua del tuo futuro. La tua burocrazia la traduciamo noi.",
-    "subhead": "Queste due cose non sono un corso e un servizio accessorio. Sono lo stesso team: gli insegnanti freelance che tengono i nostri corsi di lingua sono le persone che traducono i tuoi documenti accademici. Imparare la lingua e far accettare le carte vanno avanti insieme, verso qualsiasi paese tu abbia scelto — ed è tutto qui il motivo per cui qui una traduzione può partire il giorno in cui la chiedi.",
+    "headline": "Parla la lingua del tuo futuro, mentre noi traduciamo la tua burocrazia.",
+    "subhead": "Imparare una lingua e sbrigare le pratiche non sono mondi separati. I professionisti che tengono i nostri corsi di lingua sono le stesse persone che traducono i tuoi documenti accademici. Preparazione linguistica e burocrazia procedono insieme verso la destinazione che hai scelto. È per questo che con noi una traduzione può partire nello stesso esatto momento in cui la richiedi.",
     "ctaDocuments": "Devo far tradurre dei documenti",
     "ctaCourses": "Voglio imparare una lingua",
-    "reassurance": "Due moduli brevi, uno per ciascuna cosa. Nessuno dei due costa niente e nessuno dei due ti impegna."
+    "reassurance": "Due brevi questionari separati, completamente gratuiti e senza alcun impegno."
   },
   "academy": {
     "eyebrow": "L'academy",
-    "heading": "Sette lingue oltre all'italiano, insegnate da chi ci lavora dentro",
-    "body": "I nostri insegnanti sono professionisti indipendenti con la propria attività, dentro il team e non al servizio di una piattaforma che ti assegna chi è libero in quel momento. Insegnano la lingua in cui lavorano tutti i giorni — la stessa in cui leggeranno i tuoi certificati — e costruiscono l'orario sulla settimana di uno studente invece che sull'apertura di un ufficio.",
+    "heading": "Sette lingue oltre all'italiano, insegnate dai nostri professionisti",
+    "body": "I nostri docenti non sono operatori assegnati a caso da un algoritmo. Sono professionisti indipendenti integrati nel nostro team. Insegnano la lingua che usano ogni giorno per lavorare, la stessa in cui leggeranno i tuoi certificati. Inoltre, adattano gli orari alla tua reale vita da studente e non viceversa.",
     "languagesLabel": "Le lingue che insegniamo e in cui lavoriamo",
     "languages": ["Italiano", "Inglese", "Francese", "Spagnolo", "Portoghese", "Arabo", "Albanese", "Tedesco"],
     "points": [
       {
         "icon": "calendar",
-        "title": "Costruito sulla tua settimana, non sui nostri orari",
-        "body": "Online, con lezioni incastrate tra corsi, esami e turni di lavoro. Cominci prima di partire e continui dopo essere arrivato, con lo stesso insegnante da entrambe le parti del trasloco."
+        "title": "Lezioni modellate sulla tua agenda",
+        "body": "Totalmente online. Incastriamo le lezioni tra i tuoi corsi, esami e turni di lavoro. Puoi iniziare prima di partire e continuare anche dopo l'arrivo, sempre seguito dallo stesso insegnante."
       },
       {
         "icon": "compass",
-        "title": "Una prova di livello prima di prenotare qualsiasi cosa",
-        "body": "Una conversazione breve per collocarti onestamente, così non paghi sei settimane di cose che sai già e non parti tre livelli sopra il punto in cui sei davvero."
+        "title": "Test di livello gratuito e trasparente",
+        "body": "Una breve conversazione per valutare oggettivamente il tuo livello reale. Niente sprechi di tempo su cose che sai già e niente corsi troppo avanzati."
       },
       {
         "icon": "document",
-        "title": "Insegnanti che leggono anche le tue carte",
-        "body": "La persona che ti insegna l'italiano è la stessa che vedrà il tuo certificato esami. Vuol dire che il lessico che impari è quello che ti servirà davvero a uno sportello, non quello del libro di testo."
+        "title": "Docenti che gestiscono le tue pratiche",
+        "body": "La stessa persona che ti insegna l'italiano gestirà le tue pratiche. Questo significa imparare un lessico davvero utile per affrontare sportelli e burocrazia, superando la teoria dei libri di testo."
       }
     ],
     "ctaLabel": "Prenota una prova di livello"
   },
   "documents": {
     "eyebrow": "Documenti",
-    "heading": "Traduzione e legalizzazione, dalla nostra parte del tavolo",
-    "body": "Un titolo estero deve arrivare a un ateneo italiano in italiano e legalmente valido, e quella sequenza è il punto in cui i mesi svaniscono in silenzio — di solito perché la traduzione è finita a un fornitore esterno che non ha idea di cosa cerchi l'ufficio ricevente e non ha nessun motivo per avere fretta. Noi la teniamo dentro al team, e partiamo a ritroso dalla tua scadenza di ammissione invece che in avanti dal giorno in cui l'hai chiesta.",
+    "heading": "Traduzione e legalizzazione gestite internamente",
+    "body": "Un titolo estero deve arrivare all'ateneo italiano perfettamente tradotto e legalmente valido. Questa fase è un buco nero per le scadenze perché i fornitori esterni non sanno cosa cerca l'università e non hanno fretta. Noi facciamo tutto internamente. Calcoliamo i tempi partendo a ritroso dalla tua data di ammissione, azzerando i ritardi.",
     "steps": [
       {
-        "title": "Ci dici cosa hai in mano",
-        "body": "I documenti, il paese che li ha rilasciati e la data entro cui devono essere pronti. A noi basta questo per dirti quale strada si applica e più o meno quanto ci vuole."
+        "title": "Valutazione iniziale dei documenti",
+        "body": "Basta indicarci i documenti, il paese di emissione e la data di consegna richiesta. Ti diremo subito quale procedura seguire e i tempi stimati."
       },
       {
-        "title": "Traduciamo, in casa",
-        "body": "Certificati, diplomi e attestati, fatti da persone che sono già sul tuo fascicolo e conoscono già il formato in cui l'ufficio ricevente si aspetta di vederli."
+        "title": "Traduzioni in-house immediate",
+        "body": "I nostri traduttori conoscono già il tuo fascicolo. Produciamo certificati, diplomi e attestati esattamente nel formato preteso dall'ufficio ricevente."
       },
       {
-        "title": "Prepariamo la pratica di legalizzazione",
-        "body": "Apostille o legalizzazione consolare, a seconda del paese che ha rilasciato il tuo titolo. Preparata e monitorata insieme a te, non restituita come un elenco di istruzioni."
+        "title": "Gestione pratica di legalizzazione",
+        "body": "Gestiamo l'Apostille o la legalizzazione consolare in base al paese di rilascio. Seguiamo e monitoriamo tutto l'iter insieme a te."
       },
       {
-        "title": "Entra insieme al resto della tua domanda",
-        "body": "Depositata come parte di un fascicolo unico invece che come una commissione a parte da rincorrere — che è esattamente il punto in cui la cosa si rompe per chi la fa da solo."
+        "title": "Integrazione diretta nel fascicolo",
+        "body": "La traduzione diventa subito parte del tuo fascicolo completo. Nessuna commissione separata da rincorrere, evitando gli ostacoli di chi fa tutto da solo."
       }
     ],
-    "handledHeading": "Cosa facciamo noi",
+    "handledHeading": "Cosa garantiamo noi",
     "handled": [
-      "La traduzione dei documenti accademici e di stato civile, dentro il team",
-      "La pratica di apostille o di legalizzazione consolare, preparata e monitorata",
-      "Partire a ritroso dalla tua scadenza di ammissione, non dalla nostra coda",
-      "Dirti quale strada richiede davvero il tuo paese, prima che tu paghi qualcosa"
+      "Traduzione interna dei documenti accademici e di stato civile.",
+      "Preparazione e monitoraggio completo della pratica di legalizzazione consolare o apostille.",
+      "Pianificazione a ritroso basata sulle tue reali scadenze di ammissione.",
+      "Valutazione gratuita e trasparente della procedura richiesta dal tuo paese."
     ],
-    "institutionsHeading": "Cosa resta agli enti — e ci resterà sempre",
+    "institutionsHeading": "Competenze esclusive degli enti istituzionali",
     "institutions": [
-      "L'attestato di comparabilità del tuo titolo, rilasciato da CIMEA o valutato dall'ateneo stesso",
-      "La decisione del consolato sul visto, e quella della Questura sul permesso di soggiorno",
-      "La decisione dell'ateneo sulla tua ammissione",
-      "Gli oneri pubblici richiesti da ciascuno di loro, che si pagano a loro e non a noi"
+      "Rilascio dell'attestato di comparabilità da parte del CIMEA o valutazione diretta dell'ateneo.",
+      "Decisioni finali su visti e permessi di soggiorno a cura di consolati e Questure.",
+      "La decisione definitiva sulla tua ammissione da parte dell'ateneo.",
+      "Pagamento degli oneri pubblici dovuti esclusivamente agli enti governativi e accademici."
     ],
-    "limitHeading": "Cosa non vuol dire «in casa»",
-    "limitBody": "Il riconoscimento di un titolo estero richiede tempo e ha un costo, e nessuna delle due cose la facciamo sparire: l'attestato di comparabilità lo rilascia CIMEA o lo valuta l'ateneo, e nulla di ciò che facciamo lo sostituisce o lo rende facoltativo. Chi ti dice che quel passaggio si può saltare ti sta vendendo una domanda respinta. Quello che togliamo davvero è l'altra metà: la traduzione esternalizzata dietro cui stai in coda e la pratica di legalizzazione che nessuno ti spiega. Quella metà è la gran parte del ritardo, ed è la metà che è nostra.",
+    "limitHeading": "Cosa significa davvero gestire tutto internamente",
+    "limitBody": "Le procedure per i titoli esteri richiedono tempo e denaro. L'attestato di comparabilità spetta esclusivamente al CIMEA o all'ateneo. Nessuna agenzia può saltare questo passaggio. Se qualcuno te lo promette ti sta solo ingannando. Noi abbattiamo i ritardi gestendo internamente tutte le traduzioni e spiegandoti passo per passo le pratiche di legalizzazione. Questo è il vero vantaggio del nostro team.",
     "officialSource": "https://www.cimea.it",
     "ctaLabel": "Chiedi un preventivo per la traduzione"
   },
   "comparison": {
     "eyebrow": "Perché qui",
-    "heading": "Tre fornitori che non si sono mai parlati, o un team che l'ha fatto",
-    "body": "Il modo normale di farlo è montartelo da solo: una scuola di lingue, un traduttore giurato, un'agenzia per le pratiche. Ognuno è bravo per conto suo e nessuno dei tre sa cosa stanno facendo gli altri due — così ogni vuoto tra loro diventa un problema tuo, in una lingua che stai ancora imparando.",
-    "traditionalLabel": "Facendolo nel modo consueto",
+    "heading": "Il caos di più fornitori contro l'efficienza di un solo team",
+    "body": "La via tradizionale ti costringe a coordinare una scuola di lingue, un traduttore giurato e un'agenzia burocratica. Tutti lavorano separati, ignorando le esigenze degli altri. Alla fine, ogni errore di comunicazione diventa un tuo problema personale da risolvere in una lingua che non padroneggi ancora.",
+    "traditionalLabel": "Il vecchio metodo frammentato",
     "traditional": [
-      "Una scuola di lingue che non ha idea che esista una scadenza",
-      "Un traduttore trovato online, che riceve i documenti senza nessun contesto e li restituisce nel formato che è standard per lui",
-      "Un'agenzia per le pratiche, che scopre che la traduzione è sbagliata solo dopo averla depositata",
-      "Tu in mezzo, che giri file tra tre soggetti e spieghi ciascuno di loro agli altri"
+      "Una scuola di lingue totalmente all'oscuro delle tue scadenze accademiche.",
+      "Un traduttore online che lavora senza contesto fornendo formati standard inadeguati.",
+      "Un'agenzia per le pratiche che deposita documenti mal tradotti per poi dover ricominciare.",
+      "Tu, bloccato nel mezzo, costretto a fare da intermediario tra tre soggetti scollegati."
     ],
-    "kimereLabel": "Facendolo con noi",
+    "kimereLabel": "Il metodo integrato Kimere",
     "kimere": [
-      "Un solo team, e un coordinatore che risponde di tutto",
-      "L'insegnante che ti insegna la lingua è quello che traduce i tuoi documenti",
-      "La traduzione è preparata sapendo quale ufficio la riceve e cosa quell'ufficio si aspetta",
-      "Una sola scadenza, presa a ritroso, invece di tre fornitori che partono ognuno dalla propria"
+      "Un solo team unito e un unico referente responsabile di tutto il processo.",
+      "L'insegnante che ti fa lezione è la stessa persona che traduce i tuoi certificati.",
+      "Prepariamo ogni traduzione conoscendo alla perfezione le esigenze dell'ufficio ricevente.",
+      "Una singola tempistica gestita a ritroso per garantirti sempre le consegne."
     ],
-    "note": "Questo non rende impossibile un rigetto: nessuno controlla la commissione che legge il tuo fascicolo. Quello che toglie di mezzo è il motivo più frequente per cui i documenti tornano indietro, cioè una traduzione preparata da qualcuno a cui non è mai stato detto a cosa servisse."
+    "note": "Il sistema integrato abbassa drasticamente i rigetti documentali causati da traduzioni fuori contesto. Il risultato finale dipende sempre dalla commissione universitaria, ma noi azzeriamo gli errori formali e i ritardi tecnici."
   },
   "forms": {
-    "eyebrow": "Due porte",
-    "heading": "Due motivi molto diversi per essere su questa pagina",
-    "body": "Uno di voi ha un diploma da far tradurre prima che scada una borsa di studio. L'altro sta pianificando di imparare il tedesco per settembre prossimo. Sono problemi opposti, quindi hanno moduli opposti — prendi il tuo e salta l'altro.",
+    "eyebrow": "Scegli il tuo percorso",
+    "heading": "Di cosa hai bisogno oggi?",
+    "body": "Da un lato chi cerca una traduzione urgente per non perdere una borsa di studio. Dall'altro chi vuole pianificare lo studio di una nuova lingua. Due obiettivi diversi e due questionari separati. Scegli quello giusto per te.",
     "quote": {
-      "heading": "Un preventivo per traduzione o legalizzazione",
-      "body": "Dicci cosa hai in mano ed entro quando. Ti torniamo con la strada che si applica al tuo paese, una stima dei tempi e un prezzo, prima che parta qualsiasi cosa.",
+      "heading": "Preventivo per traduzione o legalizzazione",
+      "body": "Indicaci i tuoi documenti e la scadenza finale. Ti forniremo rapidamente un piano preciso con costi e tempi stimati per il tuo paese.",
       "ctaLabel": "Chiedi il preventivo"
     },
     "course": {
-      "heading": "Un corso di lingua, o una prova di livello",
-      "body": "Dicci la lingua e più o meno a che punto sei. Se non sai a che punto sei, è un'opzione anche quella — la prova di livello esiste esattamente per questo.",
+      "heading": "Corso di lingua e test di livello",
+      "body": "Dicci che lingua vuoi studiare e il tuo livello di partenza. Se non lo conosci puoi fare un test di livello per iniziare nel modo giusto.",
       "ctaLabel": "Prenota la prova"
     }
   }

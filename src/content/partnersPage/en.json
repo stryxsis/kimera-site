@@ -1,149 +1,149 @@
 {
   "hero": {
     "eyebrow": "For universities and agencies",
-    "headline": "The logistics bridge for your students. Grow your international enrolments.",
-    "subhead": "Kimere is a facilitation and consulting hub — the operational bridge between universities, the ground in the destination country, and the agencies that recruit the students. You keep the marketing, the recruitment and the relationship with the family. We take the part that makes the corridor expensive: the file, the consulate, the funding, the arrival.",
+    "headline": "The logistics bridge for your students. Grow your international enrolments without the stress.",
+    "subhead": "Kimere is an advanced consulting hub acting as the operational bridge between universities, the destination country and recruitment agencies. You handle marketing and family relations. We take on the most complex and expensive part. We manage files, consulates, scholarships and the entire arrival of the student.",
     "ctaPrimary": "Book the free seminar",
-    "ctaSecondary": "See the model and the fees"
+    "ctaSecondary": "See the model and fees"
   },
   "segments": {
     "eyebrow": "Two conversations",
-    "heading": "A university and an agency are not asking us the same question.",
-    "body": "One wants enrolments from markets it cannot service after the offer letter goes out. The other wants a partner on the ground it doesn't have to become itself. The answer is genuinely different, so we've stopped writing one page for both.",
+    "heading": "Universities and agencies have different needs, we answer both.",
+    "body": "A university seeks enrolments from markets it struggles to manage after the offer letter. An agency looks for a reliable partner on the ground without having to build a local structure. Two different needs deserve two dedicated paths.",
     "universities": {
       "eyebrow": "For universities",
-      "heading": "Your international office stops at the offer letter. That's where candidates fall out.",
-      "body": "Almost nothing that loses you an international candidate happens during admission. It happens afterwards, in the administrative gap between the offer and the first lecture — and your office was never staffed to fill it, in every timezone, in every language. That gap is the whole of what we do.",
+      "heading": "Your office stops at the offer letter. That is exactly where you lose the best candidates.",
+      "body": "Almost nothing that makes you lose a foreign candidate happens during admission. Problems arise in the bureaucratic gap between admission and the first lecture. No internal office has the staff to manage every timezone and language. We fill exactly that operational gap.",
       "points": [
         {
           "icon": "building",
-          "title": "The individual admin your office can't absorb",
-          "body": "Residence permit filings, tax codes, registered residence, health cover, housing disputes — one student at a time, off your team's desk, and never presenting ourselves as the university."
+          "title": "The individual workload your office cannot absorb",
+          "body": "We handle residence permits, tax codes, registrations and housing disputes for every single student. We lighten your team's desks by working behind the scenes, without ever replacing the university's name."
         },
         {
           "icon": "document",
-          "title": "Funding questions answered with sources attached",
-          "body": "What a candidate in a given country will actually pay once income-based funding is counted, answered from published sources your office can forward to the family without checking it first."
+          "title": "Scholarship answers backed by official sources",
+          "body": "We accurately calculate income-based benefits for every country. We provide definitive answers based on official sources, ready to be forwarded to families without further verification."
         },
         {
           "icon": "compass",
-          "title": "One counterpart, in the candidate's own language",
-          "body": "Where our team covers the country you're recruiting from, that's who takes the call — with your office, and with the family. It's the same conversation, minus the interpreter and the misunderstanding."
+          "title": "A single point of contact, in the candidate's language",
+          "body": "If we cover the country you recruit from, we assign one of our local experts. They will directly manage communications with your office and the family, eliminating misunderstandings and the need for interpreters."
         }
       ],
       "ctaLabel": "Start with the free seminar"
     },
     "agencies": {
       "eyebrow": "For agencies",
-      "heading": "The relationship stays yours. The ground is ours.",
-      "body": "We work as your destination partner in Italy, not as a competing agency. You run marketing, recruitment and the relationship with the family in your own market — the part you're good at, and the part that cost you money to build. When pre-enrolment opens on Universitaly the file passes to us and stays with a dedicated coordinator until the student is enrolled, in order with their permit, and settled. You get updates the whole way, and the student stays yours.",
+      "heading": "You keep the relationship, we handle the bureaucracy on the ground.",
+      "body": "We work as your operational arm in Italy and not as a competing agency. You manage marketing, recruitment and family relations, protecting the investment made in your market. The moment pre-enrolment opens on Universitaly, the file passes to our dedicated coordinator. We take care of everything until the student is finally settled. You will receive constant updates while keeping full ownership of the client.",
       "handover": {
-        "theirLabel": "You, in your market",
+        "theirLabel": "Your role in the local market",
         "theirItems": [
           "Marketing and recruitment",
           "First contact and academic pre-assessment",
           "The relationship with the student and the family"
         ],
-        "handoverLabel": "The handover happens at pre-enrolment on Universitaly",
-        "ourLabel": "Us, on the ground in Italy",
+        "handoverLabel": "Transition at Universitaly pre-enrolment",
+        "ourLabel": "Our operational role in Italy",
         "ourItems": [
           "Course and university guidance, qualification recognition",
           "Consular file prepared to that consulate's standard",
-          "Residence permit filed inside the 8 working days",
-          "Tax code, registered residence, national health cover",
+          "Residence permit filed within 8 working days",
+          "Tax code, registered residence, national healthcare",
           "Housing search, lease reviewed before signature, registration"
         ]
       },
-      "commitmentsHeading": "What goes in the agreement, because you're going to ask",
+      "commitmentsHeading": "Our contractual guarantees, in black and white",
       "commitments": [
-        "We don't market to your students and we won't recruit in your market. Our acquisition happens here, or through you.",
-        "The student stays your client for the duration of the agreement. We report to you, not around you.",
-        "Commercial terms — sub-agency status, commission split, payment points — are agreed in writing before the first student is referred, not settled afterwards.",
-        "You get a dedicated coordinator with a direct contact, not a shared inbox and a ticket number."
+        "No unfair competition. We do not market directly to your students and we do not recruit in your market.",
+        "The student remains your exclusive client for the entire duration of the agreement. We report progress directly to you.",
+        "Every commercial term is agreed in writing before starting. We clearly define fees, status and payments, with no surprises along the way.",
+        "We assign you a dedicated coordinator with a direct contact. No shared inboxes or impersonal ticket systems."
       ],
-      "startHeading": "How a partnership actually starts",
+      "startHeading": "How we build a solid partnership",
       "steps": [
         {
-          "title": "A first conversation",
-          "body": "Your current volumes, the destinations you already serve, and whether Italy suits the students you actually recruit. Half an hour, and if it doesn't suit them we say so."
+          "title": "The first conversation",
+          "body": "We analyze your volumes, active destinations and the actual appeal of Italy for your students. In half an hour we tell you with total transparency if a collaboration makes sense."
         },
         {
-          "title": "The boundary, in writing",
-          "body": "Exactly where your work ends and ours begins, what we report and how often, and the commercial terms in black and white. Nothing about the split is left to be defined later."
+          "title": "Clear and written rules",
+          "body": "We define exactly where your work ends and ours begins. We put commercial conditions and reporting frequency in black and white."
         },
         {
-          "title": "A small first group",
-          "body": "A few students, run end to end, so both teams watch the process work on real files with real deadlines before anyone commits to volume."
+          "title": "A small pilot project",
+          "body": "We test the process by following a small group of students from start to finish. Both teams evaluate the effectiveness on real files and concrete deadlines before scaling volumes."
         },
         {
-          "title": "A formal agreement",
-          "body": "Signed once the pilot has confirmed the model works — on terms based on what that first group actually showed, not on what either side forecast."
+          "title": "The final formal agreement",
+          "body": "We only lock in the agreement when the pilot project proves the model works. Conditions are based on concrete results achieved, not simple forecasts."
         }
       ],
       "ctaLabel": "See the per-student fee"
     }
   },
   "seminar": {
-    "eyebrow": "The way in",
-    "heading": "The first online seminar is free — and it's built on your market, not on ours.",
-    "body": "We connect with your team and model the session on the problem you actually have. If your students are looking at Italy, we take your office through scholarships, tuition brackets and the ISEE. If they're looking at France, we go and research France and come back with that. Either way you get a session that answers your questions rather than ours, and you keep what comes out of it.",
+    "eyebrow": "The first step",
+    "heading": "The free online seminar is built around the needs of your market.",
+    "body": "We meet with your team to address the real challenges of your market. If you aim for Italy, we train you on scholarships, income brackets and the ISEE. If you are interested in France, we study French regulations and bring you the solutions. The material produced during the session will remain entirely at your disposal.",
     "points": [
-      "Built on the destination you care about, whether that's Italy or not",
-      "Funding, fees and qualification recognition answered from published sources",
-      "No cost and no commitment on the first session",
-      "A written summary your office keeps, whatever you decide afterwards"
+      "Completely customized to your destination of interest.",
+      "Clarifications on scholarships, fees and academic qualifications based on institutional sources.",
+      "The first strategic session is totally free and without commitment.",
+      "A final written summary that will remain at your disposal for any future use."
     ],
-    "stepsHeading": "How a session comes together",
+    "stepsHeading": "How we structure the session",
     "steps": [
       {
-        "title": "You tell us where your students want to go",
-        "body": "The destination, the level, and the questions your office keeps having to answer without a reliable source. That's the whole brief we need."
+        "title": "We analyze your students' goals",
+        "body": "Just tell us the destination, the level of studies and the questions you struggle to find reliable answers for. We start from there."
       },
       {
-        "title": "We research that market, not a generic one",
-        "body": "If it's a country we run ourselves you get what we know first-hand. If it isn't, we go and research it properly — and we say which of the two you're getting."
+        "title": "Tailored market research",
+        "body": "If we already operate in the requested country, we transfer our direct expertise. If it is a new destination, we conduct thorough and transparent research on the sources."
       },
       {
-        "title": "The session, with your team",
-        "body": "Online, an hour or so, with the people who'll have to use the answers in the room. Questions during, not at the end."
+        "title": "Operational meeting with your team",
+        "body": "A one-hour online session designed for your operational staff. We encourage real-time questions to resolve immediate doubts."
       },
       {
-        "title": "The written summary",
-        "body": "Yours to keep and to circulate internally, with the sources attached. No follow-up sequence you didn't ask for."
+        "title": "Delivery of the written summary",
+        "body": "A comprehensive document with official sources, ready to be used internally by your team. Zero commercial pressure afterwards."
       }
     ],
     "ctaLabel": "Book the free seminar",
-    "note": "One session, no cost, no commitment — and no obligation to become a partner afterwards. If all you ever take from us is the summary, that's a fair outcome."
+    "note": "A single, completely free session with no obligation to partner. We are happy just to have provided you with valuable information for your work."
   },
   "obstacle": {
     "eyebrow": "The obstacle",
-    "heading": "Why a foreign university stops at Italy — and what closes the gap",
-    "body": "The question we get asked most often by an international office isn't about Italian universities. It's some version of \"we can't tell a family what this will cost\". Funding here is income-based and runs through an indicator almost nobody outside the country has heard of, so the number that decides the whole decision is the one nobody in the room can produce. An unknown cost is worse than a high one — and the corridor never opens.",
+    "heading": "Why foreign universities stall on Italy and how we solve the problem",
+    "body": "The main barrier for international offices is not knowing exactly how to quantify costs for families. In Italy, financial aid depends on complex income indicators almost unknown abroad. Economic uncertainty scares people more than high tuition, effectively blocking enrolments. We accurately calculate that number, finally unlocking the academic corridor.",
     "metrics": [
       { "value": "90+", "label": "ministry-recognised universities, in every region of the country" },
       { "value": "€900–4,000", "label": "annual public-university tuition, scaled to household income" },
       { "value": "3 + 2", "label": "Bologna structure, ECTS credits — a qualification that travels" },
       { "value": "20 h", "label": "of paid work per week while studying, 1,040 hours a year" }
     ],
-    "answerLabel": "What we do about it",
+    "answerLabel": "Our solution",
     "fears": [
       {
         "icon": "document",
         "title": "Nobody can tell the family what it will actually cost",
-        "body": "Published tuition is a band, not a price, and the band moves with declared household income. Quote the top of it and the family walks away from a course they could nearly have had for free.",
-        "answer": "We produce the real figure for a specific candidate profile, with the public source behind it, so your office can send it to the family without checking it first."
+        "body": "Italian tuition is a sliding scale based on family income, not a fixed price. Quoting the maximum amount scares families, pushing them to give up on almost free courses.",
+        "answer": "We provide the exact, real figure for the specific candidate profile. We do this backed by public sources, allowing your office to reassure families with absolute certainty."
       },
       {
         "icon": "contract",
         "title": "The ISEE is a black box",
-        "body": "The income indicator that decides funding and tuition has to be rebuilt from payslips and tax returns issued in another country and another language. It's the single most common reason a candidate never files at all.",
-        "answer": "We reconstruct it with the family, document by document, and file on its own deadline — which is not the university's and does not wait for it."
+        "body": "This indicator decides financial aid and taxes, but it must be reconstructed using documents issued abroad and in different languages. This complexity leads many candidates to abandon the procedure.",
+        "answer": "We support the family by reconstructing the indicator document by document. We submit the paperwork respecting government deadlines, which often do not coincide with university deadlines."
       },
       {
         "icon": "building",
-        "title": "Recognition of the qualification looks like a wall",
-        "body": "A foreign diploma has to arrive in Italian and legally valid, and the sequence is long enough that offices assume it can't be done inside an admission cycle.",
-        "answer": "We build the file, keep the translation in-house and work backwards from the admission cut-off. The comparability statement itself is still issued by CIMEA or assessed by the university — nothing we do replaces it, and anyone who tells you otherwise is selling a rejected application."
+        "title": "Recognition of the qualification looks like an insurmountable wall",
+        "body": "A foreign diploma requires a legal translation and a lengthy validation process. This procedure discourages international offices due to tight admission timeframes.",
+        "answer": "We internally manage the entire file and legal translations, calculating timelines backwards from the deadline. We always remind you that the comparability statement remains the exclusive competence of CIMEA or the university. Beware of those offering fake shortcuts."
       }
     ],
     "linkLabel": "The full picture for students, with sources",
@@ -151,15 +151,15 @@
   },
   "pricing": {
     "eyebrow": "Fees",
-    "heading": "Two prices, both published. Build your own margin on top of ours.",
-    "body": "An agency has to know its landed cost per file before it can quote its own client, and a university wants to see what the reserved rate is actually worth. Neither question survives \"contact us for a quote\", so here are both figures.",
+    "heading": "Public and transparent prices to build your margin",
+    "body": "An agency must know exact costs to draft a quote, and a university demands clarity on reserved rates. The 'quote on request' formula unnecessarily slows down the process. For us, transparency comes first.",
     "plans": [
       {
         "audience": "agency",
         "name": "All-Inclusive, per student",
         "price": "$1,000",
         "priceUnit": "per student, in Italy",
-        "body": "The full ground package for one student you send to Italy. It's a fixed cost per file, which means you know your margin before you quote the family rather than after.",
+        "body": "This is the complete package to assist a student in Italy. The cost is fixed and allows you to accurately calculate your markup margin before even proposing it to the family.",
         "includesHeading": "What the fee covers",
         "includes": [
           "Housing search, lease reviewed before signature, registration",
@@ -169,47 +169,47 @@
           "Someone physically with the student on the ground",
           "Health cover arranged and in force"
         ],
-        "note": "Priced for Italy, which is the market where we run the route ourselves and can be physically present. For other destinations we quote per case, because what we can genuinely do on the ground changes with the country."
+        "note": "The fee applies in Italy, where we manage the route firsthand. For other nations we prepare tailored quotes, adjusting the offer based on actual local presence."
       },
       {
         "audience": "university",
         "name": "Consultation, partner rate",
         "price": "$180",
         "priceUnit": "per session, research included",
-        "body": "The same strategic consultation a student books, at the rate reserved for partner institutions — for the cases where your office wants a specific candidate profile worked through rather than a market explained.",
+        "body": "Our strategic consultation, offered at the rate reserved for our institutional partners. Ideal when your office requires a detailed analysis on a specific candidate profile.",
         "includesHeading": "What the fee covers",
         "includes": [
-          "The preliminary questionnaire and our reading of it",
+          "The preliminary questionnaire and our reading of your answers",
           "Research on the specific case, done before the session",
           "The session itself, in a language your team is comfortable in",
           "A written summary, yours to keep"
         ],
-        "note": "$20 below the public rate. The first seminar stays free and is separate from this: you don't have to buy anything to have that conversation."
+        "note": "We offer a $20 discount compared to the public rate. We remind you that the first strategic seminar always remains free and without any obligation to purchase."
       }
     ],
     "compareLabel": "See the public rate on the students page",
-    "billingNote": "Both figures are in US dollars. Before anything is invoiced we confirm to you in writing the exact amount, the currency you'll be billed in and the tax treatment that applies — no engagement starts on the strength of a number on a web page.",
-    "limitsHeading": "What a fee does not buy — better said now than in month three",
+    "billingNote": "Rates are shown in US dollars. Before issuing any invoice, we will confirm in writing the amount, currency and applicable tax treatment. We put everything in black and white before starting.",
+    "limitsHeading": "Service limits and the transparency we owe you",
     "limits": [
-      "Not a guarantee of a visa, of admission or of a scholarship. Those decisions belong to consulates, universities and funding bodies alone, and any partner promising you otherwise is selling something they can't deliver.",
-      "University fees, official translation charges and government fees are paid to those bodies, not to us — they are not inside the per-student fee.",
-      "We're not a licensed estate agency. We view, verify and register housing; we don't hold listings and we don't take deposits on anyone's behalf.",
-      "Commercial terms — sub-agency status, commission split, payment points — are set in writing before the first student is referred. The published fee is the starting point of that conversation, not the end of it."
+      "We do not guarantee the acquisition of visas, admissions or scholarships. Decisions belong exclusively to official bodies. Beware of anyone guaranteeing 100% certain results.",
+      "University tuition and public fees must be paid directly to the competent bodies and are not included in our operational fees.",
+      "We act as consultants and not as a real estate agency. We verify the legality of housing on your behalf, but we do not collect deposits or down payments.",
+      "Every commercial term is discussed and contractually signed before starting procedures. The public fee is just the solid starting point for defining a partnership."
     ]
   },
   "dueDiligence": {
-    "heading": "Due diligence, up front",
+    "heading": "Due diligence in total transparency",
     "items": [
-      "Kimere began operating in June 2026 and the legal structure is being formalised. We share current company documentation directly at the due-diligence stage rather than describe it here.",
-      "We hold no formal agreement or accreditation with any Italian university or public body. Where a page on this site describes what a university or a consulate does, it links to that institution's own published source.",
-      "We don't issue visas or residence permits and we don't guarantee outcomes. Those decisions belong to the consulate and the Questura.",
-      "We're not a licensed estate agency. We view, verify and register housing; we don't hold listings or take deposits on anyone's behalf."
+      "The company has been operating since June 2026 with its legal structure currently being formalized. We will share all official documentation during the operational due diligence phase.",
+      "We operate independently, with no accreditations from Italian public bodies. The information provided is always based on official sources verifiable via direct links.",
+      "We have no issuing power over visas and residence permits. Such decisions remain the unquestionable domain of consulates and Police Headquarters.",
+      "Verifying housing on behalf of the student is a logistical service. We do not carry out direct real estate brokerage activities."
     ]
   },
   "form": {
     "eyebrow": "Let's talk",
     "heading": "Book the free seminar",
-    "body": "The same form handles a partnership enquiry — the \"what are you looking for\" field decides which conversation you get. It reaches the person who would run the partnership, not a sales queue. Tell us your volumes and your markets and you get a straight answer on whether the model fits, including when it doesn't.",
+    "body": "The form is the single point of contact for seminars or partnership requests. By selecting 'What are you looking for' you will be directed straight to your dedicated contact. Send us your volumes and target markets, and we will provide a blunt assessment on the actual feasibility of the project.",
     "ctaLabel": "Send the request"
   }
 }

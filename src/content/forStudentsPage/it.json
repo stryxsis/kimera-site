@@ -2,125 +2,125 @@
   "hero": {
     "eyebrow": "Per gli studenti",
     "headline": "Il tuo futuro accademico, zero stress burocratico.",
-    "subhead": "Puoi tranquillamente avere più paura dei moduli, dei soldi e della lingua che dell'esame di ammissione — ce l'hanno quasi tutti, e quasi nessuno lo dice. Quella parte è il nostro lavoro. Tu scegli dove vuoi studiare, ovunque nel mondo, e noi ti togliamo dal tavolo le candidature, le borse di studio, i documenti e il fascicolo per il visto. In Italia andiamo più a fondo, perché lì il percorso lo gestiamo noi.",
-    "ctaPrimary": "Parti dal questionario",
-    "ctaSecondary": "Guarda cosa ti togliamo dalle mani",
+    "subhead": "Puoi tranquillamente avere più paura dei moduli, delle tasse e della lingua che dell'esame di ammissione. È del tutto normale, ma quasi nessuno ha il coraggio di dirlo. Gestire quella pressione è il nostro lavoro. Tu scegli dove vuoi studiare, in qualsiasi parte del mondo, e noi ci occupiamo di candidature, borse di studio, traduzioni e visti. In Italia, poi, ti seguiamo ancora più da vicino perché gestiamo l'intero percorso.",
+    "ctaPrimary": "Inizia dal questionario",
+    "ctaSecondary": "Scopri di cosa ci occupiamo",
     "reassurance": "Il questionario è gratuito, si compila in pochi minuti e non ti impegna a niente."
   },
   "identikit": {
     "eyebrow": "Tu chi sei",
-    "heading": "Questa pagina la leggono due persone. Hanno bisogno di cose opposte.",
-    "body": "Una ha già deciso di partire e sta annegando in tutto quello che viene dopo quella decisione. L'altra non ha deciso niente e sta annegando nelle opzioni. Sono bloccate entrambe, per motivi esattamente opposti — quindi scegli la tua metà e salta il resto.",
+    "heading": "Due punti di partenza, due percorsi molto diversi",
+    "body": "Da una parte c'è chi ha già deciso di partire e sta annegando nella burocrazia. Dall'altra c'è chi non ha ancora scelto nulla e sta affondando nelle opzioni disponibili. Due blocchi completamenti opposti. Scegli il profilo che ti descrive meglio e ignora il resto.",
     "paths": [
       {
         "audience": "international",
         "icon": "permit",
         "title": "Vengo dall'estero",
-        "body": "Stai lasciando il tuo paese per studiare, in Italia o altrove. Tra te e l'aula ci sono una candidatura, un consolato, una scadenza per una borsa di studio di cui nessuno ti ha parlato e una pila di documenti che deve essere legalmente valida in una lingua che ancora non parli.",
+        "body": "Stai lasciando il tuo paese per studiare in Italia o altrove. Prima di sederti in aula devi superare candidature, consolati, scadenze nascoste per le borse di studio e una montagna di documenti legali in una lingua che non conosci.",
         "points": [
-          "Candidature e immatricolazione, dalla rosa di atenei al posto confermato",
-          "Un fascicolo per il visto costruito come il tuo consolato si aspetta di riceverlo",
-          "Borse di studio, fasce di contribuzione e le carte che decidono entrambe",
-          "Traduzione e legalizzazione dei tuoi titoli, in casa",
-          "Dopo l'atterraggio: codice fiscale, sanità, conto in banca, una casa vera"
+          "Dalla selezione degli atenei all'immatricolazione definitiva",
+          "Un fascicolo per il visto preparato esattamente come lo vuole il tuo consolato",
+          "Gestione delle borse di studio, calcolo delle tasse e relativa documentazione",
+          "Traduzione e legalizzazione dei tuoi titoli di studio gestite internamente",
+          "Supporto all'arrivo con codice fiscale, sanità, conto in banca e ricerca dell'alloggio"
         ],
-        "ctaLabel": "Guarda cosa ti togliamo dalle mani"
+        "ctaLabel": "Scopri cosa possiamo fare per te"
       },
       {
         "audience": "undecided",
         "icon": "compass",
-        "title": "Sto ancora decidendo — qui o all'estero",
-        "body": "Corso, città, paese, o se partire del tutto. Non sei bloccato perché ti mancano informazioni: sei bloccato perché ce ne sono troppe e nessuna parla di te nello specifico. Quello è un problema di ricerca, e un problema di ricerca si risolve in una sessione sola.",
+        "title": "Devo ancora decidere tra l'Italia e l'estero",
+        "body": "Corso, città, paese o l'idea stessa di partire. Non sei bloccato per mancanza di informazioni, ma perché ce ne sono troppe e nessuna si adatta perfettamente al tuo caso. Questo è un problema di chiarezza che possiamo risolvere insieme in una singola sessione.",
         "points": [
-          "Un questionario che mette a fuoco cosa vuoi davvero, prima che si parli",
-          "La ricerca sulle tue opzioni reali, fatta mentre tu vivi la tua vita",
-          "Restare e partire, messi a confronto uno accanto all'altro e onestamente",
-          "Una sessione che finisce con un piano scritto, non con una lista di link"
+          "Un questionario per mettere a fuoco le tue reali ambizioni prima di parlarci",
+          "Analizziamo noi le tue opzioni concrete, così non perdi tempo",
+          "Confrontiamo l'idea di restare con quella di partire in totale onestà",
+          "Al termine della sessione avrai un piano scritto, non una semplice lista di link"
         ],
-        "ctaLabel": "Guarda come funziona la consulenza"
+        "ctaLabel": "Scopri come funziona la consulenza"
       }
     ]
   },
   "lifelines": {
     "eyebrow": "La parte che fa perdere un anno",
-    "heading": "Cinque punti in cui di solito si rompe. Nessuno dei cinque è l'esame.",
-    "body": "Chiedi a chi l'ha già fatto e non ti parlerà del test d'ingresso. Ti parlerà di un modulo che nessuno ha spiegato, di una scadenza che nessuno ha detto, e di una coda in cui non puoi metterti finché non hai finito di stare in un'altra. Ecco l'elenco, e cosa facciamo su ciascuno.",
+    "heading": "I cinque ostacoli che ti fanno perdere un anno accademico",
+    "body": "Chiedi a chi ci è già passato. Non ti parlerà della difficoltà del test d'ingresso. Ti racconterà di moduli incomprensibili, scadenze nascoste e infinite code burocratiche. Ecco la nostra lista e come risolviamo ogni singolo punto.",
     "items": [
       {
         "icon": "document",
         "title": "Borse di studio a cui forse hai diritto senza saperlo",
-        "body": "Il diritto allo studio in Italia è su base reddituale e non solo sul merito, quindi capita spesso che chi si dà per escluso in realtà sia idoneo. Ha una scadenza sua, che non è quella dell'ateneo e non la aspetta. Verifichiamo a cosa puoi accedere dove stai andando, e depositiamo la domanda in tempo."
+        "body": "In Italia il diritto allo studio si basa spesso sul reddito e non solo sul merito. Molte persone si escludono a priori pur avendo i requisiti perfetti. Le tempistiche non coincidono con quelle dell'università. Noi verifichiamo tutte le tue opzioni e inviamo la domanda in tempo."
       },
       {
         "icon": "contract",
-        "title": "L'ISEE, ricostruito su documenti stranieri",
-        "body": "La tua idoneità passa dall'ISEE, un indicatore economico di cui quasi nessuna famiglia straniera ha sentito parlare e che ancora meno sanno calcolare — tanto meno partendo da buste paga e dichiarazioni emesse in un altro paese e in un'altra lingua. Lo ricostruiamo insieme a te, documento per documento."
+        "title": "Il calcolo dell'ISEE partendo da documenti stranieri",
+        "body": "La tua idoneità dipende dall'ISEE, un indicatore economico sconosciuto a quasi tutte le famiglie straniere e ancora più difficile da calcolare partendo da buste paga di un altro paese. Lo ricostruiamo noi insieme a te, documento dopo documento."
       },
       {
         "icon": "building",
-        "title": "Le tasse, che non sono un numero solo",
-        "body": "Quello che paghi davvero è una fascia che si muove con il reddito dichiarato, non un prezzo stampato su una pagina. Fare bene quella dichiarazione è la differenza tra la fascia massima e una frazione di essa, e si decide con carte depositate mesi prima della tua prima lezione."
+        "title": "Le tasse universitarie, molto più di una singola cifra",
+        "body": "L'importo effettivo delle tasse dipende dalla tua fascia di reddito, non da un prezzo fisso sul sito dell'ateneo. Una dichiarazione fatta bene fa la differenza tra pagare il massimo o solo una frazione del costo. Tutto si gioca sui documenti presentati mesi prima della tua prima lezione."
       },
       {
         "icon": "health",
-        "title": "La sanità, nell'unico ordine che funziona",
-        "body": "Non ti puoi iscrivere al Servizio Sanitario Nazionale senza codice fiscale, e senza copertura sanitaria non vai lontano. Non c'è niente di difficile. C'è tutto di rigidamente sequenziale, e un passaggio fatto fuori ordine va rifatto."
+        "title": "La copertura sanitaria, nell'ordine giusto",
+        "body": "Non puoi iscriverti al Servizio Sanitario Nazionale senza il codice fiscale, e senza copertura sanitaria in Italia non vai lontano. Non è nulla di complesso, ma le regole sono rigide e un solo errore ti costringe a ricominciare da capo."
       },
       {
         "icon": "permit",
         "title": "Un conto in banca che si apre davvero",
-        "body": "Ti serve un conto prima di poter pagare quasi qualsiasi cosa, e aprirlo da appena arrivato vuol dire presentarsi con il set di documenti giusto invece di scoprire allo sportello quale manca. Questo e il codice fiscale li facciamo partire subito, perché tutto il resto viene dopo di loro."
+        "body": "Ti serve un conto corrente per pagare quasi tutto. Aprirlo appena arrivato significa presentarsi in banca con tutti i documenti esatti, evitando sorprese allo sportello. Avviamo la pratica per conto corrente e codice fiscale immediatamente, perché sono la base per tutto il resto."
       }
     ],
-    "note": "Nessuna di queste cose è difficile presa da sola. Sono difficili perché sono in sequenza, perché ognuna ha la sua coda, e perché un passaggio fatto nell'ordine sbagliato va rifatto — ed è così che un mese perso diventa un anno accademico perso.",
+    "note": "Presa singolarmente nessuna di queste pratiche è impossibile. Il problema è l'ordine sequenziale, le code e la rigidità del sistema. Un errore di tempistica può farti perdere facilmente un intero anno accademico.",
     "officialSource": "https://www.universitaly.it"
   },
   "documents": {
     "eyebrow": "Documenti e traduzioni",
-    "heading": "Il tuo diploma deve arrivare in italiano, e legalmente valido.",
-    "body": "È il passaggio in cui i mesi svaniscono in silenzio, ed è l'unica cosa che non mandiamo da nessuna parte. Gli insegnanti che tengono i nostri corsi di lingua sono le stesse persone che traducono i tuoi documenti accademici — stesso team, stesso fascicolo, nessuno in mezzo. È tutto qui il motivo per cui una traduzione può partire il giorno in cui la chiedi invece di tornare dopo tre settimane.",
+    "heading": "Il tuo diploma deve essere in italiano e legalmente valido",
+    "body": "Questo è il momento in cui si perdono mesi preziosi senza accorgersene. Per questo gestiamo tutto internamente. I nostri insegnanti di lingua si occupano personalmente della traduzione dei tuoi documenti. Niente intermediari esterni. Ecco perché possiamo avviare una traduzione il giorno stesso in cui la richiedi, azzerando le attese.",
     "items": [
       {
         "icon": "document",
-        "title": "La traduzione, da dentro il team",
-        "body": "Certificati, diplomi e attestati, tradotti da persone che sono già sul tuo fascicolo e sanno già cosa l'ufficio ricevente si aspetta di vedere — e nel formato in cui si aspetta di vederlo."
+        "title": "Traduzioni gestite dal nostro team",
+        "body": "Traduciamo i tuoi certificati, diplomi e attestati. Conoscendo già il tuo fascicolo, sappiamo esattamente cosa pretende l'ufficio competente e il formato richiesto."
       },
       {
         "icon": "contract",
-        "title": "La legalizzazione, seguita fino in fondo",
-        "body": "Apostille o legalizzazione consolare, a seconda del paese che ha rilasciato il tuo titolo. Preparata e monitorata insieme a te, non restituita come un elenco di istruzioni e un in bocca al lupo."
+        "title": "Legalizzazione seguita fino all'ultimo dettaglio",
+        "body": "Gestiamo l'Apostille o la legalizzazione consolare in base al paese d'origine del tuo titolo. Prepariamo e seguiamo la pratica con te, senza liquidarti con un inutile elenco di istruzioni burocratiche."
       },
       {
         "icon": "calendar",
-        "title": "Impostata sulla scadenza vera",
-        "body": "Il lavoro sui documenti ha i suoi tempi e le ammissioni hanno una data di chiusura, e le decidono due uffici diversi che non si parlano mai. Noi partiamo dalla chiusura e torniamo indietro, che è l'unico ordine in cui questa cosa finisce in tempo."
+        "title": "Organizzazione basata sulle scadenze reali",
+        "body": "La preparazione dei documenti richiede tempo e le ammissioni hanno date inflessibili gestite da uffici che non comunicano tra loro. Noi calcoliamo i tempi partendo dalla scadenza finale a ritroso. È l'unica strategia per finire in tempo."
       }
     ],
-    "limitHeading": "Cosa non vuol dire «in casa»",
-    "limitBody": "Non vuol dire che il requisito sparisce. L'attestato di comparabilità di un titolo estero lo rilascia CIMEA o lo valuta l'ateneo stesso, e nulla di ciò che facciamo lo sostituisce o lo rende facoltativo — chi ti dice che quel passaggio si può saltare ti sta vendendo una domanda respinta. Quello che facciamo è comporre il fascicolo, seguirlo fino in fondo e tenere la traduzione dalla nostra parte del tavolo, così quella parte non è mai quella che ti blocca.",
+    "limitHeading": "Cosa non possiamo garantirti (e non lo fa nessuno)",
+    "limitBody": "Nessuna agenzia può cancellare i requisiti di legge. L'attestato di comparabilità di un titolo estero è di competenza esclusiva del CIMEA o dell'ateneo. Diffida da chi promette scorciatoie facili, ti stanno vendendo solo illusioni. Il nostro compito è comporre un fascicolo ineccepibile, tradurre i documenti internamente e seguirlo fino in fondo per far sì che la burocrazia non ti fermi.",
     "officialSource": "https://www.cimea.it"
   },
   "pricing": {
     "eyebrow": "Quanto costa",
-    "heading": "Una sessione sola — e quando comincia la ricerca è già fatta.",
-    "body": "Quasi tutte le prime consulenze se ne vanno a farti domande di base. La nostra no, perché quelle domande te le facciamo prima e per iscritto, e poi andiamo a lavorare. Quando ci parliamo abbiamo già guardato le tue opzioni reali: è quello che stai pagando davvero, ed è il motivo per cui il prezzo sta su questa pagina invece che dietro una telefonata.",
+    "heading": "Una singola sessione strategica basata su dati concreti",
+    "body": "Le classiche consulenze iniziali fanno perdere tempo con domande di base. Noi raccogliamo le informazioni chiave tramite questionario, prima di incontrarci, e poi ci mettiamo al lavoro. Quando finalmente ci parliamo abbiamo già delineato le tue opzioni reali. È questo il valore vero del servizio ed è per questo che mettiamo i prezzi in chiaro.",
     "planName": "Consulenza Strategica Base",
     "price": "200 $",
     "priceUnit": "una sessione, ricerca inclusa",
-    "billingNote": "La cifra è in dollari statunitensi. Prima di qualsiasi pagamento ti confermiamo per iscritto l'importo esatto, la valuta in cui verrà fatturato e il trattamento fiscale applicabile — non prendiamo soldi sulla fiducia di un numero scritto su una pagina web.",
+    "billingNote": "Tutti i prezzi sono in dollari statunitensi. Prima di procedere ti confermeremo per iscritto l'importo esatto, la valuta di fatturazione e il regime fiscale applicato. La massima trasparenza viene prima di tutto.",
     "stepsHeading": "Cosa succede, nell'ordine",
     "steps": [
       {
         "title": "Compili il questionario preliminare",
-        "body": "A che punto sei, cosa hai già deciso e quali sono davvero i tuoi vincoli — compresi quelli economici, che sono la parte che quasi tutti esitano a scrivere e quella che cambia di più la risposta."
+        "body": "Vogliamo capire a che punto sei e quali sono i tuoi veri vincoli. Inclusi quelli economici, il fattore decisivo che cambia completamente le tue prospettive."
       },
       {
         "title": "Studiamo il tuo caso prima di incontrarci",
-        "body": "Le tue opzioni reali sul tuo profilo reale: quali corsi e quali paesi ti sono aperti, quanto costa ciascuno una volta contate le borse di studio, e quali scadenze sono ormai troppo vicine per essere prese."
+        "body": "Analizziamo le opzioni sul tuo profilo reale. Corsi, paesi accessibili, costi effettivi post borse di studio e scadenze burocratiche ancora fattibili."
       },
       {
-        "title": "La sessione, costruita su quello che è emerso",
-        "body": "Ti portiamo dentro quello che abbiamo trovato, tu lo contesti, e te ne vai con un percorso invece che con una lista di link. Se la risposta onesta è che non ti conviene partire, ti diamo quella."
+        "title": "La sessione strategica",
+        "body": "Discutiamo le opzioni emerse e strutturiamo un percorso concreto. Se riteniamo che la scelta migliore sia non partire, te lo diremo in totale onestà."
       }
     ],
     "includedHeading": "Cosa comprende il prezzo",
@@ -130,20 +130,20 @@
       "La consulenza vera e propria, in una lingua in cui ti trovi a tuo agio",
       "Una sintesi scritta di quello che ci siamo detti, che resta tua"
     ],
-    "notIncludedHeading": "Cosa non comprende — meglio dirlo prima di pagare che dopo",
+    "notIncludedHeading": "Cosa non comprende, nel nome della trasparenza",
     "notIncluded": [
-      "Non è il servizio di relocation completo. Candidature, fascicolo per il visto, borse di studio e documenti si preventivano a parte, quando sappiamo cosa ti serve davvero.",
-      "Non è una garanzia di ammissione, di borsa di studio o di visto. Quelle decisioni spettano agli atenei, agli enti erogatori e ai consolati, e a nessun altro.",
-      "Non è consulenza legale né fiscale. Dove il tuo caso richiede un avvocato o un commercialista lo diciamo, invece di improvvisare.",
-      "Tasse universitarie, diritti per le traduzioni ufficiali e oneri pubblici si pagano a quegli enti, non a noi."
+      "Non è un servizio di relocation completo. Candidature, fascicoli per visti, borse di studio e traduzioni vengono preventivati a parte solo dopo aver capito di cosa hai realmente bisogno.",
+      "Non garantiamo l'ammissione, l'ottenimento della borsa di studio o del visto. Queste decisioni spettano esclusivamente agli atenei e ai consolati competenti.",
+      "Non offriamo consulenza legale o fiscale. Se il tuo caso richiede un professionista specializzato, te lo consiglieremo con estrema trasparenza.",
+      "Le tasse universitarie, le imposte e i diritti pubblici vanno pagati direttamente agli enti preposti, mai a noi."
     ],
     "ctaLabel": "Parti dal questionario preliminare"
   },
   "finalCta": {
     "eyebrow": "Si comincia",
-    "heading": "Tutto quello che c'è qui sopra comincia dallo stesso punto.",
-    "body": "Un questionario — lo stesso primo passo sia che tu ti stia spostando da un altro continente, sia che tu stia scegliendo tra due città a un'ora di distanza. È quello che permette alla prima cosa che ti diciamo di parlare di te, invece di essere lo stesso paragrafo che ricevono tutti.",
+    "heading": "Ogni grande progetto inizia con un primo passo",
+    "body": "Il nostro questionario è il primo passo essenziale, che tu stia arrivando da un altro continente o cambiando semplicemente città. È l'unico modo per garantirti un servizio cucito su misura per te, evitando le solite risposte copia-incolla.",
     "ctaLabel": "Inizia da qui: compila il questionario preliminare",
-    "note": "Pochi minuti, nessun costo, e in tutto il modulo non c'è nessun passaggio di pagamento. Leggiamo quello che ci mandi e ti rispondiamo via email."
+    "note": "Pochi minuti e nessun costo. Il modulo non richiede alcun pagamento iniziale. Leggeremo attentamente il tuo profilo e ti risponderemo via email."
   }
 }

@@ -159,65 +159,6 @@ export const ui: UiDictionary = {
     },
     submitLabel: 'Invia i miei dati',
   },
-  partnerForm: {
-    intro:
-      'Una prima conversazione sui vostri volumi e destinazioni — nessun impegno, solo per capire se il modello funziona.',
-    contactName: 'Il tuo nome',
-    role: 'Il tuo ruolo',
-    agency: "Nome dell'agenzia",
-    country: 'Paese',
-    website: 'Sito web aziendale',
-    websitePlaceholder: 'https://',
-    workEmail: 'Email di lavoro',
-    volumeBracket: 'Studenti inviati all’estero ogni anno',
-    volumeBracketOptions: {
-      under10: 'Meno di 10',
-      from10to50: '10–50',
-      from50to200: '50–200',
-      over200: '200+',
-    },
-    destinationsServed: 'Destinazioni attualmente servite',
-    destinationsServedPlaceholder: 'Facoltativo — es. Regno Unito, Germania, Polonia…',
-    interest: 'Cosa state cercando?',
-    interestOptions: {
-      freeSeminar: 'Il seminario online gratuito',
-      studentsToItaly: 'Mandare studenti in Italia',
-      structuredPartnership: 'Una partnership strutturata',
-      other: "Qualcos'altro",
-    },
-    notes: 'Altro che vale la pena sapere',
-    notesPlaceholder: 'Facoltativo',
-  },
-  translationForm: {
-    name: 'Il tuo nome',
-    email: 'Email',
-    issuingCountry: 'Paese che ha rilasciato i documenti',
-    issuingCountryHint: 'Decide se la strada è l’apostille o la legalizzazione consolare.',
-    documents: 'Cosa devi far tradurre',
-    // Nessun campo di caricamento, e la ragione va detta: la scansione di un
-    // diploma o di un passaporto è un dato personale, e un modulo pubblico non
-    // è il posto dove raccoglierla. Il canale si concorda nella prima risposta.
-    documentsHint:
-      'Descrivili qui — non mandare ancora i file. Il canale per quelli lo concordiamo quando ti rispondiamo.',
-    documentsPlaceholder: 'es. diploma di maturità, certificato esami, certificato di nascita…',
-    deadline: 'La data entro cui deve essere pronto',
-    deadlinePlaceholder: 'Facoltativo — anche approssimativa aiuta',
-  },
-  courseForm: {
-    name: 'Il tuo nome',
-    email: 'Email',
-    language: 'Lingua',
-    languagePlaceholder: 'Scegli una lingua…',
-    level: 'A che punto sei',
-    levelOptions: {
-      beginner: 'Parto da zero',
-      intermediate: 'Riesco a sostenere una conversazione',
-      advanced: 'Avanzato — sto rifinendo',
-      unsure: 'Non lo so — valutatemi',
-    },
-    goal: 'A cosa ti serve',
-    goalPlaceholder: 'Facoltativo — una certificazione, un corso in quella lingua, il lavoro…',
-  },
   scaffold: {
     placeholder: 'Contenuto della pagina — aggiunto in FASE 3.',
   },

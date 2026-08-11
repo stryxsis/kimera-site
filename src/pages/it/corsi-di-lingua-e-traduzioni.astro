@@ -1,17 +1,11 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getEntry } from 'astro:content';
-import { getPath } from '../../i18n/routes';
+import { BOOKING_FORM_URL } from '../../i18n/routes';
 import { useTranslations } from '../../i18n/utils';
-import { sortedCountryOptions } from '../../lib/countries';
-import { describedBy } from '../../lib/field';
 import Button from '../../components/ui/Button.astro';
 import Eyebrow from '../../components/ui/Eyebrow.astro';
-import Field from '../../components/ui/Field.astro';
-import Input from '../../components/ui/Input.astro';
-import ChoiceGroup from '../../components/ui/ChoiceGroup.astro';
 import StepIcon from '../../components/illustrations/StepIcon.astro';
-import MultiStepForm from '../../components/forms/MultiStepForm.astro';
 
 /**
  * Corsi di lingua e traduzioni — l'area che l'analisi (§3) chiede esplicitamente,
@@ -34,48 +28,22 @@ import MultiStepForm from '../../components/forms/MultiStepForm.astro';
  * siamo. Il brief ne elenca sette perché ricopia l'analisi, che è precedente
  * alla conferma del cliente sull'italiano (2026-08-11).
  *
- * TERZA: due moduli e non uno. Chi arriva con un diploma da tradurre entro
- * venerdì e chi vuole imparare il tedesco per settembre hanno intenti opposti, e
- * le domande da fare sono diverse: un modulo unico renderebbe inutilizzabili
- * entrambe le liste di contatti. Sono i primi due moduli del sito che non
- * qualificano una consulenza — sono corti apposta.
+ * TERZA: due porte e non una in fondo alla pagina. Chi arriva con un diploma da
+ * tradurre entro venerdì e chi vuole imparare il tedesco per settembre hanno
+ * intenti opposti, e devono riconoscere il proprio prima di cliccare. Portano
+ * allo stesso modulo Google, che chiede da sé di che cosa si tratta: i due
+ * moduli interni sono stati rimossi su richiesta del cliente (2026-08-11).
  *
- * QUARTA: il modulo del preventivo NON accetta allegati, ed è deliberato. La
- * scansione di un diploma o di un passaporto è un dato personale, e un modulo
- * pubblico non è il posto dove raccoglierla: il canale si concorda nella prima
- * risposta. Il campo descrittivo basta a preventivare.
+ * QUARTA: nessun caricamento di file, qui e nel modulo di destinazione. La
+ * scansione di un diploma o di un passaporto è un dato personale, e la si
+ * scambia su un canale concordato — non la si raccoglie con un modulo pubblico.
  *
  * Ritmo delle superfici: bianco → nebbia (l'academy) → bianco (i documenti) →
- * nebbia (il confronto) → NAVY (i due moduli).
+ * nebbia (il confronto) → NAVY (la CTA).
  */
 const locale = 'it';
 const t = useTranslations(locale);
 const { data: content } = await getEntry('languageCoursesPage', locale)!;
-const { data: countryNames } = await getEntry('countries', locale)!;
-const countries = sortedCountryOptions(countryNames, locale);
-
-/**
- * Ogni elenco va tenuto identico a quello passato al form vero: è la copia
- * statica che Netlify analizza al deploy (vedi NetlifyFormDeclaration).
- * Prefissi diversi perché i due moduli stanno sulla stessa pagina e gli id
- * devono restare unici — due `id="name"` romperebbero le etichette di entrambi.
- */
-const QUOTE_FIELDS = [
-  'tq-name',
-  'tq-email',
-  'tq-country',
-  'tq-documents',
-  'tq-deadline',
-  'tq-privacy-consent',
-];
-const COURSE_FIELDS = [
-  'lc-name',
-  'lc-email',
-  'lc-language',
-  'lc-level',
-  'lc-goal',
-  'lc-privacy-consent',
-];
 ---
 
 <PageLayout
@@ -259,205 +227,64 @@ const COURSE_FIELDS = [
     </section>
 
     {
-      /* ── I due moduli ───────────────────────────────────────────────────
-        Due moduli distinti e non uno con un menu a tendina: le domande da
-        fare sono diverse, e una lista di contatti mescolata non serve a
-        nessuno dei due servizi. Entrambi corti — non sono il questionario di
-        qualificazione della consulenza. */
+      /* ── La conversione ─────────────────────────────────────────────────
+        I due moduli interni sono stati rimossi (2026-08-11, richiesta del
+        cliente): la raccolta contatti passa tutta dal modulo Google, che è
+        già l'imbuto del resto del sito.
+
+        Le due porte restano, e non è ridondanza: sono i due intenti opposti
+        con cui si arriva su questa pagina — l'urgenza di un documento da
+        tradurre e la pianificazione di un corso — e il lettore deve
+        riconoscere il proprio prima di cliccare. Portano allo stesso modulo,
+        che chiede da sé di che cosa si tratta.
+
+        ⚠️ Gli id `quote-form` e `course-form` NON si possono rinominare: ci
+        puntano le due CTA dell'hero, quella dell'academy e quella del blocco
+        documenti. Sono ancore interne, e nessun controllo del build le
+        verifica. */
     }
     <section class="wrap band" id="forms" aria-labelledby="forms-heading">
-      <div class="formband surface-panel">
-        <div class="formband__head">
+      <div class="ctaband surface-panel">
+        <div class="ctaband__head">
           <Eyebrow tone="blank">{content.forms.eyebrow}</Eyebrow>
-          <h2 class="heading-section formband__title" id="forms-heading">
+          <h2 class="heading-section ctaband__title" id="forms-heading">
             {content.forms.heading}
           </h2>
-          <p class="formband__body">{content.forms.body}</p>
+          <p class="ctaband__body">{content.forms.body}</p>
         </div>
 
         <div class="doors">
-          {/* Preventivo per traduzione o legalizzazione */}
           <div class="door" id="quote-form" aria-labelledby="quote-heading">
             <h3 class="heading-card door__title" id="quote-heading">
               {content.forms.quote.heading}
             </h3>
             <p class="door__body">{content.forms.quote.body}</p>
-
-            <MultiStepForm
-              name="translation-quote"
-              action={getPath('thankYou', locale)}
-              submitLabel={content.forms.quote.ctaLabel}
-              fields={QUOTE_FIELDS}
-              labels={t.form}
+            <Button
+              href={BOOKING_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              arrow
             >
-              <fieldset class="step" data-step>
-                <legend class="sr-only">{content.forms.quote.heading}</legend>
-
-                <Field id="tq-name" label={t.translationForm.name} required>
-                  <Input
-                    id="tq-name"
-                    name="tq-name"
-                    required
-                    describedBy={describedBy('tq-name', { error: true })}
-                  />
-                </Field>
-
-                <Field id="tq-email" label={t.translationForm.email} required>
-                  <Input
-                    id="tq-email"
-                    name="tq-email"
-                    type="email"
-                    required
-                    describedBy={describedBy('tq-email', { error: true })}
-                  />
-                </Field>
-
-                <Field
-                  id="tq-country"
-                  label={t.translationForm.issuingCountry}
-                  hint={t.translationForm.issuingCountryHint}
-                  required
-                >
-                  <Input
-                    as="select"
-                    id="tq-country"
-                    name="tq-country"
-                    required
-                    describedBy={describedBy('tq-country', { hint: true, error: true })}
-                  >
-                    <option value=""></option>
-                    {countries.map(([code, label]) => <option value={code}>{label}</option>)}
-                  </Input>
-                </Field>
-
-                {/* Nessun campo di caricamento, e il suggerimento dice perché:
-                    la scansione di un diploma è un dato personale e un modulo
-                    pubblico non è il posto dove raccoglierla. */}
-                <Field
-                  id="tq-documents"
-                  label={t.translationForm.documents}
-                  hint={t.translationForm.documentsHint}
-                  required
-                >
-                  <Input
-                    as="textarea"
-                    id="tq-documents"
-                    name="tq-documents"
-                    required
-                    placeholder={t.translationForm.documentsPlaceholder}
-                    describedBy={describedBy('tq-documents', { hint: true, error: true })}
-                  />
-                </Field>
-
-                <Field
-                  id="tq-deadline"
-                  label={t.translationForm.deadline}
-                  optionalLabel={t.form.optional}
-                >
-                  <Input
-                    id="tq-deadline"
-                    name="tq-deadline"
-                    placeholder={t.translationForm.deadlinePlaceholder}
-                  />
-                </Field>
-
-                <label class="consent-field">
-                  <input type="checkbox" name="tq-privacy-consent" required />
-                  <span>
-                    {t.form.privacyConsentPrefix}
-                    <a href={getPath('privacy', locale)}>{t.form.privacyConsentLink}</a>.
-                  </span>
-                </label>
-              </fieldset>
-            </MultiStepForm>
+              {content.forms.quote.ctaLabel}
+            </Button>
           </div>
 
-          {/* Corso di lingua o prova di livello */}
           <div class="door" id="course-form" aria-labelledby="course-heading">
             <h3 class="heading-card door__title" id="course-heading">
               {content.forms.course.heading}
             </h3>
             <p class="door__body">{content.forms.course.body}</p>
-
-            <MultiStepForm
-              name="language-course"
-              action={getPath('thankYou', locale)}
-              submitLabel={content.forms.course.ctaLabel}
-              fields={COURSE_FIELDS}
-              labels={t.form}
+            <Button
+              href={BOOKING_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="secondary"
+              size="lg"
+              arrow
             >
-              <fieldset class="step" data-step>
-                <legend class="sr-only">{content.forms.course.heading}</legend>
-
-                <Field id="lc-name" label={t.courseForm.name} required>
-                  <Input
-                    id="lc-name"
-                    name="lc-name"
-                    required
-                    describedBy={describedBy('lc-name', { error: true })}
-                  />
-                </Field>
-
-                <Field id="lc-email" label={t.courseForm.email} required>
-                  <Input
-                    id="lc-email"
-                    name="lc-email"
-                    type="email"
-                    required
-                    describedBy={describedBy('lc-email', { error: true })}
-                  />
-                </Field>
-
-                {/* Le opzioni vengono dal contenuto, non da una seconda lista
-                    scritta a mano: l'elenco delle lingue vive in un posto solo. */}
-                <Field id="lc-language" label={t.courseForm.language} required>
-                  <Input
-                    as="select"
-                    id="lc-language"
-                    name="lc-language"
-                    required
-                    describedBy={describedBy('lc-language', { error: true })}
-                  >
-                    <option value="">{t.courseForm.languagePlaceholder}</option>
-                    {
-                      content.academy.languages.map((language) => (
-                        <option value={language}>{language}</option>
-                      ))
-                    }
-                  </Input>
-                </Field>
-
-                <ChoiceGroup
-                  id="lc-level"
-                  name="lc-level"
-                  legend={t.courseForm.level}
-                  required
-                  options={[
-                    { value: 'beginner', label: t.courseForm.levelOptions.beginner },
-                    { value: 'intermediate', label: t.courseForm.levelOptions.intermediate },
-                    { value: 'advanced', label: t.courseForm.levelOptions.advanced },
-                    { value: 'unsure', label: t.courseForm.levelOptions.unsure },
-                  ]}
-                />
-
-                <Field id="lc-goal" label={t.courseForm.goal} optionalLabel={t.form.optional}>
-                  <Input
-                    as="textarea"
-                    id="lc-goal"
-                    name="lc-goal"
-                    placeholder={t.courseForm.goalPlaceholder}
-                  />
-                </Field>
-
-                <label class="consent-field">
-                  <input type="checkbox" name="lc-privacy-consent" required />
-                  <span>
-                    {t.form.privacyConsentPrefix}
-                    <a href={getPath('privacy', locale)}>{t.form.privacyConsentLink}</a>.
-                  </span>
-                </label>
-              </fieldset>
-            </MultiStepForm>
+              {content.forms.course.ctaLabel}
+            </Button>
           </div>
         </div>
       </div>
@@ -678,7 +505,7 @@ const COURSE_FIELDS = [
     font-size: var(--text-sm);
     line-height: 1.65;
     color: var(--surface-fg-soft);
-    max-width: 88ch;
+    max-width: none;
   }
   .limit__link {
     display: inline-flex;
@@ -724,42 +551,47 @@ const COURSE_FIELDS = [
     font-size: var(--text-sm);
     line-height: 1.65;
     color: var(--surface-fg-soft);
-    max-width: 82ch;
+    max-width: none;
   }
 
-  /* ── I due moduli ─────────────────────────────────────────────────────
-     Affiancati e non uno sotto l'altro: le due porte devono vedersi insieme,
-     altrimenti chi scorre trova la prima e non sa che esiste la seconda. */
-  .formband {
+  /* ── La CTA finale ────────────────────────────────────────────────────
+     Su navy come la CTA finale delle altre pagine. Le due porte restano
+     affiancate: devono vedersi insieme, altrimenti chi scorre trova la prima
+     e non sa che esiste la seconda. */
+  .ctaband {
     border-radius: var(--radius-2xl);
     padding: clamp(2rem, 5vw, 3.5rem);
     margin-top: clamp(1rem, 3vw, 2.5rem);
   }
-  .formband__head {
+  .ctaband__head {
     display: grid;
     justify-items: start;
     gap: 1.1rem;
     margin-bottom: clamp(2rem, 4vw, 3rem);
   }
-  .formband__title {
+  .ctaband__title {
     max-width: 24ch;
   }
-  .formband__body {
+  .ctaband__body {
     color: var(--surface-fg-muted);
     max-width: 62ch;
   }
   .doors {
     display: grid;
-    gap: clamp(2rem, 4vw, 3rem);
-    align-items: start;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+    align-items: stretch;
   }
-  @media (min-width: 64rem) {
+  @media (min-width: 56rem) {
     .doors {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  /* Il bottone va in fondo alla scheda anche quando i due testi hanno lunghezze
+     diverse: due CTA non allineate leggono come due offerte di peso diverso. */
   .door {
     display: grid;
+    align-content: start;
+    justify-items: start;
     gap: 0.85rem;
     padding: clamp(1.5rem, 3vw, 2.25rem);
     background-color: var(--color-ground);
@@ -769,15 +601,8 @@ const COURSE_FIELDS = [
   .door__body {
     font-size: var(--text-sm);
     color: var(--surface-fg-muted);
-    margin: 0 0 0.75rem;
+    margin: 0 0 auto;
+    padding-bottom: 0.75rem;
   }
 
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
 </style>

@@ -1,120 +1,128 @@
 {
   "hero": {
     "eyebrow": "Studying abroad, handled",
-    "headline": "Pick the country. We'll handle everything that isn't studying.",
-    "subhead": "Kimere is a young consultancy built entirely around the part of moving abroad nobody warns you about — applications, visas, funding, documents, somewhere real to live. We work towards any destination you choose, and we go deepest in Italy, where we run the whole route ourselves, on the ground.",
+    "headline": "You pick the destination. We handle the bureaucracy.",
+    "subhead": "Kimere is the startup revolutionizing global student mobility. From choosing your university to getting a visa, all the way through funding, documents and housing. We build a custom roadmap to let you study anywhere you want, tearing down every obstacle.",
     "ctaStudent": "I'm a student",
     "ctaInstitution": "I'm a university or an agency"
   },
   "routing": {
     "eyebrow": "Start here",
-    "heading": "Four very different problems. Take the one that's yours.",
-    "body": "A student who knows where they're going, a student who doesn't, a university opening a new corridor and an agency adding a destination need almost nothing in common from us. So we don't pretend otherwise — pick your situation and skip everything else.",
+    "heading": "Four profiles. One clear path.",
+    "body": "Your needs are unique, whether you are a student with a clear goal or still deciding, a university seeking international talent or an agency looking to expand. Pick your profile and discover how we can accelerate your goals.",
     "boxes": [
       {
         "audience": "student-abroad",
         "icon": "compass",
         "title": "I want to study abroad",
-        "body": "You've more or less chosen. What's left is the application, a visa file that survives your consulate, funding you probably don't know you qualify for, and a lease that turns out to be real.",
+        "body": "Already have a destination in mind? Perfect. We take care of your application, build a bulletproof visa file for your consulate, handle the ISEE for your scholarships and find you a real home without nasty surprises.",
         "ctaLabel": "See what we handle"
       },
       {
         "audience": "student-undecided",
         "icon": "document",
-        "title": "I don't know what to choose",
-        "body": "Course, country, or whether to leave at all. You fill in a questionnaire, we research your actual options before we speak, and you finish the session with a plan instead of forty tabs open.",
+        "title": "I don't know where to start",
+        "body": "Overwhelmed by choices across courses, countries or budgets? We help you find clarity. Fill out the questionnaire, we will research your actual options and you will finish the session with a strategic plan instead of a thousand doubts.",
         "ctaLabel": "Book an orientation session"
       },
       {
         "audience": "university",
         "icon": "building",
-        "title": "I work for a university",
-        "body": "You want students from abroad, but the destination's funding and recognition rules are a black box — and so is what your candidates can actually afford. The first online seminar is free and built on your market.",
+        "title": "I represent a university",
+        "body": "Attracting international students means navigating a bureaucracy that makes no sense to outsiders. We support you with targeted seminars to turn interest into actual enrollments.",
         "ctaLabel": "Book the free seminar"
       },
       {
         "audience": "agency",
         "icon": "contract",
         "title": "I run a recruitment agency",
-        "body": "You recruit; we become your operation on the ground. The boundary between us and the commission split are written down before the first student moves, not renegotiated after.",
+        "body": "You find the talent, we guarantee a safe landing. We become your operational arm on the ground, with roles and commissions put in writing before the first student even moves.",
         "ctaLabel": "See the partnership model"
       }
     ]
   },
   "strengths": {
     "eyebrow": "Why us",
-    "heading": "We speak your language. Not as a slogan.",
-    "body": "Leaving your country is frightening in a way no brochure admits, and what helps most is obvious the first time you see it work: talking to someone from where you're from, in the language you actually think in. That's how this team is built — independent professionals spread across several countries, coordinated by one person who answers to you.",
+    "heading": "We speak your language. And we know your culture.",
+    "body": "Studying abroad is a massive challenge. Our real secret? A young, diverse and globally distributed team. When you trust Kimere, you speak with someone from your own country in the language you actually think in, instantly eliminating any cultural barrier.",
     "points": [
       {
         "icon": "compass",
-        "title": "Someone from your country, where we cover it",
-        "body": "Where our team covers where you're from, that's who takes your call. The cultural shorthand you don't have to explain saves entire conversations — and it's the reason universities abroad agree to the meeting in the first place."
+        "title": "A consultant who gets you instantly",
+        "body": "We pair you with a professional of your exact same nationality. That unspoken cultural understanding saves endless conversations, and it's the exact reason foreign universities trust us."
       },
       {
         "icon": "building",
-        "title": "A network, not a head office",
-        "body": "Specialists in several countries rather than one building with a phone queue. There's usually someone awake in your timezone, and nobody gets passed between departments because there are no departments."
+        "title": "A global network with zero borders",
+        "body": "No call centers or rigid offices. We are an agile team of specialists ready to support you across any time zone. Nobody gets bounced from one department to another."
       },
       {
         "icon": "document",
-        "title": "Seven languages, and they're in-house",
-        "body": "The teachers who run our language courses are the same people who handle document translation. That isn't a quirk of the org chart — it's why a translation can start the day you ask instead of going out to a supplier."
+        "title": "Seven languages and in-house documents",
+        "body": "Our native teachers directly handle the translation of your documents as well. No slow middlemen, just translations that begin the exact day you ask for them."
       }
     ]
   },
   "bureaucracy": {
     "eyebrow": "The part that actually stops people",
-    "heading": "Almost nobody fails the admission. They fail the paperwork.",
-    "body": "Getting in is rarely where it goes wrong. It goes wrong on a funding application you never heard of, closing on a date nobody mentioned, and a diploma that isn't legally usable abroad in the form you're holding. In Italy — the market where we go deepest — that's three specific fights.",
+    "heading": "Bureaucracy will no longer be your nightmare.",
+    "body": "It is rarely an admission test that stops a dream. What blocks you is a scholarship you didn't know existed, uncommunicated deadlines and an unrecognized diploma. This is exactly where we step in. Especially in Italy, our primary market, we solve the three biggest obstacles at their root.",
     "items": [
       {
         "icon": "document",
-        "title": "Scholarships and the ISEE",
-        "body": "Italy's right-to-study funding is means-tested, and your eligibility runs through the ISEE — an income indicator almost no family abroad has heard of, let alone knows how to calculate. We work it out and file on its own deadline, which is not your university's deadline and does not wait for it."
+        "title": "Scholarships and ISEE calculation",
+        "body": "The Italian university system relies on the ISEE, an economic indicator almost nobody abroad knows how to calculate. We reconstruct it for you and file your scholarship application right on time."
       },
       {
         "icon": "contract",
-        "title": "Translating and legalising your diploma",
-        "body": "Your qualification has to arrive in Italian and legally valid, and that sequence is where months quietly disappear. Our own translators do the translation and we run the legalisation file alongside you, instead of leaving you in a queue behind someone else's outsourcing."
+        "title": "Translating and legalizing your diploma",
+        "body": "Your foreign qualification must be legally valid. Our in-house professionals translate your documents and guide you through the complex legalization procedure, saving you months of pointless waiting."
       },
       {
         "icon": "health",
-        "title": "Fees, health cover, a bank account",
-        "body": "Tuition brackets that move with your declared income, health cover you can't enrol in without a fiscal code, and an account you need before you can pay for any of it. Boring, strictly sequential, and the usual place an academic year gets lost."
+        "title": "Taxes, healthcare and bank accounts",
+        "body": "Income brackets, health coverage and fiscal codes are boring and strictly sequential procedures. We walk you through them step by step to ensure no minor technicality costs you an academic year."
       }
     ],
-    "limitHeading": "What we can't do — better you hear it here",
-    "limitBody": "The comparability statement for a foreign qualification is issued by CIMEA or assessed by the university itself, and nothing we do replaces it or makes it optional. What we do is build the file, follow it through, and keep the translation in-house so that step isn't the one holding you up. Anyone telling you the requirement can be skipped is selling you a rejected application.",
+    "limitHeading": "What we cannot do (and you better know it upfront)",
+    "limitBody": "The CIMEA comparability statement or the evaluation of a foreign qualification are the exclusive responsibility of the authorities. No private entity can replace them. We will not promise you non-existent shortcuts, but we will prepare a flawless file to get you through the process smoothly. Anyone promising miracles is selling you a rejected application.",
     "officialSource": "https://www.cimea.it"
   },
   "forUniversities": {
     "eyebrow": "For universities",
-    "heading": "Push your university past its own borders",
-    "body": "Universities lose international candidates to a rulebook neither side can read. A student in Buenos Aires might qualify for Italian public tuition scaled to family income, plus a maintenance grant on top — and if nobody at either end knows that, they enrol somewhere more expensive instead. Closing that gap is the entire conversation.",
-    "seminarHeading": "It starts with a free seminar",
-    "seminarBody": "We get on a call with your team and build the session around your market rather than ours. Where your students want to go, what that country actually funds, what its paperwork will demand of them — answered for your case, with the published sources attached.",
+    "heading": "Multiply your international student base",
+    "body": "How much talent are you losing because of a rulebook nobody understands? A South American student might be entitled to scholarships or benefits they ignore, forcing them to enroll elsewhere. We bridge that gap and unlock enrollments.",
+    "seminarHeading": "The first step is a Free Online Seminar",
+    "seminarBody": "We analyze the pain points of the market you want to attract students from and offer your team a tailored training session. We explain exactly what the regulations demand, providing clear answers and official sources.",
     "seminarPoints": [
-      "Built on the destination you care about, whether that's Italy or not",
-      "Funding, fees and qualification recognition answered from published sources",
-      "No cost and no commitment on the first session",
-      "A written summary your office keeps, whatever you decide afterwards"
+      "A customized session focused entirely on your target foreign market",
+      "A practical deep dive into scholarships, fees and qualification recognition",
+      "Zero costs and no commercial strings attached for this first session",
+      "An operational summary that your office gets to keep forever"
     ],
     "ctaLabel": "Book the free seminar"
   },
   "languageCourses": {
     "eyebrow": "Not only paperwork",
-    "heading": "Learn the language before you need it",
-    "body": "The team that handles your documents also teaches the languages, so the two never end up as separate companies you have to introduce to each other. Courses run with freelance teachers who are native or fluent in what they teach, online, around a student's timetable rather than an office's.",
-    "languagesLabel": "Courses currently offered",
-    "languages": ["Italian", "English", "French", "Spanish", "Portuguese", "Arabic", "Albanian", "German"],
+    "heading": "Learn the language before you actually need it",
+    "body": "The same team handling your translations also teaches you the language, creating a perfectly integrated ecosystem. Our online courses are taught by native professionals and adapt to your schedule, not a traditional school's timetable.",
+    "languagesLabel": "Currently offered courses",
+    "languages": [
+      "English",
+      "French",
+      "Spanish",
+      "Portuguese",
+      "Arabic",
+      "Albanian",
+      "German"
+    ],
     "ctaLabel": "Ask about language courses"
   },
   "finalCta": {
     "eyebrow": "Still here",
-    "heading": "None of the four felt like yours?",
-    "body": "Then start with a strategic consultation. It's one session, and it ends with a plan rather than a brochure — because the research happens before we meet, not while you watch.",
-    "surveyNote": "It begins with a questionnaire, and that's the point: it's what lets us research your actual case in advance instead of spending your session asking basic questions.",
+    "heading": "Didn't find your perfect fit?",
+    "body": "Not a problem. Every journey is unique, which is why we highly recommend booking a tailored Strategic Consultation. It is an intensive session where we build a real action plan, simply because we do the research on your case before we even meet.",
+    "surveyNote": "You will start by filling out a preliminary questionnaire. This is a crucial step that allows us to study your profile in advance and avoid wasting a single minute of our call on basic questions.",
     "ctaLabel": "Request a strategic consultation"
   }
 }

@@ -2,144 +2,144 @@
   "hero": {
     "eyebrow": "Chi siamo",
     "headline": "Nessun confine. Solo ponti.",
-    "subhead": "Kimere è giovane, piccola per scelta e distribuita su più paesi. Siamo una rete di professionisti indipendenti invece di un ufficio con una reception — costruita così di proposito, perché gli studenti e le università per cui lavoriamo non stanno in un solo posto. Siamo partiti a giugno 2026, scommettiamo su persone all'inizio del loro percorso, e preferiamo mostrarti come lavoriamo piuttosto che dirti da quanto tempo lo facciamo.",
+    "subhead": "Kimere è giovane, flessibile e distribuita su più paesi. Siamo una rete di professionisti indipendenti, non un ufficio con una reception. L'abbiamo costruita così di proposito, perché gli studenti e le università che supportiamo non si trovano in un solo posto. Abbiamo iniziato a giugno 2026 scommettendo sui giovani talenti e preferiamo dimostrarti subito come lavoriamo, anziché annoiarti con la nostra storia.",
     "ctaPrimary": "Cominciamo a parlarne",
     "ctaSecondary": "Come funziona il match culturale"
   },
   "match": {
     "eyebrow": "Il nostro asso nella manica",
     "heading": "Chi risponde alla tua call viene da dove vieni tu",
-    "body": "Le pratiche sono solo metà di ciò che rende spaventoso trasferirsi all'estero. L'altra metà è spiegarsi in una lingua che stai ancora imparando, a qualcuno che non ha mai dovuto fare quello che stai per fare tu. Quindi facciamo la cosa ovvia che quasi nessuno fa: dove il nostro team copre il tuo paese, è quella la persona che prende la tua call — un consulente brasiliano per un'università in Brasile, e la stessa logica in ogni altro posto in cui arriviamo.",
+    "body": "Le pratiche burocratiche sono solo metà di ciò che rende spaventoso trasferirsi all'estero. L'altra metà è doversi spiegare in una lingua che stai ancora imparando con qualcuno che non ha mai vissuto la tua stessa esperienza. Noi facciamo la cosa più ovvia che quasi nessuno fa. Se il nostro team copre il tuo paese, sarà un tuo connazionale a rispondere alla tua chiamata. Un consulente brasiliano per un'università in Brasile, applicando la stessa logica ovunque arriviamo.",
     "points": [
       {
         "icon": "compass",
         "title": "Niente da tradurre, niente da spiegare",
-        "body": "Racconti la tua situazione una volta sola, nella lingua in cui pensi davvero, a qualcuno che già sa com'è fatto un diploma del tuo paese e come funziona la scala di voti della tua scuola."
+        "body": "Racconti la tua situazione una volta sola e nella lingua in cui pensi, a qualcuno che sa già com'è fatto un diploma del tuo paese e come funziona il sistema di voti della tua scuola."
       },
       {
         "icon": "building",
         "title": "Le università accettano l'incontro",
-        "body": "Un ufficio international è molto più disponibile a sedersi con qualcuno che capisce il suo mercato, il suo calendario e quanto i suoi studenti possono realmente permettersi — nella sua lingua, senza un interprete in mezzo."
+        "body": "Un ufficio internazionale è molto più disponibile ad ascoltare qualcuno che capisce il suo mercato, il suo calendario e le reali possibilità economiche dei suoi studenti. Tutto questo nella sua lingua e senza bisogno di interpreti."
       },
       {
         "icon": "health",
         "title": "Il non-detto culturale fa il lavoro pesante",
-        "body": "Sapere perché una famiglia esita, cosa chiederà un genitore prima di dire sì, quale rassicurazione funziona davvero: niente di tutto questo sta su una checklist, e fa risparmiare conversazioni intere."
+        "body": "Capire al volo perché una famiglia esita o quale rassicurazione funziona davvero per un genitore non è qualcosa che si impara da un manuale. Questa sensibilità naturale fa risparmiare conversazioni infinite."
       }
     ],
-    "honestNote": "Dove ancora non copriamo il tuo paese te lo diciamo alla prima call, e ti affianchiamo il consulente con l'esperienza più vicina. Preferiamo essere una frase onesta più corti che promettere una nazionalità che non possiamo davvero schierare."
+    "honestNote": "Se non copriamo ancora il tuo paese, te lo diciamo chiaramente fin dalla prima call e ti affianchiamo il consulente con l'esperienza più affine alla tua. Preferiamo peccare di onestà piuttosto che farti promesse impossibili da mantenere."
   },
   "network": {
     "eyebrow": "Com'è fatta Kimere",
     "heading": "Una rete, non una sede centrale",
-    "body": "Non esiste un quartier generale con una sala d'attesa. Kimere è un gruppo coordinato di professionisti indipendenti — ognuno con la propria attività, ognuno nel proprio paese, ognuno su una parte del percorso. È quella struttura la ragione per cui possiamo lavorare verso qualsiasi destinazione scelga uno studente invece che solo verso quella in cui ci troviamo, ed è la ragione per cui c'è quasi sempre qualcuno svegli quando scrivi.",
+    "body": "Non abbiamo un quartier generale con una sala d'attesa. Kimere è un gruppo unito di professionisti indipendenti. Ognuno ha la propria attività, vive nel proprio paese e segue una fase specifica del tuo percorso. È proprio questa struttura che ci permette di portarti verso qualsiasi destinazione tu scelga, assicurandoti che ci sia quasi sempre qualcuno sveglio e pronto a risponderti quando ci scrivi.",
     "points": [
       {
         "icon": "compass",
         "title": "Professionisti indipendenti, non dipendenti",
-        "body": "Qui ognuno ha la propria attività e la propria Partita IVA. Tiene il team esperto e la struttura leggera, e significa che hai davanti persone che hanno scelto questo lavoro, non persone assegnate al tuo fascicolo."
+        "body": "Il nostro team è formato da esperti con la propria Partita IVA. Questo mantiene la struttura leggera e ti assicura di avere di fronte persone che amano il proprio lavoro, non semplici impiegati a cui è stato assegnato il tuo fascicolo."
       },
       {
         "icon": "building",
         "title": "Distribuiti su più paesi",
-        "body": "È ciò che rende possibile il match culturale qui sopra, ed è ciò che ci permette di coprire una destinazione senza prima aprirci un ufficio. Crescere qui vuol dire un professionista in più in un paese in più, non un piano in più."
+        "body": "Essere sparsi per il mondo è il segreto del nostro allineamento culturale. Ci permette di coprire nuove destinazioni senza dover prima aprire uffici fisici, espandendo la nostra rete con un professionista alla volta."
       },
       {
         "icon": "contract",
         "title": "Un solo coordinatore, responsabile di tutto",
-        "body": "Una rete potrebbe facilmente diventare un rimbalzo di responsabilità. Non lo diventa, perché una persona con un nome tiene il tuo fascicolo dalla prima call all'ultima firma, ed è l'unica che devi mai rincorrere."
+        "body": "Una rete distribuita potrebbe facilmente trasformarsi in uno scaricabarile. Non con noi. Avrai un unico coordinatore che seguirà il tuo percorso dalla prima call all'ultima firma. È l'unica persona con cui ti dovrai confrontare."
       }
     ],
     "team": {
       "heading": "Le persone con cui avrai davvero a che fare",
-      "body": "Un gruppo piccolo, per scelta. Dalla call introduttiva in poi hai un solo interlocutore, e gli altri sono persone che quell'interlocutore raggiunge in un pomeriggio — non una coda di ticket.",
+      "body": "Un gruppo piccolo per scelta. Dalla call introduttiva in poi avrai un solo referente di fiducia, e tutte le altre figure coinvolte saranno a un messaggio di distanza. Nessun sistema a ticket freddo e impersonale.",
       "members": [
         {
           "role": "Coordinamento e primo contatto",
-          "bio": "La persona con cui parli nella call introduttiva, e quella che risponde del tuo fascicolo da quel momento fino a quando non sei sistemato.",
+          "bio": "La prima persona con cui parlerai e il tuo punto di riferimento assoluto finché non sarai completamente sistemato.",
           "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
         },
         {
           "role": "Pratiche di immigrazione e fascicoli consolari",
-          "bio": "Prepara il fascicolo per il visto, il permesso di soggiorno e l'appuntamento in Questura — la parte del percorso con le scadenze che non si spostano.",
+          "bio": "Prepara i documenti per il visto, il permesso di soggiorno e l'appuntamento in Questura. Gestisce le pratiche con le scadenze più rigide che non ammettono errori.",
           "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
         },
         {
           "role": "Lingue, traduzioni e legalizzazioni",
-          "bio": "Insegna nei nostri corsi e si occupa della traduzione dei tuoi documenti accademici — la stessa persona su entrambe le cose, ed è il motivo per cui nessuna delle due aspetta l'altra.",
+          "bio": "Insegna nei nostri corsi online e si occupa in prima persona di tradurre i tuoi documenti accademici. Affidare entrambe le cose alla stessa figura azzera i tempi morti.",
           "photoPlaceholder": "Ritratto — luce naturale, sfondo neutro, sguardo in camera, taglio 4:5"
         }
       ],
       "intro": {
         "heading": "Un minuto con noi, prima di prenotare",
-        "caption": "Non è un video promozionale: è la stessa spiegazione che avresti in call, così sai già con chi stai per parlare.",
+        "caption": "Questo non è il solito video promozionale, ma una spiegazione diretta di chi siamo, così sai subito con chi stai per parlare.",
         "videoPlaceholder": "Video di presentazione breve — una persona del team che spiega cosa fa Kimere, 16:9, sottotitolato"
       }
     }
   },
   "languages": {
     "eyebrow": "Lingue e documenti",
-    "heading": "Sette lingue oltre all'italiano — e sono le stesse persone a gestire le tue carte",
-    "body": "I nostri insegnanti di lingua fanno parte del team, non sono un fornitore che chiamiamo quando c'è qualcosa da tradurre. Tengono i corsi, e si occupano della traduzione dei tuoi documenti accademici. Non è una bizzarria dell'organigramma: è la ragione per cui una traduzione può partire il giorno in cui la chiedi, invece di finire a terzi e tornare dopo tre settimane.",
+    "heading": "Corsi in sette lingue e traduttori interni",
+    "body": "I nostri insegnanti di lingua fanno stabilmente parte del team e non sono semplici fornitori esterni. Tengono i corsi e traducono direttamente i tuoi documenti accademici. Questo assetto ci permette di avviare una pratica il giorno stesso in cui ce la chiedi, evitando attese interminabili.",
     "languagesLabel": "Le lingue che insegniamo e in cui lavoriamo",
     "languages": ["Italiano", "Inglese", "Francese", "Spagnolo", "Portoghese", "Arabo", "Albanese", "Tedesco"],
     "inHouse": [
       {
         "icon": "document",
         "title": "La traduzione, dalla nostra parte del tavolo",
-        "body": "Certificati, diplomi, attestati — tradotti da persone che sono già sul tuo fascicolo e già sanno cosa l'ufficio ricevente si aspetta di vedere, e nel formato in cui si aspetta di vederlo."
+        "body": "Traduciamo internamente certificati e diplomi. Essendo già al lavoro sul tuo fascicolo, sappiamo esattamente cosa vuole vedere l'ufficio ricevente e in quale formato lo pretende."
       },
       {
         "icon": "contract",
         "title": "La pratica di legalizzazione, seguita fino in fondo",
-        "body": "Apostille o legalizzazione consolare a seconda del paese che ha rilasciato il tuo titolo, preparata e monitorata insieme a te invece di essere restituita come un elenco di istruzioni."
+        "body": "Gestiamo l'Apostille o la legalizzazione consolare in base al paese che ha rilasciato il tuo titolo. Prepariamo e monitoriamo la pratica con te, senza liquidarti con un inutile elenco di istruzioni."
       },
       {
         "icon": "calendar",
         "title": "Corsi costruiti sulla settimana di uno studente",
-        "body": "Insegnanti freelance, online, con orari costruiti attorno a lezioni ed esami e non attorno all'apertura di un ufficio. Cominci prima di partire e continui quando sei arrivato."
+        "body": "Offriamo lezioni online tenute da professionisti madrelingua con orari pensati appositamente per chi studia, non in base agli orari d'ufficio. Inizi prima di partire e continui senza interruzioni al tuo arrivo."
       }
     ],
-    "limitHeading": "Cosa non vuol dire «in casa»",
-    "limitBody": "Non vuol dire che il requisito sparisce. L'attestato di comparabilità di un titolo estero lo rilascia CIMEA o lo valuta l'ateneo stesso, e nulla di ciò che facciamo lo sostituisce o lo rende facoltativo — chi ti dice che quel passaggio si può saltare ti sta vendendo una domanda respinta. Quello che facciamo è comporre il fascicolo, seguirlo fino in fondo e tenere la traduzione da parte nostra, così quella parte non è mai quella che ti blocca.",
+    "limitHeading": "Cosa non possiamo garantirti (e non lo fa nessuno)",
+    "limitBody": "Nessuna agenzia può cancellare i requisiti di legge. L'attestato di comparabilità di un titolo estero è di competenza esclusiva del CIMEA o dell'ateneo. Diffida da chi promette scorciatoie facili, ti stanno vendendo solo illusioni. Il nostro compito è comporre un fascicolo ineccepibile, tradurre i documenti internamente e seguirlo fino in fondo per far sì che la burocrazia non diventi un ostacolo insormontabile.",
     "officialSource": "https://www.cimea.it"
   },
   "connected": {
     "eyebrow": "Come si lavora insieme",
     "heading": "Ci sentirai più spesso di quanto ti aspetti",
-    "body": "Il modo in cui questo team funziona al suo interno è lo stesso in cui funziona con te: chiamate di allineamento frequenti, uno scambio fluido invece di passaggi di consegne formali, e il cliente tenuto dentro al processo invece che aggiornato a cose fatte. Sembra un dettaglio. Su un percorso così lungo è la maggior parte di ciò che lo rende sostenibile.",
+    "body": "Lavoriamo con i nostri clienti con la stessa dinamicità che applichiamo al nostro interno. Organizziamo frequenti chiamate di allineamento e manteniamo una comunicazione fluida per tenerti sempre aggiornato sul processo in tempo reale. Su percorsi lunghi come questi, è proprio la chiarezza a fare la vera differenza.",
     "points": [
       {
         "title": "Chiamate di allineamento, non rapporti di stato",
-        "body": "Brevi, regolari e con la persona che sta facendo il lavoro davvero. Saprai sempre quale è la prossima scadenza e in che campo sta la palla in questo momento."
+        "body": "Niente noiosi report formali. Organizziamo chiamate brevi e regolari direttamente con chi sta lavorando al tuo caso. Saprai sempre qual è la prossima scadenza e a che punto siamo."
       },
       {
         "title": "Uno scambio fluido dentro il team",
-        "body": "Il tuo coordinatore raggiunge in un pomeriggio lo specialista che segue il tuo consolato. Tra loro non c'è nessuna coda, perché non c'è nessun sistema di ticket in cui accodarsi."
+        "body": "Il tuo coordinatore è costantemente in contatto con lo specialista che segue la tua pratica. Risolviamo ogni questione in tempi rapidissimi perché non dipendiamo da nessun sistema automatizzato."
       },
       {
         "title": "Sei coinvolto, non gestito",
-        "body": "Ti chiediamo di decidere le cose che spetta davvero a te decidere, e non ci presentiamo con un piano finito a cui non hai partecipato."
+        "body": "Ti diamo il potere di prendere le decisioni importanti che ti riguardano in prima persona. Costruiamo il piano passo dopo passo insieme a te, mai a tue spese."
       }
     ]
   },
   "limits": {
     "heading": "Cosa non facciamo",
     "items": [
-      "Non rilasciamo visti né permessi di soggiorno, e non garantiamo esiti. Quelle decisioni spettano soltanto al consolato e alla Questura.",
-      "Non siamo accreditati, affiliati né agiamo per conto di nessun ateneo o ente pubblico — in Italia o altrove.",
-      "Non siamo un'agenzia immobiliare abilitata. Visitiamo, verifichiamo e registriamo alloggi; non gestiamo annunci e non incassiamo caparre per conto di nessuno.",
-      "Non sostituiamo un avvocato o un commercialista. Dove un caso ne richiede uno lo diciamo invece di improvvisare.",
-      "Abbiamo iniziato a operare a giugno 2026 e l'assetto giuridico è in via di formalizzazione. La documentazione societaria aggiornata la condividiamo direttamente in fase di due diligence, invece di descriverla qui."
+      "Non rilasciamo visti né permessi di soggiorno e non garantiamo esiti. Le decisioni spettano esclusivamente al consolato e alla Questura.",
+      "Non siamo affiliati né agiamo per conto di alcun ateneo o ente pubblico, in Italia o nel resto del mondo.",
+      "Non siamo un'agenzia immobiliare. Ci limitiamo a visitare, verificare e registrare alloggi veri, ma non incassiamo caparre per conto di terzi.",
+      "Non sostituiamo la consulenza di un avvocato o di un commercialista. Quando serve uno specialista legale, te lo diciamo in modo trasparente.",
+      "Abbiamo iniziato a operare a giugno 2026 e l'assetto giuridico è in via di formalizzazione. Condivideremo tutta la documentazione societaria in fase avanzata invece di elencarla qui."
     ]
   },
   "finalCta": {
     "eyebrow": "Si comincia",
     "heading": "Vuoi conoscerci meglio? Fai il primo passo.",
-    "body": "Due porte, a seconda di chi sei. Nessuna delle due costa niente, e nessuna delle due ti impegna con noi.",
-    "studentLabel": "Sono uno studente — prenota una consulenza",
-    "studentNote": "Comincia con un questionario, così la ricerca la facciamo prima di parlarci invece che durante.",
-    "institutionLabel": "Sono un'università o un'agenzia — prenota il seminario gratuito",
-    "institutionNote": "Una sessione sola, costruita sul vostro mercato, senza costi e senza impegno."
+    "body": "Abbiamo due opzioni a seconda del tuo profilo. Nessuna delle due ha costi o vincoli iniziali.",
+    "studentLabel": "Sono uno studente, voglio una consulenza",
+    "studentNote": "Compilerai un breve questionario, così avremo modo di fare ricerca sul tuo profilo prima di parlarci direttamente.",
+    "institutionLabel": "Rappresento un ateneo o un'agenzia, prenota il seminario",
+    "institutionNote": "Una sessione gratuita e senza alcun impegno, costruita esattamente sulle esigenze del vostro mercato."
   }
 }

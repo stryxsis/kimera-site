@@ -442,7 +442,6 @@ const PATH_TARGETS = {
     font-size: var(--text-sm);
     line-height: 1.65;
     color: var(--surface-fg-soft);
-    max-width: 82ch;
   }
 
   /* Rimando alla fonte ufficiale: ogni affermazione procedurale ne porta uno. */
@@ -484,7 +483,6 @@ const PATH_TARGETS = {
     font-size: var(--text-sm);
     line-height: 1.65;
     color: var(--surface-fg-soft);
-    max-width: 88ch;
   }
 
   /* ── Il prezzo ────────────────────────────────────────────────────────
@@ -502,7 +500,8 @@ const PATH_TARGETS = {
     }
     .price__card {
       position: sticky;
-      top: 6rem;
+      /* navbar height (~4.5rem) + 50px gap requested */
+      top: calc(4.5rem + 50px);
     }
   }
   .price__card {

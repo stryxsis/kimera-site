@@ -151,68 +151,6 @@ export interface UiDictionary {
     };
     submitLabel: string;
   };
-  /** Form di partnership B2B — in coda a /partners/, content-map.md "Struttura del form B2B". */
-  partnerForm: {
-    intro: string;
-    contactName: string;
-    role: string;
-    agency: string;
-    country: string;
-    website: string;
-    websitePlaceholder: string;
-    workEmail: string;
-    volumeBracket: string;
-    volumeBracketOptions: {
-      under10: string;
-      from10to50: string;
-      from50to200: string;
-      over200: string;
-    };
-    destinationsServed: string;
-    destinationsServedPlaceholder: string;
-    interest: string;
-    interestOptions: {
-      freeSeminar: string;
-      studentsToItaly: string;
-      structuredPartnership: string;
-      other: string;
-    };
-    notes: string;
-    notesPlaceholder: string;
-  };
-  /**
-   * I due moduli di «Corsi di lingua e traduzioni». Sono corti di proposito e
-   * non sono il questionario di qualificazione: uno serve a preventivare una
-   * traduzione che di solito è urgente, l'altro a fissare una prova di livello.
-   * Le due esigenze arrivano sulla pagina con intenti opposti (l'emergenza e la
-   * pianificazione), e un modulo solo le mescolerebbe.
-   */
-  translationForm: {
-    name: string;
-    email: string;
-    issuingCountry: string;
-    issuingCountryHint: string;
-    documents: string;
-    documentsHint: string;
-    documentsPlaceholder: string;
-    deadline: string;
-    deadlinePlaceholder: string;
-  };
-  courseForm: {
-    name: string;
-    email: string;
-    language: string;
-    languagePlaceholder: string;
-    level: string;
-    levelOptions: {
-      beginner: string;
-      intermediate: string;
-      advanced: string;
-      unsure: string;
-    };
-    goal: string;
-    goalPlaceholder: string;
-  };
   scaffold: {
     placeholder: string;
   };
@@ -376,66 +314,6 @@ export const ui: UiDictionary = {
       },
     },
     submitLabel: 'Send my details',
-  },
-  partnerForm: {
-    intro:
-      'A first conversation about your volumes and destinations — no commitment, just a look at whether the model fits.',
-    contactName: 'Your name',
-    role: 'Your role',
-    agency: 'Agency name',
-    country: 'Country',
-    website: 'Company website',
-    websitePlaceholder: 'https://',
-    workEmail: 'Work email',
-    volumeBracket: 'Students sent abroad each year',
-    volumeBracketOptions: {
-      under10: 'Under 10',
-      from10to50: '10–50',
-      from50to200: '50–200',
-      over200: '200+',
-    },
-    destinationsServed: 'Destinations you currently serve',
-    destinationsServedPlaceholder: 'Optional — e.g. UK, Germany, Poland…',
-    interest: 'What are you looking for?',
-    interestOptions: {
-      // Primo nell'elenco perché è il lead magnet B2B della home: chi arriva dal
-      // box «lavoro per un'università» trova la propria opzione già in cima.
-      freeSeminar: 'The free online seminar',
-      studentsToItaly: 'Sending students to Italy',
-      structuredPartnership: 'A structured partnership',
-      other: 'Something else',
-    },
-    notes: 'Anything else worth knowing',
-    notesPlaceholder: 'Optional',
-  },
-  translationForm: {
-    name: 'Your name',
-    email: 'Email',
-    issuingCountry: 'Country that issued the documents',
-    issuingCountryHint: 'It decides whether the route is an apostille or consular legalisation.',
-    documents: 'What you need translated',
-    // Nessun campo di caricamento, e la ragione va detta: una scansione di
-    // diploma o passaporto è un dato personale, e un modulo pubblico non è il
-    // posto dove raccoglierla. Il canale si concorda nella prima risposta.
-    documentsHint: "Describe them here — don't send the files yet. We agree a channel for those when we reply.",
-    documentsPlaceholder: 'e.g. secondary school diploma, university transcript, birth certificate…',
-    deadline: 'The date this has to be ready by',
-    deadlinePlaceholder: 'Optional — even an approximate one helps',
-  },
-  courseForm: {
-    name: 'Your name',
-    email: 'Email',
-    language: 'Language',
-    languagePlaceholder: 'Choose a language…',
-    level: 'Where you are now',
-    levelOptions: {
-      beginner: 'Starting from zero',
-      intermediate: 'I can hold a conversation',
-      advanced: 'Advanced — polishing',
-      unsure: "I don't know — assess me",
-    },
-    goal: 'What you need it for',
-    goalPlaceholder: 'Optional — a certificate, a course taught in that language, work…',
   },
   scaffold: {
     // FASE 2 — sostituito da contenuto reale (content collections) in FASE 3.
