@@ -180,6 +180,39 @@ export interface UiDictionary {
     notes: string;
     notesPlaceholder: string;
   };
+  /**
+   * I due moduli di «Corsi di lingua e traduzioni». Sono corti di proposito e
+   * non sono il questionario di qualificazione: uno serve a preventivare una
+   * traduzione che di solito è urgente, l'altro a fissare una prova di livello.
+   * Le due esigenze arrivano sulla pagina con intenti opposti (l'emergenza e la
+   * pianificazione), e un modulo solo le mescolerebbe.
+   */
+  translationForm: {
+    name: string;
+    email: string;
+    issuingCountry: string;
+    issuingCountryHint: string;
+    documents: string;
+    documentsHint: string;
+    documentsPlaceholder: string;
+    deadline: string;
+    deadlinePlaceholder: string;
+  };
+  courseForm: {
+    name: string;
+    email: string;
+    language: string;
+    languagePlaceholder: string;
+    level: string;
+    levelOptions: {
+      beginner: string;
+      intermediate: string;
+      advanced: string;
+      unsure: string;
+    };
+    goal: string;
+    goalPlaceholder: string;
+  };
   scaffold: {
     placeholder: string;
   };
@@ -374,6 +407,35 @@ export const ui: UiDictionary = {
     },
     notes: 'Anything else worth knowing',
     notesPlaceholder: 'Optional',
+  },
+  translationForm: {
+    name: 'Your name',
+    email: 'Email',
+    issuingCountry: 'Country that issued the documents',
+    issuingCountryHint: 'It decides whether the route is an apostille or consular legalisation.',
+    documents: 'What you need translated',
+    // Nessun campo di caricamento, e la ragione va detta: una scansione di
+    // diploma o passaporto è un dato personale, e un modulo pubblico non è il
+    // posto dove raccoglierla. Il canale si concorda nella prima risposta.
+    documentsHint: "Describe them here — don't send the files yet. We agree a channel for those when we reply.",
+    documentsPlaceholder: 'e.g. secondary school diploma, university transcript, birth certificate…',
+    deadline: 'The date this has to be ready by',
+    deadlinePlaceholder: 'Optional — even an approximate one helps',
+  },
+  courseForm: {
+    name: 'Your name',
+    email: 'Email',
+    language: 'Language',
+    languagePlaceholder: 'Choose a language…',
+    level: 'Where you are now',
+    levelOptions: {
+      beginner: 'Starting from zero',
+      intermediate: 'I can hold a conversation',
+      advanced: 'Advanced — polishing',
+      unsure: "I don't know — assess me",
+    },
+    goal: 'What you need it for',
+    goalPlaceholder: 'Optional — a certificate, a course taught in that language, work…',
   },
   scaffold: {
     // FASE 2 — sostituito da contenuto reale (content collections) in FASE 3.

@@ -19,6 +19,14 @@ export const defaultLocale: Locale = 'en';
 export const BOOKING_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSe45j2D2R2OELX78j4BpGyphF28yqAkh-1DP4gbVgUoqjd9jA/viewform';
 
+/**
+ * ⚠️ `getPath()` NON verifica che la destinazione esista: costruisce un path
+ * dagli slug qui sotto e basta. Aggiungere una chiave senza creare il file
+ * corrispondente sotto `src/pages/{en,it}/` produce un link che funziona,
+ * punta dove deve e restituisce 404 — e il build resta verde. È già successo
+ * di proposito (nav riordinata prima che le due pagine esistessero); se
+ * ricapita, ogni chiave va accompagnata dalla sua pagina in ENTRAMBE le lingue.
+ */
 export type RouteKey =
   | 'home'
   | 'studyInItaly'
@@ -27,14 +35,6 @@ export type RouteKey =
   | 'faq'
   | 'partners'
   | 'forStudents'
-  // ⚠️ Nessun file pagina esiste ancora per questa chiave (2026-08-11): la nav
-  // la richiede già, ma la pagina arriva in un passo successivo. `getPath()` non
-  // verifica che la destinazione esista — il link funziona, punta dove deve, e
-  // resta un 404 finché non si crea il file sotto `src/pages/{en,it}/`. Nessuno
-  // script di verifica del progetto enumera RouteKey per controllare che ogni
-  // chiave abbia una pagina, quindi il build resta verde in questo stato
-  // intermedio. (`forStudents` era nella stessa condizione: la sua pagina esiste
-  // dal 2026-08-11.)
   | 'languageCourses'
   | 'book'
   | 'thankYou'

@@ -330,6 +330,113 @@ const forStudentsPage = defineCollection({
 });
 
 /**
+ * Corsi di lingua e traduzioni — l'area che l'analisi (§3) chiede esplicitamente
+ * e che tiene insieme le due cose che Kimere fa con le STESSE persone: insegnare
+ * le lingue e tradurre i documenti. Non è un servizio accessorio: è il motivo per
+ * cui una traduzione può partire il giorno in cui la chiedi invece di uscire a un
+ * fornitore, ed è l'unico vantaggio competitivo dell'azienda che non dipenda da
+ * accordi con terzi.
+ *
+ * La sequenza dei blocchi è quella del brief (2026-08-11):
+ *   hero       → la doppia promessa: la lingua e la burocrazia
+ *   academy    → i corsi, e chi li tiene
+ *   documents  → traduzione e legalizzazione, con il confine su CIMEA
+ *   comparison → metodo tradizionale contro metodo Kimere
+ *   forms      → due moduli distinti, uno per intento
+ *
+ * ⚠️ `documents.institutions` è OBBLIGATORIO ed è il cuore onesto della pagina.
+ * Il brief chiede per la terza volta di scrivere che Kimere «bypassa» la
+ * procedura CIMEA. Non si può, e qui la distinzione va fatta per esteso perché è
+ * questa la pagina che vende quel servizio: la TRADUZIONE e la LEGALIZZAZIONE
+ * sono passaggi che Kimere gestisce davvero in casa, mentre l'ATTESTATO DI
+ * COMPARABILITÀ lo rilascia CIMEA o lo valuta l'ateneo e resta dov'è. Chi
+ * confonde le due cose arriva con la domanda respinta. Separarle non indebolisce
+ * l'offerta: la rende l'unica verificabile sul mercato.
+ *
+ * ⚠️ `academy.languages` deve restare identico a `languageCourses.languages` di
+ * `homePage` e a `languages.languages` di `aboutPage`: sono la stessa
+ * affermazione sulla stessa azienda in tre punti del sito. Sono OTTO — le sette
+ * lingue dell'analisi più l'italiano, aggiunto su conferma del cliente
+ * (2026-08-11). Il brief di questa pagina ne elenca sette perché ricopia
+ * l'analisi, che è precedente a quella conferma.
+ *
+ * ⚠️ `comparison.note` non può promettere che un documento non verrà «mai»
+ * respinto. Nessuno controlla la commissione che lo riceve: si dice quale causa
+ * di rigetto si toglie di mezzo, non che il rigetto sia impossibile.
+ */
+const languageCoursesPage = defineCollection({
+  loader: glob({ base: './src/content/languageCoursesPage', pattern: '*.json' }),
+  schema: z.object({
+    hero: z.object({
+      eyebrow: z.string(),
+      headline: z.string(),
+      subhead: z.string(),
+      /** Le due porte, già sopra la piega: l'urgenza e la pianificazione. */
+      ctaDocuments: z.string(),
+      ctaCourses: z.string(),
+      reassurance: z.string(),
+    }),
+    academy: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      languagesLabel: z.string(),
+      /** ⚠️ Identico a home e Chi siamo. Vedi il commento in testa. */
+      languages: z.array(z.string()),
+      points: z.array(z.object({ icon: stepIconName, title: z.string(), body: z.string() })),
+      ctaLabel: z.string(),
+    }),
+    documents: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      steps: z.array(z.object({ title: z.string(), body: z.string() })),
+      handledHeading: z.string(),
+      handled: z.array(z.string()),
+      /** ⚠️ OBBLIGATORIO: cosa resta agli enti. Vedi il commento in testa. */
+      institutionsHeading: z.string(),
+      institutions: z.array(z.string()),
+      limitHeading: z.string(),
+      limitBody: z.string(),
+      officialSource: z.url(),
+      ctaLabel: z.string(),
+    }),
+    comparison: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      traditionalLabel: z.string(),
+      traditional: z.array(z.string()),
+      kimereLabel: z.string(),
+      kimere: z.array(z.string()),
+      /** ⚠️ Nessun «mai respinto». Vedi il commento in testa. */
+      note: z.string(),
+    }),
+    /**
+     * Due moduli e non uno: chi arriva qui con un diploma da tradurre entro
+     * venerdì e chi vuole imparare il tedesco per settembre prossimo hanno
+     * intenti opposti, e le domande da fare sono diverse. Un modulo unico li
+     * mescolerebbe e renderebbe inutilizzabili entrambe le liste di contatti.
+     */
+    forms: z.object({
+      eyebrow: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      quote: z.object({
+        heading: z.string(),
+        body: z.string(),
+        ctaLabel: z.string(),
+      }),
+      course: z.object({
+        heading: z.string(),
+        body: z.string(),
+        ctaLabel: z.string(),
+      }),
+    }),
+  }),
+});
+
+/**
  * Servizi — la pagina commerciale del sito, e l'unica il cui compito non è
  * informare ma costruire il valore percepito prima che il prezzo esista.
  * Il prezzo NON compare da nessuna parte in questo schema, e non è una
@@ -902,6 +1009,7 @@ export const collections = {
   countries,
   homePage,
   forStudentsPage,
+  languageCoursesPage,
   studyInItalyPage,
   servicesPage,
   aboutPage,

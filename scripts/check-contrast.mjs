@@ -133,6 +133,12 @@ const pairs = [
   ['mist', 'anello di focus', c.tealInk, c.mist, 3.0],
   // Le card bianche dentro una fascia mist: il loro testo sta su bianco.
   ['mist', 'testo di card bianca dentro la fascia', c.ink, c.blank, 4.5],
+  // Le due porte di «Corsi di lingua e traduzioni»: riquadri su `ground` incassati
+  // dentro una fascia `panel`, quindi il testo sta su un fondo più scuro di quello
+  // per cui i token della superficie sono stati calcolati. Va verificato a parte.
+  ['door', 'testo del modulo su riquadro incassato', c.onDark, c.ground, 4.5],
+  ['door', 'descrizione della porta', c.onDarkMuted, c.ground, 4.5],
+  ['door', 'bordo dei controlli sul riquadro incassato', '#6F7D8B', c.ground, 3.0],
   // La scheda del prezzo (Per gli studenti): è l'unica cifra pubblicata sul sito
   // e la nota sulla fatturazione le sta sotto in corpo minore — se una delle due
   // non si legge, il prezzo diventa una promessa senza le sue condizioni.

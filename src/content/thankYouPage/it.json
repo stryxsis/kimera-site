@@ -1,11 +1,11 @@
 {
   "confirmation": {
     "heading": "Ricevuto — la tua richiesta è arrivata",
-    "body": "Grazie per i dettagli. Un membro del nostro team li esaminerà e ti contatterà per fissare la tua call di 15 minuti."
+    "body": "Grazie per i dettagli. Una persona del team li legge e ti risponde via email — con alcuni orari disponibili se il tuo caso richiede una call, oppure direttamente con quello che hai chiesto se non serve."
   },
-  "responseTime": "Rispondiamo entro 2 giorni lavorativi con alcuni orari disponibili per la call.",
+  "responseTime": "Rispondiamo entro 2 giorni lavorativi.",
   "howToPrepare": {
-    "heading": "Prima della call, ti conviene avere a portata di mano",
+    "heading": "Se la tua richiesta riguarda uno studio all'estero, ti conviene avere a portata di mano",
     "items": [
       "Il corso, l'ateneo o l'ambito di studio che ti interessa — anche se non è ancora definitivo",
       "La data o l'anno accademico in cui vuoi iniziare",

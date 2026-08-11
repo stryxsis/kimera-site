@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "eyebrow": "Languages and documents",
+    "headline": "Speak the language of your future. We'll translate the bureaucracy.",
+    "subhead": "These two things are not a course and a side service. They're the same team: the freelance teachers who run our language courses are the people who translate your academic documents. Learning the language and getting the paperwork accepted move at the same time, towards whichever country you've chosen — which is the whole reason a translation here can start the day you ask for it.",
+    "ctaDocuments": "I need documents translated",
+    "ctaCourses": "I want to learn a language",
+    "reassurance": "Two short forms, one for each. Neither costs anything and neither commits you."
+  },
+  "academy": {
+    "eyebrow": "The academy",
+    "heading": "Seven languages beyond Italian, taught by the people who work in them",
+    "body": "Our teachers are independent professionals with their own practice, working inside the team rather than for a platform that rotates whoever is free. They teach the language they work in every day — the same one they'll be reading your certificates in — and they build the timetable around a student's week rather than an office's opening hours.",
+    "languagesLabel": "Languages we teach and work in",
+    "languages": ["Italian", "English", "French", "Spanish", "Portuguese", "Arabic", "Albanian", "German"],
+    "points": [
+      {
+        "icon": "calendar",
+        "title": "Built around your week, not our office hours",
+        "body": "Online, scheduled around lectures, exams and shifts. You start before you leave and keep going after you land, with the same teacher on both sides of the move."
+      },
+      {
+        "icon": "compass",
+        "title": "A level assessment before anything is booked",
+        "body": "A short conversation to place you honestly, so you don't pay for six weeks of material you already know or start three levels above where you actually are."
+      },
+      {
+        "icon": "document",
+        "title": "Teachers who also read the paperwork",
+        "body": "The person teaching you Italian is the same person who'll see your transcript. It means the vocabulary you get is the one you'll actually need at a counter, not the one in the textbook."
+      }
+    ],
+    "ctaLabel": "Book a level assessment"
+  },
+  "documents": {
+    "eyebrow": "Documents",
+    "heading": "Translation and legalisation, handled on our side of the table",
+    "body": "A foreign qualification has to reach an Italian university in Italian and legally valid, and that sequence is where months quietly disappear — usually because the translation went out to a third party who has no idea what the receiving office is looking for and no reason to hurry. We keep it inside the team, and we work backwards from your admission deadline rather than forwards from the day you asked.",
+    "steps": [
+      {
+        "title": "You tell us what you're holding",
+        "body": "The documents, the country that issued them and the date they have to be ready by. That's enough for us to tell you which route applies and roughly how long it takes."
+      },
+      {
+        "title": "We translate, in-house",
+        "body": "Transcripts, diplomas and certificates, done by people who are already on your file and already know the format the receiving office expects to see."
+      },
+      {
+        "title": "We prepare the legalisation file",
+        "body": "Apostille or consular legalisation, depending on the country that issued your qualification. Prepared and tracked alongside you, not handed back as a list of instructions."
+      },
+      {
+        "title": "It goes in with the rest of your application",
+        "body": "Filed as part of one file rather than as a separate errand you have to chase — which is the step where this usually falls apart for people doing it alone."
+      }
+    ],
+    "handledHeading": "What we do ourselves",
+    "handled": [
+      "The translation of academic and civil-status documents, inside the team",
+      "The apostille or consular legalisation file, prepared and tracked",
+      "Working backwards from your admission deadline, not from our queue",
+      "Telling you which route your country actually requires, before you pay anything"
+    ],
+    "institutionsHeading": "What stays with the institutions — and always will",
+    "institutions": [
+      "The comparability statement for your qualification, issued by CIMEA or assessed by the university itself",
+      "The consulate's decision on your visa, and the Questura's on your residence permit",
+      "The university's decision on your admission",
+      "The public fees charged by any of them, which are paid to them and not to us"
+    ],
+    "limitHeading": "What in-house does not mean",
+    "limitBody": "The recognition of a foreign qualification takes time and costs money, and we can't make either of those disappear — the comparability statement is issued by CIMEA or assessed by the university, and nothing we do replaces it or makes it optional. Anyone telling you that step can be skipped is selling you a rejected application. What we genuinely remove is the other half: the outsourced translation you queue behind, and the legalisation file nobody explains. That half is most of the delay, and it's the half that's ours.",
+    "officialSource": "https://www.cimea.it",
+    "ctaLabel": "Request a quote for translation"
+  },
+  "comparison": {
+    "eyebrow": "Why here",
+    "heading": "Three suppliers who've never spoken, or one team that has",
+    "body": "The usual way to do this is to assemble it yourself: a language school, a sworn translator, an agency for the paperwork. Each is competent on its own and none of them knows what the other two are doing — so every gap between them becomes your problem, in a language you're still learning.",
+    "traditionalLabel": "Doing it the usual way",
+    "traditional": [
+      "A language school that has no idea a deadline exists",
+      "A translator found online, who gets the documents with no context and returns them in whatever format is standard for them",
+      "An agency for the paperwork, which discovers the translation is wrong only once it's been filed",
+      "You in the middle, forwarding files between three parties and explaining each one to the others"
+    ],
+    "kimereLabel": "Doing it with us",
+    "kimere": [
+      "One team, and one coordinator who is accountable for all of it",
+      "The teacher who teaches you the language is the one who translates your documents",
+      "The translation is prepared knowing which office receives it and what that office expects",
+      "One deadline, worked backwards, instead of three suppliers each working forwards from their own"
+    ],
+    "note": "This doesn't make a rejection impossible — no one controls the commission that reads your file. What it removes is the most common reason documents come back: a translation prepared by someone who was never told what it was for."
+  },
+  "forms": {
+    "eyebrow": "Two doors",
+    "heading": "Two very different reasons to be on this page",
+    "body": "One of you has a diploma that has to be translated before a scholarship deadline closes. The other is planning to learn German before next September. Those are opposite problems, so they get opposite forms — pick yours and skip the other.",
+    "quote": {
+      "heading": "A quote for translation or legalisation",
+      "body": "Tell us what you're holding and by when. You get back the route that applies to your country, a time estimate and a price, before anything starts.",
+      "ctaLabel": "Request the quote"
+    },
+    "course": {
+      "heading": "A language course, or a level assessment",
+      "body": "Tell us the language and roughly where you are. If you don't know where you are, that's an option too — the assessment exists for exactly that.",
+      "ctaLabel": "Book the assessment"
+    }
+  }
+}
