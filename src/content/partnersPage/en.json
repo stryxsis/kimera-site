@@ -150,45 +150,45 @@
     "officialSource": "https://www.universitaly.it"
   },
   "pricing": {
-    "eyebrow": "Fees",
-    "heading": "Public and transparent prices to build your margin",
-    "body": "An agency must know exact costs to draft a quote, and a university demands clarity on reserved rates. The 'quote on request' formula unnecessarily slows down the process. For us, transparency comes first.",
+    "eyebrow": "Partnership",
+    "heading": "Flexible and transparent collaboration models",
+    "body": "Every agency has different volumes and processes, every university has specific needs. We structure our economic offer based on the actual operational impact required, defining a clear agreement with no surprises.",
     "plans": [
       {
         "audience": "agency",
-        "name": "All-Inclusive, per student",
-        "price": "$1,000",
-        "priceUnit": "per student, in Italy",
-        "body": "This is the complete package to assist a student in Italy. The cost is fixed and allows you to accurately calculate your markup margin before even proposing it to the family.",
-        "includesHeading": "What the fee covers",
+        "name": "Full Management, per student",
+        "price": "Tailored",
+        "priceUnit": "based on volumes",
+        "body": "A complete package to assist your students in Italy. The quote is calibrated on your annual volumes, allowing you to build a solid markup margin to propose to families.",
+        "includesHeading": "What we handle",
         "includes": [
-          "Housing search, lease reviewed before signature, registration",
-          "The visa file, prepared to the standard of that consulate",
-          "The scholarship application, filed on its own deadline",
-          "University enrolment, start to finish",
-          "Someone physically with the student on the ground",
-          "Health cover arranged and in force"
+          "Housing search, lease review and registration",
+          "The visa file, compiled according to consular rules",
+          "The application for scholarships and related calls",
+          "The entire university enrolment process",
+          "Logistical support on the ground upon the student's arrival",
+          "Activation of the required health cover"
         ],
-        "note": "The fee applies in Italy, where we manage the route firsthand. For other nations we prepare tailored quotes, adjusting the offer based on actual local presence."
+        "note": "The agreement is structured for Italy, where we operate directly. For other destinations we develop ad hoc pathways assessing the necessary local presence."
       },
       {
         "audience": "university",
-        "name": "Consultation, partner rate",
-        "price": "$180",
-        "priceUnit": "per session, research included",
-        "body": "Our strategic consultation, offered at the rate reserved for our institutional partners. Ideal when your office requires a detailed analysis on a specific candidate profile.",
-        "includesHeading": "What the fee covers",
+        "name": "Institutional consulting",
+        "price": "Dedicated",
+        "priceUnit": "reserved partner rate",
+        "body": "Strategic support for your international offices, with discounted rates compared to public consulting. We step in when you need to unblock complex procedures or assess atypical profiles.",
+        "includesHeading": "What the support includes",
         "includes": [
-          "The preliminary questionnaire and our reading of your answers",
-          "Research on the specific case, done before the session",
-          "The session itself, in a language your team is comfortable in",
-          "A written summary, yours to keep"
+          "Preliminary analysis of the case and documentation",
+          "Specific regulatory research on required procedures",
+          "Direct operational sessions with your staff",
+          "Written summary and action plan to implement"
         ],
-        "note": "We offer a $20 discount compared to the public rate. We remind you that the first strategic seminar always remains free and without any obligation to purchase."
+        "note": "Institutional agreements provide benefits compared to standard public rates. The introductory strategic seminar always remains free."
       }
     ],
-    "compareLabel": "See the public rate on the students page",
-    "billingNote": "Rates are shown in US dollars. Before issuing any invoice, we will confirm in writing the amount, currency and applicable tax treatment. We put everything in black and white before starting.",
+    "compareLabel": "Discover our services",
+    "billingNote": "All financial details are discussed and formalised in a written agreement before starting operations. We will confirm amounts, billing currencies and tax charges to guarantee you maximum financial clarity.",
     "limitsHeading": "Service limits and the transparency we owe you",
     "limits": [
       "We do not guarantee the acquisition of visas, admissions or scholarships. Decisions belong exclusively to official bodies. Beware of anyone guaranteeing 100% certain results.",

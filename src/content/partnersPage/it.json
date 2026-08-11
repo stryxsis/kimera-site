@@ -150,45 +150,45 @@
     "officialSource": "https://www.universitaly.it"
   },
   "pricing": {
-    "eyebrow": "Tariffe",
-    "heading": "Prezzi pubblici e trasparenti per costruire il vostro margine",
-    "body": "Un'agenzia deve conoscere i costi esatti per elaborare un preventivo e un ateneo esige chiarezza sulle tariffe riservate. La formula del preventivo su richiesta rallenta inutilmente il processo. Per noi la trasparenza viene prima di tutto.",
+    "eyebrow": "Partnership",
+    "heading": "Modelli di collaborazione flessibili e trasparenti",
+    "body": "Ogni agenzia ha volumi e processi diversi, ogni ateneo ha esigenze specifiche. Strutturiamo la nostra offerta economica in base al reale impatto operativo richiesto, definendo un accordo chiaro e senza sorprese.",
     "plans": [
       {
         "audience": "agency",
-        "name": "All-Inclusive, per studente",
-        "price": "1.000 $",
-        "priceUnit": "per studente, in Italia",
-        "body": "Questo è il pacchetto completo per assistere uno studente in Italia. Il costo è fisso e vi permette di calcolare con precisione il vostro margine di ricarico prima ancora di proporlo alla famiglia.",
-        "includesHeading": "Cosa comprende la quota",
+        "name": "Gestione Completa, per studente",
+        "price": "Su misura",
+        "priceUnit": "in base ai volumi",
+        "body": "Un pacchetto completo per assistere i vostri studenti in Italia. La quotazione viene calibrata sui vostri volumi annuali, permettendovi di costruire un margine di ricarico solido da proporre alle famiglie.",
+        "includesHeading": "Cosa gestiamo noi",
         "includes": [
-          "Ricerca dell'alloggio, contratto revisionato prima della firma, registrazione",
-          "Il fascicolo per il visto, preparato secondo lo standard di quel consolato",
-          "La domanda di borsa di studio, depositata entro la sua scadenza",
-          "L'iscrizione universitaria, dall'inizio alla fine",
-          "Qualcuno fisicamente accanto allo studente sul territorio",
-          "Copertura sanitaria attivata e in vigore"
+          "Ricerca dell'alloggio, revisione del contratto e registrazione",
+          "Il fascicolo per il visto, compilato secondo le regole consolari",
+          "La domanda per le borse di studio e i relativi bandi",
+          "L'intero iter di immatricolazione universitaria",
+          "Assistenza logistica sul territorio all'arrivo dello studente",
+          "Attivazione della copertura sanitaria richiesta"
         ],
-        "note": "La tariffa si applica in Italia, dove gestiamo il percorso in prima persona. Per le altre nazioni elaboriamo preventivi su misura, calibrando l'offerta sull'effettiva presenza locale."
+        "note": "L'accordo viene strutturato per l'Italia, dove operiamo direttamente. Per altre destinazioni elaboriamo percorsi ad hoc valutando la presenza locale necessaria."
       },
       {
         "audience": "university",
-        "name": "Consulenza, tariffa partner",
-        "price": "180 $",
-        "priceUnit": "a sessione, ricerca inclusa",
-        "body": "La nostra consulenza strategica, proposta alla tariffa riservata ai nostri partner istituzionali. Ideale quando il vostro ufficio richiede un'analisi dettagliata su un profilo candidato specifico.",
-        "includesHeading": "Cosa comprende la quota",
+        "name": "Consulenza istituzionale",
+        "price": "Dedicata",
+        "priceUnit": "tariffa partner riservata",
+        "body": "Supporto strategico per i vostri uffici internazionali, con tariffe agevolate rispetto alla consulenza al pubblico. Interveniamo quando vi serve sbloccare iter complessi o valutare profili atipici.",
+        "includesHeading": "Cosa include il supporto",
         "includes": [
-          "Il questionario preliminare e la nostra lettura delle risposte",
-          "La ricerca sul caso specifico, fatta prima della sessione",
-          "La sessione vera e propria, in una lingua comoda per il vostro team",
-          "Una sintesi scritta, vostra da tenere"
+          "Analisi preventiva del caso e della documentazione",
+          "Ricerca normativa specifica sulle procedure richieste",
+          "Sessioni operative dirette con il vostro personale",
+          "Sintesi scritta e piano d'azione da implementare"
         ],
-        "note": "Offriamo uno sconto di 20 $ rispetto alla tariffa al pubblico. Ricordiamo che il primo seminario strategico rimane sempre gratuito e senza alcun obbligo di acquisto."
+        "note": "Le convenzioni istituzionali prevedono agevolazioni rispetto alle tariffe pubbliche standard. Il seminario strategico introduttivo rimane sempre gratuito."
       }
     ],
-    "compareLabel": "Vedi la tariffa pubblica sulla pagina degli studenti",
-    "billingNote": "Le tariffe sono indicate in dollari statunitensi. Prima dell'emissione della fattura, vi confermeremo per iscritto l'importo, la valuta e il relativo trattamento fiscale. Mettiamo tutto nero su bianco prima di iniziare.",
+    "compareLabel": "Scopri i nostri servizi",
+    "billingNote": "Tutti i dettagli economici vengono discussi e formalizzati in un accordo scritto prima di avviare le operazioni. Vi confermeremo importi, valute di fatturazione e oneri fiscali per garantirvi la massima chiarezza.",
     "limitsHeading": "I limiti del servizio e la trasparenza che vi dobbiamo",
     "limits": [
       "Non garantiamo l'ottenimento di visti, ammissioni o borse di studio. Le decisioni competono esclusivamente agli enti ufficiali. Diffidate da chi vi garantisce risultati sicuri al 100%.",
